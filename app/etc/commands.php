@@ -7,5 +7,6 @@
 
 // Returns all commands added into our application
 return [
-  \Ares\Framework\Command\ClearCacheCommand::class
+    \Ares\Framework\Command\ClearCacheCommand::class,
+    \Ares\Core\Command\TestCommand::class
 ];

@@ -78,8 +78,10 @@ class LoginService
                     [$isBanned->getBanReason()]),
                 UserResponseCodeInterface::RESPONSE_AUTH_LOGIN_BANNED,
                 HttpResponseCodeInterface::HTTP_RESPONSE_FORBIDDEN
-            );
+            ); // ofc we shouldnt throw an exception when it isnt called like an api so idk you could just do it like you did before or google around
         }
+
+        $messageWithErrors = __('You are banned because of %s and %s'); // or you could just ask s1njar because of error handling he knows better than me alr
 
         $user->setLastLogin(time());
         $user->setIpCurrent($data['ip_current']);
@@ -87,12 +89,8 @@ class LoginService
         $this->userRepository->save($user);
 
         /** @var TokenService $token */
-        $token = $this->tokenService->execute($user->getId());
+        return $user; // yeah that would be it oh yes and errors, mhhh in my aliexpres js framework i hope to receive json like
 
-        return response()
-            ->setData([
-                'token' => $token
-            ]);
     }
 }
 

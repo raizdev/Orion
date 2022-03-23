@@ -1,40 +1,42 @@
 {
-    "name": "dome/ares-habbo-api",
-    "description": "Fast and convenient Habbo API",
-    "keywords": [
-        "php",
-        "habbo",
-        "api",
-        "slim"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Dome",
-            "homepage": "https://ares.to"
-        },
-        {
-            "name": "s1njar",
-            "homepage": "https://ares.to"
-        }
-    ],
-    "require": {
-        "ext-json": "*",
-        "ext-sockets": "*",
-        "domexx/ares-core": "3.2.4",
-        "robmorgan/phinx": "dev-master"
+  "name": "dome/ares-habbo-api",
+  "description": "Fast and convenient Habbo API",
+  "keywords": [
+    "php",
+    "habbo",
+    "api",
+    "slim"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dome",
+      "homepage": "https://ares.to"
     },
-    "config": {
-        "sort-packages": true,
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "8.0"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Ares\\": "src/"
-        }
-    },
-    "minimum-stability": "dev"
+    {
+      "name": "s1njar",
+      "homepage": "https://ares.to"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "ext-sockets": "*",
+    "bryanjhv/slim-session": "~4.0",
+    "domexx/ares-core": "3.2.6",
+    "robmorgan/phinx": "dev-master",
+    "slim/twig-view": "^3.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.0"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Ares\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
 }

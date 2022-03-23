@@ -8,6 +8,7 @@
 /**
  * Registers our ServiceProviders
  */
+
 return [
     // Adds our LocaleProvider to add locales
     $container->addServiceProvider(
@@ -44,5 +45,11 @@ return [
     // Adds our ThrottleServiceProvider
     $container->addServiceProvider(
         new \Ares\Framework\Provider\ThrottleServiceProvider()
+    ),
+    // Adds our TwigServiceProvider
+    $container->addServiceProvider(
+        new \Ares\Core\Provider\TwigServiceProvider(
+
+        )
     )
 ];

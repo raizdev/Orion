@@ -1,4 +1,8 @@
 {
+  "base.navbar.home": "Home",
+  "base.navbar.community": "community",
+  "base.navbar.community.articles": "Articles",
+
   "This is our beautiful api written with %s.": "This is our beautiful api written with %s.",
   "validation.required": "This is a required field"
 }

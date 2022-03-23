@@ -9,13 +9,8 @@ use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
-    // Enables Lazy CORS - Preflight Request
-    $app->options('/{routes:.+}', function ($request, $response, $arguments) {
-        return $response;
-    });
 
     $app->group('/{locale}', function (RouteCollectorProxy $group) {
-
         // Only Accessible if LoggedIn
         $group->group('', function ($group) {
             // User
@@ -160,13 +155,13 @@ return function (App $app) {
                     $group->post('/role', \Ares\Role\Controller\RoleController::class . ':createRole')->setName('create-role');
                     $group->post('/permission', \Ares\Role\Controller\RolePermissionController::class . ':createPermission')->setName('create-permission');
                 });
-                
+
                 $group->group('/assign', function ($group) {
                     $group->post('/rank', \Ares\Role\Controller\RoleController::class . ':assignRole')->setName('assign-role');
                     $group->post('/child', \Ares\Role\Controller\RoleController::class . ':createChildRole')->setName('create-child-role');
                     $group->post('/permission', \Ares\Role\Controller\RolePermissionController::class . ':createRolePermission')->setName('create-role-permission');
                 });
-                
+
                 $group->group('/delete', function ($group) {
                     $group->delete('/role', \Ares\Role\Controller\RoleController::class . ':deleteRole')->setName('delete-role');
                     $group->delete('/permission', \Ares\Role\Controller\RolePermissionController::class . ':deleteRolePermission')->setName('delete-role-permission');
@@ -253,11 +248,13 @@ return function (App $app) {
 
         // Global Routes
         $group->get('/user/online', \Ares\User\Controller\UserController::class . ':onlineUser');
+
+        $group->get('/', \Ares\Core\Controller\IndexController::class . ':home')->setName('home');
+
     })->add(\Ares\Framework\Middleware\LocaleMiddleware::class)
         ->add(\Ares\Framework\Middleware\ThrottleMiddleware::class);
 
-    // Catches every route that is not found
-    $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
-        throw new \Slim\Exception\HttpNotFoundException($request);
+    $app->get('/assets/js/web.settings.js', function ($request, $response, $args) {
+        return $response;
     });
 };

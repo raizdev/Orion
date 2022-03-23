@@ -6,6 +6,7 @@
  */
 
 use Slim\App;
+use Slim\Views\Twig;
 
 /**
  * Registers our Global Middleware
@@ -15,6 +16,7 @@ use Slim\App;
 return function (App $app) {
     $container = $app->getContainer();
     $logger = $container->get(\Psr\Log\LoggerInterface::class);
+    $twig = $container->get(Twig::class);
 
     $app->add(new Tuupola\Middleware\CorsMiddleware([
         "origin" => [$_ENV['WEB_FRONTEND_LINK']],
@@ -25,8 +27,18 @@ return function (App $app) {
         "cache" => $_ENV['TOKEN_DURATION']
     ]));
 
-    $app->add(\Ares\Framework\Middleware\BodyParserMiddleware::class);
+    $app->add(
+        new Slim\Middleware\Session([
+            'name' => $_ENV['SESSION_NAME'],
+            'autorefresh' => true,
+            'lifetime' => $_ENV['SESSION_LIFETIME'],
+        ])
+    );
+
+    // Can be enabled when not using Twig
+    // $app->add(\Ares\Framework\Middleware\BodyParserMiddleware::class);
     $app->add(\Ares\Framework\Middleware\ClaimMiddleware::class);
+    $app->add(\Slim\Views\TwigMiddleware::create($app, $twig));
     $app->addRoutingMiddleware();
 
     $errorMiddleware = $app->addErrorMiddleware(true, true, true, $logger);

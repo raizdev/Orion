@@ -84,12 +84,7 @@ class AuthController extends BaseController
 
         $parsedData['ip_current'] = $determinedIp;
 
-        $customResponse = $this->loginService->login($parsedData);
-
-        return $this->respond(
-            $response,
-            $customResponse
-        );
+        return $this->loginService->login($parsedData);
     }
 
     /**

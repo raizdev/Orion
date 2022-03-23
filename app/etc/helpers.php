@@ -92,6 +92,17 @@ if (!function_exists('tmp_dir')) {
     }
 }
 
+if (!function_exists('src_dir')) {
+    /**
+     * Returns directory path of src directory.
+     *
+     * @return string
+     */
+    function src_dir(): string {
+        return __DIR__ . '/../../src';
+    }
+}
+
 if (!function_exists('route_cache_dir')) {
     /**
      * Returns directory path of routing cache.

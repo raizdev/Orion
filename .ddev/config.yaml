@@ -1,4 +1,4 @@
-name: ares
+name: cosmic
 type: php
 docroot: public
 php_version: "8.0"
@@ -10,3 +10,7 @@ additional_hostnames: []
 additional_fqdns: []
 provider: default
 use_dns_when_possible: true
+database:
+  type: mariadb
+  version: 10.6
+  port: 3382
