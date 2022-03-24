@@ -31,7 +31,7 @@ class BadgeAlbumService
      */
     public function execute(): bool|array
     {
-        if(!is_dir( $this->badgeHelper->getPath())) {
+        if(!is_dir($this->badgeHelper->getPath())) {
             return false;
         }
 
