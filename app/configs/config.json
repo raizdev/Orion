@@ -1,7 +1,7 @@
 {
   "hotel_settings": {
     "hotel_name": "Cosmic",
-    "nitro_url": "https://client.ddev.site",
+    "nitro_url": "https://cosmic.ddev.site/nitro",
     "start_credits": 3000,
     "start_points": 3000,
     "start_pixels": 4000,

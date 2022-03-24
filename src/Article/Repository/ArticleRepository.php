@@ -126,12 +126,12 @@ class ArticleRepository extends BaseRepository
     }
 
     /**
-     * @param string $slug
+     * @param string $id
      *
      * @return Article|null
      * @throws DataObjectManagerException|NoSuchEntityException
      */
-    public function getArticleWithCommentCount(string $slug): ?Article
+    public function getArticleWithCommentCount(string $id): ?Article
     {
         $searchCriteria = $this->getDataObjectManager()
             ->select([
@@ -146,7 +146,7 @@ class ArticleRepository extends BaseRepository
                 '=',
                 'ares_articles_comments.article_id'
             )->groupBy('ares_articles.id')
-            ->where('slug', $slug)
+            ->where('ares_articles.id', $id)
             ->addRelation('user');
 
         return $this->getOneBy($searchCriteria, false, false);

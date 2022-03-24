@@ -11,7 +11,6 @@ use Ares\Article\Repository\ArticleRepository;
 use Ares\Badge\Service\BadgeService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Photo\Repository\PhotoRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,7 +18,6 @@ use Slim\Views\Twig;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use Ares\Framework\Exception\NoSuchEntityException;
 
 /**
  * Class IndexController
@@ -42,39 +40,6 @@ class IndexController extends BaseController
     ) {}
 
     /**
-     * @throws DataObjectManagerException
-     */
-    public function getArticles(int $page = 1, int $resultPerPage = 3): PaginatedCollection {
-        return $this->articleRepository
-            ->getPaginatedArticleList(
-                $page,
-                $resultPerPage
-            );
-    }
-
-    /**
-     * @throws NoSuchEntityException
-     */
-    public function getBadges(): bool|array
-    {
-        return $this->badgeService->execute();
-    }
-
-    /**
-     * @param int $page
-     * @param int $resultPerPage
-     *
-     * @throws DataObjectManagerException
-     */
-    public function getPhotos(int $page = 1, int $resultPerPage = 4) : PaginatedCollection {
-        return $this->photoRepository
-            ->getPaginatedPhotoList(
-                $page,
-                $resultPerPage
-            );
-    }
-
-    /**
      * Responds to say hello to Twig
      *
      * @param Request $request
@@ -87,10 +52,22 @@ class IndexController extends BaseController
      */
     public function home(Request $request, Response $response): Response
     {
+        $articles = $this->articleRepository
+            ->getPaginatedArticleList(
+                1,
+                3
+            );
+
+        $photos = $this->photoRepository
+            ->getPaginatedPhotoList(
+                1,
+                4
+            );
+
         return $this->twig->render($response, 'Core/View/pages/home.twig', [
-            'articles' => $this->getArticles(),
-            'photos' => $this->getPhotos(),
-            'badges' => $this->getBadges(),
+            'articles' => $articles,
+            'photos' => $photos,
+            'badges' => $this->badgeService->execute(),
             'page' => 'home'
         ]);
     }

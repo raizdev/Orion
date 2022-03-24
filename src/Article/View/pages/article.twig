@@ -1,0 +1,83 @@
+{% extends "Core/View/layouts/app.twig" %}
+{% block body %}
+    <div class="page-content">
+        <div class="left-side">
+            <article class="default-section">
+                <div class="card">
+                    <a href="/article/read/{{article.id}}/{{article.slug}}">
+                        <div class="card-image discussion-image card-image-top" style="background-color: rgb(134, 53, 24); background-image: url({{article.image}}); color: rgb(255, 255, 255); background-position: center">
+                            <div>
+                                <h2>{{article.title}}</h2>
+                                {{article.description}}
+                            </div>
+                        </div>
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div id="textbox">
+                                    <p class="timestamp"><img src="/assets/images/time.gif" /> {{article.created_at|date("d-M H:i")}}</p>
+                                    <p class="author">
+                                        by <b><a href="">{{article.user.username}}</a></b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-content">
+                        {{article.content|raw}}
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="right-side" style="margin-bottom: 7px;">
+            <aside class="default-section">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title-container" style="position: relative;">
+                            <div class="card-header-title">Who's new?</div>
+                        </div>
+                    </div>
+                    <div class="card-content no-spacing oddeven">
+                        <div class="author">
+                            <div class="avatar">
+                                <img alt="User avatar" class="avatar avatar-m" src="https://avatar.habme.ws/?figure=hr-7295-45.hd-209-1390.ch-806-85.lg-285-1409.sh-3035-81.fa-3276-73.ha-3488-1408&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
+                            </div>
+                            <div class="info">
+                                <span class="username"><a href="/user/Raphael">Raphael</a></span>
+                                <span>This is really cool!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content no-spacing oddeven">
+                        <div class="author">
+                            <div class="avatar">
+                                <img alt="User avatar" class="avatar avatar-m" src="https://avatar.habme.ws/?figure=hr-151832-61.hd-209-1359.ch-265-1335.lg-7537-92.sh-3035-1408&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
+                            </div>
+                            <div class="info">
+                                <span class="username"><a href="/user/Raphael">Raizer</a></span>
+                                <span>Wow, keep it up!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <aside class="default-section">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title-container" style="position: relative;">
+                            <div class="card-header-title">Comment</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <textarea placeholder="Comment here..."></textarea>
+                    </div>
+                </div>
+                <div class="card-footer no-spacing">
+                    <button type="submit" variant="success" class="btn btn-fw btn-success">Comment</button>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+{% endblock %}

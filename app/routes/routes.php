@@ -29,20 +29,6 @@ return function (App $app) {
                 });
             });
 
-            // Articles
-            $group->group('/articles', function ($group) {
-                $group->post('/create', \Ares\Article\Controller\ArticleController::class . ':create')
-                    ->setName('create-article');
-                $group->put('/edit', \Ares\Article\Controller\ArticleController::class . ':editArticle')
-                    ->setName('edit-article');
-                $group->get('/list/{page:[0-9]+}/{rpp:[0-9]+}', \Ares\Article\Controller\ArticleController::class . ':list');
-                $group->get('/all/{page:[0-9]+}/{rpp:[0-9]+}', \Ares\Article\Controller\ArticleController::class . ':allList')->setName('view-all-articles');
-                $group->get('/pinned/{page:[0-9]+}/{rpp:[0-9]+}', \Ares\Article\Controller\ArticleController::class . ':pinned');
-                $group->get('/{slug}', \Ares\Article\Controller\ArticleController::class . ':article');
-                $group->delete('/{id:[0-9]+}', \Ares\Article\Controller\ArticleController::class . ':delete')
-                    ->setName('delete-article');
-            });
-
             // Comments
             $group->group('/comments', function ($group) {
                 $group->post('/create', \Ares\Article\Controller\CommentController::class . ':create');
@@ -246,8 +232,21 @@ return function (App $app) {
                 ->setName('set-global-setting');
         });
 
+
+        $group->group('/articles', function ($group) {
+            $group->post('/create', \Ares\Article\Controller\ArticleController::class . ':create')
+                ->setName('create-article');
+            $group->put('/edit', \Ares\Article\Controller\ArticleController::class . ':editArticle')
+                ->setName('edit-article');
+            $group->get('/{id}/{slug}', \Ares\Article\Controller\ArticleController::class . ':article');
+            $group->delete('/{id:[0-9]+}', \Ares\Article\Controller\ArticleController::class . ':delete')
+                ->setName('delete-article');
+        });
+
+
         // Global Routes
         $group->get('/user/online', \Ares\User\Controller\UserController::class . ':onlineUser');
+
 
         $group->get('/', \Ares\Core\Controller\IndexController::class . ':home')->setName('home');
 

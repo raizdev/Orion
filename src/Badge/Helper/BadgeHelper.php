@@ -58,7 +58,7 @@ class BadgeHelper
      * @return string
      */
     public function getUrl(): string {
-        return $this->config->get('nitro_url') . '/assets/c_images/album1584/';
+        return $this->config->get('hotel_settings.nitro_url') . '/assets/c_images/album1584/';
     }
 
     /**
