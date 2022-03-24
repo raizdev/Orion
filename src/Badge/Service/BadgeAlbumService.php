@@ -15,7 +15,7 @@ use Ares\Framework\Exception\NoSuchEntityException;
  *
  * @package Ares\Badge\Service
  */
-class BadgeService
+class BadgeAlbumService
 {
     /**
      * BadgeAlbumService constructor.
@@ -43,12 +43,6 @@ class BadgeService
 
         arsort($badges);
 
-        $sortedBadges = array_slice($badges, 0, 11);
-
-        foreach ($sortedBadges as $badge => $key) {
-            $sortedBadges[$badge] = $this->badgeHelper->getUrl() . $badge;
-        }
-
-        return $sortedBadges;
+        return array_slice($badges, 0, 11);
     }
 }

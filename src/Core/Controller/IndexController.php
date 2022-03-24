@@ -8,7 +8,7 @@
 namespace Ares\Core\Controller;
 
 use Ares\Article\Repository\ArticleRepository;
-use Ares\Badge\Service\BadgeService;
+use Ares\Badge\Service\BadgeAlbumService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Photo\Repository\PhotoRepository;
@@ -36,7 +36,7 @@ class IndexController extends BaseController
         private Twig $twig,
         private ArticleRepository $articleRepository,
         private PhotoRepository $photoRepository,
-        private BadgeService $badgeService
+        private BadgeAlbumService $badgeService
     ) {}
 
     /**

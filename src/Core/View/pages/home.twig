@@ -61,9 +61,9 @@
                     </div>
                     <div class="card-content">
                         <div class="badge-list-grid">
-                            {% for key, test in badges %}
+                            {% for badge, value in badges %}
                                 <div>
-                                    <div class="rare-icon mr-1 flex-shrink-0 align-self-center" id="popover-rares-1" style="background-image: url({{test}});"></div>
+                                    <div class="rare-icon mr-1 flex-shrink-0 align-self-center" id="popover-rares-1" style="background-image: url('{{ config('hotel_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}');"></div>
                                 </div>
                             {% endfor %}
                         </div>

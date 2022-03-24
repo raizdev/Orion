@@ -10,7 +10,6 @@ namespace Ares\Badge\Helper;
 
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Setting\Repository\EmulatorSettingRepository;
-use PHLAK\Config\Config;
 
 /**
  * Class BadgeHelper
@@ -19,11 +18,6 @@ use PHLAK\Config\Config;
  */
 class BadgeHelper
 {
-    /**
-     * @var string
-     */
-    private string $url;
-
     /**
      * @var string
      */
@@ -36,10 +30,8 @@ class BadgeHelper
      * @throws NoSuchEntityException
      */
     public function __construct(
-        private EmulatorSettingRepository $emulatorSettingRepository,
-        private Config $config
+        private EmulatorSettingRepository $emulatorSettingRepository
     ) {
-        $this->url = $this->getUrl();
         $this->path = $this->getPath();
     }
 
@@ -52,13 +44,6 @@ class BadgeHelper
 
         /** @var string $badgeParts */
         return str_replace('Badgeparts', '', $badgeParts->value) . 'album1584';
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl(): string {
-        return $this->config->get('hotel_settings.nitro_url') . '/assets/c_images/album1584/';
     }
 
     /**
