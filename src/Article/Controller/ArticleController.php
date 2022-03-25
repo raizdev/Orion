@@ -166,7 +166,7 @@ class ArticleController extends BaseController
         /** @var Article $article */
         $article = $this->articleRepository->getArticleWithCommentCount($id);
 
-        return $this->twig->render($response, 'Article/View/pages/article.twig', [
+        return $this->twig->render($response, 'Article/Views/pages/article.twig', [
             'article' => $article,
             'page' => 'article'
         ]);

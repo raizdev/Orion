@@ -5,7 +5,7 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Core\Controller;
+namespace Ares\Frontend\Controllers\Home;
 
 use Ares\Article\Repository\ArticleRepository;
 use Ares\Badge\Service\BadgeAlbumService;
@@ -64,7 +64,7 @@ class IndexController extends BaseController
                 4
             );
 
-        return $this->twig->render($response, 'Core/View/pages/home.twig', [
+        return $this->twig->render($response, '/Frontend/Views/pages/home/home.twig', [
             'articles' => $articles,
             'photos' => $photos,
             'badges' => $this->badgeService->execute(),

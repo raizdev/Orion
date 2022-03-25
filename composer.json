@@ -21,10 +21,9 @@
   "require": {
     "ext-json": "*",
     "ext-sockets": "*",
-    "bryanjhv/slim-session": "~4.0",
     "domexx/ares-core": "3.2.6",
-    "robmorgan/phinx": "dev-master",
-    "slim/twig-view": "^3.0"
+    "raizdev/cosmic-core": "^1.0",
+    "robmorgan/phinx": "dev-master"
   },
   "config": {
     "sort-packages": true,

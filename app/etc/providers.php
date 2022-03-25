@@ -48,7 +48,7 @@ return [
     ),
     // Adds our TwigServiceProvider
     $container->addServiceProvider(
-        new \Ares\Core\Provider\TwigServiceProvider(
+        new \Cosmic\Core\Provider\TwigServiceProvider(
 
         )
     )

@@ -8,5 +8,7 @@
 // Returns all commands added into our application
 return [
     \Ares\Framework\Command\ClearCacheCommand::class,
-    \Ares\Core\Command\TestCommand::class
+    \Cosmic\Core\Command\Commands\MinifyAll::class,
+    \Cosmic\Core\Command\Commands\MinifyCss::class,
+    \Cosmic\Core\Command\Commands\MinifyJs::class
 ];

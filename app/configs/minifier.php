@@ -1,8 +1,8 @@
-<?php namespace Config;
+<?php
 
-use CodeIgniter\Config\BaseConfig;
+namespace Ares\Core\Command\Config;
 
-class Minifier extends \Michalsn\Minifier\Config\Minifier
+class Minifier
 {
     //--------------------------------------------------------------------
     // Enable minify class
@@ -23,7 +23,7 @@ class Minifier extends \Michalsn\Minifier\Config\Minifier
     //      https://mydomain.com
     //      https://static.mydomain.com
 
-    public $baseUrl = BASE;
+    public $baseUrl = '';
 
     //--------------------------------------------------------------------
     // Base JS URL for assets
@@ -53,25 +53,25 @@ class Minifier extends \Michalsn\Minifier\Config\Minifier
     // JS adapter
     //--------------------------------------------------------------------
 
-    public $adapterJs = \Michalsn\Minifier\Adapters\Js\MinifyAdapter::class;
+    public $adapterJs =  \Ares\Core\Command\Adapters\Js\MinifyAdapter::class;
 
     //--------------------------------------------------------------------
     // CSS adapter
     //--------------------------------------------------------------------
 
-    public $adapterCss = \Michalsn\Minifier\Adapters\Css\MinifyAdapter::class;
+    public $adapterCss =  \Ares\Core\Command\Adapters\Css\MinifyAdapter::class;
 
     //--------------------------------------------------------------------
     // JS assets directory
     //--------------------------------------------------------------------
 
-    public $dirJs = './assets/js';
+    public $dirJs = '/public/assets/js';
 
     //--------------------------------------------------------------------
     // CSS assets directory
     //--------------------------------------------------------------------
 
-    public $dirCss = './assets/css';
+    public $dirCss = '/public/assets/css';
 
     //--------------------------------------------------------------------
     // JS minified assets directory
@@ -89,7 +89,7 @@ class Minifier extends \Michalsn\Minifier\Config\Minifier
     // Version assets directory
     //--------------------------------------------------------------------
 
-    public $dirVersion = './assets';
+    public $dirVersion = '/public/assets';
 
     //--------------------------------------------------------------------
     // JS tag

@@ -248,7 +248,7 @@ return function (App $app) {
         $group->get('/user/online', \Ares\User\Controller\UserController::class . ':onlineUser');
 
 
-        $group->get('/', \Ares\Core\Controller\IndexController::class . ':home')->setName('home');
+        $group->get('/', \Ares\Frontend\Controllers\Home\IndexController::class . ':home')->setName('home');
 
     })->add(\Ares\Framework\Middleware\LocaleMiddleware::class)
         ->add(\Ares\Framework\Middleware\ThrottleMiddleware::class);
