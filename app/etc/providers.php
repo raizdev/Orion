@@ -22,13 +22,13 @@ return [
     $container->addServiceProvider(
         new \Ares\Framework\Provider\LoggingServiceProvider()
     ),
-    // Adds our RouteProvider
-    $container->addServiceProvider(
-        new \Ares\Framework\Provider\RouteServiceProvider()
-    ),
     // Adds our AppProvider and creates App
     $container->addServiceProvider(
         new \Ares\Framework\Provider\AppServiceProvider()
+    ),
+    // Adds our RouteProvider
+    $container->addServiceProvider(
+        new \Ares\Framework\Provider\RouteServiceProvider()
     ),
     // Adds our ValidationProvider
     $container->addServiceProvider(

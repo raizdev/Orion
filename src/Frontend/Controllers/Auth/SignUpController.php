@@ -21,10 +21,10 @@ use Twig\Error\SyntaxError;
  *
  * @package Ares\Core\Controller
  */
-class SignInController extends BaseController
+class SignUpController extends BaseController
 {
     /**
-     * SignInController constructor.
+     * SignUpController constructor.
      * @param Twig                  $twig
      */
     public function __construct(
@@ -46,7 +46,7 @@ class SignInController extends BaseController
     {
 
         return $this->twig->render($response,
-            '/Frontend/Views/pages/auth/signin.twig', [
+            '/Frontend/Views/pages/auth/signup.twig', [
             'page' => 'registration'
         ]);
     }

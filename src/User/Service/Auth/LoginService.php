@@ -12,17 +12,16 @@ use Ares\Ban\Exception\BanException;
 use Ares\Ban\Repository\BanRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Factory\DataObjectManagerFactory;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\TokenService;
 use Ares\User\Entity\Contract\UserInterface;
 use Ares\User\Entity\User;
-use Ares\User\Exception\LoginException;
 use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Repository\UserRepository;
 use Odan\Session\SessionInterface;
 use ReallySimpleJWT\Exception\ValidateException;
+use Slim\Routing\RouteParser;
 
 /**
  * Class LoginService
@@ -34,14 +33,18 @@ class LoginService
     /**
      * LoginService constructor.
      *
-     * @param UserRepository           $userRepository
-     * @param BanRepository            $banRepository
-     * @param SessionInterface         $session,
+     * @param UserRepository $userRepository
+     * @param BanRepository $banRepository
+     * @param SessionInterface $session
+     * @param RouteParser $routeParser
+     * @param TokenService $tokenService
      */
     public function __construct(
         private UserRepository $userRepository,
         private BanRepository $banRepository,
-        private SessionInterface $session
+        private SessionInterface $session,
+        private RouteParser $routeParser,
+        private TokenService $tokenService
     ) {}
 
     /**
@@ -52,9 +55,8 @@ class LoginService
      * @return CustomResponseInterface
      * @throws BanException
      * @throws DataObjectManagerException
-     * @throws LoginException
-     * @throws ValidateException
      * @throws NoSuchEntityException
+     * @throws ValidateException
      */
     public function login(array $data): CustomResponseInterface
     {
@@ -62,11 +64,11 @@ class LoginService
         $user = $this->userRepository->get($data['username'], 'username', true);
 
         if (!$user || !password_verify($data['password'], $user->getPassword())) {
-            throw new LoginException(
-                __('Data combination was not found'),
-                UserResponseCodeInterface::RESPONSE_AUTH_LOGIN_FAILED,
-                HttpResponseCodeInterface::HTTP_RESPONSE_NOT_FOUND
-            );
+            return response()
+                ->setData([
+                    'status'    => 'error',
+                    'message'   => 'data combination not found',
+                ]);
         }
 
         /** @var Ban $isBanned */
@@ -88,15 +90,20 @@ class LoginService
 
         $this->userRepository->save($user);
 
+        /** @var TokenService $token */
+        $token = $this->tokenService->execute($user->getId());
+
         $this->session->destroy();
         $this->session->start();
         $this->session->regenerateId();
 
+        $this->session->set('token', $token);
+
         return response()
             ->setData([
+                'pagetime'  => $this->routeParser->urlFor('home'),
                 'status'    => 'success',
                 'message'   => 'Logged in successfully',
-                'pagetime'  => '/home'
             ]);
     }
 }

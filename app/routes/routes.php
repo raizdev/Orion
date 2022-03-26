@@ -5,7 +5,6 @@
  * @see LICENSE (MIT)
  */
 
-use PHLAK\Config\Config;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -13,7 +12,7 @@ return function (App $app) {
 
     $app->group('', function (RouteCollectorProxy $group) {
         // Only Accessible if LoggedIn
-        $group->group('', function ($group) {
+        $group->group('', function (RouteCollectorProxy $group) {
             // User
             $group->group('/user', function ($group) {
                 $group->get('', \Ares\User\Controller\UserController::class . ':user');
@@ -219,12 +218,6 @@ return function (App $app) {
             $group->post('/look', \Ares\User\Controller\UserController::class . ':getLook');
         });
 
-        $group->group('/register', function ($group) {
-            $group->post('', \Ares\User\Controller\AuthController::class . ':register')->setName('auth.register');
-            $group->get('/looks', \Ares\User\Controller\AuthController::class . ':viableLooks');
-        });
-
-
         // Global Settings
         $group->group('/settings', function ($group) {
             $group->get('/list/{page:[0-9]+}/{rpp:[0-9]+}',
@@ -252,10 +245,13 @@ return function (App $app) {
 
         $group->get('/', \Ares\Frontend\Controllers\Home\IndexController::class)->setName('home');
 
-        $group->get('/auth/sign-in', \Ares\Frontend\Controllers\Auth\SignInController::class . ':index')->setName('auth.sign-in');
+        $group->get('/auth/sign-up', \Ares\Frontend\Controllers\Auth\SignUpController::class . ':index')
+            ->setName('auth.sign-up');
 
-    })->add(\Ares\Framework\Middleware\LocaleMiddleware::class)
-        ->add(\Ares\Framework\Middleware\ThrottleMiddleware::class);
+        $group->post('/auth/sign-in', \Ares\User\Controller\AuthController::class . ':register')
+            ->setName('auth.sign-in');
+
+    })->add(\Ares\Framework\Middleware\LocaleMiddleware::class);
 
     $app->get('/config', \Ares\Config\Controller\ConfigController::class);
 };
