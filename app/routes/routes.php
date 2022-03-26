@@ -248,7 +248,7 @@ return function (App $app) {
         $group->get('/auth/sign-up', \Ares\Frontend\Controllers\Auth\SignUpController::class . ':index')
             ->setName('auth.sign-up');
 
-        $group->post('/auth/sign-in', \Ares\User\Controller\AuthController::class . ':register')
+        $group->post('/auth/sign-in', \Ares\User\Controller\AuthController::class . ':login')
             ->setName('auth.sign-in');
 
     })->add(\Ares\Framework\Middleware\LocaleMiddleware::class);

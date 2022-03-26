@@ -4,8 +4,8 @@ require_once 'app/bootstrap.php';
 return
 [
     'paths' => [
-        'migrations' => '%%PHINX_CONFIG_DIR%%/app/database/migrations',
-        'seeds' => '%%PHINX_CONFIG_DIR%%/app/database/seeds'
+        'migrations' => '%%PHINX_CONFIG_DIR%%/src/*/Scheme',
+        'seeds' => '%%PHINX_CONFIG_DIR%%/src/*/Scheme'
     ],
     'environments' => [
         'default_migration_table' => 'ares_migration_log',
