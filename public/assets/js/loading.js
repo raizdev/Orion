@@ -1,5 +1,6 @@
 var SiteLoading;
 var PageLoading;
+var Config;
 
 $(function ()
 {
@@ -7,17 +8,33 @@ $(function ()
     SiteLoading.init();
     SiteLoading.load_file(0);
     PageLoading = new PageLoadingInterface();
+    Config = new Config();
+    Config.getConfig();
 });
+
+function Config ()
+{
+    var self = this;
+
+    this.data = null;
+
+    this.getConfig = function ()
+    {
+        $.getJSON('/config', function(data) {
+            self.data = data.data;
+        })
+    }
+}
 
 function SiteLoadingInterface()
 {
     this.files = [
         "functions",
         "web.badge",
-        "web.settings",
         "web.pages",
         "web.core"
     ];
+
     this.loaded_files = 0;
     this.total_files = 0;
     this.loading_container = null;
@@ -32,8 +49,7 @@ function SiteLoadingInterface()
         this.total_files = this.files.length;
         this.loading_container = $(".loading-container");
 
-        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
-        //this.cache_id = Configuration.cache;
+        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16)
     }
   
     this.load_file = function (file_id)

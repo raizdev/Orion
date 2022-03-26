@@ -196,7 +196,7 @@ function WebPageArticleInterface(main_page) {
 
         page_container.find(".fa-times, .fa-eye").click(function() {
             var id = $(this).attr("data-id");
-            Web.ajax_manager.post("/community/articles/hide", {
+            Web.ajax_manager.post("/article/articles/hide", {
                 post: id,
                 csrftoken: csrftoken
             }, function(result) {
@@ -218,7 +218,7 @@ function WebPageArticleInterface(main_page) {
                 var reply = $('#reply-message').val();
                 var csrftoken = $('.article-reply').data('csrf');
               
-                Web.ajax_manager.post("/community/articles/add", {
+                Web.ajax_manager.post("/article/articles/add", {
                     articleid: id,
                     message: reply,
                     csrftoken: csrftoken
@@ -526,7 +526,7 @@ function WebPageCommunityPhotosInterface(main_page) {
           
             var csrftoken = $("[name=csrftoken]").val();
             var countdivs = $('.photo-container').length;
-            Web.ajax_manager.post("/community/photos/more", {
+            Web.ajax_manager.post("/article/photos/more", {
                 current_page: self.current_page,
                 offset: countdivs,
                 csrftoken: csrftoken
@@ -550,7 +550,7 @@ function WebPageCommunityPhotosInterface(main_page) {
 
         function addPhotoLike(id, csrftoken) {
             if (User.is_logged == true) {
-                Web.ajax_manager.post("/community/photos/like", {
+                Web.ajax_manager.post("/article/photos/like", {
                     post: id,
                     csrftoken: csrftoken
                 }, function(result) {

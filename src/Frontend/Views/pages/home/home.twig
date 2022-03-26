@@ -7,7 +7,7 @@
                     <div class="column">
                         <aside class="default-section">
                             <div class="card">
-                                <a href="/en/articles/{{article.id}}/{{article.slug}}">
+                                <a href="{{ url_for('article-view', {'id': article.id, 'slug': article.slug}) }}">
                                     <div class="card-image discussion-image card-image-top" style="background-color: rgb(134, 53, 24); background-image: url({{article.image}}); color: rgb(255, 255, 255); background-position: center">
                                         <div>
                                             <h2>{{article.title}}</h2>
@@ -96,7 +96,7 @@
         </div>
         <div class="right-side" style="margin-bottom: 7px;">
             <aside class="default-section">
-                <form method="post" action="auth/login/request">
+                <form method="post" action="">
                     <div class="card">
 
                         <div class="card-header">
@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                         </div>
-                        {% if user %}
+                        {% if user is empty %}
                             <div class="card-content">
                                 <div class="bg-off-white currency-row text-lush-info-text">
                                     <span class="currency"><img src="/assets/images/hotel/purses/{{value.type}}-icon.png" style="padding-right: 0.25rem"></span>

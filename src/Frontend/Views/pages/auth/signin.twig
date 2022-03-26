@@ -1,0 +1,82 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+    <div class="page-content">
+        <div class="card">
+            <div class="card-header card-header-right-image moving">
+                <div class="card-header-title-container ng-star-inserted">
+                    <div class="background-gray card-header-icon-container ng-star-inserted"><div class="header-icon icon-newuser"></div>
+                    </div>
+                    <div class="card-header-titles ng-star-inserted">
+                        <div class="card-header-title">Create Account</div>
+                        <span class="card-header-subtitle ng-star-inserted">Join the most fun online community!</span>
+                    </div>
+                    <div class="card-header-actions"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <article class="default-section">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-icon-container ">
+                                    <div class="header-icon icon-box-one"></div>
+                                </div>
+                                <div class="card-header-titles">
+                                    <div class="card-header-title">Who are you?</div>
+                                    <span class="card-header-subtitle ng-star-inserted">Nice to meet you</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <label class="form-control-container" for="username">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-dog"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="Username" name="username" type="text" />
+                            </label>
+                            <label class="form-control-container" for="mail">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-envelope"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="E-mail" name="password" type="email" />
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+            </article>
+            <article class="default-section">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-icon-container ">
+                                    <div class="header-icon icon-box-two"></div>
+                                </div>
+                                <div class="card-header-titles">
+                                    <div class="card-header-title">Who are you?</div>
+                                    <span class="card-header-subtitle ng-star-inserted">Nice to meet you</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <label class="form-control-container" for="password">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-password"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="Password" name="password" type="password" />
+                            </label>
+                            <label class="form-control-container" for="password_confirmation">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-password"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="Password" name="password_confirmation" type="password" />
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+            </article>
+        </div>
+    </div>
+{% endblock %}

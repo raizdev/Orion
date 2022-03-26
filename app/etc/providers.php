@@ -48,8 +48,10 @@ return [
     ),
     // Adds our TwigServiceProvider
     $container->addServiceProvider(
-        new \Cosmic\Core\Provider\TwigServiceProvider(
-
-        )
+        new \Cosmic\Core\Provider\TwigServiceProvider()
+    ),
+    // Adds our SessionServiceProvider
+    $container->addServiceProvider(
+        new \Cosmic\Core\Provider\SessionServiceProvider()
     )
 ];

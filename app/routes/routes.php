@@ -5,12 +5,13 @@
  * @see LICENSE (MIT)
  */
 
+use PHLAK\Config\Config;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
 
-    $app->group('/{locale}', function (RouteCollectorProxy $group) {
+    $app->group('', function (RouteCollectorProxy $group) {
         // Only Accessible if LoggedIn
         $group->group('', function ($group) {
             // User
@@ -31,12 +32,12 @@ return function (App $app) {
 
             // Comments
             $group->group('/comments', function ($group) {
-                $group->post('/create', \Ares\Article\Controller\CommentController::class . ':create');
-                $group->put('/edit', \Ares\Article\Controller\CommentController::class . ':edit')
+                $group->post('/create', \Ares\Frontend\Controllers\Article\CommentController::class . ':create');
+                $group->put('/edit', \Ares\Frontend\Controllers\Article\CommentController::class . ':edit')
                     ->setName('edit-article-comment');
                 $group->get('/{article_id:[0-9]+}/list/{page:[0-9]+}/{rpp:[0-9]+}',
-                    \Ares\Article\Controller\CommentController::class . ':list');
-                $group->delete('/{id:[0-9]+}', \Ares\Article\Controller\CommentController::class . ':delete')
+                    \Ares\Frontend\Controllers\Article\CommentController::class . ':list');
+                $group->delete('/{id:[0-9]+}', \Ares\Frontend\Controllers\Article\CommentController::class . ':delete')
                     ->setName('delete-article-comment');
             });
 
@@ -48,7 +49,7 @@ return function (App $app) {
             });
 
             // Community
-            $group->group('/community', function ($group) {
+            $group->group('/article', function ($group) {
                 $group->get('/search/rooms/{term}/{page:[0-9]+}/{rpp:[0-9]+}',
                     \Ares\Community\Controller\CommunityController::class . ':searchRooms');
                 $group->get('/search/guilds/{term}/{page:[0-9]+}/{rpp:[0-9]+}',
@@ -219,9 +220,10 @@ return function (App $app) {
         });
 
         $group->group('/register', function ($group) {
-            $group->post('', \Ares\User\Controller\AuthController::class . ':register');
+            $group->post('', \Ares\User\Controller\AuthController::class . ':register')->setName('auth.register');
             $group->get('/looks', \Ares\User\Controller\AuthController::class . ':viableLooks');
         });
+
 
         // Global Settings
         $group->group('/settings', function ($group) {
@@ -234,12 +236,13 @@ return function (App $app) {
 
 
         $group->group('/articles', function ($group) {
-            $group->post('/create', \Ares\Article\Controller\ArticleController::class . ':create')
+            $group->post('/create', \Ares\Frontend\Controllers\Article\ArticleController::class . ':create')
                 ->setName('create-article');
-            $group->put('/edit', \Ares\Article\Controller\ArticleController::class . ':editArticle')
+            $group->put('/edit', \Ares\Frontend\Controllers\Article\ArticleController::class . ':editArticle')
                 ->setName('edit-article');
-            $group->get('/{id}/{slug}', \Ares\Article\Controller\ArticleController::class . ':article');
-            $group->delete('/{id:[0-9]+}', \Ares\Article\Controller\ArticleController::class . ':delete')
+            $group->get('/{id}/{slug}', \Ares\Frontend\Controllers\Article\ArticleController::class . ':article')
+                ->setName('article-view');
+            $group->delete('/{id:[0-9]+}', \Ares\Frontend\Controllers\Article\ArticleController::class . ':delete')
                 ->setName('delete-article');
         });
 
@@ -247,13 +250,12 @@ return function (App $app) {
         // Global Routes
         $group->get('/user/online', \Ares\User\Controller\UserController::class . ':onlineUser');
 
+        $group->get('/', \Ares\Frontend\Controllers\Home\IndexController::class)->setName('home');
 
-        $group->get('/', \Ares\Frontend\Controllers\Home\IndexController::class . ':home')->setName('home');
+        $group->get('/auth/sign-in', \Ares\Frontend\Controllers\Auth\SignInController::class . ':index')->setName('auth.sign-in');
 
     })->add(\Ares\Framework\Middleware\LocaleMiddleware::class)
         ->add(\Ares\Framework\Middleware\ThrottleMiddleware::class);
 
-    $app->get('/assets/js/web.settings.js', function ($request, $response, $args) {
-        return $response;
-    });
+    $app->get('/config', \Ares\Config\Controller\ConfigController::class);
 };

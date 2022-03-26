@@ -7,6 +7,7 @@
 
 use Slim\App;
 use Slim\Views\Twig;
+use Odan\Session\Middleware\SessionMiddleware;
 
 /**
  * Registers our Global Middleware
@@ -27,20 +28,11 @@ return function (App $app) {
         "cache" => $_ENV['TOKEN_DURATION']
     ]));
 
-    $app->add(
-        new Slim\Middleware\Session([
-            'name' => $_ENV['SESSION_NAME'],
-            'autorefresh' => true,
-            'lifetime' => $_ENV['SESSION_LIFETIME'],
-        ])
-    );
-
-    // Can be enabled when not using Twig
-    // $app->add(\Ares\Framework\Middleware\BodyParserMiddleware::class);
     $app->add(\Ares\Framework\Middleware\ClaimMiddleware::class);
     $app->add(\Slim\Views\TwigMiddleware::create($app, $twig));
+    $app->add(\Odan\Session\Middleware\SessionMiddleware::class);
+
     $app->addRoutingMiddleware();
 
-    $errorMiddleware = $app->addErrorMiddleware(true, true, true, $logger);
-    $errorMiddleware->setDefaultErrorHandler(\Ares\Framework\Handler\ErrorHandler::class);
+    $app->addErrorMiddleware(true, true, true, $logger);
 };

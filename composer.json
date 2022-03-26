@@ -22,7 +22,7 @@
     "ext-json": "*",
     "ext-sockets": "*",
     "domexx/ares-core": "3.2.6",
-    "raizdev/cosmic-core": "^1.0",
+    "raizdev/cosmic-core": "dev-master",
     "robmorgan/phinx": "dev-master"
   },
   "config": {

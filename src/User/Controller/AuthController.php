@@ -82,7 +82,7 @@ class AuthController extends BaseController
         /** @var string $determinedIp */
         $determinedIp = $this->determineIpService->execute();
 
-        $parsedData['ip_current'] = $determinedIp;
+        $parsedData[UserInterface::COLUMN_IP_CURRENT] = $determinedIp;
 
         return $this->loginService->login($parsedData);
     }
@@ -113,8 +113,8 @@ class AuthController extends BaseController
         /** @var string $determinedIp */
         $determinedIp = $this->determineIpService->execute();
 
-        $parsedData['ip_register'] = $determinedIp;
-        $parsedData['ip_current'] = $determinedIp;
+        $parsedData[UserInterface::COLUMN_IP_CURRENT] = $determinedIp;
+        $parsedData[UserInterface::COLUMN_IP_REGISTER] = $determinedIp;
 
         $customResponse = $this->registerService->register($parsedData);
 

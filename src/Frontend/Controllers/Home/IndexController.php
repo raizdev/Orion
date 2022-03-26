@@ -11,6 +11,7 @@ use Ares\Article\Repository\ArticleRepository;
 use Ares\Badge\Service\BadgeAlbumService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
+use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Photo\Repository\PhotoRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -48,9 +49,9 @@ class IndexController extends BaseController
      *
      * @throws LoaderError
      * @throws RuntimeError
-     * @throws SyntaxError|DataObjectManagerException
+     * @throws SyntaxError|DataObjectManagerException|NoSuchEntityException
      */
-    public function home(Request $request, Response $response): Response
+    public function __invoke(Request $request, Response $response): Response
     {
         $articles = $this->articleRepository
             ->getPaginatedArticleList(

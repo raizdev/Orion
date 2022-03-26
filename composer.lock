@@ -4,78 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b880e87513c549b5360a2f3a48ba3b74",
+    "content-hash": "c89c0619671fd68ff3168e777329b971",
     "packages": [
-        {
-            "name": "bryanjhv/slim-session",
-            "version": "4.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bryanjhv/slim-session.git",
-                "reference": "f776db9278a70b7bb3ce78de5f0da27ca8b6568f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bryanjhv/slim-session/zipball/f776db9278a70b7bb3ce78de5f0da27ca8b6568f",
-                "reference": "f776db9278a70b7bb3ce78de5f0da27ca8b6568f",
-                "shasum": ""
-            },
-            "require": {
-                "slim/slim": "^4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bryan Horna",
-                    "email": "bryanjhv@gmail.com",
-                    "homepage": "https://bryanjhv.github.io",
-                    "role": "developer"
-                }
-            ],
-            "description": "Session middleware and helper for Slim framework 4.",
-            "homepage": "https://github.com/bryanjhv/slim-session",
-            "keywords": [
-                "helper",
-                "middleware",
-                "session",
-                "slim"
-            ],
-            "support": {
-                "issues": "https://github.com/bryanjhv/slim-session/issues",
-                "source": "https://github.com/bryanjhv/slim-session.git"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/bryanjhv",
-                    "type": "custom"
-                }
-            ],
-            "time": "2021-07-02T16:42:31+00:00"
-        },
         {
             "name": "cakephp/core",
             "version": "4.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "58f3af964f3e33769153d743a204f6e97f23c157"
+                "reference": "499f17738d40560ec077d7d2039c9af4969c6b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/58f3af964f3e33769153d743a204f6e97f23c157",
-                "reference": "58f3af964f3e33769153d743a204f6e97f23c157",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/499f17738d40560ec077d7d2039c9af4969c6b17",
+                "reference": "499f17738d40560ec077d7d2039c9af4969c6b17",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +55,7 @@
                 "core",
                 "framework"
             ],
-            "time": "2022-01-27T02:05:53+00:00"
+            "time": "2022-03-10T13:13:51+00:00"
         },
         {
             "name": "cakephp/database",
@@ -121,12 +63,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "6b38a3bab615f46002779ad8d24b8c5fd55e3ccf"
+                "reference": "0a32584763af097eaaba96cf062e2d5d31e6ea3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/6b38a3bab615f46002779ad8d24b8c5fd55e3ccf",
-                "reference": "6b38a3bab615f46002779ad8d24b8c5fd55e3ccf",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/0a32584763af097eaaba96cf062e2d5d31e6ea3b",
+                "reference": "0a32584763af097eaaba96cf062e2d5d31e6ea3b",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +104,7 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2022-02-25T17:56:31+00:00"
+            "time": "2022-03-12T14:25:33+00:00"
         },
         {
             "name": "cakephp/datasource",
@@ -1090,10 +1032,6 @@
                 "minifier",
                 "minify"
             ],
-            "support": {
-                "issues": "https://github.com/matthiasmullie/minify/issues",
-                "source": "https://github.com/matthiasmullie/minify/tree/1.3.66"
-            },
             "funding": [
                 {
                     "url": "https://github.com/[user1",
@@ -1157,10 +1095,6 @@
                 "paths",
                 "relative"
             ],
-            "support": {
-                "issues": "https://github.com/matthiasmullie/path-converter/issues",
-                "source": "https://github.com/matthiasmullie/path-converter/tree/1.1.3"
-            },
             "time": "2019-02-05T23:41:09+00:00"
         },
         {
@@ -1507,6 +1441,53 @@
                 }
             ],
             "time": "2022-02-02T18:37:57+00:00"
+        },
+        {
+            "name": "odan/session",
+            "version": "5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/odan/session.git",
+                "reference": "67f49c5e71bc3bc565eb89995c514273f0afb63d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/odan/session/zipball/67f49c5e71bc3bc565eb89995c514273f0afb63d",
+                "reference": "67f49c5e71bc3bc565eb89995c514273f0afb63d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^8.0",
+                "psr/http-message": "^1",
+                "psr/http-server-handler": "^1",
+                "psr/http-server-middleware": "^1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "middlewares/utils": "^3",
+                "overtrue/phplint": "^2",
+                "phpstan/phpstan": "^1",
+                "phpunit/phpunit": "^7 || ^8 || ^9",
+                "slim/psr7": "^1",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Odan\\Session\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Slim session handler",
+            "homepage": "https://github.com/odan/session",
+            "keywords": [
+                "session",
+                "slim"
+            ],
+            "time": "2022-01-29T21:28:55+00:00"
         },
         {
             "name": "phlak/config",
@@ -2255,21 +2236,21 @@
         },
         {
             "name": "raizdev/cosmic-core",
-            "version": "v1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/raizdev/cosmic-core.git",
-                "reference": "07a7025b7ef0f8144dcb4bb0a9fbc4473b232352"
+                "reference": "44914ba754ac4748d26b958238d3ecc920f8cda3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/raizdev/cosmic-core/zipball/07a7025b7ef0f8144dcb4bb0a9fbc4473b232352",
-                "reference": "07a7025b7ef0f8144dcb4bb0a9fbc4473b232352",
+                "url": "https://api.github.com/repos/raizdev/cosmic-core/zipball/44914ba754ac4748d26b958238d3ecc920f8cda3",
+                "reference": "44914ba754ac4748d26b958238d3ecc920f8cda3",
                 "shasum": ""
             },
             "require": {
-                "bryanjhv/slim-session": "~4.0",
                 "matthiasmullie/minify": "^1.3",
+                "odan/session": "^5.1",
                 "slim/twig-view": "^3.0"
             },
             "type": "library",
@@ -2298,11 +2279,7 @@
                 "slim4",
                 "twig"
             ],
-            "support": {
-                "issues": "https://github.com/raizdev/cosmic-core/issues",
-                "source": "https://github.com/raizdev/cosmic-core/tree/v1.0.1"
-            },
-            "time": "2022-03-25T00:40:23+00:00"
+            "time": "2022-03-26T14:12:03+00:00"
         },
         {
             "name": "rakit/validation",
@@ -2507,12 +2484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/phinx.git",
-                "reference": "cde97157bae2c88b6bd6c4cfe8ce4fe7b79aba74"
+                "reference": "b686741c25405530e6c9b86ea2ff906300979100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/phinx/zipball/cde97157bae2c88b6bd6c4cfe8ce4fe7b79aba74",
-                "reference": "cde97157bae2c88b6bd6c4cfe8ce4fe7b79aba74",
+                "url": "https://api.github.com/repos/cakephp/phinx/zipball/b686741c25405530e6c9b86ea2ff906300979100",
+                "reference": "b686741c25405530e6c9b86ea2ff906300979100",
                 "shasum": ""
             },
             "require": {
@@ -2581,7 +2558,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2022-03-24T11:04:10+00:00"
+            "time": "2022-03-26T11:44:14+00:00"
         },
         {
             "name": "slim/psr7",
@@ -2794,7 +2771,6 @@
                 "psr/http-factory": "^1.0",
                 "squizlabs/php_codesniffer": "^3.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2826,10 +2802,6 @@
                 "twig",
                 "view"
             ],
-            "support": {
-                "issues": "https://github.com/slimphp/Twig-View/issues",
-                "source": "https://github.com/slimphp/Twig-View/tree/3.x"
-            },
             "time": "2022-03-02T05:35:27+00:00"
         },
         {
@@ -3705,9 +3677,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php81/tree/v1.25.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4312,12 +4281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "e33577f1beb6621a62fb7a2b45ec1a34d93b7714"
+                "reference": "393ea10efdc908829665a00b30991808992a1c32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e33577f1beb6621a62fb7a2b45ec1a34d93b7714",
-                "reference": "e33577f1beb6621a62fb7a2b45ec1a34d93b7714",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/393ea10efdc908829665a00b30991808992a1c32",
+                "reference": "393ea10efdc908829665a00b30991808992a1c32",
                 "shasum": ""
             },
             "require": {
@@ -4329,7 +4298,6 @@
                 "psr/container": "^1.0",
                 "symfony/phpunit-bridge": "^4.4.9|^5.0.9|^6.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4367,10 +4335,6 @@
             "keywords": [
                 "templating"
             ],
-            "support": {
-                "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/3.x"
-            },
             "funding": [
                 {
                     "url": "https://github.com/fabpot",
@@ -4381,7 +4345,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-25T08:30:09+00:00"
+            "time": "2022-03-26T11:00:50+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4636,6 +4600,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "raizdev/cosmic-core": 20,
         "robmorgan/phinx": 20
     },
     "prefer-stable": false,
@@ -4648,5 +4613,5 @@
     "platform-overrides": {
         "php": "8.0"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "1.1.0"
 }

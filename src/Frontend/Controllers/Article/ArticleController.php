@@ -5,26 +5,26 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Article\Controller;
+namespace Ares\Frontend\Controllers\Article;
 
+use Ares\Article\Entity\Article;
 use Ares\Article\Entity\Contract\ArticleInterface;
+use Ares\Article\Exception\ArticleException;
+use Ares\Article\Repository\ArticleRepository;
 use Ares\Article\Service\CreateArticleService;
 use Ares\Article\Service\DeleteArticleService;
 use Ares\Article\Service\EditArticleService;
 use Ares\Framework\Controller\BaseController;
-use Ares\Article\Entity\Article;
-use Ares\Article\Exception\ArticleException;
-use Ares\Article\Repository\ArticleRepository;
 use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
-use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Service\ValidationService;
 use Ares\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
+use function user;
 
 /**
  * Class ArticleController
@@ -166,7 +166,7 @@ class ArticleController extends BaseController
         /** @var Article $article */
         $article = $this->articleRepository->getArticleWithCommentCount($id);
 
-        return $this->twig->render($response, 'Article/Views/pages/article.twig', [
+        return $this->twig->render($response, 'Frontend/Views/pages/article/article.twig', [
             'article' => $article,
             'page' => 'article'
         ]);

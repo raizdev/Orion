@@ -16,10 +16,12 @@ use Ares\Framework\Factory\DataObjectManagerFactory;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\TokenService;
+use Ares\User\Entity\Contract\UserInterface;
 use Ares\User\Entity\User;
 use Ares\User\Exception\LoginException;
 use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Repository\UserRepository;
+use Odan\Session\SessionInterface;
 use ReallySimpleJWT\Exception\ValidateException;
 
 /**
@@ -34,14 +36,12 @@ class LoginService
      *
      * @param UserRepository           $userRepository
      * @param BanRepository            $banRepository
-     * @param TokenService             $tokenService
-     * @param DataObjectManagerFactory $dataObjectManagerFactory
+     * @param SessionInterface         $session,
      */
     public function __construct(
         private UserRepository $userRepository,
         private BanRepository $banRepository,
-        private TokenService $tokenService,
-        private DataObjectManagerFactory $dataObjectManagerFactory
+        private SessionInterface $session
     ) {}
 
     /**
@@ -78,19 +78,26 @@ class LoginService
                     [$isBanned->getBanReason()]),
                 UserResponseCodeInterface::RESPONSE_AUTH_LOGIN_BANNED,
                 HttpResponseCodeInterface::HTTP_RESPONSE_FORBIDDEN
-            ); // ofc we shouldnt throw an exception when it isnt called like an api so idk you could just do it like you did before or google around
+            );
         }
 
-        $messageWithErrors = __('You are banned because of %s and %s'); // or you could just ask s1njar because of error handling he knows better than me alr
+        $messageWithErrors = __('You are banned because of %s and %s');
 
         $user->setLastLogin(time());
-        $user->setIpCurrent($data['ip_current']);
+        $user->setIpCurrent($data[UserInterface::COLUMN_IP_CURRENT]);
 
         $this->userRepository->save($user);
 
-        /** @var TokenService $token */
-        return $user; // yeah that would be it oh yes and errors, mhhh in my aliexpres js framework i hope to receive json like
+        $this->session->destroy();
+        $this->session->start();
+        $this->session->regenerateId();
 
+        return response()
+            ->setData([
+                'status'    => 'success',
+                'message'   => 'Logged in successfully',
+                'pagetime'  => '/home'
+            ]);
     }
 }
 

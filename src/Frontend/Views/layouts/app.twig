@@ -62,10 +62,10 @@
 <nav class="navigation-container">
     <ul class="navigation-menu flex-container">
         <li class="navigation-item {% if "home" in page %}selected {% endif %}" data-category="home"><a
-                    href="/home">{{lang('base.navbar.home')}}</a></li>
-        <li class="navigation-item has-items {% if "community" in page %}selected {% endif %}"
+                    href="{{ url_for('home') }}">{{lang('base.navbar.home')}}</a></li>
+        <li class="navigation-item has-items {% if "article" in page %}selected {% endif %}"
             data-category="community">
-            <a href="/articles">{{lang('base.navbar.community')}}</a>
+            <a>{{lang('base.navbar.community')}}</a>
             <ul class="navigation-submenu">
                 <li class="navigation-subitem"><a href="/articles">{{lang('base.navbar.community.articles')}}</a></li>
             </ul>
@@ -96,7 +96,7 @@
 
 <header class="header-container pixelated is-small">
     <div class="header-content">
-        <div class="logo"><a href="/home"><img class="inline-block" src="/assets/images/cosmic-logo.gif"
+        <div class="logo"><a href="{{ url_for('home') }}"><img class="inline-block" src="/assets/images/cosmic-logo.gif"
                                                style="margin-top: 30px;"></a></div>
         <div class="account-container">
             <div class="account-title">
@@ -105,12 +105,12 @@
 
             <div class="account-buttons">
                 <div class="enter-hotel"><div class="inner">
-                        {% if user is empty %}
-                            <a href="/registration">
+                        {% if user %}
+                            <a href="{{ url_for('auth.sign-in') }}">
                                 {{lang('base.header.register')}}
                             </a>
                         {% else %}
-                            <a href="/hotel">
+                            <a href="{{ url_for('auth.sign-in') }}">
                                 {{lang('base.header.to')}}
                             </a>
                         {% endif %}
