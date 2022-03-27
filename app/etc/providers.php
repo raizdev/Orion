@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
+ *
  * @see LICENSE (MIT)
  */
 
@@ -25,6 +25,9 @@ return [
     // Adds our AppProvider and creates App
     $container->addServiceProvider(
         new \Ares\Framework\Provider\AppServiceProvider()
+    ),
+    $container->addServiceProvider(
+        new \Cosmic\Core\Provider\RouteCollectorServiceProvider()
     ),
     // Adds our RouteProvider
     $container->addServiceProvider(
