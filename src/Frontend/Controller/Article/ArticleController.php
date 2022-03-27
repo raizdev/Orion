@@ -5,7 +5,7 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Frontend\Controllers\Article;
+namespace Ares\Frontend\Controller\Article;
 
 use Ares\Article\Entity\Article;
 use Ares\Article\Entity\Contract\ArticleInterface;
@@ -24,6 +24,7 @@ use Ares\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
+
 use function user;
 
 /**

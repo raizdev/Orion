@@ -1,0 +1,7 @@
+{
+  "route_settings": {
+    "resolvers": [
+      "Frontend/Controller"
+    ]
+  }
+}

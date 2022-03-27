@@ -5,8 +5,9 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Frontend\Controllers\Home;
+namespace Ares\Frontend\Controller\Home;
 
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Article\Repository\ArticleRepository;
 use Ares\Badge\Service\BadgeAlbumService;
 use Ares\Framework\Controller\BaseController;
@@ -21,17 +22,16 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 /**
- * Class IndexController
- *
- * @package Ares\Core\Controller
+ * @CR\Router
  */
 class IndexController extends BaseController
 {
     /**
      * IndexController constructor.
-     * @param Twig                  $twig
-     * @param ArticleRepository     $articleRepository
-     * @param PhotoRepository       $photoRepository
+     * @param Twig $twig
+     * @param ArticleRepository $articleRepository
+     * @param PhotoRepository $photoRepository
+     * @param BadgeAlbumService $badgeService
      */
     public function __construct(
         private Twig $twig,
@@ -42,6 +42,13 @@ class IndexController extends BaseController
 
     /**
      * Responds to say hello to Twig
+     *
+     * @CR\Route(
+     *     name="home",
+     *     methods={"GET"},
+     *     pattern="/",
+     *     priority=0
+     * )
      *
      * @param Request $request
      * @param Response $response

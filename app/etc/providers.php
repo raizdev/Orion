@@ -24,7 +24,7 @@ return [
     ),
     // Adds our AppProvider and creates App
     $container->addServiceProvider(
-        new \Ares\Framework\Provider\AppServiceProvider()
+        new \Cosmic\Core\Provider\AppServiceProvider()
     ),
     $container->addServiceProvider(
         new \Cosmic\Core\Provider\RouteCollectorServiceProvider()

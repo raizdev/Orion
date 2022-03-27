@@ -5,7 +5,7 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Frontend\Controllers\Article;
+namespace Ares\Frontend\Controller\Article;
 
 use Ares\Article\Entity\Contract\CommentInterface;
 use Ares\Article\Exception\CommentException;
@@ -23,6 +23,7 @@ use Ares\Framework\Service\ValidationService;
 use Ares\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+
 use function response;
 use function user;
 

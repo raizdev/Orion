@@ -5,7 +5,7 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Frontend\Controllers\Auth;
+namespace Ares\Frontend\Controller\Auth;
 
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
@@ -25,7 +25,7 @@ class SignUpController extends BaseController
 {
     /**
      * SignUpController constructor.
-     * @param Twig                  $twig
+     * @param Twig $twig
      */
     public function __construct(
         private Twig $twig
