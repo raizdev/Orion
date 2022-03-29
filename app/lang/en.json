@@ -4,6 +4,22 @@
   "base.navbar.community": "community",
   "base.navbar.community.articles": "Articles",
 
-  "This is our beautiful api written with %s.": "This is our beautiful api written with %s.",
-  "validation.required": "This is a required field"
+  "register.header.text": "Create Account",
+  "register.header.subtext": "Join the most fun online community!",
+
+  "register.step1.text": "Who are you?",
+  "register.step1.subtext": "Nice to meet you",
+  "register.step1.field.username": "Username",
+  "register.step1.field.mail": "E-mail",
+
+  "register.step2.text": "Verification",
+  "register.step2.subtext": "Create a strong password",
+  "register.step2.field.password": "Password",
+  "register.step2.field.password_confirmation": "Password confirmation",
+
+  "register.step3.text": "Create your look!",
+  "register.step3.subtext": "Are you doing well?",
+
+  "register.step4.text": "Come you in?",
+  "register.step4.create": "Create account"
 }

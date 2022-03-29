@@ -559,6 +559,9 @@ function WebAjaxManagerInterface() {
 
         PageLoading.show();
 
+        if (url.charAt(0) === "/") {
+            url = url.slice(1);
+        }
 
         // Requests
         $.ajax({
@@ -569,13 +572,14 @@ function WebAjaxManagerInterface() {
             processData: false,
             contentType: false
         }).done(function (result) {
+
             PageLoading.hide();
             // Change full page
             if (result.location) {
                 window.location = result.location;
                 return null;
             }
-          
+
             // Change page
             if (result.pagetime)
                 setTimeout(function () {
@@ -610,6 +614,13 @@ function WebAjaxManagerInterface() {
             if (form !== undefined) {
                 if (!result.captcha_error)
                     form.find(".registration-recaptcha").removeClass("registration-recaptcha").removeAttr("data-sitekey").removeAttr("data-callback");
+            }
+
+            if(result.errors) {
+                var errorTitle = result.errors[0].field;
+                var errorMessage = result.errors[0].message;
+                console.log(result.errors)
+                Web.notifications_manager.create('error', errorMessage, errorTitle, (Number.isInteger(result.timer) ? result.timer : undefined), (result.link ? result.link : null));
             }
 
             // Create notification

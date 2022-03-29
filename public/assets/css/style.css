@@ -2145,6 +2145,7 @@ input:-webkit-autofill {
     margin: 0 auto;
     margin-top: -56px !important;
     font-family: "Ubuntu Habbo", "Poppins", Arial, sans-serif;
+    margin-bottom: 40px;
 }
 
 .page-container .page-content .not-habbo-icons {
@@ -5164,12 +5165,14 @@ input:-webkit-autofill {
     background-image: url(../images/web/pages/registration/avatar-light.png);
     background-repeat: no-repeat;
     background-position: center top;
-    width: 288px;
-    height: 284px;
+    width: 375px;
+    height: 216px;
     text-align: center;
     margin-left: -7px;
-    padding: 20px 7px 0 0;
+    padding: 37px 22px;
     position: relative;
+    background-size: 62%;
+    margin-top: -32px;
 }
 
 .page-container[data-page="registration"] .avatars-container .avatar-container[data-random]:before {

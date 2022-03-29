@@ -9,6 +9,7 @@
  * Registers our ServiceProviders
  */
 
+use Psr\Http\Message\ServerRequestInterface;
 return [
     // Adds our LocaleProvider to add locales
     $container->addServiceProvider(

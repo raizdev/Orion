@@ -1,82 +1,133 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
     <div class="page-content">
+
         <div class="card">
             <div class="card-header card-header-right-image moving">
                 <div class="card-header-title-container ng-star-inserted">
                     <div class="background-gray card-header-icon-container ng-star-inserted"><div class="header-icon icon-newuser"></div>
                     </div>
                     <div class="card-header-titles ng-star-inserted">
-                        <div class="card-header-title">Create Account</div>
-                        <span class="card-header-subtitle ng-star-inserted">Join the most fun online community!</span>
+                        <div class="card-header-title">{{ lang('register.header.text') }}</div>
+                        <span class="card-header-subtitle ng-star-inserted">{{ lang('register.header.subtext') }}</span>
                     </div>
                     <div class="card-header-actions"></div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <article class="default-section">
-                <div class="column">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-header-title-container">
-                                <div class="card-header-icon-container ">
-                                    <div class="header-icon icon-box-one"></div>
-                                </div>
-                                <div class="card-header-titles">
-                                    <div class="card-header-title">Who are you?</div>
-                                    <span class="card-header-subtitle ng-star-inserted">Nice to meet you</span>
-                                </div>
+
+        <form method="post" action="{{ url_for('auth_account-registration') }}">
+            <div class="left-side sm">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <div class="card-header-title-container">
+                            <div class="card-header-icon-container ">
+                                <div class="header-icon icon-box-one"></div>
+                            </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">{{ lang('register.step1.text') }}</div>
+                                <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step1.subtext') }}</span>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <label class="form-control-container" for="username">
-                                <icon class="form-control-container-icon">
-                                    <i class="icon-dog"></i>
-                                </icon>
-                                <input class="form-control has-icon" placeholder="Username" name="username" type="text" />
-                            </label>
-                            <label class="form-control-container" for="mail">
-                                <icon class="form-control-container-icon">
-                                    <i class="icon-envelope"></i>
-                                </icon>
-                                <input class="form-control has-icon" placeholder="E-mail" name="password" type="email" />
-                            </label>
-                        </div>
                     </div>
-                    <div>
-            </article>
-            <article class="default-section">
-                <div class="column">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-header-title-container">
-                                <div class="card-header-icon-container ">
-                                    <div class="header-icon icon-box-two"></div>
-                                </div>
-                                <div class="card-header-titles">
-                                    <div class="card-header-title">Who are you?</div>
-                                    <span class="card-header-subtitle ng-star-inserted">Nice to meet you</span>
-                                </div>
+                    <div class="card-content">
+                        <label class="form-control-container" for="username">
+                            <icon class="form-control-container-icon">
+                                <i class="icon-dog"></i>
+                            </icon>
+                            <input class="form-control has-icon" placeholder="{{ lang('register.step1.field.username') }}" name="username" type="text" />
+                        </label>
+                        <label class="form-control-container" for="mail">
+                            <icon class="form-control-container-icon">
+                                <i class="icon-envelope"></i>
+                            </icon>
+                            <input class="form-control has-icon" placeholder="{{ lang('register.step1.field.mail') }}" name="mail" type="email" />
+                        </label>
+                    </div>
+                </div>
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <div class="card-header-title-container">
+                            <div class="card-header-icon-container ">
+                                <div class="header-icon icon-box-three"></div>
+                            </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">{{ lang('register.step2.text') }}</div>
+                                <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step2.subtext') }}</span>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <label class="form-control-container" for="password">
-                                <icon class="form-control-container-icon">
-                                    <i class="icon-password"></i>
-                                </icon>
-                                <input class="form-control has-icon" placeholder="Password" name="password" type="password" />
-                            </label>
-                            <label class="form-control-container" for="password_confirmation">
-                                <icon class="form-control-container-icon">
-                                    <i class="icon-password"></i>
-                                </icon>
-                                <input class="form-control has-icon" placeholder="Password" name="password_confirmation" type="password" />
-                            </label>
+                    </div>
+                    <div class="card-content">
+                        <label class="form-control-container" for="password">
+                            <icon class="form-control-container-icon">
+                                <i class="icon-password"></i>
+                            </icon>
+                            <input class="form-control has-icon" placeholder="{{ lang('register.step2.field.password') }}" name="password" type="password" />
+                        </label>
+                        <label class="form-control-container" for="password_confirmation">
+                            <icon class="form-control-container-icon">
+                                <i class="icon-password"></i>
+                            </icon>
+                            <input class="form-control has-icon" placeholder="{{ lang('register.step2.field.password_confirmation') }}" name="password_confirmation" type="password" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-side sm">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <div class="card-header-title-container">
+                            <div class="card-header-icon-container ">
+                                <div class="header-icon icon-box-two"></div>
+                            </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">{{ lang('register.step3.text') }}</div>
+                                <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step3.subtext') }}</span>
+                            </div>
                         </div>
                     </div>
-                    <div>
-            </article>
-        </div>
+                    <div class="card-content">
+                        <div class="avatars-container">
+                            <input type="hidden" name="look" value="hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61">
+                            <input type="hidden" name="gender" value="M">
+                            <div class="avatars-preload">
+                                {% for key,gender in looks %}
+                                    {% for number,look in gender %}
+                                        <img class="{{key}}-avatar{{number}} pixelated" data-look="{{look}}" src="{{site.fpath}}/avatarimage?figure={{look}}&amp;direction=4&amp;size=l&headonly=1" alt="Preload avatar M1">
+                                        {{key}}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                            <div class="avatar-container">
+                                <img src="{{ config('hotel_settings.imaging_url' )}}/?figure=hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61&amp;direction=4&amp;size=l&amp;headonly=1" alt="Avatar" class="pixelated">
+                            </div>
+                            <div class="tabs-container">
+                                <span class="selected" data-avatar="0"></span>
+                                <span data-avatar="1"></span>
+                                <span data-avatar="2"></span>
+                                <span data-avatar="3"></span>
+                                <span data-avatar="4"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <div class="card-header-title-container">
+                            <div class="card-header-icon-container ">
+                                <div class="header-icon icon-box-one"></div>
+                            </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">{{ lang('register.step4.text') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer no-spacing">
+                        <button type="submit" variant="success" class="btn btn-fw btn-success">{{ lang('register.step4.create') }}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 {% endblock %}

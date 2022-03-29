@@ -17,6 +17,7 @@ use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\TokenService;
 use Ares\User\Entity\Contract\UserInterface;
 use Ares\User\Entity\User;
+use Ares\User\Exception\LoginException;
 use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Repository\UserRepository;
 use Odan\Session\SessionInterface;
@@ -64,11 +65,9 @@ class LoginService
         $user = $this->userRepository->get($data['username'], 'username', true);
 
         if (!$user || !password_verify($data['password'], $user->getPassword())) {
-            return response()
-                ->setData([
-                    'status'    => 'error',
-                    'message'   => 'data combination not found',
-                ]);
+            throw new LoginException(
+                __('Data combination was not found')
+            );
         }
 
         /** @var Ban $isBanned */
@@ -82,8 +81,6 @@ class LoginService
                 HttpResponseCodeInterface::HTTP_RESPONSE_FORBIDDEN
             );
         }
-
-        $messageWithErrors = __('You are banned because of %s and %s');
 
         $user->setLastLogin(time());
         $user->setIpCurrent($data[UserInterface::COLUMN_IP_CURRENT]);

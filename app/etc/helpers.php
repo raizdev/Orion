@@ -18,6 +18,7 @@ use Ares\Framework\Service\LocaleService;
 use Ares\User\Entity\User;
 use Ares\User\Repository\UserRepository;
 use League\Container\Container;
+use Odan\Session\SessionInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 if (!function_exists('__')) {
@@ -173,9 +174,9 @@ if (!function_exists('user')) {
      * @throws NoSuchEntityException
      */
     function user(Request $request, bool $isCached = false): User {
-        /** @var array $user */
-        $authUser = $request->getAttribute('ares_uid');
+        /** @var array; $user */
 
+        $authUser = $request->getAttribute('cosmic_uid');
         if (!$authUser) {
             return json_decode(json_encode($authUser), true);
         }

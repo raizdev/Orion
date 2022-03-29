@@ -109,6 +109,16 @@
     height: 30px;
 }
 
+.icon-box-three {
+    background: url(https://habme.ws/icon-box-three.d47c076e6e117c59.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    image-rendering: pixelated;
+    width: 30px;
+    height: 30px;
+}
+
+
 .card-header .card-header-icon-container {
     width: 50px;
     height: 50px;
@@ -380,19 +390,26 @@
     align-self: center;
 }
 
-.rare-icon {
-    width: 36px;
-    height: 36px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.badge-list-grid div:not(.badge) {
-    background-color: #fff;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 20%);
-    border-radius: 4px;
-    width: 44px;
-    height: 44px;
+.badge {
+    align-items: center;
+    background: #f4f4f4;
+    border: 1px solid rgba(0,0,0,.04);
+    border-radius: 5px;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+    -moz-box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    -o-box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    -webkit-box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+    display: inline-flex;
+    height: 47px;
+    justify-content: center;
+    margin-bottom: 5px;
+    margin-right: 1px;
+    margin-top: 0;
+    padding: 5px;
+    text-align: center;
+    transition: background .8s ease;
+    vertical-align: middle;
+    width: 47px;
 }
 
 .currency-row {
@@ -504,4 +521,12 @@
     height: 7rem;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.page-content .sm {
+    width: 390px !important;
+}
+
+.page-content .mt-5 {
+    margin-top: 25px;
 }

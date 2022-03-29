@@ -21,7 +21,7 @@ function Config ()
     this.getConfig = function ()
     {
         $.getJSON('/config', function(data) {
-            self.data = data.data;
+            self.data = data;
         })
     }
 }

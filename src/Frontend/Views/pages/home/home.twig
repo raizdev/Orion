@@ -63,7 +63,9 @@
                         <div class="badge-list-grid">
                             {% for badge, value in badges %}
                                 <div>
-                                    <div class="rare-icon mr-1 flex-shrink-0 align-self-center" id="popover-rares-1" style="background-image: url('{{ config('hotel_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}');"></div>
+                                    <div class="badge mr-1 flex-shrink-0 align-self-center" id="popover-rares-1">
+                                        <img src="{{ config('hotel_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}" title="Test">
+                                    </div>
                                 </div>
                             {% endfor %}
                         </div>
@@ -96,7 +98,7 @@
         </div>
         <div class="right-side" style="margin-bottom: 7px;">
             <aside class="default-section">
-                <form method="post" action="auth/sign-in">
+                <form method="post" action="{{ url_for('auth_sign-in') }}">
                     <div class="card">
 
                         <div class="card-header">

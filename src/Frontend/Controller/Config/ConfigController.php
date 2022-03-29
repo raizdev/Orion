@@ -5,8 +5,9 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Config\Controller;
+namespace Ares\Frontend\Controller\Config;
 
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
 use PHLAK\Config\Config;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,7 +16,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /**
  * Class ConfigController
  *
- * @package Ares\Config\Controller
+ * @package Ares\Frontend\Controller
+ * @CR\Router
  */
 class ConfigController extends BaseController
 {
@@ -29,7 +31,13 @@ class ConfigController extends BaseController
 
     /**
      * Responds Config
-     *e
+     *
+     * @CR\Route(
+     *     name="config",
+     *     methods={"GET"},
+     *     pattern="/config"
+     * )
+     *
      * @param Request $request
      * @param Response $response
      * @return Response

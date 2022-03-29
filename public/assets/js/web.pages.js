@@ -579,7 +579,6 @@ function WebPageHomeInterface(main_page) {
         var self = this;
         var page_container = this.main_page.get_page_container();
 
- // Init photos gallery
         page_container.find(".photos-container").magnificPopup({
             delegate: "a.photo-picture",
             type: "image",

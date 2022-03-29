@@ -5,7 +5,7 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\User\Controller;
+namespace Ares\Frontend\Controller\Auth;
 
 use Ares\Ban\Exception\BanException;
 use Ares\Framework\Controller\BaseController;
@@ -13,50 +13,67 @@ use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\ValidationService;
 use Ares\User\Entity\Contract\UserInterface;
 use Ares\User\Entity\User;
-use Ares\User\Exception\LoginException;
-use Ares\User\Exception\RegisterException;
-use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Service\Auth\DetermineIpService;
 use Ares\User\Service\Auth\LoginService;
 use Ares\User\Service\Auth\RegisterService;
 use Ares\User\Service\Auth\TicketService;
-use PHLAK\Config\Config;
+use Cosmic\Core\Mapping\Annotation as CR;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use ReallySimpleJWT\Exception\ValidateException;
 
+use Slim\Views\Twig;
+
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+
+use function __;
+use function response;
+use function user;
+
 /**
  * Class AuthController
  *
- * @package Ares\User\Controller\Auth
+ * @package Ares\Frontend\Controller\Auth
+ * @CR\Router
+ * @CR\Group(
+ *     prefix="auth",
+ *     pattern="auth"
+ * )
  */
 class AuthController extends BaseController
 {
     /**
      * AuthController constructor.
      *
+     * @param Twig $twig,
      * @param ValidationService $validationService
      * @param LoginService $loginService
      * @param RegisterService $registerService
      * @param TicketService $ticketService
      * @param DetermineIpService $determineIpService
-     * @param Config $config
      */
     public function __construct(
+        private Twig $twig,
         private ValidationService $validationService,
         private LoginService $loginService,
         private RegisterService $registerService,
         private TicketService $ticketService,
-        private DetermineIpService $determineIpService,
-        private Config $config
+        private DetermineIpService $determineIpService
     ) {}
 
     /**
-     * Logs the User in and parses a generated Token into response
+     * AuthController Login Method
+     *
+     * @CR\Route(
+     *     name="sign-in",
+     *     methods={"POST"},
+     *     pattern="/sign-in"
+     * )
      *
      * @param Request  $request
      * @param Response $response
@@ -64,7 +81,6 @@ class AuthController extends BaseController
      * @return Response Returns a Response with the given Data
      * @throws BanException
      * @throws DataObjectManagerException
-     * @throws LoginException
      * @throws ValidateException
      * @throws ValidationException
      * @throws NoSuchEntityException
@@ -84,11 +100,47 @@ class AuthController extends BaseController
 
         $parsedData[UserInterface::COLUMN_IP_CURRENT] = $determinedIp;
 
-        return $this->loginService->login($parsedData);
+        $customResponse = $this->loginService->login($parsedData);
+
+        return $this->respond(
+            $response,
+            $customResponse
+        );
+    }
+
+    /**
+     * AuthController Signup Method
+     *
+     * @CR\Route(
+     *     name="sign-up",
+     *     methods={"GET"},
+     *     pattern="/sign-up"
+     * )
+     *
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function signup(Request $request, Response $response): Response
+    {
+        return $this->twig->render($response,
+            '/Frontend/Views/pages/auth/signup.twig', [
+                'page' => 'registration'
+            ]);
     }
 
     /**
      * Registers the User and parses a generated Token into the response
+     *
+     * @CR\Route(
+     *     name="account-registration",
+     *     methods={"POST"},
+     *     pattern="/account-registration"
+     * )
      *
      * @param Request $request
      * @param Response $response
@@ -98,6 +150,7 @@ class AuthController extends BaseController
      */
     public function register(Request $request, Response $response): Response
     {
+
         /** @var array $parsedData */
         $parsedData = $request->getParsedBody();
 
@@ -121,49 +174,6 @@ class AuthController extends BaseController
         return $this->respond(
             $response,
             $customResponse
-        );
-    }
-
-    /**
-     * Gets the viable Looks for the registration
-     *
-     * @param Request $request
-     * @param Response $response
-     *
-     * @return Response
-     * @throws RegisterException
-     */
-    public function viableLooks(Request $request, Response $response): Response
-    {
-        /** @var array $boyLooks */
-        $boyLooks = $this->config->get('hotel_settings.register.looks.boy');
-
-        /** @var array $girlLooks */
-        $girlLooks = $this->config->get('hotel_settings.register.looks.girl');
-
-        if (!is_array($boyLooks) || !is_array($girlLooks)) {
-            throw new RegisterException(
-                __('There are no viable Looks available'),
-                UserResponseCodeInterface::RESPONSE_AUTH_REGISTER_NO_VIABLE_LOOKS,
-                HttpResponseCodeInterface::HTTP_RESPONSE_NOT_FOUND
-            );
-        }
-
-        /** @var array $boyList */
-        $boyList = array_values($boyLooks);
-
-        /** @var array $girlList */
-        $girlList = array_values($girlLooks);
-
-        return $this->respond(
-            $response,
-            response()
-                ->setData([
-                    'looks' => [
-                        'boys' => $boyList,
-                        'girls' => $girlList
-                    ]
-                ])
         );
     }
 

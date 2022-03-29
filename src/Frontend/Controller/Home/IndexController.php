@@ -14,6 +14,7 @@ use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Photo\Repository\PhotoRepository;
+use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -22,7 +23,8 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 /**
- * @CR\Router
+ *  @package Ares\Test\Controller
+ *  @CR\Router
  */
 class IndexController extends BaseController
 {
@@ -37,7 +39,8 @@ class IndexController extends BaseController
         private Twig $twig,
         private ArticleRepository $articleRepository,
         private PhotoRepository $photoRepository,
-        private BadgeAlbumService $badgeService
+        private BadgeAlbumService $badgeService,
+        private SessionInterface $session
     ) {}
 
     /**

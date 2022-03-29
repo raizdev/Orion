@@ -7,6 +7,7 @@
 
 namespace Ares\Frontend\Controller\Article;
 
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Article\Entity\Article;
 use Ares\Article\Entity\Contract\ArticleInterface;
 use Ares\Article\Exception\ArticleException;
@@ -31,6 +32,7 @@ use function user;
  * Class ArticleController
  *
  * @package Ares\Article\Controller
+ * @CR\Router
  */
 class ArticleController extends BaseController
 {
@@ -150,6 +152,12 @@ class ArticleController extends BaseController
     }
 
     /**
+     * @CR\Route(
+     *     name="article-view",
+     *     methods={"GET"},
+     *     pattern="/articles/{id}/{slug}"
+     * )
+     *
      * @param Request  $request
      * @param Response $response
      *

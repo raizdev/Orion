@@ -17,6 +17,8 @@ use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Interfaces\UserCurrencyTypeInterface;
 use Ares\User\Repository\UserRepository;
 use Ares\User\Service\Currency\CreateCurrencyService;
+use Exception;
+use Odan\Session\SessionInterface;
 use PHLAK\Config\Config;
 use ReallySimpleJWT\Exception\ValidateException;
 
@@ -43,7 +45,8 @@ class RegisterService
         private TicketService $ticketService,
         private HashService $hashService,
         private Config $config,
-        private CreateCurrencyService $createCurrencyService
+        private CreateCurrencyService $createCurrencyService,
+        private SessionInterface $session
     ) {}
 
     /**
@@ -101,8 +104,13 @@ class RegisterService
             throw new RegisterException($exception->getMessage(), $exception->getCode());
         }
 
+        $this->session->set('token', $token);
+
         return response()
             ->setData([
+                'status' => 'success',
+                'message'   => 'Your account has been created! you will be redirectd',
+                'pagetime' => '/',
                 'token' => $token
             ]);
     }

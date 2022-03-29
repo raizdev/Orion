@@ -5,7 +5,8 @@
  * @see LICENSE (MIT)
  */
 
-use Ares\Framework\Middleware\ClaimMiddleware;
+use Ares\Framework\Middleware\LocaleMiddleware;
+use Cosmic\Core\Middleware\ClaimMiddleware;
 use Odan\Session\Middleware\SessionMiddleware;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -30,6 +31,8 @@ return function (App $app) {
     $app->add(TwigMiddleware::create($app, $twig));
     $app->add(SessionMiddleware::class);
     $app->add(ClaimMiddleware::class);
+    $app->add(LocaleMiddleware::class);
 
-    $app->addErrorMiddleware(true, true, true, $logger);
+    $errorMiddleware = $app->addErrorMiddleware(true, true, true, $logger);
+    $errorMiddleware->setDefaultErrorHandler(\Cosmic\Core\Handler\ErrorHandler::class);
 };
