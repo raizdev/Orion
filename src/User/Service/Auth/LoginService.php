@@ -58,11 +58,16 @@ class LoginService
      * @throws DataObjectManagerException
      * @throws NoSuchEntityException
      * @throws ValidateException
+     * @throws LoginException
      */
     public function login(array $data): CustomResponseInterface
     {
         /** @var User $user */
-        $user = $this->userRepository->get($data['username'], 'username', true);
+        $user = $this->userRepository->get(
+            $data['username'],
+            'username',
+            true
+        );
 
         if (!$user || !password_verify($data['password'], $user->getPassword())) {
             throw new LoginException(
@@ -71,7 +76,11 @@ class LoginService
         }
 
         /** @var Ban $isBanned */
-        $isBanned = $this->banRepository->get($user->getId(), 'user_id', true);
+        $isBanned = $this->banRepository->get(
+            $user->getId(),
+            'user_id',
+            true
+        );
 
         if ($isBanned && $isBanned->getBanExpire() > time()) {
             throw new BanException(
@@ -90,17 +99,14 @@ class LoginService
         /** @var TokenService $token */
         $token = $this->tokenService->execute($user->getId());
 
-        $this->session->destroy();
-        $this->session->start();
-        $this->session->regenerateId();
-
         $this->session->set('token', $token);
+        $this->session->set('user', $user);
 
         return response()
             ->setData([
                 'pagetime'  => $this->routeParser->urlFor('home'),
                 'status'    => 'success',
-                'message'   => 'Logged in successfully',
+                'message'   => __('Logged in successfully'),
             ]);
     }
 }
