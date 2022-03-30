@@ -20,8 +20,8 @@ function Config ()
 
     this.getConfig = function ()
     {
-        $.getJSON('/config', function(data) {
-            self.data = data;
+        $.getJSON('/config', function(result) {
+            self.data = result.data;
         })
     }
 }

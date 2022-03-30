@@ -74,17 +74,16 @@
         {% if user %}
             <li class="navigation-item navigation-right-side-item has-items">
                 <a href="#">
-                    <div class="account-avatar"><img src="{{site.fpath}}/avatarimage?figure={{player.look}}&gesture=sml"
+                    <div class="account-avatar"><img src="{{ config('hotel_settings.imaging_url') }}/?figure={{user.look}}&gesture=sml"
                                                      alt="{{player.username}}" class="pixelated"></div>
                     <span>{{user.username}}</span>
                 </a>
                 <ul class="navigation-submenu">
-                    <li class="navigation-subitem"><a href="/hotel">{{locale_base.user_to}} {{site.sitename}}</a></li>
                     <li class="navigation-subitem"><a
-                                href="/profile/{{player.username}}">{{locale_base.user_profile}}</a></li>
-                    <li class="navigation-subitem"><a href="/settings">{{site.shortname}} ID
-                            {{locale_base.user_settings}}</a></li>
-                    <li class="navigation-subitem"><a href="/logout" target="_self">{{locale_base.user_logout}}</a></li>
+                                href="/profile/{{user.username}}">{{ lang('base.navbar.user.profile') }}</a></li>
+                    <li class="navigation-subitem"><a href="/settings">{{ config('hotel_settings.hotel_name') }} ID
+                            {{ lang('base.navbar.user.settings') }}</a></li>
+                    <li class="navigation-subitem"><a href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
                 </ul>
             </li>
         {% endif %}
@@ -107,11 +106,11 @@
                 <div class="enter-hotel"><div class="inner">
                         {% if user %}
                             <a href="{{ url_for('auth_sign-up') }}">
-                                {{lang('base.header.register')}}
+                                {{lang('base.header.to')}}
                             </a>
                         {% else %}
-                            <a href="{{ url_for('auth.sign-in') }}">
-                                {{lang('base.header.to')}}
+                            <a href="{{ url_for('auth_sign-up') }}">
+                                {{lang('base.header.register')}}
                             </a>
                         {% endif %}
                     </div></div>

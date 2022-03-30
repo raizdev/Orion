@@ -3,6 +3,9 @@
   "base.navbar.home": "Home",
   "base.navbar.community": "community",
   "base.navbar.community.articles": "Articles",
+  "base.navbar.user.profile": "My Profile",
+  "base.navbar.user.settings": "Settings",
+  "base.navbar.user.logout": "Logout",
 
   "register.header.text": "Create Account",
   "register.header.subtext": "Join the most fun online community!",

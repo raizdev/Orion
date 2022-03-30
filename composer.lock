@@ -2488,12 +2488,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/raizdev/cosmic-core.git",
-                "reference": "2e6536bd2c7524dbea144b9cf16e7e92f921d9b7"
+                "reference": "26fc83439084654ff1127b3bb0244c1a10da0d11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/raizdev/cosmic-core/zipball/2e6536bd2c7524dbea144b9cf16e7e92f921d9b7",
-                "reference": "2e6536bd2c7524dbea144b9cf16e7e92f921d9b7",
+                "url": "https://api.github.com/repos/raizdev/cosmic-core/zipball/26fc83439084654ff1127b3bb0244c1a10da0d11",
+                "reference": "26fc83439084654ff1127b3bb0244c1a10da0d11",
                 "shasum": ""
             },
             "require": {
@@ -2535,9 +2535,9 @@
             ],
             "support": {
                 "issues": "https://github.com/raizdev/cosmic-core/issues",
-                "source": "https://github.com/raizdev/cosmic-core/tree/1.0.14"
+                "source": "https://github.com/raizdev/cosmic-core/tree/1.0.15"
             },
-            "time": "2022-03-29T01:17:56+00:00"
+            "time": "2022-03-29T22:50:52+00:00"
         },
         {
             "name": "rakit/validation",

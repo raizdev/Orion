@@ -254,7 +254,7 @@ function WebPagesManagerInterface() {
             this.current_page_url = "home";
         }
 
-        if (this.current_page_url.match(/^hotel/) && User.is_logged) {
+        if (this.current_page_url.match(/^hotel/)) {
             Web.hotel_manager.open_hotel(this.current_page_url);
         }
 
@@ -284,11 +284,11 @@ function WebPagesManagerInterface() {
         } else {
              $(".page-container").removeAttr('style')
         }
-      
+
         if (!history_replace) {
             History.pushState(null, title ? title : Config.data.hotel_name, "/" + url);
         } else {
-            History.replaceState(null, title ? title : Config.data.hotelname, "/" + url);
+            History.replaceState(null, title ? title : Config.data.hotel_name, "/" + url);
         }
     };
 
@@ -330,7 +330,7 @@ function WebPagesManagerInterface() {
                 dataType: null,
                 error: function (request, status, error) {
                     PageLoading.hide();
-                    Web.notifications_manager.create("error", error, request.responseText);
+                    Web.notifications_manager.create(request.statusText, request.responseJSON.errors[0].message, request.responseJSON.status);
                 }
             }).done(function (result) {
                 PageLoading.hide();
@@ -344,20 +344,12 @@ function WebPagesManagerInterface() {
                     return null;
                 }
 
-                // Create notification
-                if (!isEmpty(result.status) && !isEmpty(result.message)) {
+                if(result.errors) {
+                    var errorTitle = result.errors[0].field;
+                    var errorMessage = result.errors[0].message;
 
-                    if(typeof result.message =='object') {
-                        var firstError = [];
-                        var firstTitle = [];
-                        key = Object.keys(result.message)[0];
-                        firstError.push(result.message[key]);
-                        firstTitle.push(key);
-                    }
-
-                    Web.notifications_manager.create(result.status, (firstError) ? firstError : result.message, (firstTitle) ? firstTitle : result.page, (Number.isInteger(result.timer) ? result.timer : undefined), (result.link ? result.link : null));
+                    Web.notifications_manager.create('error', errorMessage, errorTitle, (Number.isInteger(result.timer) ? result.timer : undefined), (result.link ? result.link : null));
                 }
-
 
                 // Create dialog
                 if (result.dialog) {
@@ -398,7 +390,7 @@ function WebPagesManagerInterface() {
             });
         } else {
             Web.hotel_manager.open_hotel(url.replace("hotel?", "").replace("hotel", ""));
-            self.push(url, "Hotel - " + Config.data.hotelname, false);
+            self.push(url, "Hotel - " + Config.data.hotel_name, false);
         }
     };
 }
@@ -574,41 +566,21 @@ function WebAjaxManagerInterface() {
         }).done(function (result) {
 
             PageLoading.hide();
-            // Change full page
-            if (result.location) {
-                window.location = result.location;
-                return null;
-            }
 
             // Change page
-            if (result.pagetime)
+            if (result.data && result.data.pagetime)
                 setTimeout(function () {
-                    window.location = result.pagetime
+                    window.location = result.data.pagetime
                 }, 2500);
 
+
             // Change page
-            if (result.loadpage)
-                Web.pages_manager.load(result.loadpage);
+            if (result.data && result.data.loadpage)
+                Web.pages_manager.load(result.data.loadpage);
 
             // Replace page
-            if (result.replacepage)
-                Web.pages_manager.load(result.replacepage, null, true, null, true, true);
-
-            // Build modal
-            if (result.modal) {
-                $.magnificPopup.open({
-                    closeOnBgClick: false,
-                    items: [{
-                        modal: true,
-                        src: "/popup/" + result.modal,
-                        type: "ajax"
-                    }]
-                }, 0);
-            }
-
-            // Close popup
-            if (result.close_popup)
-                $.magnificPopup.close();
+            if (result.data && result.data.replacepage)
+                Web.pages_manager.load(result.data.replacepage, null, true, null, true, true);
 
             // Check if is form
             if (form !== undefined) {
@@ -619,22 +591,13 @@ function WebAjaxManagerInterface() {
             if(result.errors) {
                 var errorTitle = result.errors[0].field;
                 var errorMessage = result.errors[0].message;
-                console.log(result.errors)
+
                 Web.notifications_manager.create('error', errorMessage, errorTitle, (Number.isInteger(result.timer) ? result.timer : undefined), (result.link ? result.link : null));
             }
 
             // Create notification
-            if (!isEmpty(result.status) && !isEmpty(result.message)) {
-                
-                if(typeof result.message =='object') {
-                    var firstError = [];
-                    var firstTitle = [];
-                    key = Object.keys(result.message)[0];
-                    firstError.push(result.message[key]);
-                    firstTitle.push(key);
-                }
-              
-                Web.notifications_manager.create(result.status, (firstError) ? firstError : result.message, (firstTitle) ? firstTitle : result.title, (Number.isInteger(result.timer) ? result.timer : undefined), (result.link ? result.link : null));
+            if (!isEmpty(result.data.status) && !isEmpty(result.data.message)) {
+                Web.notifications_manager.create(result.data.status,  result.data.message, result.data.title, (Number.isInteger(result.timer) ? result.timer : undefined), (result.data.link ? result.data.link : null));
             }
           
             // Callback if exists

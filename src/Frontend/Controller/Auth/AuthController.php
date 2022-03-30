@@ -21,10 +21,12 @@ use Ares\User\Service\Auth\LoginService;
 use Ares\User\Service\Auth\RegisterService;
 use Ares\User\Service\Auth\TicketService;
 use Cosmic\Core\Mapping\Annotation as CR;
+use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use ReallySimpleJWT\Exception\ValidateException;
 
+use Slim\Routing\RouteParser;
 use Slim\Views\Twig;
 
 use Twig\Error\LoaderError;
@@ -56,6 +58,8 @@ class AuthController extends BaseController
      * @param RegisterService $registerService
      * @param TicketService $ticketService
      * @param DetermineIpService $determineIpService
+     * @param RouteParser $routeParser
+     * @param SessionInterface $session
      */
     public function __construct(
         private Twig $twig,
@@ -63,7 +67,9 @@ class AuthController extends BaseController
         private LoginService $loginService,
         private RegisterService $registerService,
         private TicketService $ticketService,
-        private DetermineIpService $determineIpService
+        private DetermineIpService $determineIpService,
+        private RouteParser $routeParser,
+        private SessionInterface $session
     ) {}
 
     /**
@@ -209,6 +215,12 @@ class AuthController extends BaseController
      * Returns a response without the Authorization header
      * We could blacklist the token with redis-cache
      *
+     * @CR\Route(
+     *     name="logout",
+     *     methods={"GET"},
+     *     pattern="/logout"
+     * )
+     *
      * @param Request $request
      * @param Response $response
      *
@@ -216,6 +228,8 @@ class AuthController extends BaseController
      */
     public function logout(Request $request, Response $response): Response
     {
-        return $response->withoutHeader('Authorization');
+        $this->session->destroy();
+
+        return $response->withHeader('Location', $this->routeParser->urlFor('home'));
     }
 }
