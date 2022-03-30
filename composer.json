@@ -19,9 +19,8 @@
     }
   ],
   "require": {
-    "ext-json": "*",
     "ext-sockets": "*",
-    "domexx/ares-core": "3.2.6",
+    "domexx/ares-core": "4.3.6",
     "raizdev/cosmic-core": "dev-master",
     "robmorgan/phinx": "dev-master"
   },
@@ -29,7 +28,7 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "platform": {
-      "php": "8.0"
+      "php": "8.1"
     }
   },
   "autoload": {
