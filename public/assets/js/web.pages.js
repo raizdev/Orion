@@ -6,17 +6,17 @@ function WebHotelManagerInterface() {
      * */
     this.init = function() {
         this.current_page_url = window.location.pathname.substr(1) + window.location.search;
-
         this.hotel_container = $("#hotel-container");
 
         this.hotel_container.find(".client-buttons .client-close").click(this.close_hotel);
         this.hotel_container.find(".client-buttons .client-fullscreen").click(this.toggle_fullscreen.bind(this));
-        this.hotel_container.find(".client-buttons .client-count").click(this.refresh_count);
-        this.hotel_container.find(".client-buttons .client-radio").click(this.radio(this));
+        this.hotel_container.find(".client-buttons .client-count").click(this.update_online);
+    };
 
-        setInterval(function() {
-            $("body").find(".client-buttons .client-count #count").load("/api/online");
-        }, 120000);
+    this.update_online = function () {
+        Web.ajax_manager.get("/user/online", function (result) {
+            $("body").find(".client-buttons .client-count #count").text(result.data);
+        });
     };
 
     /*
@@ -26,14 +26,9 @@ function WebHotelManagerInterface() {
         Web.pages_manager.load(Web.pages_manager.last_page_url, null, true, null, true);
     };
 
-    this.refresh_count = function() {
-        $("body").find(".client-buttons .client-count #count").load("/api/online");
-    };
-
     this.open_hotel = function(arguments) {
         var actions = {};
         var container = this.hotel_container;
-        var container_actions = this.hotel_actions;
 
         if (arguments !== undefined) {
             parse_str(arguments, actions);
@@ -42,97 +37,56 @@ function WebHotelManagerInterface() {
         var argument = arguments;
         var body = $("body");
 
-        if(argument == '/=beta' || argument == 'hotel=beta') {
-            body.find(".header-container .header-content .account-container .account-buttons .nitroButton").text(ENV.locale.web_hotel_backto);
-            if(container.find('iframe').hasClass('nitro') != true) {
-                body.find(".header-container .header-content .account-container .account-buttons .flashButton").text("TO " + ENV.hotelname);
-                container.find("iframe").remove();
-            }
-        }  else {
-            body.find(".header-container .header-content .account-container .account-buttons .flashButton").text(ENV.locale.web_hotel_backto);
-            if(container.find('iframe').hasClass('flash') != true) {
-                body.find(".header-container .header-content .account-container .account-buttons .nitroButton").text("TO " + ENV.hotelname);
-                container.find("iframe").remove();
-            }
-        }
-      
+        this.current_page_url = argument;
+        this.hotel_url = argument;
+
+
         if (!body.hasClass("hotel-visible")) {
-            Web.ajax_manager.get("/api/vote", function(result) {
+            if (container.find(".client-frame").length === 0) {
 
-                if (result.status != "voted" && Configuration.findretros === true) {
-                    window.location.href = result.api;
-                } else {
-                    if (container.find(".client-frame").length === 0)
-
-                    if(argument == '/=beta' || argument == 'hotel=beta') {  
-                        Web.ajax_manager.get("/api/ssoTicket", function(result) {
-                            container.prepend('<iframe class="client-frame nitro" src="' + Client.nitro_path + '/?sso=' + result.ticket + '"></iframe>');
-                        });
-                    } else {
-                        container.prepend('<iframe class="client-frame flash" src="/client?' + argument + '"></iframe>');
-                    }
-
-                    body.addClass("hotel-visible");
-
-                    var radio = document.getElementById("stream");
-                    radio.src = Client.client_radio;
-                    radio.volume = 0.1;
-                    radio.play();
-
-                    $(".fa-play").hide();
-                    $(".fa-pause").show();
+                let argumentAction = '';
+                if (argument !== "") {
+                    let argumentAction = argument.replace("hotel?room=", "&room=");
                 }
-            });
+
+                Web.ajax_manager.get("/auth/ticket", function (result) {
+
+                    container.prepend('<iframe class="client-frame nitro" src="' + Config.data.nitro_url + '/?sso=' + result.data.ticket + argumentAction + '"></iframe>');
+
+                    let frame = document.getElementById('nitro');
+
+                    window.FlashExternalInterface = {};
+                    window.FlashExternalInterface.disconnect = () => {
+                        Web.notifications_manager.create("error", "Client disconnected!");
+                        Web.pages_manager.load('/home');
+                    };
+
+                    if (frame && frame.contentWindow) {
+                        window.addEventListener("message", ev => {
+                            if (!frame || ev.source !== frame.contentWindow) return;
+                            const legacyInterface = "Nitro_LegacyExternalInterface";
+                            if (typeof ev.data !== "string") return;
+                            if (ev.data.startsWith(legacyInterface)) {
+                                const {
+                                    method,
+                                    params
+                                } = JSON.parse(
+                                    ev.data.substr(legacyInterface.length)
+                                );
+                                if (!("FlashExternalInterface" in window)) return;
+                                const fn = window.FlashExternalInterface[method];
+                                if (!fn) return;
+                                fn(...params);
+                                return;
+                            }
+                        });
+                    }
+                });
+            }
+            body.addClass("hotel-visible");
         }
     };
 
-  
-    /*
-     * LeetFM Player
-     * */
-    this.radio = function() {
-
-        var radio = document.getElementById("stream");
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-play").click(function() {
-            radio.src = Client.client_radio;
-            radio.volume = 0.1;
-            radio.play();
-
-            $(".fa-play").hide();
-            $(".fa-pause").show();
-        });
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-pause").click(function() {
-
-            radio.pause();
-            radio.src = "";
-            radio.load();
-
-            $(".fa-play").show();
-            $(".fa-pause").hide();
-        });
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-volume-up").click(function() {
-            var volume = radio.volume;
-
-            if (volume > 1.0) {
-                radio.volume += 0.0;
-            } else {
-                radio.volume += 0.1;
-            }
-        });
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-volume-down").click(function() {
-            var volume = radio.volume;
-
-            if (volume < 0.0) {
-                radio.volume -= 0.0;
-            } else {
-                radio.volume -= 0.1;
-            }
-        });
-    };
 
     /*
      * Fullscreen toggle

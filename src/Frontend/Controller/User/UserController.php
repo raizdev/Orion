@@ -5,8 +5,9 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\User\Controller;
+namespace Ares\Frontend\Controller\User;
 
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
@@ -19,10 +20,18 @@ use Ares\User\Repository\UserRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+use function response;
+use function user;
+
 /**
  * Class UserController
  *
- * @package Ares\User\Controller
+ * @package Ares\Frontend\Controller\Auth
+ * @CR\Router
+ * @CR\Group(
+ *     prefix="user",
+ *     pattern="user"
+ * )
  */
 class UserController extends BaseController
 {
@@ -91,6 +100,12 @@ class UserController extends BaseController
 
     /**
      * Gets all current Online User and counts them
+     *
+     * @CR\Route(
+     *     name="online",
+     *     methods={"GET"},
+     *     pattern="/online"
+     * )
      *
      * @param Request  $request
      * @param Response $response

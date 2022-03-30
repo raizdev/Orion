@@ -44,6 +44,28 @@ class IndexController extends BaseController
     ) {}
 
     /**
+     * Throw Client
+     *
+     * @CR\Route(
+     *     name="hotel",
+     *     methods={"GET"},
+     *     pattern="/hotel"
+     * )
+     *
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError|DataObjectManagerException|NoSuchEntityException
+     */
+    public function hotel(Request $request, Response $response): Response
+    {
+        return $this->twig->render($response, '/Frontend/Views/layouts/app.twig');
+    }
+
+    /**
      * Responds to say hello to Twig
      *
      * @CR\Route(

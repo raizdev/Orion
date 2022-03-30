@@ -186,6 +186,12 @@ class AuthController extends BaseController
     /**
      * Gets a new Ticket for the current User
      *
+     * @CR\Route(
+     *     name="ticket",
+     *     methods={"GET"},
+     *     pattern="/ticket"
+     * )
+     *
      * @param Request  $request
      * @param Response $response
      *

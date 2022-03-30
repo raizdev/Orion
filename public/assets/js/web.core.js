@@ -236,7 +236,7 @@ $(function () {
 function WebPagesManagerInterface() {
     this.current_page_url = null;
     this.current_page_interface = null;
-    this.last_page_url = "home";
+    this.last_page_url = "/";
     this.page_container = null;
 
     /*
@@ -246,12 +246,13 @@ function WebPagesManagerInterface() {
         var self = this;
 
         this.page_container = $(".page-container");
+
         this.current_page_url = window.location.pathname.substr(1) + window.location.search;
         this.current_page_interface = new WebPageInterface(this, this.page_container.attr("data-page"));
         this.current_page_interface.assign_interface();
   
         if (this.current_page_url === "") {
-            this.current_page_url = "home";
+            this.current_page_url = "/";
         }
 
         if (this.current_page_url.match(/^hotel/)) {
@@ -313,17 +314,14 @@ function WebPagesManagerInterface() {
         var body = $("body");
 
         if (url === "")
-            url = "home";
+            url = "/";
 
         if (url.charAt(0) !== "/") {
             url = "/" + url;
         }
         
-        this.last_page_url = this.current_page_url;
-
         if (!url.match(/^\/hotel/)) {
             PageLoading.show();
-
             $.ajax({
                 type: "get",
                 url: url,
@@ -431,13 +429,6 @@ function WebPageInterface(manager, type, scroll, page_data) {
 
         navigation_container.find(".navigation-item.selected:not([data-category='" + category + "'])").removeClass("selected");
         navigation_container.find(".navigation-item[data-category='" + category + "']").addClass("selected");
-
-        if (this.manager.current_page_url.indexOf("forum") >= 0) {} else {
-            if (this.scroll)
-                $("html, body").animate({
-                    scrollTop: navigation_container.offset().top
-                }, 300);
-        }
 
         // Custom page interface
         this.assign_interface();
