@@ -9,7 +9,7 @@ namespace Ares\Rcon\Helper;
 
 use Ares\Rcon\Exception\RconException;
 use Ares\Rcon\Interfaces\Response\RconResponseCodeInterface;
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 
 /**
  * Class RconHelper

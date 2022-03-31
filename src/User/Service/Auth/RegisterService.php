@@ -19,7 +19,7 @@ use Ares\User\Repository\UserRepository;
 use Ares\User\Service\Currency\CreateCurrencyService;
 use Exception;
 use Odan\Session\SessionInterface;
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 use ReallySimpleJWT\Exception\ValidateException;
 
 /**

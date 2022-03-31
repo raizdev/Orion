@@ -7,7 +7,7 @@
 
 namespace Ares\User\Service\Auth;
 
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 
 /**
  * Class HashService

@@ -17,7 +17,7 @@ use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 use Slim\Routing\RouteParser;
 
 /**

@@ -14,7 +14,7 @@ use Ares\Guestbook\Entity\Guestbook;
 use Ares\Guestbook\Exception\GuestbookException;
 use Ares\Guestbook\Interfaces\Response\GuestbookResponseCodeInterface;
 use Ares\Guestbook\Repository\GuestbookRepository;
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 
 /**
  * Class CreateGuestbookEntryService

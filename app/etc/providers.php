@@ -17,7 +17,7 @@ return [
     ),
     // Adds our ConfigProvider
     $container->addServiceProvider(
-        new \Ares\Framework\Provider\ConfigServiceProvider()
+        new \Cosmic\Core\Provider\ConfigServiceProvider()
     ),
     // Adds our LoggingProvider
     $container->addServiceProvider(
@@ -36,7 +36,7 @@ return [
     ),
     // Adds our ValidationProvider
     $container->addServiceProvider(
-        new \Ares\Framework\Provider\ValidationServiceProvider()
+        new \Cosmic\Core\Provider\ValidationServiceProvider()
     ),
     // Adds our CacheServiceProvider
     $container->addServiceProvider(
@@ -44,11 +44,11 @@ return [
     ),
     // Adds our SlugServiceProvider
     $container->addServiceProvider(
-        new \Ares\Framework\Provider\SlugServiceProvider()
+        new \Cosmic\Core\Provider\SlugServiceProvider()
     ),
     // Adds our ThrottleServiceProvider
     $container->addServiceProvider(
-        new \Ares\Framework\Provider\ThrottleServiceProvider()
+        new \Cosmic\Core\Provider\ThrottleServiceProvider()
     ),
     // Adds our TwigServiceProvider
     $container->addServiceProvider(

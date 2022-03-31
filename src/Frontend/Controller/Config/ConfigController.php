@@ -9,7 +9,7 @@ namespace Ares\Frontend\Controller\Config;
 
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 

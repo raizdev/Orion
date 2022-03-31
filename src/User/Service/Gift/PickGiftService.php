@@ -19,7 +19,7 @@ use Ares\User\Entity\User;
 use Ares\User\Exception\Gift\DailyGiftException;
 use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Repository\Gift\DailyGiftRepository;
-use PHLAK\Config\Config;
+use Cosmic\Core\Config;
 
 /**
  * Class PickGiftService
