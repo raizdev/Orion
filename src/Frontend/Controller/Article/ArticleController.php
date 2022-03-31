@@ -7,6 +7,8 @@
 
 namespace Ares\Frontend\Controller\Article;
 
+use Ares\Article\Entity\Comment;
+use Ares\Article\Repository\CommentRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Article\Entity\Article;
 use Ares\Article\Entity\Contract\ArticleInterface;
@@ -45,6 +47,7 @@ class ArticleController extends BaseController
      * @param EditArticleService    $editArticleService
      * @param ValidationService     $validationService
      * @param DeleteArticleService  $deleteArticleService
+     * @param CommentRepository     $commentRepository
      */
     public function __construct(
         private Twig $twig,
@@ -52,7 +55,8 @@ class ArticleController extends BaseController
         private CreateArticleService $createArticleService,
         private EditArticleService $editArticleService,
         private ValidationService $validationService,
-        private DeleteArticleService $deleteArticleService
+        private DeleteArticleService $deleteArticleService,
+        private CommentRepository $commentRepository
     ) {}
 
     /**
@@ -175,8 +179,12 @@ class ArticleController extends BaseController
         /** @var Article $article */
         $article = $this->articleRepository->getArticleWithCommentCount($id);
 
+        /** @var Comment $comments */
+        $comments = $this->commentRepository->getPaginatedCommentList($id, 1, 5);
+
         return $this->twig->render($response, 'Frontend/Views/pages/article/article.twig', [
             'article' => $article,
+            'comments' => $comments,
             'page' => 'article'
         ]);
     }

@@ -18,6 +18,7 @@ use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use PHLAK\Config\Config;
+use Slim\Routing\RouteParser;
 
 /**
  * Class CreateCommentService
@@ -36,6 +37,7 @@ class CreateCommentService
     public function __construct(
         private ArticleRepository $articleRepository,
         private CommentRepository $commentRepository,
+        private RouteParser $routeParser,
         private Config $config
     ) {}
 
@@ -71,7 +73,14 @@ class CreateCommentService
         $comment->getUser();
 
         return response()
-            ->setData($comment);
+            ->setData([
+                'replacepage'  => $this->routeParser->urlFor('article-view', [
+                    'id' => $article->getId(),
+                    'slug' => $article->getSlug()
+                ]),
+                'status'    => 'success',
+                'message'   => __('Comment posted!'),
+            ]);
     }
 
     /**

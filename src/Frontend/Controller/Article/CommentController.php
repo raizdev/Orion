@@ -7,6 +7,7 @@
 
 namespace Ares\Frontend\Controller\Article;
 
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Article\Entity\Contract\CommentInterface;
 use Ares\Article\Exception\CommentException;
 use Ares\Article\Repository\CommentRepository;
@@ -31,6 +32,12 @@ use function user;
  * Class CommentController
  *
  * @package Ares\Article\Controller
+ *
+ * @CR\Router
+ *  @CR\Group(
+ *     prefix="comment",
+ *     pattern="comment"
+ * )
  */
 class CommentController extends BaseController
 {
@@ -52,6 +59,13 @@ class CommentController extends BaseController
     ) {}
 
     /**
+     *
+     * @CR\Route(
+     *     name="create",
+     *     methods={"POST"},
+     *     pattern="/create"
+     * )
+     *
      * @param Request  $request
      * @param Response $response
      *

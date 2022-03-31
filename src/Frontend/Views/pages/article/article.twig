@@ -37,45 +37,45 @@
                             <div class="card-header-title">Who's new?</div>
                         </div>
                     </div>
+                    {% for comment in comments %}
                     <div class="card-content no-spacing oddeven">
                         <div class="author">
                             <div class="avatar">
-                                <img alt="User avatar" class="avatar avatar-m" src="https://avatar.habme.ws/?figure=hr-7295-45.hd-209-1390.ch-806-85.lg-285-1409.sh-3035-81.fa-3276-73.ha-3488-1408&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
+                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ comment.user.look }}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
                             <div class="info">
-                                <span class="username"><a href="/user/Raphael">Raphael</a></span>
-                                <span>This is really cool!</span>
+                                <span class="username"><a href="/user/{{ comment.user.username }}">{{ comment.user.username }}</a></span>
+                                <span>{{ comment.content }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="card-content no-spacing oddeven">
-                        <div class="author">
-                            <div class="avatar">
-                                <img alt="User avatar" class="avatar avatar-m" src="https://avatar.habme.ws/?figure=hr-151832-61.hd-209-1359.ch-265-1335.lg-7537-92.sh-3035-1408&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <div class="info">
-                                <span class="username"><a href="/user/Raphael">Raizer</a></span>
-                                <span>Wow, keep it up!</span>
-                            </div>
-                        </div>
+                    {% endfor %}
+                    {% if comments is empty %}
+                    <div class="card-content">
+                        There are no comments yet, are you the first?
                     </div>
+                    {% endif %}
                 </div>
             </aside>
 
-            <aside class="default-section">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">Comment</div>
+                <aside class="default-section">
+                    <form method="post" action="{{ url_for('comment_create') }}">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container" style="position: relative;">
+                                <div class="card-header-title">Comment</div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <textarea name="content" placeholder="Comment here..."></textarea>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <textarea placeholder="Comment here..."></textarea>
+                    <div class="card-footer no-spacing">
+                        <input type="hidden" name="article_id" value="{{ article.id }}">
+                        <button type="submit" variant="success" class="btn btn-fw btn-success">Comment</button>
                     </div>
-                </div>
-                <div class="card-footer no-spacing">
-                    <button type="submit" variant="success" class="btn btn-fw btn-success">Comment</button>
-                </div>
+                </form>
             </aside>
         </div>
 
