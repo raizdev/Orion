@@ -34,6 +34,22 @@ class UserSettingRepository extends BaseRepository
      *
      * @throws DataObjectManagerException
      */
+    public function getTopRespects(): Collection
+    {
+        $searchCriteria = $this->getDataObjectManager()
+            ->select(['user_id', 'respects_received'])
+            ->orderBy('respects_received', 'DESC')
+            ->addRelation('user')
+            ->limit(3);
+
+        return $this->getList($searchCriteria);
+    }
+
+    /**
+     * @return Collection
+     *
+     * @throws DataObjectManagerException
+     */
     public function getTopAchievements(): Collection
     {
         $searchCriteria = $this->getDataObjectManager()

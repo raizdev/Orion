@@ -72,6 +72,9 @@ class UserHallOfFameController extends BaseController
         /** @var UserSetting $achievements */
         $achievements = $this->userSettingRepository->getTopAchievements();
 
+        /** @var UserSetting $respects */
+        $respects = $this->userSettingRepository->getTopRespects();
+
         /** @var UserCurrency $diamonds */
         $diamonds = $this->userCurrencyRepository->getTopDiamonds();
 
@@ -81,12 +84,14 @@ class UserHallOfFameController extends BaseController
         /** @var User $credits */
         $credits = $this->userRepository->getTopCredits();
 
+
         return $this->twig->render($response, 'Frontend/Views/pages/community/highscore.twig', [
             'online' => $online,
             'achievements' => $achievements,
             'diamonds' => $diamonds,
             'duckets' => $duckets,
             'credits' => $credits,
+            'respects' => $respects,
             'page' => 'games_ranking'
         ]);
     }

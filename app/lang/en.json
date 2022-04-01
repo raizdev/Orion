@@ -14,6 +14,10 @@
   "highscores.most.credits": "Most credits",
   "highscores.most.duckets": "Most duckets",
   "highscores.most.diamonds": "Most diamonds",
+  "highscores.most.achievements": "Most achievements",
+  "highscores.most.online": "Most online time",
+  "highscores.most.respects": "Most respects received",
+  "highscores.no_score": "No scores available yet",
 
   "register.header.text": "Create Account",
   "register.header.subtext": "Join the most fun online community!",
