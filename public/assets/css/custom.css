@@ -530,3 +530,109 @@
 .page-content .mt-5 {
     margin-top: 25px;
 }
+
+.card-image.top-users-image {
+    height: 150px;
+    padding: 0px 1rem;
+    overflow: hidden;
+    justify-content: space-between;
+    background-image: url(/assets/images/web/pages/ranking/walking-on-credits.png), linear-gradient(to right, rgb(21, 61, 96), rgb(80, 117, 151));
+    background-position: left 58%;
+}
+
+.card-image.top-users-image .watching-people {
+    background: url(/assets/images/web/pages/ranking/Limited_take_out_promo1.png);
+    height: 198px;
+    width: 260px;
+    margin-top: -12px;
+    margin-left: -145px;
+}
+
+.card-image.top-users-image .podium {
+    margin-left: 55px;
+    background: url(/assets/images/web/pages/ranking/podium.png);
+    height: 95px;
+    width: 124px;
+    margin-top: 90px;
+    position: relative;
+}
+
+.card-image.top-users-image .podium .avatar.first {
+    margin-top: -82px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.card-image.top-users-image .podium .avatar.second {
+    margin-top: -82px;
+    margin-left: -4px;
+}
+
+.card-image.top-users-image .podium .avatar.third {
+    margin-right: -10px;
+    margin-top: -80px;
+}
+
+.highscore-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.highscore-row a {
+    padding: 10px;
+    text-decoration: none;
+}
+
+.highscore:nth-child(odd) {
+    background: #EFEFEF;
+}
+
+.highscore:not(.no-padding) {
+     padding: 1rem;
+ }
+
+.highscore {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+ }
+
+ .top-users-item {
+     height: 60px;
+     overflow: hidden;
+ }
+
+.self-baseline {
+    margin-top: 30px;
+}
+
+.top-users-item .amount {
+    margin-left: auto;
+}
+
+.icon-credits {
+    background: url(/assets/images/hotel/purses/credits-icon.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    image-rendering: pixelated;
+    width: 16px;
+    height: 16px;
+}
+
+.icon-diamonds {
+    background: url(/assets/images/hotel/purses/0-icon.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    image-rendering: pixelated;
+    width: 16px;
+    height: 16px;
+}
+
+.icon-duckets {
+    background: url(/assets/images/hotel/purses/5-icon.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    image-rendering: pixelated;
+    width: 16px;
+    height: 16px;
+}

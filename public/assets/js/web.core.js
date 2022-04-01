@@ -555,7 +555,6 @@ function WebAjaxManagerInterface() {
             processData: false,
             contentType: false
         }).done(function (result) {
-
             PageLoading.hide();
 
             // Change page
@@ -578,6 +577,7 @@ function WebAjaxManagerInterface() {
                 if (!result.captcha_error)
                     form.find(".registration-recaptcha").removeClass("registration-recaptcha").removeAttr("data-sitekey").removeAttr("data-callback");
             }
+            console.log(result.errors);
 
             if(result.errors) {
                 var errorTitle = result.errors[0].field;
@@ -594,6 +594,9 @@ function WebAjaxManagerInterface() {
             // Callback if exists
             if (typeof callback === "function")
                 callback(result);
+        }).fail(function (xhr, error) {
+            Web.notifications_manager.create(error, JSON.parse(xhr.responseText).errors[0].message, error);
+            PageLoading.hide();
         });
     };
 }

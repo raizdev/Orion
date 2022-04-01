@@ -178,7 +178,11 @@ if (!function_exists('user')) {
 
         $authUser = $request->getAttribute('cosmic_uid');
         if (!$authUser) {
-            return json_decode(json_encode($authUser), true);
+            throw new AuthenticationException(
+                __('Not logged in.'),
+                \Ares\User\Interfaces\Response\UserResponseCodeInterface::RESPONSE_NOT_ALLOWED,
+                HttpResponseCodeInterface::HTTP_RESPONSE_UNAUTHORIZED
+            );
         }
 
         /** @var UserRepository $userRepository */

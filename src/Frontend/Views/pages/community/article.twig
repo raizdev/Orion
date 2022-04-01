@@ -34,7 +34,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">Who's new?</div>
+                            <div class="card-header-title">{{ lang('article.comments')}}</div>
                         </div>
                     </div>
                     {% for comment in comments %}
@@ -58,25 +58,46 @@
                 </div>
             </aside>
 
-                <aside class="default-section">
-                    <form method="post" action="{{ url_for('comment_create') }}">
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-header-title-container" style="position: relative;">
-                                <div class="card-header-title">Comment</div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <textarea name="content" placeholder="Comment here..."></textarea>
+            {% if user %}
+            <aside class="default-section">
+                <form method="post" action="{{ url_for('comment_create') }}">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title-container" style="position: relative;">
+                            <div class="card-header-title">Comment</div>
                         </div>
                     </div>
-                    <div class="card-footer no-spacing">
-                        <input type="hidden" name="article_id" value="{{ article.id }}">
-                        <button type="submit" variant="success" class="btn btn-fw btn-success">Comment</button>
+                    <div class="card-content">
+                        <textarea name="content" placeholder="Comment here..."></textarea>
                     </div>
+                </div>
+                <div class="card-footer no-spacing">
+                    <input type="hidden" name="article_id" value="{{ article.id }}">
+                    <button type="submit" variant="success" class="btn btn-fw btn-success">Comment</button>
+                </div>
                 </form>
             </aside>
+            {% endif %}
+
+            <aside class="default-section">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="aside-content">
+                        <div class="related-articles-container">
+                            {% for item in list %}
+                                <a href="{{ url_for('article-view', {'id': item.id, 'slug': item.slug}) }}" class="related-article-container">
+                                    <div class="related-article-thumbnail" style="background-image: url({{item.image}});"></div>
+                                    <div class="related-article-details">
+                                        <div class="related-article-title">{{item.title}} </div>
+                                        <div class="related-article-date">{{item.created_at|date("d-M H:i")}}</div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
         </div>
 
     </div>

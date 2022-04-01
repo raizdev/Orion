@@ -28,6 +28,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use function user;
 
 /**
@@ -162,14 +165,18 @@ class ArticleController extends BaseController
      *     pattern="/articles/{id}/{slug}"
      * )
      *
-     * @param Request  $request
+     * @param Request $request
      * @param Response $response
      *
-     * @param array    $args
+     * @param array $args
      *
      * @return Response
      * @throws DataObjectManagerException
      * @throws NoSuchEntityException
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function article(Request $request, Response $response, array $args): Response
     {
@@ -182,9 +189,12 @@ class ArticleController extends BaseController
         /** @var Comment $comments */
         $comments = $this->commentRepository->getPaginatedCommentList($id, 1, 5);
 
-        return $this->twig->render($response, 'Frontend/Views/pages/article/article.twig', [
+        $list = $this->articleRepository->getPaginatedArticleList('1', '5');
+
+        return $this->twig->render($response, 'Frontend/Views/pages/community/article.twig', [
             'article' => $article,
             'comments' => $comments,
+            'list' => $list,
             'page' => 'article'
         ]);
     }
