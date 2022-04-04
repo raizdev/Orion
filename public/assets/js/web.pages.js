@@ -471,34 +471,7 @@ function WebPageHomeInterface(main_page) {
         var self = this;
         var page_container = this.main_page.get_page_container();
 
-        page_container.find(".photos-container").magnificPopup({
-            delegate: "a.photo-picture",
-            type: "image",
-            closeOnContentClick: false,
-            closeBtnInside: false,
-            mainClass: "mfp-with-zoom mfp-img-mobile",
-            image: {
-                verticalFit: true,
-                titleSrc: function(item) {
-                    if (User.is_logged == true) {
-                        return '<i class="fa fa-flag" data-value="photos" data-id="' + item.el.attr("data-id") + '" data-report="photo" style="color: #fff;"></i> ' + item.el.attr("data-title");
-                    } else {
-                        return item.el.attr("data-title");
-                    }
-                }
-            },
-            gallery: {
-                enabled: true
-            },
-            zoom: {
-                enabled: true,
-                duration: 300,
-                opener: function(element) {
-                    return element;
-                }
-            }
-    });
-}
+    }
 }
 
 function WebPageRegistrationInterface(main_page) {
@@ -517,8 +490,57 @@ function WebPageRegistrationInterface(main_page) {
         page_container.find(".username").keyup(function() {
             self.username_availability($(this).val());
         });
-      
+
+        page_container.find(".tabs-container span").click(function() {
+            if (!$(this).hasClass("selected"))
+                self.update_avatar($(this).attr("data-avatar"));
+        });
+
+        page_container.find("select[name = 'gender'].selectric").selectric({
+            theme: "web",
+            labelBuilder: "{text}",
+            onChange: function() {
+                self.gender = $(this).val();
+                self.update_avatar(1);
+            }
+        });
+
+
     }
+
+    /*
+    * Custom functions
+    * */
+    this.update_avatar = function(avatar) {
+        var page_container = this.main_page.get_page_container();
+        var avatars_preload = page_container.find(".avatars-preload");
+        var avatar_preload = avatars_preload.find("." + this.gender + "-avatar" + avatar).attr("src");
+        var avatar_look = avatars_preload.find("." + this.gender + "-avatar" + avatar).attr("data-look");
+
+        page_container.find(".avatars-container input[name = 'figure']").val(avatar_look);
+        page_container.find(".avatars-container .avatar-container img").attr("src", avatar_preload);
+        page_container.find(".tabs-container span.selected").removeClass("selected");
+        page_container.find(".tabs-container span[data-avatar = '" + avatar + "']").addClass("selected");
+
+        this.update_clouds();
+    };
+
+    this.update_clouds = function() {
+        var self = this;
+        var page_container = this.main_page.get_page_container();
+        clearTimeout(this.clouds_interval);
+        this.clouds_frame = 0;
+        this.clouds_interval = setInterval(function() {
+            self.clouds_frame++;
+            page_container.find(".avatars-container .avatar-container").attr("data-random", self.clouds_frame);
+            if (self.clouds_frame === 8) {
+                clearTimeout(self.clouds_interval);
+                self.clouds_frame = 0;
+                page_container.find(".avatars-container .avatar-container").removeAttr("data-random");
+            }
+        }, 100);
+    };
+
 
     this.username_availability = function(username) {
         var page_container = this.main_page.get_page_container();

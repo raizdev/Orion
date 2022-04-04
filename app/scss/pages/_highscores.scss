@@ -1,0 +1,94 @@
+.card-image {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  height: 100px;
+}
+
+.card-image.top-users-image {
+  height: 150px;
+  padding: 0px 1rem;
+  overflow: hidden;
+  justify-content: space-between;
+  background-image: url(/assets/images/web/pages/ranking/walking-on-credits.png), linear-gradient(to right, rgb(21, 61, 96), rgb(80, 117, 151));
+  background-position: left 58%;
+
+  .watching-people {
+    background: url(/assets/images/web/pages/ranking/Limited_take_out_promo1.png);
+    height: 198px;
+    width: 260px;
+    margin-top: -12px;
+    margin-left: -145px;
+  }
+
+  .podium {
+    margin-left: 55px;
+    background: url(/assets/images/web/pages/ranking/podium.png);
+    height: 95px;
+    width: 124px;
+    margin-top: 90px;
+    position: relative;
+
+    .first {
+      margin-top: -82px;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+
+    .second {
+      margin-top: -82px;
+      margin-left: -4px;
+    }
+
+    .third {
+      margin-right: -10px;
+      margin-top: -80px;
+    }
+
+    .avatar-m{
+      width: 64px;
+      height: 110px;
+      image-rendering: pixelated;
+    }
+  }
+}
+
+.card-content {
+
+  .highscore:nth-child(odd) {
+    background: #EFEFEF;
+  }
+
+  .highscore:not(.no-padding) {
+    padding: 1rem;
+  }
+
+  .highscore-row {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .top-users-item {
+      height: 60px;
+      overflow: hidden;
+    }
+
+    .highscore {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .self-baseline {
+        margin-top: 30px;
+      }
+
+      .amount {
+        margin-left: auto;
+      }
+    }
+  }
+}

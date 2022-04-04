@@ -1,176 +1,182 @@
 {% block base %}{% if not ajaxRequest %}
-    <!DOCTYPE html>
-    <html lang="nl">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta name="robots" content="follow, index">
-        <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-        <title>{{ page|capitalize }} - {{ config('hotel_settings.hotel_name') }}</title>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="robots" content="follow, index">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    <title>{{ page|capitalize }} - {{ config('hotel_settings.hotel_name') }}</title>
 
-        <meta name="description"
-              content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
-        <meta name="keywords"
-              content="cosmic, {{config('hotel_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
+    <meta name="description"
+          content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
+    <meta name="keywords"
+          content="cosmic, {{config('hotel_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
 
-        <meta property="og:title" content="{{config('hotel_settings.hotel_name')}}">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="/assets/images/summary-picture.png">
-        <meta property="og:description" content="Virtual world where you can make and meet friends.">
-        <meta property="og:site_name" content="{{config('hotel_settings.hotel_name')}}">
+    <meta property="og:title" content="{{config('hotel_settings.hotel_name')}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="/assets/images/summary-picture.png">
+    <meta property="og:description" content="Virtual world where you can make and meet friends.">
+    <meta property="og:site_name" content="{{config('hotel_settings.hotel_name')}}">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/assets/css/all.min.css" type="text/css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/all.min.css" type="text/css" />
 
-    </head>
-
-    <body class="flex-container flex-direction-column">
-    <noscript>
-        <style>
-            .loading-container {
-                display: none;
-            }
-        </style>
-    </noscript>
-    <div class="loading-container">
-        <div id="loading-background"></div>
-        <div class="loading-content">
-            <div class="c100 center">
-                <span></span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
+    <script>
+        window.onload = (event)=> {
+            let myAlert = document.querySelector('.toast');
+            let bsAlert = new  bootstrap.Toast(myAlert);
+            bsAlert.show();
+        }
+    </script>
+</head>
+<body>
+<noscript>
+    <style>
+        .loading-container {
+            display: none;
+        }
+    </style>
+</noscript>
+<div class="loading-container">
+    <div id="loading-background"></div>
+    <div class="loading-content">
+        <div class="c100 center">
+            <span></span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
             </div>
-            <div class="loading-bodytext"></div>
+        </div>
+        <div class="loading-bodytext"></div>
+    </div>
+</div>
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
         </div>
     </div>
-
-    <div class="page-loading"></div>
-    <div class="notifications-container"></div>
-
-    <div class="cookies-accept-container">
-        <div class="close-container">&times;</div>
-        {{site.sitename}} {{locale_base.cookies}}
-        <a href="/help" target="_blank">{{locale_base.read_more}}</a>
-    </div>
-
-    <nav class="navigation-container">
-        <ul class="navigation-menu flex-container">
-            <li class="navigation-item {% if "home" in page %}selected {% endif %}" data-category="home"><a
-                        href="{{ url_for('home') }}">{{lang('base.navbar.home')}}</a></li>
-            <li class="navigation-item has-items {% if "article" in page %}selected {% endif %}"
-                data-category="community">
-                <a>{{lang('base.navbar.community')}}</a>
-                <ul class="navigation-submenu">
-                    <li class="navigation-subitem"><a href="/articles">{{lang('base.navbar.community.articles')}}</a></li>
-                    <li class="navigation-subitem"><a href="{{ url_for('community-highscores') }}">{{lang('base.navbar.community.highscores')}}</a></li>
-                </ul>
-            </li>
-
-            {% if user %}
-                <li class="navigation-item navigation-right-side-item has-items">
-                    <a href="#">
-                        <div class="account-avatar"><img src="{{ config('hotel_settings.imaging_url') }}/?figure={{user.look}}&gesture=sml"
-                                                         alt="{{player.username}}" class="pixelated"></div>
-                        <span>{{user.username}}</span>
+</div>
+<header class="navbar-header">
+    <div class="navigation container">
+        <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{{ url_for('home') }}" class="nav-link selected px-2 link-secondary">{{ lang('base.navbar.home') }}</a></li>
+                <div class="dropdown text-end">
+                    <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ lang('base.navbar.community') }}
                     </a>
-                    <ul class="navigation-submenu">
-                        <li class="navigation-subitem"><a
-                                    href="/profile/{{user.username}}">{{ lang('base.navbar.user.profile') }}</a></li>
-                        <li class="navigation-subitem"><a href="/settings">{{ config('hotel_settings.hotel_name') }} ID
-                                {{ lang('base.navbar.user.settings') }}</a></li>
-                        <li class="navigation-subitem"><a href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">{{ lang('base.navbar.community.articles') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('community-highscores') }}">{{ lang('base.navbar.community.highscores') }}</a></li>
                     </ul>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-
-
-
-
-    <header class="header-container pixelated is-small">
-        <div class="header-content">
-            <div class="logo"><a href="{{ url_for('home') }}"><img class="inline-block" src="/assets/images/cosmic-logo.gif"
-                                                                   style="margin-top: 30px;"></a></div>
-            <div class="account-container">
-                <div class="account-title">
-                    {{locale_base.header_slogan2}}
                 </div>
-
-                <div class="account-buttons">
-                    <div class="enter-hotel">
-                        <div class="inner">
-                            {% if user %}
-                                <a href="{{ url_for('hotel') }}">
-                                    {{lang('base.header.to')}} {{ config('hotel_settings.hotel_name') }}
-                                </a>
-                            {% else %}
-                                <a href="{{ url_for('auth_sign-up') }}">
-                                    {{lang('base.header.register')}}
-                                </a>
-                            {% endif %}
+            </ul>
+            <div class="dropdown text-end">
+                <ul class="nav">
+                    <div class="account-avatar">
+                        <img src="https://avatar.mansionplay.com/?figure=hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61&amp;gesture=sml" alt="" class="pixelated">
+                    </div>
+                    <li class="nav-item">
+                        <a href="#" class="d-block text-decoration-none dropdown-toggle" id="dropdownUse2" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ user.username }}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUse2">
+                    <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
+                    <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}">{{ lang('base.navbar.user.logout') }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="header-container">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="header-card">
+                <div class="header-inner-card">
+                    <div class="information">
+                        <img class="inline-block" src="/assets/images/cosmic-logo.gif">
+                        <div class="online-user">
+                            0 Cosmic's online
+                        </div>
+                    </div>
+                    <div class="habbo-button">
+                        <div class="enter-hotel">
+                            <div class="inner">
+                                {% if user %}
+                                    <a href="{{ url_for('hotel') }}">
+                                        {{lang('base.header.to')}} {{ config('hotel_settings.hotel_name') }}
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url_for('auth_sign-up') }}">
+                                        {{lang('base.header.register')}}
+                                    </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+<div class="content-bar"></div>
+<div class="container content-container" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
+    {% block body %} {% endblock %}
+</div>
+{% if user %}
+    <div id="hotel-container">
+        <div class="client-buttons">
+            <button class="client-close rounded-button blue plain">
+                <i class="client-icon client-close-icon"></i>
+                <span class="client-close-expand"><span>Web</span></span>
+            </button>
+            <button class="client-fullscreen rounded-button blue plain">
+                <i class="client-icon client-fullscreen-icon"></i>
+                <i class="client-icon client-fullscreen-icon-back hidden"></i>
+            </button>
 
-    <div class="content-bar"></div>
+            <button class="client-count rounded-button blue plain">
+                {% if 'housekeeping' in permissions %}<a href="/housekeeping" target="_blank"
+                                                         style="color:#fff;text-decoration: none;"><i class="fa fa-user"></i> <b
+                            id="count">{{online_count}}</b></a>{% else %}<i class="fa fa-user"></i> <b
+                        id="count">{{online_count}}</b>{% endif %}
+            </button>
 
-    <section class="page-container content" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
-        {% block body %} {% endblock %}
-    </section>
+            <button class="client-radio rounded-button blue plain">
+                <audio controls id="stream" style="display:none">
+                    <source type="audio/mpeg">
+                </audio>
 
-    <footer class="footer-container">
-        <div class="footer-copyright">&copy; 2019 {{site.domain}} | <a href="/help/">{{locale_base.footer_helptool}}</a> | <a
-                    href="#" class="about-dialog-button">Cosmic</a></div>
-    </footer>
+                <i class="fa fa-play"></i>
+                <i class="fa fa-pause" style="display: none"></i>
 
-    {% if user %}
-        <div id="hotel-container">
-            <div class="client-buttons">
-                <button class="client-close rounded-button blue plain">
-                    <i class="client-icon client-close-icon"></i>
-                    <span class="client-close-expand"><span>Web</span></span>
-                </button>
-                <button class="client-fullscreen rounded-button blue plain">
-                    <i class="client-icon client-fullscreen-icon"></i>
-                    <i class="client-icon client-fullscreen-icon-back hidden"></i>
-                </button>
-
-                <button class="client-count rounded-button blue plain">
-                    {% if 'housekeeping' in permissions %}<a href="/housekeeping" target="_blank"
-                                                             style="color:#fff;text-decoration: none;"><i class="fa fa-user"></i> <b
-                                id="count">{{online_count}}</b></a>{% else %}<i class="fa fa-user"></i> <b
-                            id="count">{{online_count}}</b>{% endif %}
-                </button>
-
-                <button class="client-radio rounded-button blue plain">
-                    <audio controls id="stream" style="display:none">
-                        <source type="audio/mpeg">
-                    </audio>
-
-                    <i class="fa fa-play"></i>
-                    <i class="fa fa-pause" style="display: none"></i>
-
-                    <i class="fa fa-volume-down"></i>
-                    <i class="fa fa-volume-up"></i>
-                </button>
-            </div>
+                <i class="fa fa-volume-down"></i>
+                <i class="fa fa-volume-up"></i>
+            </button>
         </div>
-    {% endif %}
+    </div>
+{% endif %}
+</body>
 
-    <script type="text/javascript" src="/assets/js/all.min.js?v=49c286ab84367458fb462dc80e5f5b07"></script>
-    </body>
+<script type="text/javascript" src="/assets/js/all.min.js?v=49c286ab84367458fb462dc80e5f5b07"></script>
 
-    </html>
+</html>
 {% else %}
     {% set page = page %}
     {% set array = [ {'data': block('body'), 'page':  page}] %}

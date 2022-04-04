@@ -1,0 +1,11 @@
+@use "../variables";
+
+html,
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 13px;
+  color: #333;
+  margin: 0;
+  background: #e8e8e8 url(../images/web/background.png) no-repeat fixed right bottom;
+}
+

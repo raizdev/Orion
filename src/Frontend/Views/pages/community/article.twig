@@ -1,40 +1,44 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
-    <div class="page-content">
-        <div class="left-side">
-            <article class="default-section">
-                <div class="card">
-                    <a href="/article/read/{{article.id}}/{{article.slug}}">
+<div class="articleComponent">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
                         <div class="card-image discussion-image card-image-top" style="background-color: rgb(134, 53, 24); background-image: url({{article.image}}); color: rgb(255, 255, 255); background-position: center">
                             <div>
-                                <h2>{{article.title}}</h2>
+                                <h5>{{article.title}}</h5>
                                 {{article.description}}
                             </div>
                         </div>
-                        <div class="card-header">
+                        <div class="card-header p-3">
                             <div class="card-header-title-container">
-                                <div id="textbox">
-                                    <p class="timestamp"><img src="/assets/images/time.gif" /> {{article.created_at|date("d-M H:i")}}</p>
+                                <div class="textbox">
+                                    <p class="timestamp">
+                                        <img src="/assets/images/time.gif"> {{article.created_at|date("d-M H:i")}}
+                                    </p>
                                     <p class="author">
-                                        by <b><a href="">{{article.user.username}}</a></b>
+                                        by <a href="#"><b style="font-weight: 500">{{article.user.username}}</b></a>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <div class="card-content">
-                        {{article.content|raw}}
+                        <div class="card-content">
+                            {{article.content|raw}}
+                        </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
-
-        <div class="right-side" style="margin-bottom: 7px;">
-            <aside class="default-section">
+        <div class="col-md-4">
+            <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">{{ lang('article.comments')}}</div>
+                            <div class="card-header-title">
+                                {{ lang('article.comments') }}
+                            </div>
                         </div>
                     </div>
                     {% for comment in comments %}
@@ -51,54 +55,30 @@
                     </div>
                     {% endfor %}
                     {% if comments is empty %}
-                    <div class="card-content">
-                        There are no comments yet, are you the first?
-                    </div>
+                        <div class="card-content">
+                            There are no comments yet, are you the first?
+                        </div>
                     {% endif %}
                 </div>
-            </aside>
-
-            {% if user %}
-            <aside class="default-section">
-                <form method="post" action="{{ url_for('comment_create') }}">
+            </div>
+            <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">Comment</div>
+                            <div class="card-header-title">
+                                Who's new?
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
+                    <div class="card-content no-spacing">
                         <textarea name="content" placeholder="Comment here..."></textarea>
                     </div>
-                </div>
-                <div class="card-footer no-spacing">
-                    <input type="hidden" name="article_id" value="{{ article.id }}">
-                    <button type="submit" variant="success" class="btn btn-fw btn-success">Comment</button>
-                </div>
-                </form>
-            </aside>
-            {% endif %}
-
-            <aside class="default-section">
-                <div class="card">
-                    <div class="card-header"></div>
-                    <div class="aside-content">
-                        <div class="related-articles-container">
-                            {% for item in list %}
-                                <a href="{{ url_for('article-view', {'id': item.id, 'slug': item.slug}) }}" class="related-article-container">
-                                    <div class="related-article-thumbnail" style="background-image: url({{item.image}});"></div>
-                                    <div class="related-article-details">
-                                        <div class="related-article-title">{{item.title}} </div>
-                                        <div class="related-article-date">{{item.created_at|date("d-M H:i")}}</div>
-                                    </div>
-                                </a>
-                            {% endfor %}
-                        </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-fw btn-primary">{{ lang('article.comment') }}</button>
                     </div>
                 </div>
-            </aside>
-
+            </div>
         </div>
-
     </div>
+</div>
 {% endblock %}

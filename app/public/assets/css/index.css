@@ -1,0 +1,36 @@
+/* Error: Can't find stylesheet to import.
+ *    ,
+ * 1  | / @use "../../../node_modules/bootstrap/scss/bootstrap" with (
+ * 2  | |     $body-bg: #fff,
+ * 3  | |     $body-color: #fff,
+ * 4  | | 
+ * 5  | |     $navbar-light-color: #fff,
+ * 6  | |     $navbar-light-hover-color: #2C3039,
+ * 7  | |     $navbar-light-active-color: #2C3039,
+ * 8  | | 
+ * 9  | |     $theme-colors: (
+ * 10 | |       'primary': #44a248,
+ * 11 | |       'danger': #ff4136,
+ * 12 | |       'orange': #EEB425,
+ * 13 | |       'light': #fff
+ * 14 | |     ),
+ * 15 | | 
+ * 16 | |     $container-max-widths: (
+ * 17 | |       lg: 1100px,
+ * 18 | |       xl: 1100px
+ * 19 | |     )
+ * 20 | | );
+ *    | '-^
+ *    '
+ *   index.scss 1:1  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a    \2577 \a 1  \2502  \250c  @use \"../../../node_modules/bootstrap/scss/bootstrap\" with (\a 2  \2502  \2502      $body-bg: #fff,\a 3  \2502  \2502      $body-color: #fff,\a 4  \2502  \2502  \a 5  \2502  \2502      $navbar-light-color: #fff,\a 6  \2502  \2502      $navbar-light-hover-color: #2C3039,\a 7  \2502  \2502      $navbar-light-active-color: #2C3039,\a 8  \2502  \2502  \a 9  \2502  \2502      $theme-colors: (\a 10 \2502  \2502        'primary': #44a248,\a 11 \2502  \2502        'danger': #ff4136,\a 12 \2502  \2502        'orange': #EEB425,\a 13 \2502  \2502        'light': #fff\a 14 \2502  \2502      ),\a 15 \2502  \2502  \a 16 \2502  \2502      $container-max-widths: (\a 17 \2502  \2502        lg: 1100px,\a 18 \2502  \2502        xl: 1100px\a 19 \2502  \2502      )\a 20 \2502  \2502  );\a    \2502  \2514 \2500 ^\a    \2575 \a   index.scss 1:1  root stylesheet";
+}

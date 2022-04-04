@@ -9,7 +9,12 @@
   "base.navbar.user.settings": "Settings",
   "base.navbar.user.logout": "Logout",
 
+  "home.latestbadges": "Latest Badges",
+  "home.online": "Who's online?",
+  "home.online.nobody": "No users are online yet, do you come in?",
+
   "article.comments": "Comments",
+  "article.comment": "Comment!",
 
   "highscores.most.credits": "Most credits",
   "highscores.most.duckets": "Most duckets",

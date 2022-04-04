@@ -1,168 +1,125 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
-    <div class="page-content">
-        <div class="left-side" style="height: auto !important;">
+<div id="homeComponent">
+    <div class="row">
+        <div class="col-md-8">
             <div class="row">
                 {% for article in articles %}
-                    <div class="column">
-                        <aside class="default-section">
-                            <div class="card">
-                                <a href="{{ url_for('article-view', {'id': article.id, 'slug': article.slug}) }}">
-                                    <div class="card-image discussion-image card-image-top" style="background-color: rgb(134, 53, 24); background-image: url({{article.image}}); color: rgb(255, 255, 255); background-position: center">
-                                        <div>
-                                            <h2>{{article.title}}</h2>
-                                            {{article.description}}
-                                        </div>
-                                    </div>
-                                    <div class="card-header">
-                                        <div class="card-header-title-container">
-                                            <div id="textbox">
-                                                <p class="timestamp"><img src="/assets/images/time.gif" /> {{article.created_at|date("d-M H:i")}}</p>
-                                                <p class="author">
-                                                    by <b>
-                                                        <a href="">{{article.user.username}}</a></b>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                <div class="col-md-6">
+                    <div class="card">
+                        <a href="{{ url_for('article-view', {'id': article.id, 'slug': article.slug}) }}">
+                            <div class="card-image discussion-image card-image-top" style="background-color: rgb(134, 53, 24); background-image: url({{ article.image }}); color: rgb(255, 255, 255); background-position: center">
+                                <div>
+                                    <h5>{{article.title}}</h5>
+                                    {{article.description}}
+                                </div>
                             </div>
-                        </aside>
+                        </a>
+                        <div class="card-header p-3">
+                            <div class="card-header-title-container">
+                                <div class="textbox">
+                                    <p class="timestamp">
+                                        <img src="/assets/images/time.gif"> {{article.created_at|date("d-M H:i")}}
+                                    </p>
+                                    <p class="author">
+                                        by <a href="#"><b style="font-weight: 500">{{article.user.username}}</b></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
             <div class="row">
                 {% for photo in photos %}
-                    <div class="column-two">
-                        <div class="photos-container">
-                            <div class="photo-container">
-                                <div class="photo-content">
-                                    <a href="{{photo.url}}" class="photo-picture" target="_blank" style="background-image: url({{photo.url}});" data-id="{{photo.id}}" data-title="{{photo.timestamp|date("d-M H:i")}} {{locale.by}} {{photo.author.username}}"></a>
-                                    <a href="#" class="photo-meta flex-container flex-vertical-center">
-                                        <div class="photo-meta-left-side"><img src="{{getenv}}/avatarimage?figure={{photo.author.look}}&gesture=sml&headonly=1" alt="{{photo.author.username}}" class="pixelated"></div>
-                                        <div class="photo-meta-right-side">
-                                            <div class="creator-name">{{photo.author.username}}</div>
-                                            <div class="published-date">{{photo.timestamp|date("d-M H:i")}}</div>
-                                            <span class="likes-count fc-like" data-id="{{photo.id}}">{{photo.likes}}</span> <i class="fa fa-heart" data-id="{{photo.id}}" style="color: #D67979;"></i></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col col-md-3">
+                    <div class="photo-content">
+                        <div class="inner-photo" style="background: url({{photo.url}}); background-position: center;"></div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
-            <aside class="default-section">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="card-header-title">Latest Badges</div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="badge-list-grid">
-                            {% for badge, value in badges %}
-                                <div>
-                                    <div class="badge mr-1 flex-shrink-0 align-self-center" id="popover-rares-1">
-                                        <img src="{{ config('hotel_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}" title="Test">
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            <aside class="default-section">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="card-header-title">Online {{getenv}}'s</div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="user-list-grid">
-                            {% for user in onlineUsers %}
-                                <div class="user-list-card avatar-card" style="background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8) ), url(/assets/images/bg-online-avatar.png);">
-                                    <div class="habboImage" id="avatar-BerriesAndCream">
-                                        <img src="https://avatar.habme.ws/?figure={{user.look}}" />
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            {% if onlineUsers is empty %}
-                                No users are online yet, do you come in?
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </div>
-        <div class="right-side" style="margin-bottom: 7px;">
-            <aside class="default-section">
-                <form method="post" action="{{ url_for('auth_sign-in') }}">
+            <div class="row mt-4">
+                <div class="col col-lg-12">
                     <div class="card">
-
                         <div class="card-header">
-                            <div class="card-header-title-container" style="position: relative;">
-                                <div class="card-header-title">
-                                    {% if user %}
-                                        Welcome {{user.username}}
-                                    {% else %}
-                                        Login into Cosmic
-                                    {% endif %}
-                                </div>
+                            <div class="card-header-title-container">
+                                <div class="card-header-title">{{ lang('home.latestbadges') }}</div>
                             </div>
                         </div>
-                        {% if user %}
-                            <div class="card-content">
-                                <div class="bg-off-white currency-row text-lush-info-text">
-                                    <span class="currency"><img src="/assets/images/hotel/purses/{{value.type}}-icon.png" style="padding-right: 0.25rem"></span>
+                        <div class="card-content">
+                            <div class="d-flex justify-content-center  flex-wrap">
+                                {% for badge, value in badges %}
+                                <div class="badge">
+                                    <img src="{{ config('hotel_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}" title="Test">
                                 </div>
+                                {% endfor %}
                             </div>
-                        {% else %}
-                            <div class="card-content">
-                                <label class="form-control-container" for="username">
-                                    <icon class="form-control-container-icon">
-                                        <i class="icon-dog"></i>
-                                    </icon>
-                                    <input class="form-control has-icon" placeholder="Username" name="username" type="text" />
-                                </label>
-                                <label class="form-control-container" for="password">
-                                    <icon class="form-control-container-icon">
-                                        <i class="icon-password"></i>
-                                    </icon>
-                                    <input class="form-control has-icon" placeholder="Password" name="password" type="password" />
-                                </label>
-                            </div>
-                            <div class="card-footer no-spacing">
-                                <button type="submit" variant="success" class="btn btn-fw btn-success">Login</button>
-                            </div>
-                        {% endif %}
+                        </div>
                     </div>
-                </form>
-            </aside>
-
-            <aside class="default-section">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-title">{{ lang('home.online') }}?</div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            {{ lang('home.online.nobody') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">Who's new?</div>
-                        </div>
-                    </div>
-                    {% for user in latestUsers %}
-                        <div class="card-content no-spacing oddeven">
-                            <div class="author">
-                                <div class="avatar">
-                                    <img alt="User avatar" class="avatar avatar-m" src="https://avatar.habme.ws/?figure={{user.look}}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                                </div>
-                                <div class="info">
-                                    <span class="username"><a href="#">{{user.username}}</a></span>
-                                    <span>{{user.motto}}</span>
-                                </div>
+                            <div class="card-header-title">
+                                Login into Cosmic
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <span class="fa fa-user form-control-icon"></span>
+                                    <input type="text" class="form-control" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <span class="fa fa-lock form-control-icon"></span>
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-fw btn-primary">Login</button>
+                    </div>
                 </div>
-            </aside>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title-container" style="position: relative;">
+                            <div class="card-header-title">
+                                Who's new?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}

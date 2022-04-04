@@ -1,0 +1,117 @@
+/* Hotel */
+#hotel-container {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: -9999px;
+  z-index: 600;
+  width: 100%;
+  height: 100%;
+}
+
+.hotel-visible #hotel-container {
+  left: 0;
+}
+
+#hotel-container .client-buttons {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+}
+
+#hotel-container .client-buttons button {
+  -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  float: left;
+  padding: 7px;
+  min-width: 34px;
+  height: 34px;
+  font-size: 12px;
+  margin-right: 10px;
+  line-height: normal;
+}
+
+#hotel-container .client-buttons button .client-icon {
+  -webkit-filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3));
+  display: inline-block;
+  font-style: normal;
+  float: left;
+}
+
+#hotel-container .client-buttons button .client-icon.client-close-icon {
+  background-image: url(../images/favicon-white.png?2);
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+}
+
+#hotel-container .client-buttons button .client-icon.client-fullscreen-icon,
+#hotel-container .client-buttons button .client-icon.client-fullscreen-icon-back {
+  background-image: url(../images/web/fullscreen-icon.png);
+  background-position: 0 -14px;
+  width: 14px;
+  height: 14px;
+  margin: 1px;
+}
+
+#hotel-container .client-buttons button .client-icon.client-fullscreen-icon-back {
+  background-position: 0 0;
+}
+
+#hotel-container .client-buttons button .client-icon.hidden {
+  display: none;
+}
+
+#hotel-container .client-buttons button.client-close .client-close-expand {
+  float: left;
+  overflow: hidden;
+  width: 0;
+  text-align: left;
+  -webkit-transition: width 0.15s ease-out 0s;
+  transition: width 0.15s ease-out 0s;
+}
+
+#hotel-container .client-buttons button.client-close .client-close-expand span {
+  padding: 1px 0 0 8px;
+  display: inline-block;
+}
+
+#hotel-container .client-buttons button.client-close:hover .client-close-expand {
+  width: 39px;
+}
+
+#hotel-container .client-buttons button.client-players {
+  cursor: default;
+}
+
+#hotel-container .client-buttons button.client-players .client-icon.client-players-icon {
+  background-image: url(../images/web/players-icon.png);
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+}
+
+#hotel-container .client-buttons button.client-players .client-players-count {
+  float: left;
+  text-align: left;
+  padding: 0 2px 0 6px;
+  font-size: 14px;
+  position: relative;
+  top: -1px;
+  display: inline-block;
+}
+
+#hotel-container .client-frame {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  display: block;
+  border: 0 none;
+}

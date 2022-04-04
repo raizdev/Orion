@@ -135,7 +135,7 @@ class Minifier
 
     public $js = [
         'all.min.js' => [
-            'jquery-3.2.1.min.js', 'jquery.ui.touch-punch.min.js', 'js.cookie.js', 'jquery.fullscreen.min.js', 'jquery.history.js', 'jquery.magnific-popup.js', 'loading.js'
+            'bootstrap.js', 'fontawesome.js', 'jquery-3.2.1.min.js', 'jquery.ui.touch-punch.min.js', 'jquery.history.js',  'loading.js'
         ]
     ];
 
@@ -151,7 +151,7 @@ class Minifier
 
     public $css = [
         'all.min.css' => [
-            'fonts.css', 'magnific-popup.css', 'custom.css', 'circle.css', 'flaticon.css', 'style.css', 'responsive.css'
+            'index.css', 'circle.css'
         ]
     ];
 }

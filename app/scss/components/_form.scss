@@ -1,0 +1,32 @@
+.form-group {
+
+  &:focus {
+    color: #000;
+  }
+
+  .form-control {
+    padding-left: 2.375rem;
+  }
+
+  .form-control-icon {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+    padding: 2px;
+  }
+
+  input {
+    color: rgb(85,85,85);
+    font-size: 14px;
+  }
+
+  input:focus {
+    color: #000;
+  }
+}
