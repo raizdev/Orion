@@ -135,7 +135,7 @@ class Minifier
 
     public $js = [
         'all.min.js' => [
-            'bootstrap.js', 'fontawesome.js', 'jquery-3.2.1.min.js', 'jquery.ui.touch-punch.min.js', 'jquery.history.js',  'loading.js'
+            'bootstrap.js', 'fontawesome.js', 'jquery-3.2.1.min.js', 'jquery.ui.touch-punch.min.js', 'jquery.history.js',  'loading.js', 'notyf.min.js'
         ]
     ];
 
@@ -151,7 +151,7 @@ class Minifier
 
     public $css = [
         'all.min.css' => [
-            'index.css', 'circle.css'
+            'index.css', 'circle.css', 'notyf.min.css'
         ]
     ];
 }

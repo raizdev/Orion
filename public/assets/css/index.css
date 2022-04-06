@@ -10722,6 +10722,7 @@ body {
   color: #333;
   margin: 0;
   background: #e8e8e8 url(../images/web/background.png) no-repeat fixed right bottom;
+  position: relative;
 }
 
 .navbar-header {
@@ -10786,6 +10787,7 @@ body {
   background: url(../images/web/header/citysky.png), url(../images/web/header/cloudysky.png) repeat-x;
   border-bottom: 3px solid rgba(8, 8, 8, 0.18);
   animation: 60s linear 0s infinite normal none running slide;
+  margin-top: 60px;
 }
 
 @-webkit-keyframes slide {
@@ -11056,6 +11058,7 @@ body {
 .loading-container {
   color: #fff;
   font-family: "Poppins", Arial, sans-serif;
+  z-index: 5001;
 }
 
 .loading-container {
@@ -11073,12 +11076,12 @@ body {
 .loading-container,
 .loading-container #loading-background,
 .loading-container .loading-content {
+  z-index: 5001;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 650;
 }
 
 .loading-container .loading-content {
@@ -11225,7 +11228,7 @@ body {
   margin-left: 1rem;
 }
 .card .card-content .author .info .username {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #535355;
 }
@@ -11368,6 +11371,10 @@ textarea {
   color: #fff;
 }
 
+.card-footer .btn:hover {
+  color: #fff;
+  background-color: #37873a;
+}
 .card-footer .btn {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
@@ -11398,9 +11405,24 @@ textarea {
 
 .toast {
   font-size: 1rem;
+  z-index: 5000;
 }
 .toast .toast-body {
   background-color: #fff;
+}
+.toast .toast-header {
+  font-size: 14px;
+  color: #000;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+.toast .error {
+  border: 1px solid #f5c2c7;
+  background-color: #f8d7da;
+}
+.toast .success {
+  border: 1px solid #badbcc;
+  background-color: #d1e7dd;
 }
 
 #homeComponent .badge {

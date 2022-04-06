@@ -7,6 +7,8 @@
   background: url(../images/web/header/citysky.png),url(../images/web/header/cloudysky.png) repeat-x;
   border-bottom: 3px solid rgba(8, 8, 8, 0.18);
   animation: 60s linear 0s infinite normal none running slide;
+  margin-top: 60px;
+
 }
 
 @-webkit-keyframes slide {

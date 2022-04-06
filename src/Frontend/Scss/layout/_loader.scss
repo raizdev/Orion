@@ -1,6 +1,7 @@
 .loading-container {
   color: #fff;
   font-family: "Poppins", Arial, sans-serif;
+  z-index: 5001;
 }
 
 .loading-container {
@@ -18,12 +19,12 @@
 .loading-container,
 .loading-container #loading-background,
 .loading-container .loading-content {
+  z-index: 5001;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 650;
 }
 
 .loading-container .loading-content {

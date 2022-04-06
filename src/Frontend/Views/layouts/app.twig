@@ -23,15 +23,8 @@
     <meta property="og:site_name" content="{{config('hotel_settings.hotel_name')}}">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/all.min.css" type="text/css" />
 
-    <script>
-        window.onload = (event)=> {
-            let myAlert = document.querySelector('.toast');
-            let bsAlert = new  bootstrap.Toast(myAlert);
-            bsAlert.show();
-        }
-    </script>
+    <link rel="stylesheet" href="/assets/css/all.min.css" type="text/css" />
 </head>
 <body>
 <noscript>
@@ -54,19 +47,8 @@
         <div class="loading-bodytext"></div>
     </div>
 </div>
-<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-    </div>
-</div>
-<header class="navbar-header">
+<div class="notifications-container"></div>
+<nav class="navbar-header fixed-top">
     <div class="navigation container">
         <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -81,30 +63,36 @@
                     </ul>
                 </div>
             </ul>
+            {% if user %}
             <div class="dropdown text-end">
-                <ul class="nav">
-                    <div class="account-avatar">
-                        <img src="https://avatar.mansionplay.com/?figure=hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61&amp;gesture=sml" alt="" class="pixelated">
-                    </div>
-                    <li class="nav-item">
-                        <a href="#" class="d-block text-decoration-none dropdown-toggle" id="dropdownUse2" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ user.username }}
-                        </a>
-                    </li>
-                </ul>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUse2">
-                    <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
-                    <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}">{{ lang('base.navbar.user.logout') }}</a></li>
-                </ul>
+                <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
+                    <ul class="nav">
+                        <div class="account-avatar">
+                            <img src="https://avatar.mansionplay.com/?figure=hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61&amp;gesture=sml" alt="" class="pixelated">
+                        </div>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUse2" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUse2">
+                                <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
+                                <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
+                {% endif %}
         </div>
     </div>
-</header>
+</nav>
 <header class="header-container">
+
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="header-card">
@@ -173,9 +161,7 @@
     </div>
 {% endif %}
 </body>
-
 <script type="text/javascript" src="/assets/js/all.min.js?v=49c286ab84367458fb462dc80e5f5b07"></script>
-
 </html>
 {% else %}
     {% set page = page %}

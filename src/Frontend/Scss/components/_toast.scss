@@ -1,9 +1,28 @@
 .toast {
 
   font-size: 1rem;
+  z-index: 5000;
 
   .toast-body {
     background-color: #fff;
   }
 
+  .toast-header {
+
+    font-size: 14px;
+    color: #000;
+    font-weight: 100;
+    text-transform: capitalize;
+
+  }
+
+  .error {
+    border: 1px solid #f5c2c7;
+    background-color: #f8d7da;
+  }
+
+  .success {
+    border: 1px solid #badbcc;
+    background-color: #d1e7dd;
+  }
 }

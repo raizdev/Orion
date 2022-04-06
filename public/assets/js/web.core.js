@@ -314,7 +314,7 @@ function WebPagesManagerInterface() {
                 }
             }).done(function (result) {
                 PageLoading.hide();
-              
+
                 var decode = htmlDecode(result);
                 var result = JSON.parse(decode)[0];
               
@@ -559,7 +559,6 @@ function WebAjaxManagerInterface() {
                 if (!result.captcha_error)
                     form.find(".registration-recaptcha").removeClass("registration-recaptcha").removeAttr("data-sitekey").removeAttr("data-callback");
             }
-            console.log(result.errors);
 
             if(result.errors) {
                 var errorTitle = result.errors[0].field;
@@ -569,7 +568,7 @@ function WebAjaxManagerInterface() {
             }
 
             // Create notification
-            if (!isEmpty(result.data.status) && !isEmpty(result.data.message)) {
+            if (result.data && !isEmpty(result.data.status) && !isEmpty(result.data.message)) {
                 Web.notifications_manager.create(result.data.status,  result.data.message, result.data.title, (Number.isInteger(result.timer) ? result.timer : undefined), (result.data.link ? result.data.link : null));
             }
           
@@ -623,68 +622,24 @@ function WebNotificationInterface(manager, id, type, message, title, timer, link
 
 
     this.init = function () {
-        var self = this;
-        var template = [
-            '<div class="notification-container" data-id="' + this.id + '" data-type="' + this.type + '">\n' +
-            '    <a href="#" class="notification-close"></a>\n' +
-            '    <div class="notification-title">' + (this.title != null ? this.title : this.manager.titles_configutation[this.type]) + '</div>\n' +
-            '    <div class="notification-content">' + this.message + '</div>\n' +
-            '</div>'
-        ].join("");
+        var self = this
 
-        this.notification = $(template).appendTo(".notifications-container");
-
-        this.notification.find(".notification-close").click(function () {
-            self.close();
+        const notyf = new Notyf({
+            position: {
+                x: 'right',
+                y: 'top',
+            },
+            types: [
+                {
+                    duration: 2000,
+                    dismissible: true
+                }
+            ]
         });
 
-        if (this.link != null) {
-            this.notification.click(function () {
-                if ($(this).hasClass("notification-close"))
-                    return null;
-
-                var href = self.link.replace(Site.url + "/", "").replace(Site.url, "");
-                if (!href)
-                    href = "home";
-
-                Web.page_container.load(href);
-            });
-        }
-
-        if (this.timer !== 0) {
-            this.notification.hover(function () {
-                clearTimeout(self.timeout);
-            }, function () {
-                self.timeout = setTimeout(function () {
-                    self.close();
-                }, self.timer * 1000);
-            });
-        }
-
-        this.show();
-    };
-
-    this.show = function () {
-        var self = this;
-
-        if (this.timer === 0)
-            this.notification.fadeIn();
-        else {
-            this.notification.fadeIn();
-            this.timeout = setTimeout(function () {
-                self.close();
-            }, this.timer * 1000);
-        }
-    };
-
-    this.close = function () {
-        var self = this;
-        this.notification.animate({
-            "opacity": 0
-        }, 300, function () {
-            $(this).slideUp(400, function () {
-                self.manager.destroy(self.id);
-            });
+        notyf.open({
+            type: (this.manager.titles_configutation[this.type] == "error" ? "error" : "success"),
+            message: this.message
         });
     };
 }

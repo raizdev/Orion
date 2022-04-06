@@ -42,10 +42,7 @@ function SiteLoadingInterface()
 
     this.init = function ()
     {
-        console.log(
-            "Cosmic - All rights reserved\n\n" +
-            "Everything you do here falls under your own responsibility. Never give your code if someone asks for it. If you paste a code here, you will never get free credits or other items.\n\n" +
-            "- Cosmic Dev");
+        console.log("Cosmic Forward - All rights reserved");
         this.total_files = this.files.length;
         this.loading_container = $(".loading-container");
 
