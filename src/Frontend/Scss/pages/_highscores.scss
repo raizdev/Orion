@@ -21,6 +21,14 @@
     margin-left: -145px;
   }
 
+  .prizes {
+    .first {
+      background-image: url(/assets/images/highscores/trophy-gold.png);
+      background-color: #f9d83e;
+      color: transparent;
+    }
+  }
+
   .podium {
     margin-left: 55px;
     background: url(/assets/images/web/pages/ranking/podium.png);

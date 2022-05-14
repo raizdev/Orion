@@ -1,137 +1,159 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
-    <div class="page-content">
+<div id="registrationComponent">
 
-        <div class="card">
-            <div class="card-header card-header-right-image moving">
-                <div class="card-header-title-container ng-star-inserted">
-                    <div class="background-gray card-header-icon-container ng-star-inserted"><div class="header-icon icon-newuser"></div>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header card-header-right-image moving">
+                    <div class="card-header-title-container ng-star-inserted">
+                        <div class="background-gray card-header-icon-container ng-star-inserted"><div class="header-icon icon-newuser"></div>
+                        </div>
+                        <div class="card-header-titles ng-star-inserted">
+                            <div class="card-header-title">{{ lang('register.header.text') }}</div>
+                            <span class="card-header-subtitle ng-star-inserted">{{ lang('register.header.subtext') }}</span>
+                        </div>
+                        <div class="card-header-actions"></div>
                     </div>
-                    <div class="card-header-titles ng-star-inserted">
-                        <div class="card-header-title">{{ lang('register.header.text') }}</div>
-                        <span class="card-header-subtitle ng-star-inserted">{{ lang('register.header.subtext') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" action="{{ url_for('auth_account-registration') }}">
+    <div class="row justify-content-md-center mt-4">
+
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-icon-container ">
+                                    <div class="header-icon icon box-one"></div>
+                                </div>
+                                <div class="card-header-titles">
+                                    <div class="card-header-title">{{ lang('register.step1.text') }}</div>
+                                    <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step1.subtext') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <label class="form-control-container" for="username">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-dog"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="{{ lang('register.step1.field.username') }}" name="username" type="text" />
+                            </label>
+                            <label class="form-control-container" for="mail">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-envelope"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="{{ lang('register.step1.field.mail') }}" name="mail" type="email" />
+                            </label>
+                        </div>
                     </div>
-                    <div class="card-header-actions"></div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-icon-container ">
+                                    <div class="header-icon icon box-two"></div>
+                                </div>
+                                <div class="card-header-titles">
+                                    <div class="card-header-title">{{ lang('register.step2.text') }}</div>
+                                    <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step2.subtext') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <label class="form-control-container" for="password">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-password"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="{{ lang('register.step2.field.password') }}" name="password" type="password" />
+                            </label>
+                            <label class="form-control-container" for="password_confirmation">
+                                <icon class="form-control-container-icon">
+                                    <i class="icon-password"></i>
+                                </icon>
+                                <input class="form-control has-icon" placeholder="{{ lang('register.step2.field.password_confirmation') }}" name="password_confirmation" type="password" />
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <form method="post" action="{{ url_for('auth_account-registration') }}">
-            <div class="left-side sm">
-                <div class="card mt-5">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="card-header-icon-container ">
-                                <div class="header-icon icon-box-one"></div>
-                            </div>
-                            <div class="card-header-titles">
-                                <div class="card-header-title">{{ lang('register.step1.text') }}</div>
-                                <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step1.subtext') }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <label class="form-control-container" for="username">
-                            <icon class="form-control-container-icon">
-                                <i class="icon-dog"></i>
-                            </icon>
-                            <input class="form-control has-icon" placeholder="{{ lang('register.step1.field.username') }}" name="username" type="text" />
-                        </label>
-                        <label class="form-control-container" for="mail">
-                            <icon class="form-control-container-icon">
-                                <i class="icon-envelope"></i>
-                            </icon>
-                            <input class="form-control has-icon" placeholder="{{ lang('register.step1.field.mail') }}" name="mail" type="email" />
-                        </label>
-                    </div>
-                </div>
-                <div class="card mt-5">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="card-header-icon-container ">
-                                <div class="header-icon icon-box-three"></div>
-                            </div>
-                            <div class="card-header-titles">
-                                <div class="card-header-title">{{ lang('register.step2.text') }}</div>
-                                <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step2.subtext') }}</span>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-icon-container ">
+                                    <div class="header-icon icon box-three"></div>
+                                </div>
+                                <div class="card-header-titles">
+                                    <div class="card-header-title">{{ lang('register.step3.text') }}</div>
+                                    <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step3.subtext') }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-content">
-                        <label class="form-control-container" for="password">
-                            <icon class="form-control-container-icon">
-                                <i class="icon-password"></i>
-                            </icon>
-                            <input class="form-control has-icon" placeholder="{{ lang('register.step2.field.password') }}" name="password" type="password" />
-                        </label>
-                        <label class="form-control-container" for="password_confirmation">
-                            <icon class="form-control-container-icon">
-                                <i class="icon-password"></i>
-                            </icon>
-                            <input class="form-control has-icon" placeholder="{{ lang('register.step2.field.password_confirmation') }}" name="password_confirmation" type="password" />
-                        </label>
+                        <div class="card-content">
+                            <div class="d-flex justify-content-center mb-3 mt-2 gender-selector">
+                                <a href="#" data-gender="M" class="gender male active">
+                                    <p class="text">Male</p>
+                                </a>
+                                <a href="#" data-gender="F" class="gender female not-active">
+                                    <p class="text">Female</p>
+                                </a>
+                            </div>
+                            <div class="d-flex justify-content-center avatar-selector">
+                                {% for key,gender in config('hotel_settings.register.looks') %}
+                                    <div class="d-flex {{ key }}" {% if key == "girl" %} style="display: none !important" {% endif %}>
+                                        {% for number,look in gender %}
+                                            <div class="wrapper-item not-active">
+                                                <img class="look" data-look="{{look}}" src="{{ config('hotel_settings.imaging_url') }}?figure={{look}}&amp;direction=4&amp;size=l&headonly=1" alt="Preload avatar M1">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                                <input type="hidden" name="look">
+                                <input type="hidden" name="gender" value="M">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="right-side sm">
-                <div class="card mt-5">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="card-header-icon-container ">
-                                <div class="header-icon icon-box-two"></div>
-                            </div>
-                            <div class="card-header-titles">
-                                <div class="card-header-title">{{ lang('register.step3.text') }}</div>
-                                <span class="card-header-subtitle ng-star-inserted">{{ lang('register.step3.subtext') }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="avatars-container">
-                            <input type="hidden" name="look" value="hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61">
-                            <input type="hidden" name="gender" value="M">
-                            <div class="avatars-preload">
-                                {% for key,gender in looks %}
-                                    {% for number,look in gender %}
-                                        <img class="{{key}}-avatar{{number}} pixelated" data-look="{{look}}" src="{{site.fpath}}/avatarimage?figure={{look}}&amp;direction=4&amp;size=l&headonly=1" alt="Preload avatar M1">
-                                        {{key}}
-                                    {% endfor %}
-                                {% endfor %}
-                            </div>
-                            <div class="avatar-container">
-                                <img src="{{ config('hotel_settings.imaging_url' )}}/?figure=hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61&amp;direction=4&amp;size=l&amp;headonly=1" alt="Avatar" class="pixelated">
-                            </div>
-                            <div class="tabs-container">
-                                <span class="selected" data-avatar="0"></span>
-                                <span data-avatar="1"></span>
-                                <span data-avatar="2"></span>
-                                <span data-avatar="3"></span>
-                                <span data-avatar="4"></span>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-title-container">
+                                <div class="card-header-icon-container ">
+                                    <div class="header-icon">
+                                        <img class="look-preview" src="https://mansionplay.com/imaging/?figure=ea-1401-63.lg-275-73.hr-828-45.fa-1212-63.ch-255-64.hd-180-8.sh-290-91&direction=4&size=m">
+                                    </div>
+                                </div>
+                                <div class="card-header-titles mt-3 mx-lg-4">
+                                    <h5>{{ lang('register.step4.text') }}</h5>
+                                </div>
                             </div>
                         </div>
-                        <select name="gender" class="selectric">
-                            <option value="male">Man</option>
-                            <option value="female">Vrouw</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="card mt-5">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="card-header-icon-container ">
-                                <div class="header-icon icon-box-one"></div>
-                            </div>
-                            <div class="card-header-titles">
-                                <div class="card-header-title">{{ lang('register.step4.text') }}</div>
-                            </div>
+                        <div class="card-footer no-spacing">
+                            <button type="submit" variant="success" class="btn btn-fw btn-success">{{ lang('register.step4.create') }}</button>
                         </div>
-                    </div>
-                    <div class="card-footer no-spacing">
-                        <button type="submit" variant="success" class="btn btn-fw btn-success">{{ lang('register.step4.create') }}</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+    </form>
+</div>
 {% endblock %}

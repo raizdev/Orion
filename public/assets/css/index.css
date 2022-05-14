@@ -10723,6 +10723,7 @@ body {
   margin: 0;
   background: #e8e8e8 url(../images/web/background.png) no-repeat fixed right bottom;
   position: relative;
+  caret-color: black !important;
 }
 
 .navbar-header {
@@ -11344,6 +11345,7 @@ textarea {
 }
 .form-group .form-control {
   padding-left: 2.375rem;
+  color: #000;
 }
 .form-group .form-control-icon {
   position: absolute;
@@ -11354,15 +11356,19 @@ textarea {
   line-height: 2.375rem;
   text-align: center;
   pointer-events: none;
-  color: #aaa;
+  color: #000;
   padding: 2px;
 }
 .form-group input {
-  color: rgb(85, 85, 85);
+  color: #000;
   font-size: 14px;
 }
 .form-group input:focus {
   color: #000;
+}
+
+form, input, label, p {
+  color: black !important;
 }
 
 .btn {
@@ -11490,6 +11496,11 @@ textarea {
   margin-top: -12px;
   margin-left: -145px;
 }
+.card-image.top-users-image .prizes .first {
+  background-image: url(/assets/images/highscores/trophy-gold.png);
+  background-color: #f9d83e;
+  color: transparent;
+}
 .card-image.top-users-image .podium {
   margin-left: 55px;
   background: url(/assets/images/web/pages/ranking/podium.png);
@@ -11545,6 +11556,73 @@ textarea {
 }
 .card-content .highscore-row .highscore .amount {
   margin-left: auto;
+}
+
+#registrationComponent .icon {
+  display: inline-block;
+  vertical-align: middle;
+  image-rendering: pixelated;
+  width: 30px;
+  height: 30px;
+}
+#registrationComponent .icon.box-one {
+  background: url(/assets/images/web/pages/registration/icon-box-one.png);
+}
+#registrationComponent .icon.box-two {
+  background: url(/assets/images/web/pages/registration/icon-box-two.png);
+}
+#registrationComponent .icon.box-three {
+  background: url(/assets/images/web/pages/registration/icon-box-three.png);
+}
+#registrationComponent .wrapper-item {
+  width: 52px;
+  height: 54px;
+  margin: 0 10px 15px 0;
+}
+#registrationComponent .wrapper-item.not-active {
+  background-image: url(/assets/images/web/pages/registration/background-figure-default.png);
+}
+#registrationComponent .wrapper-item.active, #registrationComponent .wrapper-item.active:hover, #registrationComponent .wrapper-item.not-active:hover {
+  background-image: url(/assets/images/web/pages/registration/background-figure-selected.png);
+}
+#registrationComponent .gender {
+  display: flex;
+  align-items: center;
+  margin: 0 70px 0 0;
+}
+#registrationComponent .gender .text {
+  color: #2C3039;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 0 0 30px;
+}
+#registrationComponent .gender.male {
+  height: 21px;
+  width: 21px;
+}
+#registrationComponent .gender.male.active, #registrationComponent .gender.male.not-active:hover {
+  background-image: url(/assets/images/web/pages/registration/sex-male.png);
+}
+#registrationComponent .gender.male.not-active {
+  background-image: url(/assets/images/web/pages/registration/sex-male-off.png);
+}
+#registrationComponent .gender.female {
+  height: 27px;
+  width: 18px;
+}
+#registrationComponent .gender.female.active, #registrationComponent .gender.female.not-active:hover {
+  background-image: url(/assets/images/web/pages/registration/sex-female.png);
+}
+#registrationComponent .gender.female.not-active {
+  background-image: url(/assets/images/web/pages/registration/sex-female-off.png);
+}
+#registrationComponent .look {
+  height: 96px;
+  width: 52px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100px;
+  margin-top: -9px;
 }
 
 /*# sourceMappingURL=index.css.map */

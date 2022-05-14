@@ -133,6 +133,9 @@
                     {% for item in credits %}
                         <div class="justify-between top-users-item no-spacing highscore">
                             <div class="self-baseline">
+                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
+                            </div>
+                            <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
                             <a href="#">{{ item.username }}</a>

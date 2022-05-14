@@ -6,6 +6,7 @@
 
   .form-control {
     padding-left: 2.375rem;
+    color: #000;
   }
 
   .form-control-icon {
@@ -17,16 +18,20 @@
     line-height: 2.375rem;
     text-align: center;
     pointer-events: none;
-    color: #aaa;
+    color: #000;
     padding: 2px;
   }
 
   input {
-    color: rgb(85,85,85);
+    color: #000;
     font-size: 14px;
   }
 
   input:focus {
     color: #000;
   }
+}
+
+form, input, label, p {
+  color: black !important;
 }

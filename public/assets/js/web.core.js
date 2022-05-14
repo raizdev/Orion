@@ -232,7 +232,7 @@ function WebPagesManagerInterface() {
         this.current_page_url = window.location.pathname.substr(1) + window.location.search;
         this.current_page_interface = new WebPageInterface(this, this.page_container.attr("data-page"));
         this.current_page_interface.assign_interface();
-  
+
         if (this.current_page_url === "") {
             this.current_page_url = "/";
         }
@@ -262,7 +262,7 @@ function WebPagesManagerInterface() {
     this.push = function (url, title, history_replace) {
         url = url.replace(/^\/|\/$/g, "");
         this.current_page_url = url;
-  
+
         if (this.current_page_url.indexOf('profile') > -1) {
         } else {
              $(".content-container").removeAttr('style')
@@ -301,7 +301,7 @@ function WebPagesManagerInterface() {
         if (url.charAt(0) !== "/") {
             url = "/" + url;
         }
-        
+
         if (!url.match(/^\/hotel/)) {
             PageLoading.show();
             $.ajax({
@@ -317,7 +317,7 @@ function WebPagesManagerInterface() {
 
                 var decode = htmlDecode(result);
                 var result = JSON.parse(decode)[0];
-              
+
                 // Change full page
                 if (result.location) {
                     window.location = result.location;
@@ -348,7 +348,7 @@ function WebPagesManagerInterface() {
 
                 // Build new page
                 else {
-                  
+
                     self.current_page_interface = new WebPageInterface(self, result.page, scroll, result.data);
                     self.current_page_interface.build();
 
@@ -398,7 +398,7 @@ function WebPageInterface(manager, type, scroll, page_data) {
 
         var self = this;
         // Assign page
-    
+
         self.manager.page_container.attr("data-page", this.type).html(this.page_data);
 
         // Update navigation
@@ -454,8 +454,8 @@ function WebPageInterface(manager, type, scroll, page_data) {
             this.page_interface = new WebPageForumInterface(this);
         else if (this.type === "shop_history")
             this.page_interface = new WebPageBadgeInterface(this);
-      
-      
+
+
         if (this.page_interface !== null)
             this.page_interface.init();
     };
@@ -571,7 +571,7 @@ function WebAjaxManagerInterface() {
             if (result.data && !isEmpty(result.data.status) && !isEmpty(result.data.message)) {
                 Web.notifications_manager.create(result.data.status,  result.data.message, result.data.title, (Number.isInteger(result.timer) ? result.timer : undefined), (result.data.link ? result.data.link : null));
             }
-          
+
             // Callback if exists
             if (typeof callback === "function")
                 callback(result);
@@ -639,7 +639,7 @@ function WebNotificationInterface(manager, id, type, message, title, timer, link
 
         notyf.open({
             type: (this.manager.titles_configutation[this.type] == "error" ? "error" : "success"),
-            message: this.message
+            message: (this.title) ? this.title + ': ' + this.message : this.message
         });
     };
 }

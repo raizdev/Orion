@@ -33,7 +33,7 @@ function WebHotelManagerInterface() {
         if (arguments !== undefined) {
             parse_str(arguments, actions);
         }
-      
+
         var argument = arguments;
         var body = $("body");
 
@@ -148,7 +148,7 @@ function WebPageSettingsNamechangeInterface(main_page) {
 
             var givenString = namechange.val();
             var csrftokenString = csrftoken.val();
-           
+
             if (givenString.length > 0) {
                 Web.ajax_manager.post("/settings/namechange/availability", {
                     username: givenString
@@ -415,7 +415,7 @@ function WebPageCommunityPhotosInterface(main_page) {
 
         // Load more photos
         page_container.find(".load-more-button button").click(function() {
-          
+
             var csrftoken = $("[name=csrftoken]").val();
             var countdivs = $('.photo-container').length;
             Web.ajax_manager.post("/article/photos/more", {
@@ -461,7 +461,7 @@ function WebPageCommunityPhotosInterface(main_page) {
 
 function WebPageHomeInterface(main_page) {
     this.main_page = main_page;
-    
+
     this.current_page = 1;
 
     /*
@@ -493,21 +493,38 @@ function WebPageRegistrationInterface(main_page) {
             self.username_availability($(this).val());
         });
 
-        page_container.find(".tabs-container span").click(function() {
-            if (!$(this).hasClass("selected"))
-                self.update_avatar($(this).attr("data-avatar"));
-        });
-
-        page_container.find("select[name = 'gender'].selectric").selectric({
-            theme: "web",
-            labelBuilder: "{text}",
-            onChange: function() {
-                self.gender = $(this).val();
-                self.update_avatar(1);
+        var gender_selection = page_container.find(".gender-selector .gender");
+        gender_selection.click(function() {
+            if($(this).attr("data-gender") === "M") {
+                page_container.find(".gender-selector .male").removeClass('not-active').addClass('active');
+                page_container.find(".gender-selector .female").removeClass('active').addClass('not-active');
+                page_container.find(".avatar-selector .girl").attr('style','display:none !important');
+                page_container.find(".avatar-selector .boy").show();
             }
+
+            if($(this).attr("data-gender") === "F") {
+                page_container.find(".gender-selector .female").removeClass('not-active').addClass('active');
+                page_container.find(".gender-selector .male").removeClass('active').addClass('not-active');
+                page_container.find(".avatar-selector .boy").attr('style','display:none !important');
+                page_container.find(".avatar-selector .girl").show();
+            }
+
+            $(".avatar-selector [name=gender]").attr("value", $(this).attr("data-gender"));
         });
 
+        var gender_selection = page_container.find(".avatar-selector .wrapper-item");
+        gender_selection.click(function() {
+            $('.wrapper-item').not(this).removeClass('active').addClass('not-active');
+            $(this).removeClass('not-active').addClass('active');
 
+            var look_preview = page_container.find(".look-preview");
+            var look_url = look_preview.attr("src").replace(/figure=.*&direction/, 'figure=&direction');
+            var look_figure = $(this).find('.look').attr("data-look");
+            var figure = look_url.replace(/figure=.*&direction/, 'figure=' + look_figure + '&direction');
+
+            page_container.find('.look-preview').attr("src", figure);
+            page_container.find('.avatar-selector [name=look]').attr("value", figure);
+        });
     }
 
     /*
@@ -581,27 +598,27 @@ function WebPageShopInterface(main_page) {
 
         page_container.find(".offer-content").click(function() {
             $("#editor").css("height", "320px");
-          
+
             page_container.find(".offers-container").css({"width": "50%", "margin-left": "150px"});
             page_container.find(".offer-container").css({"margin-left": "70px"});
-          
+
             var orderId = $(this).data("id");
             var amount = $(this).data("amount");
             var currency = $(this).data("type");
             var description = $(this).data("description");
-          
+
             var csrftoken = page_container.find("[name=csrftoken]").val();
-            
+
             page_container.find(".offer-container").hide();
             page_container.find("#offer-" + orderId).show();
             page_container.find(".left-side .aside-title-content").html(amount + ' ' + currency);
-          
+
             page_container.find(".right-side .aside-content").html(description);
 
             if (page_container.find(".paypal-buttons")[0]){
                 return;
             }
-          
+
             paypal.Buttons({
                 createOrder: function(data, actions) {
                     return fetch('/shop/offers/createorder', {
@@ -622,19 +639,19 @@ function WebPageShopInterface(main_page) {
                 onError: function (err) {
                   $(".payment-decline").show();
                   $(".payment-loader").hide();
-                  
+
                   Web.ajax_manager.post("/shop/offers/status", {
                       status: 'FAILED',
                       orderId: data.orderID,
                       csrftoken: csrftoken
                   });
-                  
+
                   Web.notifications_manager.create("error", err, 'Error..');
                 },
                 onCancel: function(data) {
                     $(".payment-decline").show();
                     $(".payment-loader").hide();
-                  
+
                      Web.ajax_manager.post("/shop/offers/status", {
                         status: 'CANCELD',
                         orderId: data.orderID,
@@ -652,11 +669,11 @@ function WebPageShopInterface(main_page) {
                     }).then(function(res) {
                         return res.json();
                     }).then(function(orderData) {
-         
+
                         var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
 
                         if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
-                            return actions.restart(); 
+                            return actions.restart();
                         }
 
                         if (errorDetail) {
@@ -667,10 +684,10 @@ function WebPageShopInterface(main_page) {
                             orderId: orderData.id,
                             csrftoken: csrftoken
                         });
-                      
+
                         $(".payment-accept").show();
                         $(".payment-loader").hide();
-                        
+
                         var myAudio = new Audio('/assets/images/cash.mp3');
                         myAudio.play();
                     });
