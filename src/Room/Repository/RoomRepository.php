@@ -83,14 +83,18 @@ class RoomRepository extends BaseRepository
     }
 
     /**
-     * @return Room|null
-     * @throws NoSuchEntityException
+     * @param int $page
+     * @param int $resultPerPage
+     *
+     * @return PaginatedCollection
+     * @throws DataObjectManagerException
      */
-    public function getMostVisitedRoom(): ?Room
+    public function getMostVisitedRoom(int $page, int $resultPerPage): PaginatedCollection
     {
         $searchCriteria = $this->getDataObjectManager()
-            ->orderBy('users', 'DESC');
+            ->orderBy('users', 'DESC')
+            ->addRelation('user');
 
-        return $this->getOneBy($searchCriteria);
+        return $this->getPaginatedList($searchCriteria, $page, $resultPerPage);
     }
 }

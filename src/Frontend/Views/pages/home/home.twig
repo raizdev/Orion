@@ -76,16 +76,21 @@
             </div>
         </div>
         <div class="col-md-4">
+            {% if user is empty %}
             <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">
-                                {% if user is empty %}Login into Cosmic{% else %}{{ lang('home.welcome.user') }} {{ user.username }}{% endif %}
+                        <div class="card-header-title-container">
+                            <div class="background-gray card-header-icon-container">
+                                <div class="icon login"></div>
                             </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">Login into Cosmic</div>
+                                <span class="card-header-subtitle">Come inside and have fun!</span>
+                            </div>
+                            <div class="card-header-actions"></div>
                         </div>
                     </div>
-                    {% if user is empty %}
                     <form method="post" action="{{ url_for('auth_sign-in') }}">
                     <div class="card-content">
                             <div class="mb-3">
@@ -105,19 +110,46 @@
                         <button type="submit" class="btn btn-fw btn-primary">Login</button>
                     </div>
                     </form>
-                    {% else %}
-                    <div class="card-content">
-                        Welcome
-                    </div>
-                    {% endif %}
                 </div>
             </div>
-            <div class="col">
+            {% endif %}
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title-container">
+                            <div class="background-gray card-header-icon-container">
+                                <div class="icon rooms"></div>
+                            </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">Popular Rooms</div>
+                                <span class="card-header-subtitle">Check out some rooms now!</span>
+                            </div>
+                            <div class="card-header-actions"></div>
+                        </div>
+                    </div>
+                    <div class="card-content card-content-rooms">
+                        {% for room in rooms %}
+                        <div class="card-content-room">
+                            <span class="room-image" {% if camera %}style="background-image: url('{{ config('hotel_settings.nitro_url') }}/');" {% endif %}></span>
+                            <div class="room-column">
+                                <div class="room-title">{{ room.name }}</div>
+                                <div class="room-description">{{ room.description }}</div>
+                                <div class="room-owner">
+                                    <span class="head-figure" style="background-image: url('{{ config('hotel_settings.imaging_url') }}?figure={{ room.user.look }}&amp;action=std&amp;direction=2&amp;head_direction=2&amp;img_format=undefined&amp;gesture=sml&amp;headonly=1&amp;size=s');"></span>
+                                    <p class="username">{{ room.user.username }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header-title-container" style="position: relative;">
                             <div class="card-header-title">
-                                Who's new?
+                                Popular Guilds
                             </div>
                         </div>
                     </div>

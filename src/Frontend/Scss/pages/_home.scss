@@ -1,4 +1,90 @@
 #homeComponent {
+
+  .icon {
+
+    height: 50px;
+    width: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100px;
+    background-color: #dedede;
+
+    &.rooms {
+      background-image: url(/assets/images/web/collider/rooms.png);
+      background-color: #ff8200;
+    }
+
+    &.login {
+      background-image: url(/assets/images/web/collider/login_lock.png);
+      background-color: #e7e7e7;
+    }
+  }
+
+  .card-content-rooms {
+    display: flex;
+    flex-direction: column;
+
+    .card-content-room {
+      display: flex;
+      margin: 0 0 10px 0;
+
+      .room-image {
+        background: url(/assets/images/web/collider/default-room-image.png) center;
+        border-radius: 5px;
+        margin: 0 20px 0 0;
+        height: 50px;
+        width: 50px;
+      }
+
+      .room-column {
+        display: flex;
+        flex-direction: column;
+
+        .room-owner {
+          display: flex;
+          align-items: center;
+          margin: 10px 0 0 0;
+
+          .username {
+            background-color: #f0f0f0;
+            color: #2C3039;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0 0 0 -10px;
+            padding: 6px 10px 5px 6px;
+            border-radius: 3px;
+          }
+
+          .head-figure {
+            background-image: url(/assets/images/web/collider/public-room.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f0f0f0;
+            border-radius: 100px;
+            height: 42px;
+            width: 42px;
+          }
+        }
+
+        .room-title {
+          color: #2C3039;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .room-description {
+          color: #4E4E4E;
+          font-size: 13px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .card-image:hover {
+    background-position: 350px 220px !important;
+  }
+
   .badge {
     align-items: center;
     background: #f4f4f4;

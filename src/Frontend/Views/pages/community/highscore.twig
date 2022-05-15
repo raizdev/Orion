@@ -1,32 +1,14 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
 <div class="row">
-    <div class="col">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-header">
                 <div class="card-header-title-container">
                     <div class="card-header-title">{{ lang('highscores.most.diamonds') }}</div>
                 </div>
             </div>
-            <div class="card-image top-users-image">
-                <div class="watching-people"></div>
-                <div class="podium">
-                    {% for item in diamonds %}
-                        <img alt="User avatar"
-                             class="avatar avatar-m
-                                    {% if loop.first %}first{% endif %}
-                                    {% if loop.last %}third{% endif %}
-                                    {%  if loop.index0 == 1 %}second{% endif %}
-                                 "
-                             src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}
-                                    {% if loop.first %}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {% if loop.last %}&amp;head_direction=2&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {%  if loop.index0 == 1 %}&amp;head_direction=4&amp;direction=4&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                "
-                        >
-                    {% endfor %}                                                         ">
-                </div>
-            </div>
+
             <div class="card-content no-spacing">
                 <div class="highscore-row">
                     {% if diamonds is empty %}
@@ -34,8 +16,9 @@
                             {{ lang('highscores.no_score') }}
                         </div>
                     {% endif %}
-                    {% for item in diamonds %}
+                    {% for key,item in diamonds %}
                         <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
+                            <span class="ranking-item-nth">{{  key + 1 }}</span>
                             <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
@@ -49,30 +32,11 @@
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-header">
                 <div class="card-header-title-container">
                     <div class="card-header-title">{{ lang('highscores.most.duckets') }}</div>
-                </div>
-            </div>
-            <div class="card-image top-users-image">
-                <div class="watching-people"></div>
-                <div class="podium">
-                    {% for item in duckets %}
-                        <img alt="User avatar"
-                             class="avatar avatar-m
-                                    {% if loop.first %}first{% endif %}
-                                    {% if loop.last %}third{% endif %}
-                                    {%  if loop.index0 == 1 %}second{% endif %}
-                                 "
-                             src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}
-                                    {% if loop.first %}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {% if loop.last %}&amp;head_direction=2&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {%  if loop.index0 == 1 %}&amp;head_direction=4&amp;direction=4&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                "
-                        >
-                    {% endfor %}                                                        ">
                 </div>
             </div>
             <div class="card-content no-spacing">
@@ -82,8 +46,9 @@
                             {{ lang('highscores.no_score') }}
                         </div>
                     {% endif %}
-                    {% for item in duckets %}
+                    {% for key,item in duckets %}
                         <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
+                            <span class="ranking-item-nth">{{  key + 1 }}</span>
                             <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
@@ -97,30 +62,11 @@
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-header">
                 <div class="card-header-title-container">
                     <div class="card-header-title">{{ lang('highscores.most.credits') }}</div>
-                </div>
-            </div>
-            <div class="card-image top-users-image">
-                <div class="watching-people"></div>
-                <div class="podium">
-                    {% for item in credits %}
-                        <img alt="User avatar"
-                             class="avatar avatar-m
-                                    {% if loop.first %}first{% endif %}
-                                    {% if loop.last %}third{% endif %}
-                                    {%  if loop.index0 == 1 %}second{% endif %}
-                                 "
-                             src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.look }}
-                                    {% if loop.first %}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {% if loop.last %}&amp;head_direction=2&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {%  if loop.index0 == 1 %}&amp;head_direction=4&amp;direction=4&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                "
-                        >
-                    {% endfor %}">
                 </div>
             </div>
             <div class="card-content no-spacing">
@@ -130,11 +76,9 @@
                             {{ lang('highscores.no_score') }}
                         </div>
                     {% endif %}
-                    {% for item in credits %}
+                    {% for key,item in credits %}
                         <div class="justify-between top-users-item no-spacing highscore">
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
+                            <span class="ranking-item-nth">{{  key + 1 }}</span>
                             <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
@@ -148,30 +92,12 @@
             </div>
         </div>
     </div>
-    <div class="col mt-5">
+
+    <div class="col-md-4 mt-5">
         <div class="card">
             <div class="card-header">
                 <div class="card-header-title-container">
                     <div class="card-header-title">{{ lang('highscores.most.achievements') }}</div>
-                </div>
-            </div>
-            <div class="card-image top-users-image">
-                <div class="watching-people"></div>
-                <div class="podium">
-                    {% for item in achievements %}
-                        <img alt="User avatar"
-                             class="avatar avatar-m
-                                    {% if loop.first %}first{% endif %}
-                                    {% if loop.last %}third{% endif %}
-                                    {%  if loop.index0 == 1 %}second{% endif %}
-                                 "
-                             src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}
-                                    {% if loop.first %}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {% if loop.last %}&amp;head_direction=2&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {%  if loop.index0 == 1 %}&amp;head_direction=4&amp;direction=4&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                "
-                        >
-                    {% endfor %}                                                       ">
                 </div>
             </div>
             <div class="card-content no-spacing">
@@ -181,8 +107,9 @@
                             {{ lang('highscores.no_score') }}
                         </div>
                     {% endif %}
-                    {% for item in achievements %}
+                    {% for key,item in achievements %}
                         <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
+                            <span class="ranking-item-nth">{{  key + 1 }}</span>
                             <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
@@ -196,30 +123,11 @@
             </div>
         </div>
     </div>
-    <div class="col mt-5">
+    <div class="col-md-4 mt-5">
         <div class="card">
             <div class="card-header">
                 <div class="card-header-title-container">
                     <div class="card-header-title">{{ lang('highscores.most.online') }}</div>
-                </div>
-            </div>
-            <div class="card-image top-users-image">
-                <div class="watching-people"></div>
-                <div class="podium">
-                    {% for item in online %}
-                        <img alt="User avatar"
-                             class="avatar avatar-m
-                                    {% if loop.first %}first{% endif %}
-                                    {% if loop.last %}third{% endif %}
-                                    {%  if loop.index0 == 1 %}second{% endif %}
-                                 "
-                             src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}
-                                    {% if loop.first %}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {% if loop.last %}&amp;head_direction=2&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {%  if loop.index0 == 1 %}&amp;head_direction=4&amp;direction=4&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                "
-                        >
-                    {% endfor %}                                                       ">
                 </div>
             </div>
             <div class="card-content no-spacing">
@@ -229,8 +137,9 @@
                             {{ lang('highscores.no_score') }}
                         </div>
                     {% endif %}
-                    {% for item in online %}
+                    {% for key,item in online %}
                         <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
+                            <span class="ranking-item-nth">{{  key + 1 }}</span>
                             <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
@@ -244,30 +153,11 @@
             </div>
         </div>
     </div>
-    <div class="col mt-5">
+    <div class="col-md-4 mt-5">
         <div class="card">
             <div class="card-header">
                 <div class="card-header-title-container">
                     <div class="card-header-title">{{ lang('highscores.most.respects') }}</div>
-                </div>
-            </div>
-            <div class="card-image top-users-image">
-                <div class="watching-people"></div>
-                <div class="podium">
-                    {% for item in respects %}
-                        <img alt="User avatar"
-                             class="avatar avatar-m
-                                    {% if loop.first %}first{% endif %}
-                                    {% if loop.last %}third{% endif %}
-                                    {%  if loop.index0 == 1 %}second{% endif %}
-                                 "
-                             src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}
-                                    {% if loop.first %}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {% if loop.last %}&amp;head_direction=2&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                    {%  if loop.index0 == 1 %}&amp;head_direction=4&amp;direction=4&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0{% endif %}
-                                "
-                        >
-                    {% endfor %}
                 </div>
             </div>
             <div class="card-content no-spacing">
@@ -277,8 +167,9 @@
                             {{ lang('highscores.no_score') }}
                         </div>
                     {% endif %}
-                    {% for item in respects %}
+                    {% for key,item in respects %}
                         <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
+                            <span class="ranking-item-nth">{{  key + 1 }}</span>
                             <div class="self-baseline">
                                 <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>

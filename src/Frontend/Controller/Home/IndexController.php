@@ -7,6 +7,8 @@
 
 namespace Ares\Frontend\Controller\Home;
 
+use Ares\Guild\Repository\GuildRepository;
+use Ares\Room\Repository\RoomRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Article\Repository\ArticleRepository;
 use Ares\Badge\Service\BadgeAlbumService;
@@ -14,7 +16,6 @@ use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Photo\Repository\PhotoRepository;
-use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -23,7 +24,7 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 /**
- *  @package Ares\Test\Controller
+ *  @package Ares\Frontend\Controller
  *  @CR\Router
  */
 class IndexController extends BaseController
@@ -34,13 +35,16 @@ class IndexController extends BaseController
      * @param ArticleRepository $articleRepository
      * @param PhotoRepository $photoRepository
      * @param BadgeAlbumService $badgeService
+     * @param RoomRepository $roomRepository,
+     * @param GuildRepository $guildRepository,
      */
     public function __construct(
         private Twig $twig,
         private ArticleRepository $articleRepository,
         private PhotoRepository $photoRepository,
         private BadgeAlbumService $badgeService,
-        private SessionInterface $session
+        private RoomRepository $roomRepository,
+        private GuildRepository $guildRepository,
     ) {}
 
     /**
@@ -58,7 +62,7 @@ class IndexController extends BaseController
      *
      * @throws LoaderError
      * @throws RuntimeError
-     * @throws SyntaxError|DataObjectManagerException|NoSuchEntityException
+     * @throws SyntaxError
      */
     public function hotel(Request $request, Response $response): Response
     {
@@ -85,6 +89,8 @@ class IndexController extends BaseController
      */
     public function __invoke(Request $request, Response $response): Response
     {
+        $badges = $this->badgeService->execute();
+
         $articles = $this->articleRepository
             ->getPaginatedArticleList(
                 1,
@@ -97,10 +103,25 @@ class IndexController extends BaseController
                 4
             );
 
+        $guilds = $this->guildRepository
+            ->searchGuilds(
+                '',
+                1,
+                4
+            );
+
+        $rooms = $this->roomRepository
+            ->getMostVisitedRoom(
+                1,
+                3
+            );
+
         return $this->twig->render($response, '/Frontend/Views/pages/home/home.twig', [
             'articles' => $articles,
             'photos' => $photos,
-            'badges' => $this->badgeService->execute(),
+            'guilds' => $guilds,
+            'rooms' => $rooms,
+            'badges' => $badges,
             'page' => 'home'
         ]);
     }

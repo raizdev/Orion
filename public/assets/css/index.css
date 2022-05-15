@@ -10731,6 +10731,78 @@ body {
   box-shadow: rgba(0, 0, 0, 0.1) 0px -3px 3px inset;
 }
 
+.fixed-top {
+  z-index: 600 !important;
+}
+
+.btn-secondary {
+  background-color: #e5e5e5;
+  padding: 8px !important;
+}
+
+.navigation .item-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #EFEFEF;
+  height: 50px;
+  border-radius: 5px;
+  padding: 0 14px;
+  cursor: pointer;
+  color: #000;
+}
+.navigation .user-text {
+  font-weight: 500;
+}
+.navigation .btn,
+.navigation .btn:hover {
+  color: #323232 !important;
+}
+.navigation .user-bar {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 50px 0 0;
+}
+.navigation .user-bar .item-column {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 15px;
+}
+.navigation .user-bar .item-text {
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.navigation .user-bar .item-text.bold {
+  font-weight: 600;
+  font-size: 13px;
+}
+.navigation .user-bar .icon {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 100px;
+  outline-offset: 3px;
+  background-color: #f2f2f2;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.navigation .user-bar .icon.credits {
+  background-image: url(/assets/images/web/header/credits.png);
+  background-color: #e9b124;
+  outline: 1px solid #b26d18;
+}
+.navigation .user-bar .icon.duckets {
+  background-image: url(/assets/images/web/header/duckets.png);
+  background-color: #c44aac;
+  outline: 1px solid #812378;
+}
+.navigation .user-bar .icon.diamonds {
+  background-image: url(/assets/images/web/header/diamonds.png);
+  background-color: #caf1f3;
+  outline: 1px solid #6caff4;
+}
 .navigation li {
   margin-right: 20px;
 }
@@ -11167,6 +11239,9 @@ body {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.06) 0px 1px 2px;
 }
+.card .card-header-titles {
+  margin-left: 10px;
+}
 .card .card-image {
   display: flex;
   align-items: center;
@@ -11431,6 +11506,77 @@ form, input, label, p {
   background-color: #d1e7dd;
 }
 
+#homeComponent .icon {
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  background-color: #dedede;
+}
+#homeComponent .icon.rooms {
+  background-image: url(/assets/images/web/collider/rooms.png);
+  background-color: #ff8200;
+}
+#homeComponent .icon.login {
+  background-image: url(/assets/images/web/collider/login_lock.png);
+  background-color: #e7e7e7;
+}
+#homeComponent .card-content-rooms {
+  display: flex;
+  flex-direction: column;
+}
+#homeComponent .card-content-rooms .card-content-room {
+  display: flex;
+  margin: 0 0 10px 0;
+}
+#homeComponent .card-content-rooms .card-content-room .room-image {
+  background: url(/assets/images/web/collider/default-room-image.png) center;
+  border-radius: 5px;
+  margin: 0 20px 0 0;
+  height: 50px;
+  width: 50px;
+}
+#homeComponent .card-content-rooms .card-content-room .room-column {
+  display: flex;
+  flex-direction: column;
+}
+#homeComponent .card-content-rooms .card-content-room .room-column .room-owner {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 0 0;
+}
+#homeComponent .card-content-rooms .card-content-room .room-column .room-owner .username {
+  background-color: #f0f0f0;
+  color: #2C3039;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0 0 -10px;
+  padding: 6px 10px 5px 6px;
+  border-radius: 3px;
+}
+#homeComponent .card-content-rooms .card-content-room .room-column .room-owner .head-figure {
+  background-image: url(/assets/images/web/collider/public-room.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f0f0f0;
+  border-radius: 100px;
+  height: 42px;
+  width: 42px;
+}
+#homeComponent .card-content-rooms .card-content-room .room-column .room-title {
+  color: #2C3039;
+  font-size: 14px;
+  font-weight: 500;
+}
+#homeComponent .card-content-rooms .card-content-room .room-column .room-description {
+  color: #4E4E4E;
+  font-size: 13px;
+  font-weight: 400;
+}
+#homeComponent .card-image:hover {
+  background-position: 350px 220px !important;
+}
 #homeComponent .badge {
   align-items: center;
   background: #f4f4f4;
@@ -11541,6 +11687,35 @@ form, input, label, p {
 .card-content .highscore-row a {
   padding: 10px;
   text-decoration: none;
+}
+.card-content .highscore-row .top-users-item:nth-of-type(1) .ranking-item-nth {
+  background-image: url(/assets/images/web/pages/ranking/trophy-gold.png);
+  background-color: #f9d83e;
+  color: transparent;
+}
+.card-content .highscore-row .top-users-item:nth-of-type(2) .ranking-item-nth {
+  background-image: url(/assets/images/web/pages/ranking/trophy-silver.png);
+  background-color: #b8c4d4;
+  color: transparent;
+}
+.card-content .highscore-row .top-users-item:nth-of-type(3) .ranking-item-nth {
+  background-image: url(/assets/images/web/pages/ranking/trophy-bronze.png);
+  background-color: #f1851b;
+  color: transparent;
+}
+.card-content .highscore-row .ranking-item-nth {
+  background-color: #e2e2e2;
+  border-radius: 100px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4E4E4E;
+  font-size: 18px;
+  font-weight: 500;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .card-content .highscore-row .top-users-item {
   height: 60px;

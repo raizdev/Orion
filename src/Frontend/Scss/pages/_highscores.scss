@@ -80,6 +80,39 @@
       text-decoration: none;
     }
 
+    .top-users-item:nth-of-type(1) .ranking-item-nth {
+      background-image: url(/assets/images/web/pages/ranking/trophy-gold.png);
+      background-color: #f9d83e;
+      color: transparent;
+    }
+
+    .top-users-item:nth-of-type(2) .ranking-item-nth {
+      background-image: url(/assets/images/web/pages/ranking/trophy-silver.png);
+      background-color: #b8c4d4;
+      color: transparent;
+    }
+
+    .top-users-item:nth-of-type(3) .ranking-item-nth {
+      background-image: url(/assets/images/web/pages/ranking/trophy-bronze.png);
+      background-color: #f1851b;
+      color: transparent;
+    }
+
+    .ranking-item-nth {
+      background-color: #e2e2e2;
+      border-radius: 100px;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4E4E4E;
+      font-size: 18px;
+      font-weight: 500;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
     .top-users-item {
       height: 60px;
       overflow: hidden;

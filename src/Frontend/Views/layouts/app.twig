@@ -66,17 +66,41 @@
                 </div>
             </ul>
             {% if user %}
+
+            <div class="d-flex">
+                <div class="user-bar">
+                    <div class="icon credits"></div>
+                    <div class="item-column">
+                        <div class="item-text bold">5000</div>
+                        <div class="item-text">credits</div>
+                    </div>
+                </div>
+
+                <div class="user-bar">
+                    <div class="icon duckets"></div>
+                    <div class="item-column">
+                        <div class="item-text bold">5000</div>
+                        <div class="item-text">credits</div>
+                    </div>
+                </div>
+                <div class="user-bar">
+                    <div class="icon diamonds"></div>
+                    <div class="item-column">
+                        <div class="item-text bold">5000</div>
+                        <div class="item-text">credits</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="dropdown text-end">
                 <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
                     <ul class="nav">
-                        <div class="account-avatar">
-                            <img src="https://avatar.mansionplay.com/?figure=hd-180-1.ch-255-66.lg-280-110.sh-305-62.ha-1012-110.hr-828-61&amp;gesture=sml" alt="" class="pixelated">
-                        </div>
                         <li class="nav-item">
-                            <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUse2" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ user.username }}
-                            </a>
-                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUse2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="user-text">{{ user.username }}</span>
+                                <img src="{{ config('hotel_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
                                 <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
                                 <li>

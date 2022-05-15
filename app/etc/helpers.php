@@ -21,6 +21,19 @@ use League\Container\Container;
 use Odan\Session\SessionInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+if (!function_exists('dd')) {
+    /**
+     * Debug
+     *
+     * @print var
+     */
+    function dd($var) {
+        echo '<pre>';
+        print_r($var);
+        exit;
+    }
+}
+
 if (!function_exists('__')) {
     /**
      * Takes message and placeholder to translate them to global locale.
