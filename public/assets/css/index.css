@@ -11522,6 +11522,45 @@ form, input, label, p {
   background-image: url(/assets/images/web/collider/login_lock.png);
   background-color: #e7e7e7;
 }
+#homeComponent .icon.groups {
+  background-image: url(/assets/images/web/collider/feeds.png);
+  background-color: #73b0cb;
+}
+#homeComponent .icon.badges {
+  background-image: url(/assets/images/web/collider/feeds.png);
+  background-color: #73b0cb;
+}
+#homeComponent .card-content-guilds {
+  display: flex;
+  flex-direction: column;
+}
+#homeComponent .card-content-guilds .card-content-guild {
+  display: flex;
+  margin: 0 0 10px 0;
+}
+#homeComponent .card-content-guilds .card-content-guild .guild-image {
+  outline: 2px solid rgba(187, 186, 184, 0.5294117647);
+  border-radius: 100px;
+  padding: 10px 10px;
+  margin: 0px 15px 0 0;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+#homeComponent .card-content-guilds .card-content-guild .guild-image-column {
+  margin: 10px 0px;
+}
+#homeComponent .card-content-guilds .card-content-guild .guild-image-title {
+  color: #2C3039;
+  font-size: 14px;
+  font-weight: 500;
+}
+#homeComponent .card-content-guilds .card-content-guild .guild-image-description {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 #homeComponent .card-content-rooms {
   display: flex;
   flex-direction: column;
@@ -11792,7 +11831,6 @@ form, input, label, p {
   background-image: url(/assets/images/web/pages/registration/sex-female-off.png);
 }
 #registrationComponent .look {
-  height: 96px;
   width: 52px;
   background-position: center;
   background-repeat: no-repeat;

@@ -45,7 +45,14 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-header-title-container">
-                                <div class="card-header-title">{{ lang('home.latestbadges') }}</div>
+                                <div class="background-gray card-header-icon-container">
+                                    <div class="icon login"></div>
+                                </div>
+                                <div class="card-header-titles">
+                                    <div class="card-header-title">{{ lang('home.latestbadges.title') }}</div>
+                                    <span class="card-header-subtitle">{{ lang('home.latestbadges.description') }}</span>
+                                </div>
+                                <div class="card-header-actions"></div>
                             </div>
                         </div>
                         <div class="card-content">
@@ -56,20 +63,6 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-header-title-container">
-                                <div class="card-header-title">{{ lang('home.online') }}?</div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            {{ lang('home.online.nobody') }}
                         </div>
                     </div>
                 </div>
@@ -85,8 +78,8 @@
                                 <div class="icon login"></div>
                             </div>
                             <div class="card-header-titles">
-                                <div class="card-header-title">Login into Cosmic</div>
-                                <span class="card-header-subtitle">Come inside and have fun!</span>
+                                <div class="card-header-title">{{ lang('home.login.title') }}</div>
+                                <span class="card-header-subtitle">{{ lang('home.login.description') }}</span>
                             </div>
                             <div class="card-header-actions"></div>
                         </div>
@@ -96,18 +89,18 @@
                             <div class="mb-3">
                                 <div class="form-group">
                                     <span class="fa fa-user form-control-icon"></span>
-                                    <input type="text" name="username" class="form-control" placeholder="Username">
+                                    <input type="text" name="username" class="form-control" placeholder="{{ lang('home.login.username') }}">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <div class="form-group">
                                     <span class="fa fa-lock form-control-icon"></span>
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" placeholder="{{ lang('home.login.password') }}">
                                 </div>
                             </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fw btn-primary">Login</button>
+                        <button type="submit" class="btn btn-fw btn-primary">{{ lang('home.login.button') }}</button>
                     </div>
                     </form>
                 </div>
@@ -121,8 +114,8 @@
                                 <div class="icon rooms"></div>
                             </div>
                             <div class="card-header-titles">
-                                <div class="card-header-title">Popular Rooms</div>
-                                <span class="card-header-subtitle">Check out some rooms now!</span>
+                                <div class="card-header-title">{{ lang('home.rooms.title') }}</div>
+                                <span class="card-header-subtitle">{{ lang('home.rooms.description') }}</span>
                             </div>
                             <div class="card-header-actions"></div>
                         </div>
@@ -147,13 +140,29 @@
             <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">
-                                Popular Guilds
+                        <div class="card-header-title-container">
+                            <div class="background-gray card-header-icon-container">
+                                <div class="icon groups"></div>
                             </div>
+                            <div class="card-header-titles">
+                                <div class="card-header-title">{{ lang('home.guilds.title') }}</div>
+                                <span class="card-header-subtitle">{{ lang('home.guilds.description') }}</span>
+                            </div>
+                            <div class="card-header-actions"></div>
                         </div>
                     </div>
-                    <div class="card-content">
+                    <div class="card-content card-content-guilds">
+                        {% for guild in guilds %}
+                            <div class="card-content-guild">
+                                <div class="guild-image">
+                                    <img src="{{ config('hotel_settings.nitro_url') }}/assets/c_images/Badgeparts/generated/{{ guild.badge }}.png">
+                                </div>
+                                <div class="guild-image-column">
+                                    <div class="guild-image-title">{{ guild.name }}</div>
+                                    <div class="guild-image-description">{{ guild.description }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
