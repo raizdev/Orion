@@ -5,8 +5,9 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Vote\Controller;
+namespace Ares\Frontend\Controller\Vote;
 
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
@@ -25,11 +26,21 @@ use Ares\Vote\Service\Votes\DecrementVoteService;
 use Ares\Vote\Service\Votes\IncrementVoteService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteParser;
+use function __;
+use function response;
+use function user;
 
 /**
  * Class VoteController
  *
  * @package Ares\Vote\Controller
+ *
+ * @CR\Router
+ *  @CR\Group(
+ *     prefix="vote",
+ *     pattern="vote"
+ * )
  */
 class VoteController extends BaseController
 {
@@ -42,6 +53,7 @@ class VoteController extends BaseController
      * @param   DeleteVoteService       $deleteVoteService
      * @param   IncrementVoteService    $incrementVoteService
      * @param   DecrementVoteService    $decrementVoteService
+     * @param   RouteParser             $routeParser
      */
     public function __construct(
         private VoteRepository $voteRepository,
@@ -49,11 +61,18 @@ class VoteController extends BaseController
         private CreateVoteService $createVoteService,
         private DeleteVoteService $deleteVoteService,
         private IncrementVoteService $incrementVoteService,
-        private DecrementVoteService $decrementVoteService
+        private DecrementVoteService $decrementVoteService,
+        private RouteParser $routeParser
     ) {}
 
     /**
      * Create new vote.
+     *
+     *  @CR\Route(
+     *     name="create",
+     *     methods={"POST"},
+     *     pattern="/create"
+     * )
      *
      * @param Request  $request
      * @param Response $response
@@ -103,31 +122,12 @@ class VoteController extends BaseController
 
         return $this->respond(
             $response,
-            $customResponse
-        );
-    }
-
-    /**
-     * Returns total count of likes/dislikes for given entity.
-     *
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
-     * @throws AuthenticationException
-     * @throws NoSuchEntityException
-     */
-    public function getTotalVotes(Request $request, Response $response): Response
-    {
-        /** @var User $user */
-        $user = user($request);
-
-        $votes = $this->voteRepository->getUserVoteList($user->getId());
-
-        return $this->respond(
-            $response,
             response()
-                ->setData($votes)
+                ->setData([
+                    'replacepage'  => $this->routeParser->urlFor('home'),
+                    'status'    => 'success',
+                    'message'   => __('You\'ve succesfully voted!')
+                ])
         );
     }
 

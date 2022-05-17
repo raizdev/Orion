@@ -35,7 +35,21 @@
                 {% for photo in photos %}
                 <div class="col col-md-3">
                     <div class="photo-content">
-                        <div class="inner-photo" style="background: url({{photo.url}}); background-position: center;"></div>
+                        <div class="inner-photo" style="background: url({{ photo.url }}); background-position: center;">
+                            <div class="bottom-bar">
+                                <div class="d-flex p-3">
+                                    <div class="ml-auto m-auto">
+                                        <i class="fas fa-thumbs-up vote" data-vote="like" data-id="{{ photo.id }}" style="color: green; font-size: 16px"></i>
+                                        <span class="count-up">{{ photo.likes }}</span>
+                                    </div>
+                                    <div class="ml-auto m-auto">
+                                        <i class="fas fa-thumbs-down vote" data-vote="dislike" data-id="{{ photo.id }}" style="color: red; font-size: 16px"></i>
+                                        <span class="count-down">{{ photo.dislikes }}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -59,7 +73,7 @@
                             <div class="d-flex justify-content-center  flex-wrap">
                                 {% for badge, value in badges %}
                                 <div class="badge">
-                                    <img src="{{ config('hotel_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}" title="Test">
+                                    <img src="{{ config('site_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}" title="Test">
                                 </div>
                                 {% endfor %}
                             </div>
@@ -124,18 +138,20 @@
                         {% if rooms is empty %}{{ lang('home.guilds.empty') }}{% endif %}
                         {% for room in rooms %}
                         <div class="card-content-room">
-                            <span class="room-image" {% if camera %}style="background-image: url('{{ config('hotel_settings.nitro_url') }}/');" {% endif %}></span>
+                            <span class="room-image" {% if camera %}style="background-image: url('{{ config('site_settings.nitro_url') }}/');" {% endif %}></span>
                             <div class="room-column">
                                 <div class="room-title">
                                     {% if user %}
                                         <a href="/hotel?room={{ room.id }}">
                                             {{ room.name }}
                                         </a>
+                                    {% else %}
+                                        {{ room.name }}
                                     {% endif %}
                                 </div>
                                 <div class="room-description">{{ room.description }}</div>
                                 <div class="room-owner">
-                                    <span class="head-figure" style="background-image: url('{{ config('hotel_settings.imaging_url') }}?figure={{ room.user.look }}&amp;action=std&amp;direction=2&amp;head_direction=2&amp;img_format=undefined&amp;gesture=sml&amp;headonly=1&amp;size=s');"></span>
+                                    <span class="head-figure" style="background-image: url('{{ config('site_settings.imaging_url') }}?figure={{ room.user.look }}&amp;action=std&amp;direction=2&amp;head_direction=2&amp;img_format=undefined&amp;gesture=sml&amp;headonly=1&amp;size=s');"></span>
                                     <p class="username">{{ room.user.username }}</p>
                                 </div>
                             </div>
@@ -163,7 +179,7 @@
                         {% for guild in guilds %}
                             <div class="card-content-guild">
                                 <div class="guild-image">
-                                    <img src="{{ config('hotel_settings.nitro_url') }}/assets/c_images/Badgeparts/generated/{{ guild.badge }}.png">
+                                    <img src="{{ config('site_settings.nitro_url') }}/assets/c_images/Badgeparts/generated/{{ guild.badge }}.png">
                                 </div>
                                 <div class="guild-image-column">
                                     <div class="guild-image-title">{{ guild.name }}</div>

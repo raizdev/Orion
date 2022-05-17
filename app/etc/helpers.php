@@ -16,9 +16,12 @@ use Ares\Framework\Proxy\App;
 use Ares\Framework\Repository\BaseRepository;
 use Ares\Framework\Service\LocaleService;
 use Ares\User\Entity\User;
+use Ares\User\Interfaces\Response\UserResponseCodeInterface;
 use Ares\User\Repository\UserRepository;
 use League\Container\Container;
 use Odan\Session\SessionInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 if (!function_exists('dd')) {
@@ -180,11 +183,14 @@ if (!function_exists('user')) {
      * Required classes: \Ares\User\Repository\UserRepository, \Ares\User\Entity\User
      *
      * @param Request $request
-     * @param bool    $isCached
+     * @param bool $isCached
      *
      * @return User
      * @throws AuthenticationException
+     * @throws DataObjectManagerException
      * @throws NoSuchEntityException
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     function user(Request $request, bool $isCached = false): User {
         /** @var array; $user */
@@ -193,7 +199,7 @@ if (!function_exists('user')) {
         if (!$authUser) {
             throw new AuthenticationException(
                 __('Not logged in.'),
-                \Ares\User\Interfaces\Response\UserResponseCodeInterface::RESPONSE_NOT_ALLOWED,
+                UserResponseCodeInterface::RESPONSE_NOT_ALLOWED,
                 HttpResponseCodeInterface::HTTP_RESPONSE_UNAUTHORIZED
             );
         }
@@ -208,7 +214,7 @@ if (!function_exists('user')) {
         if (!$user) {
             throw new AuthenticationException(
                 __('User doesnt exists.'),
-                \Ares\User\Interfaces\Response\UserResponseCodeInterface::RESPONSE_NOT_ALLOWED,
+                UserResponseCodeInterface::RESPONSE_NOT_ALLOWED,
                 HttpResponseCodeInterface::HTTP_RESPONSE_UNAUTHORIZED
             );
         }

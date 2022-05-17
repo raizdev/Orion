@@ -471,6 +471,13 @@ function WebPageHomeInterface(main_page) {
         var self = this;
         var page_container = this.main_page.get_page_container();
 
+        page_container.find(".photo-content .vote").click(function() {
+            Web.ajax_manager.post("/vote/create", {
+                entity_id: $(this).data("id"),
+                vote_entity: 6,
+                vote_type: ($(this).data("vote") === "like") ? 1 : 0
+            });
+        });
 
 
     }

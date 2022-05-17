@@ -1,12 +1,14 @@
 {
-  "hotel_settings": {
+  "site_settings": {
     "hotel_name": "Cosmic",
     "nitro_url": "https://cosmic.ddev.site/nitro",
     "imaging_url": "https://www.habbo.com/habbo-imaging/avatarimage",
     "currencies": {
-        "0": "duckets",
-        "5": "diamonds"
-    },
+      "0": "duckets",
+      "5": "diamonds"
+    }
+  },
+  "hotel_settings": {
     "start_credits": 3000,
     "start_points": 3000,
     "start_pixels": 4000,

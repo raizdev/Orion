@@ -8,19 +8,19 @@
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="robots" content="follow, index">
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-    <title>{{ page|capitalize }} - {{ config('hotel_settings.hotel_name') }}</title>
+    <title>{{ page|capitalize }} - {{ config('site_settings.hotel_name') }}</title>
 
     <meta name="description"
           content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
     <meta name="keywords"
-          content="cosmic, {{config('hotel_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
+          content="cosmic, {{config('site_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
 
-    <meta property="og:title" content="{{config('hotel_settings.hotel_name')}}">
+    <meta property="og:title" content="{{config('site_settings.hotel_name')}}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="/assets/images/summary-picture.png">
     <meta property="og:description" content="Virtual world where you can make and meet friends.">
-    <meta property="og:site_name" content="{{config('hotel_settings.hotel_name')}}">
+    <meta property="og:site_name" content="{{config('site_settings.hotel_name')}}">
 
     <!-- CSS -->
 
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 {% for currency in user.currencies %}
-                    {% set currencyType = config('hotel_settings.currencies.' ~ currency.type) %}
+                    {% set currencyType = config('site_settings.currencies.' ~ currency.type) %}
                     <div class="user-bar" data-type="{{ currency.type }}">
                         <div class="icon {{ currencyType }}"></div>
                         <div class="item-column">
@@ -93,7 +93,7 @@
                         <li class="nav-item">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="user-text">{{ user.username }}</span>
-                                <img src="{{ config('hotel_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
+                                <img src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
@@ -121,7 +121,7 @@
                     <div class="information">
                         <img class="inline-block" src="/assets/images/cosmic-logo.gif">
                         <div class="online-user">
-                            <span class="count">0</span>&nbsp;{{ config('hotel_settings.hotel_name') }}'s online
+                            <span class="count">0</span>&nbsp;{{ config('site_settings.hotel_name') }}'s online
                         </div>
                     </div>
                     <div class="habbo-button">
@@ -129,7 +129,7 @@
                             <div class="inner">
                                 {% if user %}
                                     <a href="{{ url_for('hotel') }}">
-                                        {{lang('base.header.to')}} {{ config('hotel_settings.hotel_name') }}
+                                        {{lang('base.header.to')}} {{ config('site_settings.hotel_name') }}
                                     </a>
                                 {% else %}
                                     <a href="{{ url_for('auth_sign-up') }}">

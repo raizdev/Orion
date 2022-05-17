@@ -9,6 +9,7 @@ namespace Ares\Frontend\Controller\Home;
 
 use Ares\Guild\Repository\GuildRepository;
 use Ares\Room\Repository\RoomRepository;
+use Ares\Vote\Repository\VoteRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Article\Repository\ArticleRepository;
 use Ares\Badge\Service\BadgeAlbumService;
@@ -16,6 +17,7 @@ use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Photo\Repository\PhotoRepository;
+use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -37,6 +39,8 @@ class IndexController extends BaseController
      * @param BadgeAlbumService $badgeService
      * @param RoomRepository $roomRepository,
      * @param GuildRepository $guildRepository,
+     * @param VoteRepository $voteRepository,
+     * @param SessionInterface $session
      */
     public function __construct(
         private Twig $twig,
@@ -45,6 +49,8 @@ class IndexController extends BaseController
         private BadgeAlbumService $badgeService,
         private RoomRepository $roomRepository,
         private GuildRepository $guildRepository,
+        private VoteRepository $voteRepository,
+        private SessionInterface $session
     ) {}
 
     /**

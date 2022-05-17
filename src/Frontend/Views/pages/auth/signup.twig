@@ -118,7 +118,7 @@
                                     <div class="d-flex {{ key }}" {% if key == "girl" %} style="display: none !important" {% endif %}>
                                         {% for number,look in gender %}
                                             <div class="wrapper-item not-active">
-                                                <img class="look" data-look="{{look}}" src="{{ config('hotel_settings.imaging_url') }}?figure={{look}}&amp;direction=4&amp;size=l&headonly=1" alt="Preload avatar M1">
+                                                <img class="look" data-look="{{look}}" src="{{ config('site_settings.imaging_url') }}?figure={{look}}&amp;direction=4&amp;size=l&headonly=1" alt="Preload avatar M1">
                                             </div>
                                         {% endfor %}
                                     </div>

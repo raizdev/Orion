@@ -11644,11 +11644,11 @@ form, input, label, p {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  width: 158px;
-  height: 158px;
   margin: 20px 0 auto;
   position: sticky;
   overflow: hidden;
+  width: 158px;
+  height: 158px;
 }
 #homeComponent .inner-photo {
   background-position: center;
@@ -11660,6 +11660,21 @@ form, input, label, p {
   bottom: 2px;
   z-index: 1;
   display: block;
+}
+#homeComponent .bottom-bar {
+  opacity: 0;
+  height: 40px;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+#homeComponent .inner-photo:hover .bottom-bar {
+  visibility: visible;
+  opacity: 1;
 }
 
 .card-image {
