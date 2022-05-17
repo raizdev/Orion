@@ -60,10 +60,10 @@ class ConfigController extends BaseController
         $config["online_users"] = $this->userRepository->getUserOnlineCount();
 
         if($this->session->has('user')) {
-
             /** @var User $user */
             $user = user($request);
 
+            $config["user"]["currencies"] = $user->getCurrencies();
             $config["votes"] = $this->voteRepository->getUserVoteList($user->getId());
         }
 

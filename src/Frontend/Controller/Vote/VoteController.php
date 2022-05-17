@@ -47,7 +47,6 @@ class VoteController extends BaseController
     /**
      * VoteController constructor.
      *
-     * @param   VoteRepository          $voteRepository
      * @param   ValidationService       $validationService
      * @param   CreateVoteService       $createVoteService
      * @param   DeleteVoteService       $deleteVoteService
@@ -56,7 +55,6 @@ class VoteController extends BaseController
      * @param   RouteParser             $routeParser
      */
     public function __construct(
-        private VoteRepository $voteRepository,
         private ValidationService $validationService,
         private CreateVoteService $createVoteService,
         private DeleteVoteService $deleteVoteService,
@@ -98,7 +96,7 @@ class VoteController extends BaseController
         /** @var User $user */
         $user = user($request);
 
-        $customResponse = $this->createVoteService
+        $this->createVoteService
             ->execute(
                 $user->getId(),
                 $parsedData
