@@ -22,7 +22,16 @@ function Config ()
     {
         $.getJSON('/config', function(result) {
             self.data = result.data;
-        })
+        });
+
+        this.setConfig();
+    }
+
+    this.setConfig = function () {
+        setTimeout(() => {
+            this.getConfig();
+            $(".online-user .count").text(self.data.online_users);
+        }, 25000);
     }
 }
 
@@ -30,7 +39,6 @@ function SiteLoadingInterface()
 {
     this.files = [
         "functions",
-        "web.badge",
         "web.pages",
         "web.core"
     ];
@@ -46,9 +54,9 @@ function SiteLoadingInterface()
         this.total_files = this.files.length;
         this.loading_container = $(".loading-container");
 
-        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16)
+        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
     }
-  
+
     this.load_file = function (file_id)
     {
         var self = this;

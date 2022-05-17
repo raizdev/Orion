@@ -68,28 +68,16 @@
             {% if user %}
 
             <div class="d-flex">
-                <div class="user-bar">
-                    <div class="icon credits"></div>
-                    <div class="item-column">
-                        <div class="item-text bold">5000</div>
-                        <div class="item-text">credits</div>
+                {% for currency in user.currencies %}
+                    {% set currencyType = config('hotel_settings.currencies.' ~ currency.type) %}
+                    <div class="user-bar" data-type="{{ currency.type }}">
+                        <div class="icon {{ currencyType }}"></div>
+                        <div class="item-column">
+                            <div class="item-text bold">{{ currency.amount }}</div>
+                            <div class="item-text">{{ currencyType }}</div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="user-bar">
-                    <div class="icon duckets"></div>
-                    <div class="item-column">
-                        <div class="item-text bold">5000</div>
-                        <div class="item-text">credits</div>
-                    </div>
-                </div>
-                <div class="user-bar">
-                    <div class="icon diamonds"></div>
-                    <div class="item-column">
-                        <div class="item-text bold">5000</div>
-                        <div class="item-text">credits</div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
             <div class="dropdown text-end">
@@ -113,7 +101,7 @@
                 </div>
 
             </div>
-                {% endif %}
+            {% endif %}
         </div>
     </div>
 </nav>
@@ -126,7 +114,7 @@
                     <div class="information">
                         <img class="inline-block" src="/assets/images/cosmic-logo.gif">
                         <div class="online-user">
-                            0 Cosmic's online
+                            <span class="count">0</span>&nbsp;{{ config('hotel_settings.hotel_name') }}'s online
                         </div>
                     </div>
                     <div class="habbo-button">

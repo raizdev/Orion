@@ -203,6 +203,7 @@ if (!function_exists('user')) {
 
         /** @var User $user */
         $user = $userRepository->get((int) $authUser, User::COLUMN_ID, $isCached);
+        $user->getCurrencies();
 
         if (!$user) {
             throw new AuthenticationException(

@@ -3,6 +3,10 @@
     "hotel_name": "Cosmic",
     "nitro_url": "https://cosmic.ddev.site/nitro",
     "imaging_url": "https://www.habbo.com/habbo-imaging/avatarimage",
+    "currencies": {
+        "0": "credits",
+        "5": "duckets"
+    },
     "start_credits": 3000,
     "start_points": 3000,
     "start_pixels": 4000,

@@ -21,8 +21,10 @@
   "home.login.button": "Login",
   "home.rooms.title": "Popular Rooms",
   "home.rooms.description": "Check out some rooms now!",
+  "home.rooms.empty": "No guilds are created yet!",
   "home.guilds.title": "Popular Guilds",
   "home.guilds.description": "Check out some guilds!",
+  "home.guilds.empty": "No guilds are created yet!",
 
   "article.comments": "Comments",
   "article.comment": "Comment!",

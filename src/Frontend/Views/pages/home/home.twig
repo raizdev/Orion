@@ -121,11 +121,18 @@
                         </div>
                     </div>
                     <div class="card-content card-content-rooms">
+                        {% if rooms is empty %}{{ lang('home.guilds.empty') }}{% endif %}
                         {% for room in rooms %}
                         <div class="card-content-room">
                             <span class="room-image" {% if camera %}style="background-image: url('{{ config('hotel_settings.nitro_url') }}/');" {% endif %}></span>
                             <div class="room-column">
-                                <div class="room-title">{{ room.name }}</div>
+                                <div class="room-title">
+                                    {% if user %}
+                                        <a href="/hotel?room={{ room.id }}">
+                                            {{ room.name }}
+                                        </a>
+                                    {% endif %}
+                                </div>
                                 <div class="room-description">{{ room.description }}</div>
                                 <div class="room-owner">
                                     <span class="head-figure" style="background-image: url('{{ config('hotel_settings.imaging_url') }}?figure={{ room.user.look }}&amp;action=std&amp;direction=2&amp;head_direction=2&amp;img_format=undefined&amp;gesture=sml&amp;headonly=1&amp;size=s');"></span>
@@ -152,6 +159,7 @@
                         </div>
                     </div>
                     <div class="card-content card-content-guilds">
+                        {% if guilds is empty %}{{ lang('home.guilds.empty') }}{% endif %}
                         {% for guild in guilds %}
                             <div class="card-content-guild">
                                 <div class="guild-image">

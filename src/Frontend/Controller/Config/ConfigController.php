@@ -7,6 +7,7 @@
 
 namespace Ares\Frontend\Controller\Config;
 
+use Ares\User\Repository\UserRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
 use Cosmic\Core\Config;
@@ -26,7 +27,8 @@ class ConfigController extends BaseController
      * @param Config $config
      */
     public function __construct(
-        private Config $config
+        private Config $config,
+        private UserRepository $userRepository,
     ) {}
 
     /**
@@ -44,10 +46,14 @@ class ConfigController extends BaseController
      */
     public function __invoke(Request $request, Response $response): Response
     {
+        /** @var array $config */
+        $config = $this->config->get('hotel_settings');
+
+        $config["online_users"] = $this->userRepository->getUserOnlineCount();
+
         return $this->respond(
             $response,
-            response()->setData(
-                $this->config->get('hotel_settings'))
+            response()->setData($config)
         );
     }
 }
