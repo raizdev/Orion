@@ -4,8 +4,8 @@
     "nitro_url": "https://cosmic.ddev.site/nitro",
     "imaging_url": "https://www.habbo.com/habbo-imaging/avatarimage",
     "currencies": {
-        "0": "credits",
-        "5": "duckets"
+        "0": "duckets",
+        "5": "diamonds"
     },
     "start_credits": 3000,
     "start_points": 3000,

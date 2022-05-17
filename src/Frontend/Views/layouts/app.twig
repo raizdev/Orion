@@ -68,6 +68,13 @@
             {% if user %}
 
             <div class="d-flex">
+                <div class="user-bar" data-type="credits">
+                    <div class="icon credits"></div>
+                    <div class="item-column">
+                        <div class="item-text bold">{{ user.credits }}</div>
+                        <div class="item-text">credits</div>
+                    </div>
+                </div>
                 {% for currency in user.currencies %}
                     {% set currencyType = config('hotel_settings.currencies.' ~ currency.type) %}
                     <div class="user-bar" data-type="{{ currency.type }}">

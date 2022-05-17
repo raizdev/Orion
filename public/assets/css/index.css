@@ -11608,6 +11608,9 @@ form, input, label, p {
   font-size: 14px;
   font-weight: 500;
 }
+#homeComponent .card-content-rooms .card-content-room .room-column .room-title a {
+  text-decoration: underline;
+}
 #homeComponent .card-content-rooms .card-content-room .room-column .room-description {
   color: #4E4E4E;
   font-size: 13px;

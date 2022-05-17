@@ -45,7 +45,7 @@
                     <div class="card-content no-spacing oddeven">
                         <div class="author">
                             <div class="avatar">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}/?figure={{ comment.user.look }}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
+                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('hotel_settings.imaging_url') }}?figure={{ comment.user.look }}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
                             </div>
                             <div class="info">
                                 <span class="username"><a href="/user/{{ comment.user.username }}">{{ comment.user.username }}</a></span>
@@ -62,6 +62,7 @@
                 </div>
             </div>
             <div class="col mb-4">
+                <form method="post" action="{{ url_for('comment_create') }}">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header-title-container" style="position: relative;">
@@ -75,8 +76,10 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fw btn-primary">{{ lang('article.comment') }}</button>
+                        <input type="hidden" name="article_id" value="{{ article.id }}">
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
