@@ -30,8 +30,14 @@ function Config ()
     this.setConfig = function () {
         setTimeout(() => {
             this.getConfig();
+
             $(".online-user .count").text(self.data.online_users);
-        }, 25000);
+
+            $(".user-bar[data-type='credits'] .item-column .amount").text(self.data.credits);
+            $.each(self.data.user.currencies, function(i, item) {
+                $(".user-bar[data-type='" + item.type + "'] .item-column .amount").text(item.amount);
+            });
+        }, 30000);
     }
 }
 

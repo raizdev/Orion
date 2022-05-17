@@ -64,6 +64,8 @@ class ConfigController extends BaseController
             $user = user($request);
 
             $config["user"]["currencies"] = $user->getCurrencies();
+            $config["user"]["credits"] = $user->getCredits();
+
             $config["votes"] = $this->voteRepository->getUserVoteList($user->getId());
         }
 
