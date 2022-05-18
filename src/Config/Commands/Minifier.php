@@ -135,7 +135,7 @@ class Minifier
 
     public $js = [
         'all.min.js' => [
-            'jquery-3.2.1.min.js', 'functions.js', 'loading.js', 'web.core.js', 'web.pages.js', 'bootstrap.js', 'fontawesome.js', 'jquery.ui.touch-punch.min.js', 'jquery.history.js', 'notyf.min.js'
+            'jquery-3.2.1.min.js',  'functions.js', 'web.core.js', 'web.pages.js', 'bootstrap.js', 'fontawesome.js', 'loading.js', 'jquery.history.js', 'notyf.min.js', 'jquery.ui.touch-punch.min.js'
         ]
     ];
 

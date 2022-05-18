@@ -1,7 +1,7 @@
 {
   "site_settings": {
-    "hotel_name": "Cosmic",
-    "nitro_url": "https://cosmic.ddev.site/nitro",
+    "hotel_name": "Habbo",
+    "nitro_url": "https://client.habbo.ng",
     "imaging_url": "https://www.habbo.com/habbo-imaging/avatarimage",
     "currencies": {
       "0": "duckets",
@@ -12,7 +12,7 @@
     "start_credits": 3000,
     "start_points": 3000,
     "start_pixels": 4000,
-    "start_motto": "Ares is cool!",
+    "start_motto": "Habbo is cool",
     "register": {
       "max_accounts_per_ip": 3,
       "looks": {
