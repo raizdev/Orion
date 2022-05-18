@@ -37,7 +37,7 @@
                     <div class="photo-content">
                         <div class="inner-photo" style="background: url({{ photo.url }}); background-position: center;">
                             <div class="bottom-bar">
-                                <div class="d-flex p-3">
+                                <div class="d-flex p-2">
                                     <div class="ml-auto m-auto">
                                         <i class="fas fa-thumbs-up vote" data-vote="like" data-id="{{ photo.id }}" style="color: green; font-size: 16px"></i>
                                         <span class="count-up">{{ photo.likes }}</span>
@@ -83,43 +83,6 @@
             </div>
         </div>
         <div class="col-md-4">
-            {% if user is empty %}
-            <div class="col mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title-container">
-                            <div class="background-gray card-header-icon-container">
-                                <div class="icon login"></div>
-                            </div>
-                            <div class="card-header-titles">
-                                <div class="card-header-title">{{ lang('home.login.title') }}</div>
-                                <span class="card-header-subtitle">{{ lang('home.login.description') }}</span>
-                            </div>
-                            <div class="card-header-actions"></div>
-                        </div>
-                    </div>
-                    <form method="post" action="{{ url_for('auth_sign-in') }}">
-                    <div class="card-content">
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <span class="fa fa-user form-control-icon"></span>
-                                    <input type="text" name="username" class="form-control" placeholder="{{ lang('home.login.username') }}">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <span class="fa fa-lock form-control-icon"></span>
-                                    <input type="password" name="password" class="form-control" placeholder="{{ lang('home.login.password') }}">
-                                </div>
-                            </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-fw btn-primary">{{ lang('home.login.button') }}</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-            {% endif %}
             <div class="col mb-4">
                 <div class="card">
                     <div class="card-header">

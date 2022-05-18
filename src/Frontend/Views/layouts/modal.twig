@@ -1,0 +1,37 @@
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-login">
+        <div class="card modal-content">
+            <form method="post" action="{{ url_for('auth_sign-in') }}">
+                <div class="card-header">
+                    <div class="card-header-title-container float-lg-start">
+                        <div class="background-gray card-header-icon-container">
+                            <div class="icon login"></div>
+                        </div>
+                        <div class="card-header-titles">
+                            <div class="card-header-title">{{ lang('home.login.title') }}</div>
+                            <span class="card-header-subtitle">{{ lang('home.login.description') }}</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close float-lg-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="card-content">
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <span class="fa fa-user form-control-icon"></span>
+                            <input type="text" name="username" class="form-control" placeholder="{{ lang('home.login.username') }}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <span class="fa fa-lock form-control-icon"></span>
+                            <input type="password" name="password" class="form-control" placeholder="{{ lang('home.login.password') }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-fw btn-primary">{{ lang('home.login.button') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

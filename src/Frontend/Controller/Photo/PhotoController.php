@@ -5,68 +5,47 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\Photo\Controller;
+namespace Ares\Frontend\Controller\Photo;
 
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\ValidationService;
 use Ares\Photo\Entity\Photo;
-use Ares\Photo\Exception\PhotoException;
-use Ares\Photo\Interfaces\Response\PhotoResponseCodeInterface;
 use Ares\Photo\Repository\PhotoRepository;
 use Ares\User\Entity\Contract\UserInterface;
+use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\User\Entity\User;
 use Ares\User\Repository\UserRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\Twig;
+use function __;
+use function response;
 
 /**
  * Class PhotoController
  *
  * @package Ares\Photo\Controller
+ * @CR\Router
  */
 class PhotoController extends BaseController
 {
     /**
      * PhotoController constructor.
      *
+     * @param   Twig                    $twig
      * @param   PhotoRepository         $photoRepository
      * @param   UserRepository          $userRepository
      * @param   ValidationService       $validationService
      */
     public function __construct(
+        private Twig $twig,
         private PhotoRepository $photoRepository,
         private UserRepository $userRepository,
         private ValidationService $validationService
     ) {}
-
-    /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @return Response
-     * @throws DataObjectManagerException
-     * @throws NoSuchEntityException
-     */
-    public function photo(Request $request, Response $response, array $args): Response
-    {
-        /** @var int $id */
-        $id = $args['id'];
-
-        /** @var Photo $photo */
-        $photo = $this->photoRepository->get($id);
-        $photo->getUser();
-
-        return $this->respond(
-            $response,
-            response()
-                ->setData($photo)
-        );
-    }
 
     /**
      * @param Request  $request
@@ -102,6 +81,12 @@ class PhotoController extends BaseController
     }
 
     /**
+     *  @CR\Route(
+     *     name="community-photos",
+     *     methods={"GET"},
+     *     pattern="/community/photos"
+     * )
+     *
      * @param Request  $request
      * @param Response $response
      * @param array    $args
@@ -109,13 +94,13 @@ class PhotoController extends BaseController
      * @return Response
      * @throws DataObjectManagerException
      */
-    public function list(Request $request, Response $response, array $args): Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         /** @var int $page */
-        $page = $args['page'];
+        $page = $args['page'] ?? 1;
 
         /** @var int $resultPerPage */
-        $resultPerPage = $args['rpp'];
+        $resultPerPage = $args['rpp'] ?? 12;
 
         $photos = $this->photoRepository
             ->getPaginatedPhotoList(
@@ -123,41 +108,9 @@ class PhotoController extends BaseController
                 $resultPerPage
             );
 
-        return $this->respond(
-            $response,
-            response()
-                ->setData($photos)
-        );
-    }
-
-    /**
-     * @param Request     $request
-     * @param Response    $response
-     * @param             $args
-     *
-     * @return Response
-     * @throws PhotoException
-     * @throws DataObjectManagerException
-     */
-    public function delete(Request $request, Response $response, array $args): Response
-    {
-        /** @var int $id */
-        $id = $args['id'];
-
-        $photo = $this->photoRepository->delete($id);
-
-        if (!$photo) {
-            throw new PhotoException(
-                __('Photo could not be deleted'),
-                PhotoResponseCodeInterface::RESPONSE_PHOTO_NOT_DELETED,
-                HttpResponseCodeInterface::HTTP_RESPONSE_UNPROCESSABLE_ENTITY
-            );
-        }
-
-        return $this->respond(
-            $response,
-            response()
-                ->setData(true)
-        );
+        return $this->twig->render($response, '/Frontend/Views/pages/community/photo.twig', [
+            'photos' => $photos,
+            'page' => 'community_photos'
+        ]);
     }
 }

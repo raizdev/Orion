@@ -11345,74 +11345,22 @@ body {
   border-top-right-radius: 0;
 }
 
-textarea {
-  font-size: 12px !important;
+.icon {
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100px;
+  background-color: #dedede;
+}
+.icon.login {
+  background-image: url(/assets/images/web/collider/login_lock.png);
+  background-color: #e7e7e7;
 }
 
-.modal {
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9;
-  display: block;
-}
-.modal__backdrop {
-  background-color: rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-}
-.modal__dialog {
-  background-color: #ffffff;
-  position: relative;
-  width: 600px;
-  margin: 50px auto;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  z-index: 2;
-}
-@media screen and (max-width: 992px) {
-  .modal__dialog {
-    width: 90%;
-  }
-}
-.modal__close {
-  width: 30px;
-  height: 30px;
-}
-.modal__header {
-  padding: 20px 20px 10px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.modal__body {
-  padding: 10px 20px 10px;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-.modal__footer {
-  padding: 10px 20px 20px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.modal-login {
+  top: 50px;
+  width: 400px;
 }
 
 .form-group:focus {
@@ -11663,8 +11611,8 @@ form, input, label, p {
 }
 #homeComponent .bottom-bar {
   opacity: 0;
-  height: 40px;
-  background-color: #fff;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.6901960784);
   position: absolute;
   right: 0;
   bottom: 0;

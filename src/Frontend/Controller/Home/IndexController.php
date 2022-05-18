@@ -38,9 +38,7 @@ class IndexController extends BaseController
      * @param PhotoRepository $photoRepository
      * @param BadgeAlbumService $badgeService
      * @param RoomRepository $roomRepository,
-     * @param GuildRepository $guildRepository,
-     * @param VoteRepository $voteRepository,
-     * @param SessionInterface $session
+     * @param GuildRepository $guildRepository
      */
     public function __construct(
         private Twig $twig,
@@ -48,9 +46,7 @@ class IndexController extends BaseController
         private PhotoRepository $photoRepository,
         private BadgeAlbumService $badgeService,
         private RoomRepository $roomRepository,
-        private GuildRepository $guildRepository,
-        private VoteRepository $voteRepository,
-        private SessionInterface $session
+        private GuildRepository $guildRepository
     ) {}
 
     /**
