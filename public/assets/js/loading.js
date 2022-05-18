@@ -43,59 +43,30 @@ function Config ()
 
 function SiteLoadingInterface()
 {
-    this.files = [
-        "functions",
-        "web.pages",
-        "web.core"
-    ];
-
     this.loaded_files = 0;
-    this.total_files = 0;
+    this.total_files = 2;
     this.loading_container = null;
     this.cache_id = null;
 
     this.init = function ()
     {
         console.log("Cosmic Forward - All rights reserved");
-        this.total_files = this.files.length;
+        this.total_files = 1;
         this.loading_container = $(".loading-container");
-
-        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
+        this.cache_id = null;
     }
 
     this.load_file = function (file_id)
     {
         var self = this;
-        var file_name = this.files[file_id];
-        var script = document.createElement("script");
-        $("body").append(script);
-        script.onload = function ()
+        var percent = 100;
+
+        self.loading_container.find(".c100").attr("class", "c100 p" + percent + " center");
+
+        setTimeout(function ()
         {
-            self.loaded_files++;
-
-            var percent = Math.floor(self.loaded_files / self.total_files * 100);
-
-            self.loading_container.find(".c100").attr("class", "c100 p" + percent + " center");
-
-            if (file_id + 1 < self.total_files)
-            {
-                file_id++;
-                self.load_file(file_id);
-            }
-            else
-            {
-                setTimeout(function ()
-                {
-                    self.close_loading();
-                }, 100);
-            }
-        };
-        script.onerror = function ()
-        {
-            console.log("Oops, file \"" + file_name + "\" not found.");
-            self.write_bodytext("Oops, something went wrong. <a href=\"javascript:window.location.reload();\">Reload the page</a>.");
-        };
-        script.src = "/assets/js/" + file_name + ".js?" + this.cache_id;
+            self.close_loading();
+        }, 100);
     };
 
     this.write_bodytext = function (text)
