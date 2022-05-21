@@ -11183,6 +11183,18 @@ body {
   display: none;
 }
 
+.object-contain {
+  object-fit: contain !important;
+}
+
+.image-pixelated {
+  image-rendering: pixelated !important;
+}
+
+.opacity-1 {
+  opacity: 1 !important;
+}
+
 .icon-diamonds {
   background: url(/assets/images/hotel/purses/5-icon.png) no-repeat;
   display: inline-block;
@@ -11802,6 +11814,63 @@ form, input, label, p {
   background-repeat: no-repeat;
   border-radius: 100px;
   margin-top: -9px;
+}
+
+#photoComponent .photo {
+  background-color: #fff;
+  width: 245px !important;
+  padding: 3px;
+  margin: 5px;
+}
+#photoComponent .photo .inner-photo {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: sticky;
+  overflow: hidden;
+  height: 238px;
+  width: 238px;
+}
+#photoComponent .photo .bottom-bar {
+  opacity: 0;
+  height: 55px;
+  background-color: rgba(255, 255, 255, 0.6901960784);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+#photoComponent .photo .inner-photo:hover .bottom-bar {
+  visibility: visible;
+  opacity: 1;
+}
+#photoComponent .photo .figure-avatar {
+  width: 50px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+#photoComponent .photo .photo-title {
+  font-weight: bold;
+}
+#photoComponent .photo .photo-actions {
+  flex: auto;
+}
+
+#photoModal .modal-img {
+  image-rendering: pixelated;
+}
+
+#photoModal .modal-content {
+  width: 348px !important;
+}
+
+#photoModal .modal-dialog {
+  max-width: 348px !important;
 }
 
 /*# sourceMappingURL=index.css.map */
