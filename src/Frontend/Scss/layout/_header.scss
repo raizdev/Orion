@@ -51,99 +51,109 @@
   align-items: center;
 }
 
+@media only screen and (max-width: 580px) {
+  .header-card .header-inner-card {
+    display: block !important;
+  }
+
+  .habbo-button {
+    margin-top: 10px;
+  }
+}
+
 .header-card .header-inner-card .habbo-button .enter-hotel a {
-  text-decoration: none;
-  color: #000;
+text-decoration: none;
+color: #000;
 }
 
 .header-card .header-inner-card .habbo-button .enter-hotel {
-  display: flex;
-  background-color: #ffb900;
-  border-color: #ffea00;
-  color: #212121;
-  border-radius: 5px 0 0 5px;
-  border-width: 2px 1px 2px 2px;
-  border-style: solid;
-  text-transform: uppercase;
-  filter: drop-shadow(-1px 4px 0 rgba(0, 0, 0, .3));
-  position: relative;
-  padding: 0 2rem;
-  height: 46px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
+display: flex;
+background-color: #ffb900;
+border-color: #ffea00;
+color: #212121;
+border-radius: 5px 0 0 5px;
+border-width: 2px 1px 2px 2px;
+border-style: solid;
+text-transform: uppercase;
+filter: drop-shadow(-1px 4px 0 rgba(0, 0, 0, .3));
+position: relative;
+padding: 0 2rem;
+height: 46px;
+cursor: pointer;
+font-weight: 600;
+font-size: 14px;
 }
 
 .header-card .header-inner-card .habbo-button .enter-hotel:before,
 .header-card .header-inner-card .habbo-button .enter-hotel:after {
-  border-style: solid;
-  position: absolute;
-  display: block;
-  content: "";
+border-style: solid;
+position: absolute;
+display: block;
+content: "";
 }
 
 .header-card .header-inner-card .habbo-button .enter-hotel:before {
-  border-width: 23px;
-  top: -2px;
-  border-color: transparent transparent transparent #ffea00;
-  right: -47px;
+border-width: 23px;
+top: -2px;
+border-color: transparent transparent transparent #ffea00;
+right: -47px;
 }
 
 .header-card .header-inner-card .habbo-button .enter-hotel:after {
-  border-width: 21px;
-  top: 0;
-  border-color: transparent transparent transparent #ffb900;
-  right: -42px;
+border-width: 21px;
+top: 0;
+border-color: transparent transparent transparent #ffb900;
+right: -42px;
 }
 
 .header-card .header-inner-card .habbo-button .enter-hotel .inner {
-  position: relative;
-  padding-right: 27px;
-  text-align: right;
-  display: flex;
-  align-items: center;
+position: relative;
+padding-right: 27px;
+text-align: right;
+display: flex;
+align-items: center;
 }
 
 .header-card .header-inner-card .habbo-button .enter-hotel .inner:before {
-  background-image: url(../images/sprite.005440fe4621f7ea.png);
-  background-position: -463px -318px;
-  background-size: 525px 411px;
-  width: 21px;
-  height: 26px;
-  content: "";
-  display: block;
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  right: 0;
-  margin-right: -10px;
+background-image: url(../images/sprite.005440fe4621f7ea.png);
+background-position: -463px -318px;
+background-size: 525px 411px;
+width: 21px;
+height: 26px;
+content: "";
+display: block;
+position: absolute;
+transform: translateY(-50%);
+top: 50%;
+right: 0;
+margin-right: -10px;
 }
 
 .header-card .header-inner-card .information {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 .header-card .header-inner-card .information .online-user {
-  position: relative;
-  display: flex;
-  flex: 1;
-  align-items: center;
-  padding: 15px;
-  background: #fff;
-  border-radius: 5px;
-  font-size: 13px;
-  margin-left: 1rem;
+position: relative;
+display: flex;
+flex: 1;
+align-items: center;
+padding: 15px;
+background: #fff;
+border-radius: 5px;
+font-size: 13px;
+margin-left: 1rem;
 }
 
 .header-card .header-inner-card .information .online-user::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 47%;
-  border: 10px solid transparent;
-  border-right-color: #fff;
-  border-left: 0;
-  margin-top: -10px;
-  margin-left: -10px;
+content: "";
+position: absolute;
+left: 0;
+top: 47%;
+border: 10px solid transparent;
+border-right-color: #fff;
+border-left: 0;
+margin-top: -10px;
+margin-left: -10px;
 }

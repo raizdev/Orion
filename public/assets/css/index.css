@@ -10740,6 +10740,71 @@ body {
   padding: 8px !important;
 }
 
+@media only screen and (max-width: 995px) {
+  .navbar-currencies {
+    display: none !important;
+  }
+
+  .navbar-header {
+    height: 60px;
+  }
+
+  .navbar-toggler {
+    margin: 14px;
+  }
+
+  .navbar-toggler-icon {
+    background-color: #c1c1c1 !important;
+  }
+
+  .navbar-collapse {
+    background-color: #fff;
+    padding-bottom: 60px;
+  }
+
+  .justify-content-center {
+    justify-content: normal;
+  }
+
+  .nav {
+    display: block;
+    flex-wrap: nowrap;
+    padding: 0;
+    list-style: none;
+    margin-top: 50px;
+  }
+
+  .navigation .col-12 {
+    flex: initial !important;
+    width: fit-content !important;
+  }
+
+  .login-button,
+.dropdown {
+    float: left;
+    position: absolute;
+  }
+
+  .navigation .dropdown-menu {
+    margin: 2px 0px 0px 2px !important;
+  }
+
+  .selected {
+    border: none !important;
+  }
+}
+.nav-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.navbar {
+  padding: 0 !important;
+}
+
 .navigation .item-nav {
   position: relative;
   display: flex;
@@ -10802,6 +10867,9 @@ body {
   background-image: url(/assets/images/web/header/diamonds.png);
   background-color: #caf1f3;
   outline: 1px solid #6caff4;
+}
+.navigation .dropdown-container {
+  height: 60px;
 }
 .navigation li {
   margin-right: 20px;
@@ -10901,6 +10969,15 @@ body {
   align-items: center;
 }
 
+@media only screen and (max-width: 580px) {
+  .header-card .header-inner-card {
+    display: block !important;
+  }
+
+  .habbo-button {
+    margin-top: 10px;
+  }
+}
 .header-card .header-inner-card .habbo-button .enter-hotel a {
   text-decoration: none;
   color: #000;

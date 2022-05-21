@@ -38,71 +38,80 @@
 </noscript>
 {% include 'Frontend/Views/layouts/modal.twig' %}
 <div class="notifications-container"></div>
-<nav class="navbar-header fixed-top">
-    <div class="navigation container">
-        <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="{{ url_for('home') }}" class="nav-link selected px-2 link-secondary">{{ lang('base.navbar.home') }}</a></li>
-                <div class="dropdown text-end">
-                    <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ lang('base.navbar.community') }}
-                    </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">{{ lang('base.navbar.community.articles') }}</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('community-staffs') }}">{{ lang('base.navbar.community.staffs') }}</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('community-photos') }}">{{ lang('base.navbar.community.gallery') }}</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('community-highscores') }}">{{ lang('base.navbar.community.highscores') }}</a></li>
-                    </ul>
-                </div>
-            </ul>
-            {% if user %}
+<nav class="navbar navbar-header fixed-top navbar-expand-lg navbar-light bg-light">
 
-            <div class="d-flex">
-                <div class="user-bar" data-type="credits">
-                    <div class="icon credits"></div>
-                    <div class="item-column">
-                        <div class="item-text amount bold">{{ user.credits }}</div>
-                        <div class="item-text">credits</div>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <div class="navigation container">
+            <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="{{ url_for('home') }}" class="nav-link selected px-2 link-secondary">{{ lang('base.navbar.home') }}</a></li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ lang('base.navbar.community') }}
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#">{{ lang('base.navbar.community.articles') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('community-staffs') }}">{{ lang('base.navbar.community.staffs') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('community-photos') }}">{{ lang('base.navbar.community.gallery') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('community-highscores') }}">{{ lang('base.navbar.community.highscores') }}</a></li>
+                        </ul>
                     </div>
-                </div>
-                {% for currency in user.currencies %}
-                    {% set currencyType = config('site_settings.currencies.' ~ currency.type) %}
-                    <div class="user-bar" data-type="{{ currency.type }}">
-                        <div class="icon {{ currencyType }}"></div>
+                </ul>
+
+                {% if user %}
+                <div class="navbar-currencies d-flex">
+                    <div class="user-bar" data-type="credits">
+                        <div class="icon credits"></div>
                         <div class="item-column">
-                            <div class="item-text amount bold">{{ currency.amount }}</div>
-                            <div class="item-text">{{ currencyType }}</div>
+                            <div class="item-text amount bold">{{ user.credits }}</div>
+                            <div class="item-text">credits</div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-
-            <div class="dropdown text-end">
-                <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="user-text">{{ user.username }}</span>
-                                <img src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
-                                <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    {% for currency in user.currencies %}
+                        {% set currencyType = config('site_settings.currencies.' ~ currency.type) %}
+                        <div class="user-bar" data-type="{{ currency.type }}">
+                            <div class="icon {{ currencyType }}"></div>
+                            <div class="item-column">
+                                <div class="item-text amount bold">{{ currency.amount }}</div>
+                                <div class="item-text">{{ currencyType }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
 
+                <div class="dropdown text-end">
+                    <div class="d-flex flex-wrap align-items-center dropdown-container">
+                        <ul class="nav-dropdown">
+                            <li class="nav-item">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="user-text">{{ user.username }}</span>
+                                    <img src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
+                                    <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% else %}
+                <div class="login-button">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <span class="user-text">Login</span>
+                    </button>
+                </div>
+                {% endif %}
             </div>
-            {% else %}
-                <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <span class="user-text">Login</span>
-                </button>
-            {% endif %}
         </div>
     </div>
 </nav>
