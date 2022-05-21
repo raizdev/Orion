@@ -137,7 +137,7 @@ function WebPageSettingsVerificationInterface(main_page) {
 function WebPageCommunityPhotosInterface(main_page) {
     this.main_page = main_page;
 
-    this.init = function(test) {
+    this.init = function() {
         var self = this;
 
         let page_container = this.main_page.get_page_container();
@@ -157,7 +157,7 @@ function WebPageCommunityPhotosInterface(main_page) {
     }
 
     this.vote = function (id, voted) {
-        Web.ajax_manager.post("/vote/create", {
+        Web.ajax_manager.post("//vote/create", {
             entity_id: id,
             vote_entity: 6,
             vote_type: (voted === "like") ? 1 : 0

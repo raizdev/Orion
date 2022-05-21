@@ -1,6 +1,6 @@
 var SiteLoading;
 var PageLoading;
-var Config;
+var ConfigLoading;
 
 $(function ()
 {
@@ -8,14 +8,13 @@ $(function ()
     SiteLoading.init();
     SiteLoading.load_file(0);
     PageLoading = new PageLoadingInterface();
-    Config = new Config();
-    Config.getConfig();
+    ConfigLoading = new ConfigLoadingInterface();
+    ConfigLoading.getConfig();
 });
 
-function Config ()
+function ConfigLoadingInterface ()
 {
     var self = this;
-
     this.data = null;
 
     this.getConfig = function ()
@@ -31,12 +30,15 @@ function Config ()
         setTimeout(() => {
             this.getConfig();
 
-            $(".online-user .count").text(self.data.online_users);
+            let data = self.data;
+            $(".online-user .count").text(data.online_users);
 
-            $(".user-bar[data-type='credits'] .item-column .amount").text(self.data.credits);
-            $.each(self.data.user.currencies, function(i, item) {
-                $(".user-bar[data-type='" + item.type + "'] .item-column .amount").text(item.amount);
-            });
+            if(data.hasOwnProperty('user')) {
+                $(".user-bar[data-type='credits'] .item-column .amount").text(data.credits);
+                $.each(data.user.currencies, function(i, item) {
+                    $(".user-bar[data-type='" + item.type + "'] .item-column .amount").text(item.amount);
+                });
+            }
         }, 30000);
     }
 }
