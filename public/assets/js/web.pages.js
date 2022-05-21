@@ -51,7 +51,7 @@ function WebHotelManagerInterface() {
 
                 Web.ajax_manager.get("/auth/ticket", function (result) {
 
-                    container.prepend('<iframe class="client-frame nitro" src="' + Config.data.nitro_url + '/?sso=' + result.data.ticket + argumentAction + '"></iframe>');
+                    container.prepend('<iframe class="client-frame nitro" src="' + ConfigLoading.data.nitro_url + '/?sso=' + result.data.ticket + argumentAction + '"></iframe>');
 
                     let frame = document.getElementById('nitro');
 

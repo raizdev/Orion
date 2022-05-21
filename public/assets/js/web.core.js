@@ -269,9 +269,9 @@ function WebPagesManagerInterface() {
         }
 
         if (!history_replace) {
-            History.pushState(null, title ? title : Config.data.hotel_name, "/" + url);
+            History.pushState(null, title ? title : ConfigLoading.data.hotel_name, "/" + url);
         } else {
-            History.replaceState(null, title ? title : Config.data.hotel_name, "/" + url);
+            History.replaceState(null, title ? title : ConfigLoading.data.hotel_name, "/" + url);
         }
     };
 
@@ -364,13 +364,13 @@ function WebPagesManagerInterface() {
                 if (window.location.pathname + window.location.search === "/" + url)
                     return;
 
-                var pageTitle = result.page + ' - ' + Config.data.hotel_name;
+                var pageTitle = result.page + ' - ' + ConfigLoading.data.hotel_name;
                 document.title = capitalizeFirstLetter(pageTitle);
                 self.push(url, capitalizeFirstLetter(pageTitle), false);
             });
         } else {
             Web.hotel_manager.open_hotel(url.replace("hotel?", "").replace("hotel", ""));
-            self.push(url, "Hotel - " + Config.data.hotel_name, false);
+            self.push(url, "Hotel - " + ConfigLoading.data.hotel_name, false);
         }
     };
 }
