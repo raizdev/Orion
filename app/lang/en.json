@@ -5,6 +5,7 @@
   "base.navbar.community": "community",
   "base.navbar.community.articles": "Articles",
   "base.navbar.community.gallery": "Gallery",
+  "base.navbar.community.staffs": "Staffs",
   "base.navbar.community.highscores": "Highscores",
   "base.navbar.user.profile": "My Profile",
   "base.navbar.user.settings": "Settings",

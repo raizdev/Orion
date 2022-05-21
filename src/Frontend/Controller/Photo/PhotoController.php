@@ -92,7 +92,6 @@ class PhotoController extends BaseController
      * @param array    $args
      *
      * @return Response
-     * @throws DataObjectManagerException
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
@@ -110,7 +109,7 @@ class PhotoController extends BaseController
 
         return $this->twig->render($response, '/Frontend/Views/pages/community/photo.twig', [
             'photos' => $photos,
-            'page' => 'community_photos'
+            'page' => 'Photos'
         ]);
     }
 }

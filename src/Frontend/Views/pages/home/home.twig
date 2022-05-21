@@ -72,7 +72,7 @@
                             <div class="d-flex justify-content-center  flex-wrap">
                                 {% for badge, value in badges %}
                                 <div class="badge">
-                                    <img src="{{ config('site_settings.nitro_url') }}/assets/c_images/album1584/{{badge}}" title="Test">
+                                    <img src="{{ config('site_settings.nitro.url') }}{{ config('site_settings.nitro.badges') }}{{badge}}" title="Test">
                                 </div>
                                 {% endfor %}
                             </div>
@@ -100,7 +100,7 @@
                         {% if rooms is empty %}{{ lang('home.guilds.empty') }}{% endif %}
                         {% for room in rooms %}
                         <div class="card-content-room">
-                            <span class="room-image" {% if camera %}style="background-image: url('{{ config('site_settings.nitro_url') }}/');" {% endif %}></span>
+                            <span class="room-image" {% if camera %}style="background-image: url('{{ config('site_settings.nitro.url') }}/');" {% endif %}></span>
                             <div class="room-column">
                                 <div class="room-title">
                                     {% if user %}
@@ -141,7 +141,7 @@
                         {% for guild in guilds %}
                             <div class="card-content-guild">
                                 <div class="guild-image">
-                                    <img src="{{ config('site_settings.nitro_url') }}/assets/c_images/Badgeparts/generated/{{ guild.badge }}.png">
+                                    <img src="{{ config('site_settings.nitro.url') }}/assets/c_images/Badgeparts/generated/{{ guild.badge }}.png">
                                 </div>
                                 <div class="guild-image-column">
                                     <div class="guild-image-title">{{ guild.name }}</div>

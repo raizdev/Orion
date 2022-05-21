@@ -1,7 +1,10 @@
 {
   "site_settings": {
     "hotel_name": "Habbo",
-    "nitro_url": "https://client.habbo.ng",
+    "nitro": {
+        "url": "https://client.habbo.ng",
+        "badges": "/assets/c_images/album1584/"
+    },
     "imaging_url": "https://www.habbo.com/habbo-imaging/avatarimage",
     "currencies": {
       "0": "duckets",

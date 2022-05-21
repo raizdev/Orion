@@ -1,0 +1,37 @@
+#staffComponent {
+  .staffUser {
+    height: 70px;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .staffMotto {
+    background-color: #edeff2;
+    padding: 2rem;
+    text-align: center;
+    color: #535355;
+  }
+
+  .badges {
+    padding: 1rem;
+    list-style: none;
+
+    .badge {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  .avatar {
+    margin-top: -14px
+  }
+
+  .information {
+    margin-left: 1rem;
+
+    .username {
+      font-weight: 600;
+      font-size: 15px;
+    }
+  }
+}

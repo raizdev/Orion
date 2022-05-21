@@ -11873,4 +11873,34 @@ form, input, label, p {
   max-width: 348px !important;
 }
 
+#staffComponent .staffUser {
+  height: 70px;
+  padding: 1rem;
+  overflow: hidden;
+}
+#staffComponent .staffMotto {
+  background-color: #edeff2;
+  padding: 2rem;
+  text-align: center;
+  color: #535355;
+}
+#staffComponent .badges {
+  padding: 1rem;
+  list-style: none;
+}
+#staffComponent .badges .badge {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+#staffComponent .avatar {
+  margin-top: -14px;
+}
+#staffComponent .information {
+  margin-left: 1rem;
+}
+#staffComponent .information .username {
+  font-weight: 600;
+  font-size: 15px;
+}
+
 /*# sourceMappingURL=index.css.map */

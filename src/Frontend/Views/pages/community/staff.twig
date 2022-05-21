@@ -1,0 +1,49 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+    <div id="staffComponent">
+        {% for rank in staffs %}
+        <div class="row">
+            <div class="col-md-12 {% if loop.index > 1 %}mt-4{% endif %}">
+                <div class="card">
+                    <div class="card-header card-header-right-image moving">
+                        <div class="card-header-title-container ng-star-inserted">
+                            <div class="background-gray card-header-icon-container">
+                                <img src="{{ config('site_settings.nitro.url') }}{{ config('site_settings.nitro.badges') }}{{ rank.badge }}.gif">
+                            </div>
+                            <div class="card-header-titles ng-star-inserted">
+                                <div class="card-header-title">{{ rank.rank_name }}</div>
+                                <span class="card-header-subtitle ng-star-inserted">Join the most fun online community!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for user in rank.users %}
+            <div class="col-md-4 mt-4">
+                <div class="card">
+                    <div class="card-content no-spacing">
+                        <div class="staffUser d-flex justify-content-between align-content-center">
+                            <div class="align-content-center d-flex">
+                                <div class="avatar">
+                                    <img alt="Photo avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
+                                </div>
+                                <div class="information d-flex flex-column">
+                                    <span class="username">{{ user.username }}</span>
+                                    <span>{{ rank.rank_name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staffMotto">
+                            {{ user.motto }}
+                        </div>
+                        <div class="badges d-flex align-content-center">
+                            <div class="badge"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
