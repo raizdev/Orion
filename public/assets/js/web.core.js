@@ -379,12 +379,10 @@ function WebAjaxManagerInterface() {
                 data.append("return_url", window.location.href);
         }
 
-        PageLoading.show();
-
         if (url.charAt(0) === "/") {
             url = url.slice(1);
         }
-
+        
         // Requests
         $.ajax({
             type: "post",
@@ -394,8 +392,6 @@ function WebAjaxManagerInterface() {
             processData: false,
             contentType: false
         }).done(function (result) {
-            PageLoading.hide();
-
             // Change page
             if (result.data && result.data.pagetime)
                 setTimeout(function () {
