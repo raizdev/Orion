@@ -143,6 +143,7 @@ function WebPageCommunityPhotosInterface(main_page) {
         let page_container = this.main_page.get_page_container();
 
         page_container.find(".photo").click(function(e) {
+
             let backgroundImage = $(this).find(".inner-photo").css("background-image");
             $(".modal-img").attr("src", backgroundImage.split(/"/)[1]);
             $(".modal-title").text("By " + $(this).find(".photo-title").text());

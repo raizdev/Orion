@@ -109,7 +109,7 @@ class PhotoController extends BaseController
 
         return $this->twig->render($response, '/Frontend/Views/pages/community/photo.twig', [
             'photos' => $photos,
-            'page' => 'Photos'
+            'page' => 'community_photos'
         ]);
     }
 }

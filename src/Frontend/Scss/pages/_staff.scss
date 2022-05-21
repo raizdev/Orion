@@ -1,4 +1,8 @@
 #staffComponent {
+  .rank:nth-child(-n+3) {
+    margin-top: 1.5rem !important;
+  }
+
   .staffUser {
     height: 70px;
     padding: 1rem;

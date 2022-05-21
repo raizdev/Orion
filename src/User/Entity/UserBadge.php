@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 /**
  * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
+ *
  * @see LICENSE (MIT)
  */
 
@@ -18,7 +18,7 @@ use Ares\User\Entity\Contract\UserBadgeInterface;
 class UserBadge extends DataObject implements UserBadgeInterface
 {
     /** @var string */
-    public const TABLE = 'user_badges';
+    public const TABLE = 'users_badges';
 
     /**
      * @return int

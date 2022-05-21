@@ -11873,6 +11873,9 @@ form, input, label, p {
   max-width: 348px !important;
 }
 
+#staffComponent .rank:nth-child(-n+3) {
+  margin-top: 1.5rem !important;
+}
 #staffComponent .staffUser {
   height: 70px;
   padding: 1rem;

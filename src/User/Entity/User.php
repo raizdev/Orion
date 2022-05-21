@@ -13,6 +13,7 @@ use Ares\Role\Repository\RoleHierarchyRepository;
 use Ares\Role\Repository\RoleRepository;
 use Ares\Role\Repository\RoleRankRepository;
 use Ares\User\Entity\Contract\UserInterface;
+use Ares\User\Repository\UserBadgeRepository;
 use Ares\User\Repository\UserCurrencyRepository;
 use Ares\User\Repository\UserRepository;
 use Ares\Framework\Model\Query\Collection;
@@ -40,7 +41,8 @@ class User extends DataObject implements UserInterface
     public const RELATIONS = [
         'roles' => 'getRoles',
         'currencies' => 'getCurrencies',
-        'permissions' => 'getPermissions'
+        'permissions' => 'getPermissions',
+        'badges' => 'getBadges'
     ];
 
     /**
@@ -494,5 +496,51 @@ class User extends DataObject implements UserInterface
     public function setCurrencies(Collection $currencies): User
     {
         return $this->setData('currencies', $currencies);
+    }
+
+    /**
+     * @return Collection|null
+     * @throws DataObjectManagerException
+     */
+    public function getBadges(): ?Collection
+    {
+        $badges = $this->getData('badges');
+
+        if ($badges) {
+            return $badges;
+        }
+
+        if (!isset($this)) {
+            return null;
+        }
+
+        /** @var UserRepository $userRepository */
+        $userRepository = repository(UserRepository::class);
+
+        /** @var UserBadgeRepository $userBadgeRepository */
+        $userBadgeRepository = repository(UserBadgeRepository::class);
+
+        $badges = $userRepository->getOneToMany(
+            $userBadgeRepository,
+            $this->getId(),
+            'user_id'
+        );
+
+        if (!$badges->toArray()) {
+            return null;
+        }
+
+        $this->setBadges($badges);
+
+        return $badges;
+    }
+
+    /**
+     * @param Collection $badges
+     * @return User
+     */
+    public function setBadges(Collection $badges): User
+    {
+        return $this->setData('badges', $badges);
     }
 }
