@@ -18,7 +18,6 @@ function WebInterface() {
     this.ajax_manager = null;
     this.notifications_manager = null;
     this.hotel_manager = null;
-    this.customforms_manager = null;
 
     /*
      * Main initiation
@@ -33,15 +32,11 @@ function WebInterface() {
         this.pages_manager = new WebPagesManagerInterface();
         this.ajax_manager = new WebAjaxManagerInterface();
         this.pages_manager.init();
-        this.dialog_manager = new WebDialogManagerInterface();
         this.notifications_manager = new WebNotificationsManagerInterface();
 
         // Handlers
         this.forms_handler();
         this.links_handler();
-
-        // Responsive
-        this.init_responsive();
     };
 
     /*
@@ -85,126 +80,6 @@ function WebInterface() {
                     window.location.hash = href;
                 else if (window.location.pathname + window.location.search !== "/" + href || window.location.hash)
                     self.pages_manager.load(href);
-            }
-
-        }).on("click", ".login-dialog-button", function () {
-            $.magnificPopup.open({
-                items: {
-                    type: "inline",
-                    src: "#login-dialog"
-                },
-                callbacks: {
-                    open: function () {
-                        $(".rounded-input").unbind().keypress(function (e) {
-                            if (e.which == 13) {
-                                $.magnificPopup.close();
-                                $("#login-request").unbind().click();
-                            }
-                        });
-                    }
-                },
-                mainClass: "my-mfp-zoom-in"
-            });
-        }).on("click", "#login-request", function (event) {
-            event.preventDefault();
-
-            var verification_data = {
-                username: $(".login-form [name=username]").val(),
-                password: $(".login-form [name=password]").val(),
-                csrftoken: $(".login-form [name=csrftoken]").val(),
-                remember_me: $(".login-form [name=remember_me]").is(':checked')
-            };
-
-            $.magnificPopup.close();
-
-            Web.ajax_manager.post("/auth/login/request", verification_data, function (result) {
-
-                if (result.status == "pincode_required") {
-                    setTimeout(function () {
-                        Web.dialog_manager.create("confirm", Locale.web_fill_pincode, Locale.web_twostep, null, "pincode", function (result) {
-                            verification_data.pincode = result.toString();
-                            Web.ajax_manager.post("/auth/login/request", verification_data);
-
-                            $.magnificPopup.close();
-                        });
-                    }, 500);
-                }
-            });
-        }).on("click", ".about-dialog-button", function () {
-            $.magnificPopup.open({
-                items: {
-                    type: "inline",
-                    src: "#about-dialog"
-                },
-                removalDelay: 300,
-                mainClass: "my-mfp-zoom-in"
-            });
-        }).on("click", "[data-close-popup = 'true']", function () {
-            $.magnificPopup.close();
-
-        }).on("click", ".fa-flag", function () {
-            if (User.is_logged) {
-                var action = $(this).attr("data-report");
-
-                $.magnificPopup.open({
-                    items: {
-                        type: "inline",
-                        src: "#report-item"
-                    },
-                    removalDelay: 300,
-                    mainClass: "my-mfp-zoom-in"
-                });
-
-                $("#reportForm").attr('action', 'ajax/report/' + action);
-                $('#reportItemid').val($(this).attr("data-id"));
-            } else {
-                Web.notifications_manager.create("error", Locale.web_login, Locale.web_loggedout);
-            }
-        }).on("click", ".fa-times-circle", function () {
-            if (User.is_logged) {
-                var id = $(this).attr("data-id");
-                self.ajax_manager.post("/ajax/report/photo", {
-                    itemId: id
-                }, function (result) {
-                    if (result.status == "success") {
-                        $(".photos[data-id=" + id + "]").empty();
-                        $.magnificPopup.close();
-                    }
-                });
-            }
-        });
-    };
-
-    /*
-     * Responsive
-     * */
-    this.init_responsive = function () {
-        var self = this;
-
-        // Menu
-        this.web_document.find(".navigation-container").after('<nav class="mobile-navigation-container"><ul class="navigation-menu"></ul></nav>');
-
-        this.web_document.find(".navigation-container .navigation-menu .navigation-item:not(.main-link-item):not(.navigation-right-side-item)").each(function () {
-            var mobile_item = $(this).clone().appendTo(".mobile-navigation-container .navigation-menu");
-            mobile_item.removeClass("selected").removeAttr("data-category");
-            if (mobile_item.hasClass("has-items"))
-                mobile_item.children("a").attr("href", "#");
-        });
-
-        $('<li class="navigation-item mobile-menu cant-select">Menu</li>').prependTo(".navigation-container .navigation-menu").click(function () {
-            self.web_document.find(".mobile-navigation-container").finish().slideToggle();
-            self.web_document.find(".mobile-navigation-container .navigation-item.has-items .navigation-submenu").finish().slideUp();
-        });
-
-        this.web_document.find(".mobile-navigation-container .navigation-item.has-items>a").click(function () {
-            self.web_document.find(".mobile-navigation-container .navigation-item.has-items").not($(this).parent()).find(".navigation-submenu").finish().slideUp();
-            $(this).parent().find(".navigation-submenu").finish().slideToggle();
-        });
-
-        this.web_document.find(".mobile-navigation-container a").click(function () {
-            if ($(this).attr("href") !== "#") {
-                self.web_document.find(".mobile-navigation-container .navigation-item.has-items .navigation-submenu").finish().slideUp();
-                self.web_document.find(".mobile-navigation-container").finish().slideUp();
             }
         });
     };
@@ -426,32 +301,14 @@ function WebPageInterface(manager, type, scroll, page_data) {
             this.page_interface = new WebPageRegistrationInterface(this);
         else if (this.type === "article")
             this.page_interface = new WebPageArticleInterface(this);
-        else if (this.type === "shop")
-            this.page_interface = new WebPageShopInterface(this);
-        else if (this.type === "shop_offers")
-            this.page_interface = new WebPageShopOffersInterface(this);
-        else if (this.type === "help_requests")
-            this.page_interface = new WebPageHelpRequestsInterface(this);
-        else if (this.type === "help_new")
-            this.page_interface = new WebPageHelpRequestsInterface(this);
-        else if (this.type === "profile")
-            this.page_interface = new WebPageProfileInterface(this);
         else if (this.type === "community_photos")
             this.page_interface = new WebPageCommunityPhotosInterface(this);
-        else if (this.type === "community_value")
-            this.page_interface = new WebPageCommunityValueInterface(this);
-        else if (this.type === "jobs")
-            this.page_interface = new WebPageJobsInterface(this);
         else if (this.type === "settings_preferences")
             this.page_interface = new WebPageSettingsInterface(this);
         else if (this.type === "settings_namechange")
             this.page_interface = new WebPageSettingsNamechangeInterface(this);
         else if (this.type === "settings_verification")
             this.page_interface = new WebPageSettingsVerificationInterface(this);
-        else if (this.type === "password_claim")
-            this.page_interface = new WebPagePasswordClaimInterface(this);
-        else if (this.type === "forum")
-            this.page_interface = new WebPageForumInterface(this);
         else if (this.type === "shop_history")
             this.page_interface = new WebPageBadgeInterface(this);
 

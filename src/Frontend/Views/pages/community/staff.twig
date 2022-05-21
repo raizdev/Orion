@@ -34,6 +34,9 @@
                                     <span>{{ rank.rank_name }}</span>
                                 </div>
                             </div>
+                            <div class="d-flex">
+                                <i class="icon-{% if user.online == 1 %}online{% else %}offline{% endif %}"></i>
+                            </div>
                         </div>
                         <div class="staffMotto">
                             {{ user.motto }}

@@ -1,54 +1,5 @@
-.loading-container {
-  color: #fff;
-  font-family: "Poppins", Arial, sans-serif;
-  z-index: 5001;
-}
-
-.loading-container {
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
-  text-align: center;
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.loading-container #loading-background {
-  background: linear-gradient(-45deg, #000000, #3e3636, #656565, #8c8c8c);
-  background-size: 200% 200%;
-}
-
-.loading-container,
-.loading-container #loading-background,
-.loading-container .loading-content {
-  z-index: 5001;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.loading-container .loading-content {
-  width: 330px;
-  height: 165px;
-  margin: auto;
-}
-
-.loading-container .loading-content .loading-bodytext {
-  margin-top: 30px;
-}
-
-.loading-container .loading-content a {
-  color: #fff;
-}
-
-/* Page loading */
-.page-loading {
-  background-color: rgba(255, 255, 255, 0.6);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1999;
-  display: none;
+.content-loader {
+  background: url('/assets/images/loading.gif') no-repeat;
+  height: 80px;
+  margin-top: 60px;
 }

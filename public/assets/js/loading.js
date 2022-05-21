@@ -89,11 +89,14 @@ function PageLoadingInterface()
 {
     this.show = function ()
     {
-        $(".page-loading").stop().fadeIn(500);
+        $(".content-container").empty();
+        $('<div>', {
+            class: 'content-loader'
+        }).appendTo('.content-container');
     };
 
     this.hide = function ()
     {
-        $(".page-loading").stop().fadeOut(500);
+        $(".content-loader").remove();
     };
 }
