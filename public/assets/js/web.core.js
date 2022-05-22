@@ -382,7 +382,7 @@ function WebAjaxManagerInterface() {
         if (url.charAt(0) === "/") {
             url = url.slice(1);
         }
-        
+
         // Requests
         $.ajax({
             type: "post",

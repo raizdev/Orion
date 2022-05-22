@@ -10,6 +10,7 @@
   "base.navbar.user.profile": "My Profile",
   "base.navbar.user.settings": "Settings",
   "base.navbar.user.logout": "Logout",
+  "base.footer.text": "Habbo Next Gen CMS by Raizer, created with ♥ 2022",
 
   "home.latestbadges.title": "Latest Badges",
   "home.latestbadges.description": "The last added badges in our hotel",

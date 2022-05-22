@@ -1,178 +1,185 @@
 {% block base %}{% if not ajaxRequest %}
-    <!DOCTYPE html>
-    <html lang="nl">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta name="robots" content="follow, index">
-        <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-        <title>{{ page|capitalize }} - {{ config('site_settings.hotel_name') }}</title>
-        <meta name="description"
-              content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
-        <meta name="keywords"
-              content="cosmic, {{config('site_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
-        <meta property="og:title" content="{{config('site_settings.hotel_name')}}">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="/assets/images/summary-picture.png">
-        <meta property="og:description" content="Virtual world where you can make and meet friends.">
-        <meta property="og:site_name" content="{{config('site_settings.hotel_name')}}">
-        <!-- CSS -->
-        <link rel="stylesheet" href="/assets/css/index.css" type="text/css" />
-        <link rel="stylesheet" href="/assets/css/circle.css" type="text/css" />
-        <link rel="stylesheet" href="/assets/css/notyf.min.css" type="text/css" />
-    </head>
-    <body>
-    <noscript>
-        <style>
-            .loading-container {
-                display: none;
-            }
-        </style>
-    </noscript>
-    {% include 'Frontend/Views/layouts/modal.twig' %}
-    <div class="notifications-container"></div>
-    <nav class="navbar navbar-header fixed-top navbar-expand-lg navbar-light bg-light">
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navigation container">
-                <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="{{ url_for('home') }}" class="nav-link selected px-2 link-secondary">{{ lang('base.navbar.home') }}</a></li>
-                        <div class="dropdown text-end">
-                            <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ lang('base.navbar.community') }}
-                            </a>
-                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item" href="#">{{ lang('base.navbar.community.articles') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('community-staffs') }}">{{ lang('base.navbar.community.staffs') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('community-photos') }}">{{ lang('base.navbar.community.gallery') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('community-highscores') }}">{{ lang('base.navbar.community.highscores') }}</a></li>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="robots" content="follow, index">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    <title>{{ page|capitalize }} - {{ config('site_settings.hotel_name') }}</title>
+    <meta name="description"
+          content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
+    <meta name="keywords"
+          content="cosmic, {{config('site_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
+    <meta property="og:title" content="{{config('site_settings.hotel_name')}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="/assets/images/summary-picture.png">
+    <meta property="og:description" content="Virtual world where you can make and meet friends.">
+    <meta property="og:site_name" content="{{config('site_settings.hotel_name')}}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/index.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/circle.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/notyf.min.css" type="text/css" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+<noscript>
+    <style>
+        .loading-container {
+            display: none;
+        }
+    </style>
+</noscript>
+{% include 'Frontend/Views/layouts/modal.twig' %}
+<div class="notifications-container"></div>
+<nav class="navbar navbar-header fixed-top navbar-expand-lg navbar-light bg-light">
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navigation container">
+            <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="{{ url_for('home') }}" class="nav-link selected px-2 link-secondary">{{ lang('base.navbar.home') }}</a></li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ lang('base.navbar.community') }}
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#">{{ lang('base.navbar.community.articles') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('community-staffs') }}">{{ lang('base.navbar.community.staffs') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('community-photos') }}">{{ lang('base.navbar.community.gallery') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('community-highscores') }}">{{ lang('base.navbar.community.highscores') }}</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                {% if user %}
+                    <div class="navbar-currencies d-flex">
+                        <div class="user-bar" data-type="credits">
+                            <div class="icon credits"></div>
+                            <div class="item-column">
+                                <div class="item-text amount bold">{{ user.credits }}</div>
+                                <div class="item-text">credits</div>
+                            </div>
+                        </div>
+                        {% for currency in user.currencies %}
+                            {% set currencyType = config('site_settings.currencies.' ~ currency.type) %}
+                            <div class="user-bar" data-type="{{ currency.type }}">
+                                <div class="icon {{ currencyType }}"></div>
+                                <div class="item-column">
+                                    <div class="item-text amount bold">{{ currency.amount }}</div>
+                                    <div class="item-text">{{ currencyType }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="dropdown text-end">
+                        <div class="d-flex flex-wrap align-items-center dropdown-container">
+                            <ul class="nav-dropdown">
+                                <li class="nav-item">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="user-text">{{ user.username }}</span>
+                                        <img src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
+                                        <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
-                    </ul>
-                    {% if user %}
-                        <div class="navbar-currencies d-flex">
-                            <div class="user-bar" data-type="credits">
-                                <div class="icon credits"></div>
-                                <div class="item-column">
-                                    <div class="item-text amount bold">{{ user.credits }}</div>
-                                    <div class="item-text">credits</div>
-                                </div>
-                            </div>
-                            {% for currency in user.currencies %}
-                                {% set currencyType = config('site_settings.currencies.' ~ currency.type) %}
-                                <div class="user-bar" data-type="{{ currency.type }}">
-                                    <div class="icon {{ currencyType }}"></div>
-                                    <div class="item-column">
-                                        <div class="item-text amount bold">{{ currency.amount }}</div>
-                                        <div class="item-text">{{ currencyType }}</div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="dropdown text-end">
-                            <div class="d-flex flex-wrap align-items-center dropdown-container">
-                                <ul class="nav-dropdown">
-                                    <li class="nav-item">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="user-text">{{ user.username }}</span>
-                                            <img src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
-                                            <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="login-button">
-                            <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                <span class="user-text">Login</span>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div>
+                    </div>
+                {% else %}
+                    <div class="login-button">
+                        <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <span class="user-text">Login</span>
+                        </button>
+                    </div>
+                {% endif %}
             </div>
         </div>
-    </nav>
-    <header class="header-container">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="header-card">
-                    <div class="header-inner-card">
-                        <div class="information">
-                            <img class="inline-block" src="https://habbofont.net/font/windows_jungle/habbo.gif" alt="Logo">
-                            <div class="online-user">
-                                <span class="count">0</span>&nbsp;{{ config('site_settings.hotel_name') }}'s online
-                            </div>
+    </div>
+</nav>
+<header class="header-container">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="header-card">
+                <div class="header-inner-card">
+                    <div class="information">
+                        <img class="inline-block" src="https://habbofont.net/font/windows_jungle/habbo.gif" alt="Logo">
+                        <div class="online-user">
+                            <span class="count">0</span>&nbsp;{{ config('site_settings.hotel_name') }}'s online
                         </div>
-                        <div class="habbo-button">
-                            <div class="enter-hotel">
-                                <div class="inner">
-                                    {% if user %}
-                                        <a href="{{ url_for('hotel') }}">
-                                            {{lang('base.header.to')}} {{ config('site_settings.hotel_name') }}
-                                        </a>
-                                    {% else %}
-                                        <a href="{{ url_for('auth_sign-up') }}">
-                                            {{lang('base.header.register')}}
-                                        </a>
-                                    {% endif %}
-                                </div>
+                    </div>
+                    <div class="habbo-button">
+                        <div class="enter-hotel">
+                            <div class="inner">
+                                {% if user %}
+                                    <a href="{{ url_for('hotel') }}">
+                                        {{lang('base.header.to')}} {{ config('site_settings.hotel_name') }}
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url_for('auth_sign-up') }}">
+                                        {{lang('base.header.register')}}
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
-    <div class="content-bar"></div>
-    <div class="container content-container" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
-        {% block body %} {% endblock %}
     </div>
-    {% if user %}
-        <div id="hotel-container">
-            <div class="client-buttons">
-                <button class="client-close rounded-button blue plain">
-                    <i class="client-icon client-close-icon"></i>
-                    <span class="client-close-expand"><span>Web</span></span>
-                </button>
-                <button class="client-fullscreen rounded-button blue plain">
-                    <i class="client-icon client-fullscreen-icon"></i>
-                    <i class="client-icon client-fullscreen-icon-back hidden"></i>
-                </button>
-                <button class="client-count rounded-button blue plain">
-                    {% if 'housekeeping' in permissions %}<a href="/housekeeping" target="_blank"
-                                                             style="color:#fff;text-decoration: none;"><i class="fa fa-user"></i> <b
-                                id="count">{{online_count}}</b></a>{% else %}<i class="fa fa-user"></i> <b
-                            id="count">{{online_count}}</b>{% endif %}
-                </button>
-                <button class="client-radio rounded-button blue plain">
-                    <audio controls id="stream" style="display:none">
-                        <source type="audio/mpeg">
-                    </audio>
-                    <i class="fa fa-play"></i>
-                    <i class="fa fa-pause" style="display: none"></i>
-                    <i class="fa fa-volume-down"></i>
-                    <i class="fa fa-volume-up"></i>
-                </button>
-            </div>
+</header>
+<div class="content-bar"></div>
+<div class="container content-container" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
+    {% block body %} {% endblock %}
+</div>
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+        <span class="text-muted">
+            {{ lang('base.footer.text') }}
+        </span>
+    </div>
+</footer>
+{% if user %}
+    <div id="hotel-container">
+        <div class="client-buttons">
+            <button class="client-close rounded-button blue plain">
+                <i class="client-icon client-close-icon"></i>
+                <span class="client-close-expand"><span>Web</span></span>
+            </button>
+            <button class="client-fullscreen rounded-button blue plain">
+                <i class="client-icon client-fullscreen-icon"></i>
+                <i class="client-icon client-fullscreen-icon-back hidden"></i>
+            </button>
+            <button class="client-count rounded-button blue plain">
+                {% if 'housekeeping' in permissions %}<a href="/housekeeping" target="_blank"
+                                                         style="color:#fff;text-decoration: none;"><i class="fa fa-user"></i> <b
+                            id="count">{{online_count}}</b></a>{% else %}<i class="fa fa-user"></i> <b
+                        id="count">{{online_count}}</b>{% endif %}
+            </button>
+            <button class="client-radio rounded-button blue plain">
+                <audio controls id="stream" style="display:none">
+                    <source type="audio/mpeg">
+                </audio>
+                <i class="fa fa-play"></i>
+                <i class="fa fa-pause" style="display: none"></i>
+                <i class="fa fa-volume-down"></i>
+                <i class="fa fa-volume-up"></i>
+            </button>
         </div>
-    {% endif %}
-    </body>
-    <script type="text/javascript" src="/assets/js/all.min.js?v=2"></script>
-    </html>
+    </div>
+{% endif %}
+</body>
+<script type="text/javascript" src="/assets/js/all.min.js?v=2"></script>
+</html>
 {% else %}
     {% set page = page %}
     {% set array = [ {'data': block('body'), 'page':  page}] %}
