@@ -44,7 +44,7 @@ class ArticleRepository extends BaseRepository
             ->select([
                 'ares_articles.id', 'ares_articles.author_id', 'ares_articles.hidden', 'ares_articles.pinned', 'ares_articles.title', 'ares_articles.slug',
                 'ares_articles.description', 'ares_articles.image', 'ares_articles.thumbnail', 'ares_articles.likes', 'ares_articles.dislikes',
-                'ares_articles.created_at'
+                'ares_articles.created_at', 'ares_articles.cat_id'
             ])->selectRaw(
                 'count(ares_articles_comments.article_id) as comments'
             )->leftJoin(
@@ -71,7 +71,7 @@ class ArticleRepository extends BaseRepository
             ->select([
                 'ares_articles.id', 'ares_articles.author_id', 'ares_articles.hidden', 'ares_articles.pinned', 'ares_articles.title', 'ares_articles.slug',
                 'ares_articles.description', 'ares_articles.image', 'ares_articles.thumbnail', 'ares_articles.likes', 'ares_articles.dislikes',
-                'ares_articles.created_at'
+                'ares_articles.created_at', 'ares_articles.cat_id'
             ])->selectRaw(
                 'count(ares_articles_comments.article_id) as comments'
             )->leftJoin(
@@ -98,7 +98,7 @@ class ArticleRepository extends BaseRepository
      * @return PaginatedCollection
      * @throws DataObjectManagerException
      */
-    public function getPaginatedArticleList(int $page, int $resultPerPage, bool $showHidden = false, bool $ascendingOrder = false): PaginatedCollection
+    public function getPaginatedArticleList(int $page = 0, int $resultPerPage = 5, int $byCatId = 0, bool $showHidden = false, bool $ascendingOrder = false): PaginatedCollection
     {
         $order = $ascendingOrder ? 'ASC' : 'DESC';
 
@@ -106,7 +106,7 @@ class ArticleRepository extends BaseRepository
             ->select([
                 'ares_articles.id', 'ares_articles.author_id', 'ares_articles.title', 'ares_articles.slug',
                 'ares_articles.description', 'ares_articles.image', 'ares_articles.thumbnail', 'ares_articles.likes', 'ares_articles.dislikes',
-                'ares_articles.created_at'
+                'ares_articles.created_at', 'ares_articles.cat_id', 'ares_articles.content'
             ])->selectRaw(
                 'count(ares_articles_comments.article_id) as comments'
             )->leftJoin(
@@ -115,11 +115,16 @@ class ArticleRepository extends BaseRepository
                 '=',
                 'ares_articles_comments.article_id'
             )->groupBy('ares_articles.id')
-            ->orderBy('ares_articles.id', $order)
-            ->addRelation('user');
+            ->orderBy('ares_articles.created_at', $order)
+            ->addRelation('user')
+            ->addRelation('articleCategory');
 
             if(!$showHidden) {
                 $searchCriteria = $searchCriteria->where('ares_articles.hidden', 0);
+            }
+
+            if($byCatId) {
+                $searchCriteria = $searchCriteria->where('ares_articles.cat_id', $byCatId);
             }
 
         return $this->getPaginatedList($searchCriteria, $page, $resultPerPage);
@@ -137,7 +142,8 @@ class ArticleRepository extends BaseRepository
             ->select([
                 'ares_articles.id', 'ares_articles.author_id', 'ares_articles.content',
                 'ares_articles.title', 'ares_articles.slug', 'ares_articles.description',
-                'ares_articles.image', 'ares_articles.thumbnail', 'ares_articles.likes', 'ares_articles.dislikes', 'ares_articles.created_at'
+                'ares_articles.image', 'ares_articles.thumbnail', 'ares_articles.likes', 
+                'ares_articles.dislikes', 'ares_articles.created_at', 'ares_articles.cat_id'
             ])->selectRaw(
                 'count(ares_articles_comments.article_id) as comments'
             )->leftJoin(

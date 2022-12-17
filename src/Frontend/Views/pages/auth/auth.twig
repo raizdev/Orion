@@ -1,0 +1,68 @@
+<div id="hablush-login-form" class="row justify-content-center h-100 login-page">
+   <div class="col-2 text-center pr-lg-0 align-self-center d-none d-lg-block ghost-look">
+     <img src="/assets/images/placeholders/wl3.png">
+     <div class="empty-avatar"></div>
+   </div>
+   <div class="col col-lg-1 align-self-center p-2 mb-0 login-form">
+     <div class="form-group form-login-username">
+       <input type="text" name="username" placeholder="Enter your Username" required="required" autofocus="autofocus" class="form-control">
+     </div>
+     <div class="form-group form-login-password">
+       <input type="password" name="password" placeholder="Enter your Password" required="required" autofocus="autofocus" class="form-control">
+     </div>
+     <div class="form-group row mx-0">
+       <button type="submit" class="llbtn llbtn-success llbtn-lg col mr-1" id="login-request">
+         <span aria-hidden="true" class="spinner-border spinner-border-sm text-light" style="display: none"></span> Log In </button>
+       <button type="button" class="llbtn llbtn-warning llbtn-lg col ml-1 open-registration-form"> Register </button>
+     </div>
+     <div id="modal-register" class="registration-form" style="position: absolute; z-index: 1040;display:none">
+       <div id="modal-register" role="dialog" aria-labelledby="modal-register" aria-describedby="modal-register___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block;">
+         <div class="modal-dialog modal-md modal-dialog-centered">
+           <span tabindex="0"></span>
+           <div id="modal-register" tabindex="-1" class="modal-content">
+             <header id="modal-register" class="modal-header">
+               <h5 id="modal-register" class="modal-title">Register</h5>
+             </header>
+             <div id="modal-register" class="modal-body">
+               <div class="login-page login-modal register-modal row justify-content-end p-1">
+                 <form class="mb-0 register-modal-form" action="auth/account-registration">
+                   <div class="form-group form-login-username">
+                     <input name="username" type="text" placeholder="Enter your Username" required="required" autofocus="autofocus" class="form-control">
+                   </div>
+                   <div class="form-group form-login-email">
+                     <input name="mail" type="email" placeholder="Enter your Email" required="required" autofocus="autofocus" class="form-control">
+                   </div>
+                   <div class="d-flex flex-row">
+                     <div class="form-group form-login-password mr-1">
+                       <input name="password" type="password" placeholder="Password" required="required" autofocus="autofocus" class="form-control">
+                     </div>
+                     <div class="form-group form-login-password ml-1">
+                       <input name="password_confirmation" type="password" placeholder="Confirm" required="required" autofocus="autofocus" class="form-control">
+                     </div>
+                   </div>
+                   <div class="d-flex flex-row"> 
+                     {% if config('website_settings.recaptcha.publickey') %}
+                     <div class="row">
+                       <div id="registration-recaptcha"></div>
+                     </div>
+                     {% endif %}
+                   </div>
+                   <div class="d-flex flex-row form-group">
+                     <button type="button" class="llbtn llbtn-sm llbtn-danger w-100 mr-1 registration-form-close"> Cancel </button>
+                     <input name="gender" type="hidden" value="male">
+                     <input name="figure" type="hidden" value="hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001">
+                     <button type="submit" class="llbtn llbtn-sm llbtn-success mb-0 w-100 h-100 ml-1 registration-submit"> Register </button>
+                   </div>
+                   <button type="submit" class="btn d-none btn-secondary"></button>
+                 </form>
+                 <div class="the-register-bg"></div>
+               </div>
+             </div>
+           </div>
+           <span tabindex="0"></span>
+         </div>
+       </div>
+       <div id="modal-register" class="modal-backdrop"></div>
+     </div>
+   </div>
+ </div>

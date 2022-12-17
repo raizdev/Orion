@@ -79,9 +79,6 @@ class RegisterService
 
         $this->isEligible($data);
 
-        /** @var array $data */
-        $data = $this->determineLook($data);
-
         /** @var User $user */
         $user = $this->userRepository->save($this->getNewUser($data));
 
@@ -105,7 +102,7 @@ class RegisterService
         }
 
         $this->session->set('token', $token);
-
+        
         return response()
             ->setData([
                 'status' => 'success',
@@ -131,8 +128,6 @@ class RegisterService
             ->setUsername($data['username'])
             ->setPassword($this->hashService->hash($data['password']))
             ->setMail($data['mail'])
-            ->setLook($data['look'])
-            ->setGender($data['gender'])
             ->setCredits($this->config->get('hotel_settings.start_credits'))
             ->setMotto($this->config->get('hotel_settings.start_motto'))
             ->setIPRegister($data['ip_register'])
@@ -165,37 +160,5 @@ class RegisterService
         }
 
         return true;
-    }
-
-    /**
-     * @param $data
-     *
-     * @return array
-     * @throws RegisterException
-     */
-    private function determineLook($data): array
-    {
-        /** @var array $boyLooks */
-        $boyLooks = $this->config->get('hotel_settings.register.looks.boy');
-
-        /** @var array $girlLooks */
-        $girlLooks = $this->config->get('hotel_settings.register.looks.girl');
-
-        /** @var array $looks */
-        $looks = array_merge($boyLooks, $girlLooks);
-
-        if ($data['gender'] !== "M" && $data['gender'] !== "F") {
-            throw new RegisterException(
-                __('The gender must be valid'),
-                UserResponseCodeInterface::RESPONSE_AUTH_REGISTER_GENDER,
-                HttpResponseCodeInterface::HTTP_RESPONSE_UNPROCESSABLE_ENTITY
-            );
-        }
-
-        if (!in_array($data['look'], $looks, true)) {
-            $data['look'] = $this->config->get('hotel_settings.register.looks.fallback_look');
-        }
-
-        return $data;
     }
 }

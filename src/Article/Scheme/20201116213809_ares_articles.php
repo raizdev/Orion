@@ -18,6 +18,7 @@ final class AresArticles extends AbstractMigration
             ->addColumn('image', 'text')
             ->addColumn('thumbnail', 'text')
             ->addColumn('author_id', 'integer', ['limit' => 11])
+            ->addColumn('cat_id', 'integer', ['limit' => 11])
             ->addColumn('hidden', 'integer', ['limit' => 11])
             ->addColumn('pinned', 'integer', ['limit' => 11])
             ->addColumn('likes', 'integer', ['limit' => 11])
@@ -25,6 +26,7 @@ final class AresArticles extends AbstractMigration
             ->addColumn('created_at', 'datetime')
             ->addColumn('updated_at', 'datetime', ['null' => true])
             ->addForeignKey('author_id', 'users', 'id', ['delete'=> 'CASCADE', 'update'=> 'CASCADE'])
+            ->addForeignKey('cat_id', 'ares_articles_categories', 'id', ['delete'=> 'CASCADE', 'update'=> 'CASCADE'])
             ->create();
     }
 }

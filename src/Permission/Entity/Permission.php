@@ -185,7 +185,6 @@ class Permission extends DataObject implements PermissionInterface
         $this->setUsers($filteredUsers);
 
         return $filteredUsers;
-
     }
 
     /**

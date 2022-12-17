@@ -1,187 +1,311 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
-<div class="row">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-title-container">
-                    <div class="card-header-title">{{ lang('highscores.most.diamonds') }}</div>
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+  <div class="py-4">
+    <div class="mb-15p pt-15p">
+      <div class="row">
+        {% if credits is empty %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-credits">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium">
                 </div>
-            </div>
-
-            <div class="card-content no-spacing">
-                <div class="highscore-row">
-                    {% if diamonds is empty %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            {{ lang('highscores.no_score') }}
-                        </div>
-                    {% endif %}
-                    {% for key,item in diamonds %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            <span class="ranking-item-nth">{{  key + 1 }}</span>
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <a href="#">{{ item.user.username }}</a>
-                            <span class="amount">
-                                <i class="icon-diamonds"></i> {{ item.amount }}
-                            </span>
-                        </div>
-                    {% endfor %}
+              </div>
+              <div class="b-overlay position-absolute" style="inset: 0px; z-index: 10;">
+                <div class="position-absolute bg-dark rounded-sm" style="inset: 0px; opacity: 0.85; backdrop-filter: blur(2px);"></div>
+                  <div class="position-absolute" style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+                    <b class="w-100 text-center d-block my-auto text-white">{{ lang('website.ranking.contestants_empty' )}}</b>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        {% else %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-credits">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium"> 
+                  {% for credits in credits|slice(0, 3) %}
+                   <img src="{{  config('website_settings.site.fpath') }}?figure={{credits.look}}&head_direction=3" class="btn btn-link p-0">
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="leader-sub small px-2 py-2">{{ lang('website.ranking.most_credits' )}}</div>
+              <ul class="list-group">
+                {% for credits in credits %}
+                 <li class="list-group-item d-flex flex-row">
+                  <div class="d-flex flex-row text-muted small px-2 py-2 justify-content-end w-100">
+                    <div class="d-flex flex-row">
+                      <span class="pr-1">#{{ loop.index }}</span>
+                      <span class="align-self-center">
+                        <a href="/home/{{credits.username}}">
+                          <span class="text-lush-info-text">{{credits.username}}</span>
+                        </a>
+                      </span>
+                    </div>
+                    <span class="align-self-end w-100 text-right">{{credits.credits}}</span>
+                  </div>
+                </li> 
+                {% endfor %}
+               </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-title-container">
-                    <div class="card-header-title">{{ lang('highscores.most.duckets') }}</div>
+        {% endif %}
+        {% if duckets is empty %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-duckets">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium">
                 </div>
-            </div>
-            <div class="card-content no-spacing">
-                <div class="highscore-row">
-                    {% if duckets is empty %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            {{ lang('highscores.no_score') }}
-                        </div>
-                    {% endif %}
-                    {% for key,item in duckets %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            <span class="ranking-item-nth">{{  key + 1 }}</span>
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <a href="#">{{ item.user.username }}</a>
-                            <span class="amount">
-                                <i class="icon-duckets"></i> {{ item.amount }}
-                            </span>
-                        </div>
-                    {% endfor %}
+              </div>
+              <div class="b-overlay position-absolute" style="inset: 0px; z-index: 10;">
+                <div class="position-absolute bg-dark rounded-sm" style="inset: 0px; opacity: 0.85; backdrop-filter: blur(2px);"></div>
+                  <div class="position-absolute" style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+                    <b class="w-100 text-center d-block my-auto text-white">{{ lang('website.ranking.contestants_empty' )}}</b>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        {% else %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-duckets">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium"> 
+                  {% for duckets in duckets|slice(0, 3) %}
+                   <img src="{{  config('website_settings.site.fpath') }}?figure={{duckets.user.look}}&head_direction=3" class="btn btn-link p-0">
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="leader-sub small px-2 py-2">{{ lang('website.ranking.most_duckets' )}}</div>
+              <ul class="list-group">
+                {% for duckets in duckets %}
+                 <li class="list-group-item d-flex flex-row">
+                  <div class="d-flex flex-row text-muted small px-2 py-2 justify-content-end w-100">
+                    <div class="d-flex flex-row">
+                      <span class="pr-1">#{{ loop.index }}</span>
+                      <span class="align-self-center">
+                        <a href="/home/{{duckets.user.username}}">
+                          <span class="text-lush-info-text">{{duckets.user.username}}</span>
+                        </a>
+                      </span>
+                    </div>
+                    <span class="align-self-end w-100 text-right">{{duckets.amount}}</span>
+                  </div>
+                </li> 
+                {% endfor %}
+               </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-title-container">
-                    <div class="card-header-title">{{ lang('highscores.most.credits') }}</div>
+        {% endif %}
+        {% if diamonds is empty %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-diamonds">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium">
                 </div>
-            </div>
-            <div class="card-content no-spacing">
-                <div class="highscore-row">
-                    {% if credits is empty %}
-                        <div class="justify-between top-users-item no-spacing highscore">
-                            {{ lang('highscores.no_score') }}
-                        </div>
-                    {% endif %}
-                    {% for key,item in credits %}
-                        <div class="justify-between top-users-item no-spacing highscore">
-                            <span class="ranking-item-nth">{{  key + 1 }}</span>
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ item.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <a href="#">{{ item.username }}</a>
-                            <span class="amount">
-                                <i class="icon-credits"></i> {{ item.credits }}
-                            </span>
-                        </div>
-                    {% endfor %}
+              </div>
+              <div class="b-overlay position-absolute" style="inset: 0px; z-index: 10;">
+                <div class="position-absolute bg-dark rounded-sm" style="inset: 0px; opacity: 0.85; backdrop-filter: blur(2px);"></div>
+                  <div class="position-absolute" style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+                    <b class="w-100 text-center d-block my-auto text-white">{{ lang('website.ranking.contestants_empty' )}}</b>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        {% else %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-diamonds">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium"> 
+                  {% for diamond in diamonds|slice(0, 3) %}
+                   <img src="{{  config('website_settings.site.fpath') }}?figure={{diamond.user.look}}&head_direction=3" class="btn btn-link p-0">
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="leader-sub small px-2 py-2">{{ lang('website.ranking.most_duckets' )}}</div>
+              <ul class="list-group">
+                {% for diamond in diamonds %}
+                 <li class="list-group-item d-flex flex-row">
+                  <div class="d-flex flex-row text-muted small px-2 py-2 justify-content-end w-100">
+                    <div class="d-flex flex-row">
+                      <span class="pr-1">#{{ loop.index }}</span>
+                      <span class="align-self-center">
+                        <a href="/home/{{diamond.user.username}}">
+                          <span class="text-lush-info-text">{{diamond.user.username}}</span>
+                        </a>
+                      </span>
+                    </div>
+                    <span class="align-self-end w-100 text-right">{{diamond.amount}}</span>
+                  </div>
+                </li> 
+                {% endfor %}
+               </ul>
+            </div>
+          </div>
         </div>
-    </div>
-
-    <div class="col-md-4 mt-5">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-title-container">
-                    <div class="card-header-title">{{ lang('highscores.most.achievements') }}</div>
+        {% endif %}
+        {% if achievements is empty %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-score">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium">
                 </div>
-            </div>
-            <div class="card-content no-spacing">
-                <div class="highscore-row">
-                    {% if achievements is empty %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            {{ lang('highscores.no_score') }}
-                        </div>
-                    {% endif %}
-                    {% for key,item in achievements %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            <span class="ranking-item-nth">{{  key + 1 }}</span>
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ item.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <a href="#">{{ item.user.username }}</a>
-                            <span class="amount">
-                                <i class="icon-credits"></i> {{ item.achievement_score }}
-                            </span>
-                        </div>
-                    {% endfor %}
+              </div>
+              <div class="b-overlay position-absolute" style="inset: 0px; z-index: 10;">
+                <div class="position-absolute bg-dark rounded-sm" style="inset: 0px; opacity: 0.85; backdrop-filter: blur(2px);"></div>
+                  <div class="position-absolute" style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+                    <b class="w-100 text-center d-block my-auto text-white">{{ lang('website.ranking.contestants_empty' )}}</b>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        {% else %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-score">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium"> 
+                  {% for achievements in achievements|slice(0, 3) %}
+                    <img src="{{  config('website_settings.site.fpath') }}?figure={{achievements.user.look}}&head_direction=3" class="btn btn-link p-0">
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="leader-sub small px-2 py-2">{{ lang('website.ranking.most_ap' )}}</div>
+              <ul class="list-group">
+                {% for achievements in achievements %}
+                <li class="list-group-item d-flex flex-row">
+                  <div class="d-flex flex-row text-muted small px-2 py-2 justify-content-end w-100">
+                    <div class="d-flex flex-row">
+                      <span class="pr-1">#{{ loop.index }}</span>
+                      <span class="align-self-center">
+                        <a href="/home/{{achievements.user.username}}">
+                          <span class="text-lush-info-text">{{achievements.user.username}}</span>
+                        </a>
+                      </span>
+                    </div>
+                    <span class="align-self-end w-100 text-right">{{achievements.achievement_score}}</span>
+                  </div>
+                </li> 
+                {% endfor %}
+               </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="col-md-4 mt-5">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-title-container">
-                    <div class="card-header-title">{{ lang('highscores.most.online') }}</div>
+        {% endif %}
+        {% if respects is empty %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-respect">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium">
                 </div>
-            </div>
-            <div class="card-content no-spacing">
-                <div class="highscore-row">
-                    {% if online is empty %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            {{ lang('highscores.no_score') }}
-                        </div>
-                    {% endif %}
-                    {% for key,item in online %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            <span class="ranking-item-nth">{{  key + 1 }}</span>
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <a href="#">{{ item.user.username }}</a>
-                            <span class="amount">
-                                    <i class="icon-credits"></i> {{ item.online_time }}
-                                </span>
-                        </div>
-                    {% endfor %}
+              </div>
+              <div class="b-overlay position-absolute" style="inset: 0px; z-index: 10;">
+                <div class="position-absolute bg-dark rounded-sm" style="inset: 0px; opacity: 0.85; backdrop-filter: blur(2px);"></div>
+                  <div class="position-absolute" style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+                    <b class="w-100 text-center d-block my-auto text-white">{{ lang('website.ranking.contestants_empty' )}}</b>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        {% else %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-respect">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium"> 
+                {% for respects in respects|slice(0, 3) %}
+                  <img src="{{  config('website_settings.site.fpath') }}?figure={{respects.user.look}}&head_direction=3" class="btn btn-link p-0"> 
+                {% endfor %}
+                </div>
+              </div>
+              <div class="leader-sub small px-2 py-2">{{ lang('website.ranking.most_respect' )}}</div>
+              <ul class="list-group">
+                {% for respects in respects %}
+                <li class="list-group-item d-flex flex-row">
+                  <div class="d-flex flex-row text-muted small px-2 py-2 justify-content-end w-100">
+                    <div class="d-flex flex-row">
+                      <span class="pr-1">#{{ loop.index }}</span>
+                      <span class="align-self-center">
+                        <a href="/home/{{respects.user.username}}">
+                          <span class="text-lush-info-text">{{respects.user.username}}</span>
+                        </a>
+                      </span>
+                    </div>
+                    <span class="align-self-end w-100 text-right">{{respects.respects_received}}</span>
+                  </div>
+                </li> 
+                {% endfor %}
+               </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="col-md-4 mt-5">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-header-title-container">
-                    <div class="card-header-title">{{ lang('highscores.most.respects') }}</div>
+        {% endif %}
+        {% if online is empty %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-time">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium">
                 </div>
-            </div>
-            <div class="card-content no-spacing">
-                <div class="highscore-row">
-                    {% if respects is empty %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            {{ lang('highscores.no_score') }}
-                        </div>
-                    {% endif %}
-                    {% for key,item in respects %}
-                        <div class="justify-between top-users-item no-spacing ng-star-inserted highscore">
-                            <span class="ranking-item-nth">{{  key + 1 }}</span>
-                            <div class="self-baseline">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ item.user.look }}&amp;head_direction=3&amp;direction=3&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <a href="#">{{ item.user.username }}</a>
-                            <span class="amount">
-                                    <i class="icon-credits"></i> {{ item.respects_received }}
-                                </span>
-                        </div>
-                    {% endfor %}
+              </div>
+              <div class="b-overlay position-absolute" style="inset: 0px; z-index: 10;">
+                <div class="position-absolute bg-dark rounded-sm" style="inset: 0px; opacity: 0.85; backdrop-filter: blur(2px);"></div>
+                  <div class="position-absolute" style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+                    <b class="w-100 text-center d-block my-auto text-white">{{ lang('website.ranking.contestants_empty' )}}</b>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        {% else %}
+        <div class="leaderboard col-md-1 mb-15p">
+          <div class="card d-flex flex-column h-100 leaderboard-time">
+            <div class="b-overlay-wrap position-relative h-100">
+              <div class="leader-heading d-flex flex-column justify-content-end">
+                <div class="podium"> 
+                  {% for online in online|slice(0, 3) %}
+                   <img src="{{  config('website_settings.site.fpath') }}?figure={{online.user.look}}&head_direction=3" class="btn btn-link p-0"> 
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="leader-sub small px-2 py-2">{{ lang('website.ranking.most_online' )}}</div>
+              <ul class="list-group">
+                {% for online in online  %}
+                <li class="list-group-item d-flex flex-row">
+                  <div class="d-flex flex-row text-muted small px-2 py-2 justify-content-end w-100">
+                    <div class="d-flex flex-row">
+                      <span class="pr-1">#{{ loop.index }}</span>
+                      <span class="align-self-center">
+                        <a href="/home/{{online.user.username}}">
+                          <span class="text-lush-info-text">{{online.user.username}}</span>
+                        </a>
+                      </span>
+                    </div>
+                    <span class="align-self-end w-100 text-right">{{ online.progress / 60|round }}h</span>
+                  </div>
+                </li> 
+                {% endfor %}
+               </ul>
+            </div>
+          </div>
         </div>
+        {% endif %}
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

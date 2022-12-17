@@ -187,12 +187,51 @@ class ArticleController extends BaseController
         $article = $this->articleRepository->getArticleWithCommentCount($id);
 
         /** @var Comment $comments */
-        $comments = $this->commentRepository->getPaginatedCommentList($id, 1, 5);
+        $comments = $this->commentRepository->getPaginatedCommentList($id);
 
-        $list = $this->articleRepository->getPaginatedArticleList('1', '5');
-
+        /** @var Comment $list */
+        $list = $this->articleRepository->getPaginatedArticleList();
+        
         return $this->twig->render($response, 'Frontend/Views/pages/community/article.twig', [
             'article' => $article,
+            'comments' => $comments,
+            'list' => $list,
+            'page' => 'article'
+        ]);
+    }
+
+    /**
+     * @CR\Route(
+     *     name="article-list",
+     *     methods={"GET"},
+     *     pattern="/articles/list/{category}/{slug}"
+     * )
+     *
+     * @param Request $request
+     * @param Response $response
+     *
+     * @param array $args
+     *
+     * @return Response
+     * @throws DataObjectManagerException
+     * @throws NoSuchEntityException
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function list(Request $request, Response $response, array $args): Response
+    {
+        /** @var string $category */
+        $id = $args['category'];
+
+        /** @var Article $list */
+        $list = $this->articleRepository->getPaginatedArticleList(0, 5, $id);
+
+        /** @var Comment $comments */
+        $comments = $this->commentRepository->getPaginatedCommentList($id);
+
+        return $this->twig->render($response, 'Frontend/Views/pages/community/article.twig', [
             'comments' => $comments,
             'list' => $list,
             'page' => 'article'

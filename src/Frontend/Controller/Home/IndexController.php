@@ -16,7 +16,6 @@ use Ares\Badge\Service\BadgeAlbumService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Photo\Repository\PhotoRepository;
 use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -35,7 +34,6 @@ class IndexController extends BaseController
      * IndexController constructor.
      * @param Twig $twig
      * @param ArticleRepository $articleRepository
-     * @param PhotoRepository $photoRepository
      * @param BadgeAlbumService $badgeService
      * @param RoomRepository $roomRepository,
      * @param GuildRepository $guildRepository
@@ -43,7 +41,6 @@ class IndexController extends BaseController
     public function __construct(
         private Twig $twig,
         private ArticleRepository $articleRepository,
-        private PhotoRepository $photoRepository,
         private BadgeAlbumService $badgeService,
         private RoomRepository $roomRepository,
         private GuildRepository $guildRepository
@@ -93,38 +90,12 @@ class IndexController extends BaseController
     {
         $badges = $this->badgeService->execute();
 
-        $articles = $this->articleRepository
-            ->getPaginatedArticleList(
-                1,
-                3
-            );
-
-        $photos = $this->photoRepository
-            ->getPaginatedPhotoList(
-                1,
-                4
-            );
-
-        $guilds = $this->guildRepository
-            ->searchGuilds(
-                '',
-                1,
-                4
-            );
-
-        $rooms = $this->roomRepository
-            ->getMostVisitedRoom(
-                1,
-                3
-            );
+        $articles = $this->articleRepository->getPaginatedArticleList();
 
         return $this->twig->render($response, '/Frontend/Views/pages/home/home.twig', [
             'articles' => $articles,
-            'photos' => $photos,
-            'guilds' => $guilds,
-            'rooms' => $rooms,
             'badges' => $badges,
-            'page' => 'home'
+            'page'  => 'home'
         ]);
     }
 }

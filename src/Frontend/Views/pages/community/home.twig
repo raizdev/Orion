@@ -1,0 +1,174 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %} 
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+  <div class="row py-4">
+    <div class="col-lg-1">
+      <div class="d-flex flex-column justify-content-between">
+        <a href="https://twitter.com/hablushltd" target="_blank" class="llbtn2 mb-15p bg-twitter"> {{ lang('website.community.twitter' )}} </a>
+        <a href="https://discord.gg/m96pgHrmfX" target="_blank" class="llbtn2 mb-15p bg-discord"> {{ lang('website.community.discord' )}} </a>
+        <a href="https://www.facebook.com/hablushcom" target="_blank" class="llbtn2 mb-15p bg-facebook"> {{ lang('website.community.facebook' )}} </a>
+      </div>
+      <div> {% for news in articles %} <div class="card mb-15p newsListCard">
+            <div class="b-overlay-wrap position-relative d-flex flex-column h-100">
+              <div class="newsListCardImage flex-shrink-0" style="background-image: url({{news.thumbnail}});"></div>
+              <div class="text-lush-info-text pb-1 h-100 d-flex flex-column">
+                <a href="/articles/{{news.id}}/{{news.slug}}" class="text-primary title bg-lush-bg-grey-1 px-2 mb-1 py-1 text-truncate"> {{news.title}} </a>
+                <small class="d-block description px-2 py-1 text-truncate">{{news.description}}</small>
+                <div class="mt-auto px-2">
+                  <hr class="mb-2 mt-0">
+                  <div class="d-flex flex-row text-small justify-content-between small">
+                    <div class="d-flex flex-row">
+                      <img src="/assets/images/icons/user.png" class="mr-1">
+                      <a href="/home/{{news.user.username}}" class="align-self-center text-primary"> {{news.user.username}} </a>
+                    </div>
+                    <div class="d-flex flex-row">
+                      <img src="/assets/images/icons/time.gif" class="mr-1">
+                      <span class="align-self-center">{{news.timestamp|date("d-M H:i")}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div> {% endfor %}
+    </div>
+  </div>
+  <div class="col-lg-2">
+    <div class="card p-2 mb-15p">
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <h6 class="text-success px-1 mb-0 align-self-center">{{ lang('website.community.rooms' )}}</h6>
+        <div>
+          <button class="llbtn llbtn-success llbtn-sm recommended-button">
+            {{ lang('website.community.recommended' )}}
+          </button>
+          <button class="llbtn llbtn-success llbtn-sm top-rated-button disabled">
+            {{ lang('website.community.top_rated' )}}
+          </button>
+        </div>
+      </div>
+      <hr class="m-0 mb-15p">
+      <span class="recommended"> 
+      {% if rooms is not empty %} 
+      {% for row in rooms %} 
+            {% if row.users >= 25 %} 
+                {% set number = 5 %} 
+            {% elseif row.users >= 15 %} 
+                {% set number = 4 %} 
+            {% elseif row.users >= 10 %} 
+                {% set number = 3 %}
+            {% elseif row.users >= 1 %} 
+                {% set number = 2 %} 
+            {% else %}
+                {% set number = 1 %}
+            {% endif %} 
+        <div class="animate__animated animate__zoomInUp card bg-white p-1 d-flex flex-row mb-15p justify-content-between w-100 {% if loop.index > 5 %}first-five-rooms{% endif %}" style="{% if loop.index > 5 %}display: none !important{% endif %}">
+          <div class="d-flex flex-row w-100">
+            <img src="/assets/images/icons/room_icon_{{number}}.gif" class="pr-1 align-self-center">
+            <div class="w-100 small">
+              <span class="d-block font-weight-bold">{{row.name}}</span>
+              <span class="d-block text-muted">{{row.description}}</span>
+              <div class="text-muted"> {{ lang('website.community.room_owner' )}}: <a href="/home/{{row.user.username}}" class="text-orange"> {{row.user.username}} </a>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 pl-1 align-self-center">
+            <a href="{% if player.online %}/api/room/{{row.id}}{% else %}/hotel?room={{row.id}}{% endif %}">
+              <button class="llbtn llbtn-success llbtn-sm"> {{ lang('website.community.enter_room' )}}
+                <img src="/assets/images/icons/enter_room.gif">
+              </button>
+            </a>
+          </div>
+        </div> 
+        {% endfor %} 
+        {% endif %} </span>
+      <span class="top-rated" style="display: none"> {% if roomsByScore is not empty %} {% for row in roomsByScore %} {% if row.users >= 25 %} {% set number = 5 %} {% elseif row.users >= 15 %} {% set number = 4 %} {% elseif row.users >= 10 %} {% set number = 3 %} {% elseif row.users >= 1 %} {% set number = 2 %} {% else %} {% set number = 1 %} {% endif %} <div class="animate__animated animate__zoomInUp card bg-white p-1 d-flex flex-row mb-15p justify-content-between w-100 {% if loop.index > 5 %}first-five-rooms{% endif %}" style="{% if loop.index > 5 %}display: none !important{% endif %}">
+          <div class="d-flex flex-row w-100">
+            <img src="/assets/images/icons/room_icon_{{number}}.gif" class="pr-1 align-self-center">
+            <div class="w-100 small">
+              <span class="d-block font-weight-bold">{{row.name}}</span>
+              <span class="d-block text-muted">{{row.description}}</span>
+              <div class="text-muted"> {{ lang('website.community.room_owner' )}}: <a href="/home/{{row.user.username}}" class="text-orange"> {{row.user.username}} </a>
+              </div>
+              <div class="text-danger"> {{ lang('website.community.room_score' )}}: {{row.score}} </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 pl-1 align-self-center">
+            <a href="{% if player.online %}/api/room/{{row.id}}{% else %}/hotel?room={{row.id}}{% endif %}">
+              <button class="llbtn llbtn-success llbtn-sm"> {{ lang('website.community.enter_room' )}}
+                <img src="/assets/images/icons/enter_room.gif">
+              </button>
+            </a>
+          </div>
+        </div> {% endfor %} {% endif %} </span>
+      <div class="text-orange btn btn-link">
+        {{ lang('website.community.more_rooms' )}}
+        <img src="/assets/images/icons/arrow_right.png" class="enter-room-button">
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <div class="card mb-15p">
+      <div class="card-header orange">{{ lang('website.community.latest_badges' )}}</div>
+      <div class="badge-list-grid"> {% for badge, value in badges %} <div>
+          <div class="badge" style="background-image: url({{ config('website_settings.hotel.nitro')}}/assets/c_images/album1584/{{badge}});"></div>
+        </div> {% endfor %} </div>
+    </div>
+    <div class="card mb-15p">
+      <div class="p-2">
+        <div class="d-flex flex-row justify-content-between mb-2">
+          <h6 class="text-success px-1 mb-0 align-self-center">Tags</h6>
+          <div>
+            <button class="llbtn llbtn-success llbtn-sm my-tags-button"> My Tags </button>
+            <button class="llbtn llbtn-success llbtn-sm my-likes-button disabled"> Liked </button>
+          </div>
+        </div>
+        <hr class="m-0 mb-15p">
+        <div class="my-tags">
+          <div class="alert alert-dark mb-1 pl-1 pr-1 pt-1 pb-1">
+            <div class="d-flex flex-row flex-wrap">
+              {% if tags is empty %}
+                  <span>No tags</span>
+              {% endif %}
+              {% for tag in tags %}
+              <div class="bg-light rounded p-1 mr-1 mb-1">
+                <span>{{tag.tag}}</span>
+                <img src="/assets/images/icons/remove.gif" class="remove-tag" data-tag="{{tag.id}}">
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <form action="community/create-tag">
+            <div class="row mx-0">
+              <div class="form-group col-3 pl-0 pr-2 mb-0">
+                <input type="text" name="tag" class="form-control form-control-sm w-100">
+              </div>
+              <div class="col-1 form-group pr-0 pl-0 mb-0">
+                <button class="llbtn llbtn-light llbtn-sm align-self-center w-100">
+                    Add
+                </button>
+              </div>
+            </div>
+          </form>
+          <span id="tagQuestions" class="text-muted small">
+              {{ random(tagQuestions) }}
+          </span>
+        </div>
+        </div>
+        <div class="my-likes" style="display: none">
+        <div class="alert alert-dark mb-1 pl-1 pr-1 pt-1 pb-0" style="display: none">
+            <div class="d-flex flex-row flex-wrap">
+              {% if data.mytags is empty %}
+                  <span>No tags</span>
+              {% endif %}
+              {% for tag in data.tags %}
+              <div class="bg-light rounded p-1 mr-1 mb-1">
+                <span>{{tag.tag}}</span>
+                <img src="/assets/images/icons/remove.gif" class="remove-tag" data-tag="{{tag.id}}">
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> {% endblock %}

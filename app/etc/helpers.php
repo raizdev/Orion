@@ -193,10 +193,15 @@ if (!function_exists('user')) {
      * @throws NotFoundExceptionInterface
      */
     function user(Request $request, bool $isCached = false): User {
-        /** @var array; $user */
 
+        $container = App::getContainer();
+        /** @var LocaleService $localeService */
+        $sessionService = $container->get(SessionInterface::class);
+
+        /** @var array; $user */
         $authUser = $request->getAttribute('cosmic_uid');
-        if (!$authUser) {
+
+        if (!$authUser || !$sessionService->has('token')) {
             throw new AuthenticationException(
                 __('Not logged in.'),
                 UserResponseCodeInterface::RESPONSE_NOT_ALLOWED,

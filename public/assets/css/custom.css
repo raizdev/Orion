@@ -1,0 +1,166 @@
+[data-type=error] {
+    background-color: #813843!important;
+    color: #fff;
+}
+
+[data-type=success]
+{
+	background-color: #829b6f!important;
+	color: #fff;
+}
+
+#LushLight .currency-row {
+    text-align: center;
+    padding: 16px 12px;
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    display: block;
+    box-shadow: inset 0 0 0 2px hsl(0deg 0% 100% / 50%), 0 0 0 1px rgb(0 0 0 / 20%);
+    border-radius: 3px;
+    /* display: flex; */
+    flex-direction: row;
+    font-size: 12px;
+    padding: 5px !important;
+    /* width: 167px; */
+}
+body.hotel-visible {
+    overflow: hidden;
+}
+#hotel-container
+{
+	background-color: #000;
+	height: 100%;
+	left: -9999px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 600;
+}
+.hotel-visible #hotel-container
+{
+	left: 0;
+}
+#hotel-container .client-buttons
+{
+	display: flex;
+	left: 12px;
+	position: absolute;
+	top: 12px;
+	z-index: 100;
+}
+#hotel-container .client-buttons button
+{
+	box-shadow: 0 0 0 2px rgba(0,0,0,.2);
+	display: block;
+	float: left;
+	font-size: 12px;
+	height: 34px;
+	line-height: normal;
+	margin-right: 10px;
+	min-width: 34px;
+	padding: 7px;
+	webkit-box-shadow: 0 0 0 2px rgba(0,0,0,.2);
+}
+#hotel-container .client-buttons button .client-icon
+{
+	display: inline-block;
+	filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .3));
+	float: left;
+	font-style: normal;
+	webkit-filter: drop-shadow(0 1px 0 rgba(0,0,0,0.3));
+}
+#hotel-container .client-buttons button .client-icon.client-close-icon
+{
+	background-image: url(../images/favicon-white.png?2);
+	background-size: 16px 16px;
+	height: 16px;
+	width: 16px;
+}
+#hotel-container .client-buttons button .client-icon.client-fullscreen-icon,#hotel-container .client-buttons button .client-icon.client-fullscreen-icon-back
+{
+	background-image: url(../images/web/fullscreen-icon.png);
+	background-position: 0 -14px;
+	height: 14px;
+	margin: 1px;
+	width: 14px;
+}
+#hotel-container .client-buttons button .client-icon.hidden
+{
+	display: none;
+}
+#hotel-container .client-buttons button.client-close .client-close-expand
+{
+	float: left;
+	overflow: hidden;
+	text-align: left;
+	transition: width .15s ease-out;
+	webkit-transition: width .15s ease-out;
+	width: 0;
+}
+#hotel-container .client-buttons button.client-close .client-close-expand span
+{
+	display: inline-block;
+	padding: 1px 0 0 8px;
+}
+#hotel-container .client-buttons button.client-close:hover .client-close-expand
+{
+	width: 39px;
+}
+#hotel-container .client-buttons button.client-players
+{
+	cursor: default;
+}
+#hotel-container .client-frame
+{
+	background-color: #000;
+	border: 0;
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+}
+
+#LushLight .app .pageError {
+    background: #000;
+    position: relative;
+    background-image: url(/assets/images/404_bg.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+#LushLight .app .pageError:after {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    left: 30px;
+    right: 0;
+    top: -15px;
+    bottom: 0;
+    margin: auto;
+    background-image: url(/assets/images/404_frank.png);
+    background-position: 50%,50%;
+    background-repeat: no-repeat;
+    z-index: 0;
+    -webkit-animation: rotateImg 7s linear infinite;
+    animation: rotateImg 7s linear infinite;
+}
+
+@-webkit-keyframes rotateImg{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes rotateImg{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}
+
+.payment-status {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.notification-title {
+	font-size:14px;
+}
+.notyf__message {
+	font-size:14px;
+}

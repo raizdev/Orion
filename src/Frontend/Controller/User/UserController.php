@@ -73,6 +73,14 @@ class UserController extends BaseController
     }
 
     /**
+     * Get look from specific user
+     *
+     * @CR\Route(
+     *     name="look",
+     *     methods={"POST"},
+     *     pattern="/look"
+     * )
+     * 
      * @param Request  $request
      * @param Response $response
      *

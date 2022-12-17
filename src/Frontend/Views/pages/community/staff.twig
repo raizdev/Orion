@@ -1,59 +1,56 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
-    <div id="staffComponent">
-        {% for rank in staffs %}
-        {% if rank.users is not empty %}
-        <div class="row">
-            <div class="rank col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-right-image moving">
-                        <div class="card-header-title-container ng-star-inserted">
-                            <div class="background-gray card-header-icon-container">
-                                <img src="{{ config('site_settings.nitro.url') }}{{ config('site_settings.nitro.badges') }}{{ rank.badge }}.gif">
-                            </div>
-                            <div class="card-header-titles ng-star-inserted">
-                                <div class="card-header-title mt-2">
-                                    <h5>{{ rank.rank_name }}</h5>
-                                </div>
-                            </div>
-                        </div>
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+ <div class="row py-4">
+  <div class="col-lg-3">
+    <div class="staff-list"> 
+    {% for permission in users %}
+        {% if permission.users is not empty %}
+            <div class="card d-flex flex-row mb-15p staff-bg d-flex flex-row" style="background-color: {{permission.prefix_color}};">
+                <img src="https://client.habbo.ng/assets/c_images/Badgeparts/{{permission.badge}}.gif" class="staff-badge-header align-self-center">
+                <div class="text-white align-self-center font-weight-bolder">{{permission.rank_name}}</div>
+            </div>
+            {% for user in permission.users %}
+            <div class="staff-grid d-flex d-md-grid flex-column">
+                <div class="card mb-15p position-relative staff-card">
+                <div class="staff-user-bg text-right d-flex justify-content-end" style="background-image: url(/assets/images/avatar_backgrounds/{{user.avatar_bg}}.gif);">
+                    <img src="/assets/images/hotel/{% if user.online == 1 %}online{% elseif user.online == 0 %}offline{% endif %}.gif" class="align-self-center">
+                </div>
+                <div class="p-1 d-flex flex-row position-relative">
+                    <img src="{{  config('website_settings.site.fpath') }}?figure={{user.look}}&amp;head_direction=3" class="the-avatar {% if user.online == 1 %}online{% elseif user.online == 0 %}offline{% endif %}">
+                    <div class="staff-info text-lush-info-text">
+                    <span class="d-block">
+                        <a href="/home/{{user.username}}"><span class="text-lush-info-text">{{user.username}}</span></a>
+                    </span>
+                    <small>{{user.motto}}</small>
                     </div>
                 </div>
-            </div>
-            {% for user in rank.users %}
-            <div class="col-md-4 mt-4">
-                <div class="card">
-                    <div class="card-content no-spacing">
-                        <div class="staffUser d-flex justify-content-between align-content-center">
-                            <div class="align-content-center d-flex">
-                                <div class="avatar">
-                                    <img alt="Photo avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                                </div>
-                                <div class="information d-flex flex-column">
-                                    <span class="username">{{ user.username }}</span>
-                                    <span>{{ rank.rank_name }}</span>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <i class="icon-{% if user.online == 1 %}online{% else %}offline{% endif %}"></i>
-                            </div>
-                        </div>
-                        <div class="staffMotto">
-                            {{ user.motto }}
-                        </div>
-                        <div class="badges d-flex align-content-center">
-                            {% for badge in user.badges|slice(0, 4) %}
-                            <div class="badge">
-                                <img src="{{ config('site_settings.nitro.url') }}{{ config('site_settings.nitro.badges') }}{{ badge.badge_code }}.gif">
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
                 </div>
-            </div>
+            </div> 
             {% endfor %}
-        </div>
         {% endif %}
-        {% endfor %}
+    {% endfor %}
     </div>
+  </div>
+  <div class="col-lg-1">
+    <div class="card mb-15p">
+      <div class="card-header orange">{{ lang('website.staff.about_title' )}}</div>
+      <div class="p-2 small text-muted">
+        <p> {{ lang('website.staff.about_content1' )}} </p>
+        <p> {{ lang('website.staff.about_content2' )}} </p>
+      </div>
+    </div>
+    <div class="card mb-15p">
+      <div class="card-header">{{ lang('website.staff.join_title' )}}</div>
+      <div class="p-2 small text-muted">
+        <p> {{ lang('website.staff.join_content1' )}} </p>
+        <p> {{ lang('website.staff.join_content2' )}} </p>
+        <a href="/community/jobs">
+         <button class="llbtn llbtn-success llbtn-lg w-100 mb-0">{{ lang('website.staff.join_apply' )}} </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
 {% endblock %}

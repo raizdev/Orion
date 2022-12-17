@@ -48,9 +48,9 @@ class UserHallOfFameController extends BaseController
 
     /**
      * @CR\Route(
-     *     name="community-highscores",
+     *     name="community-ranking",
      *     methods={"GET"},
-     *     pattern="/community/highscores"
+     *     pattern="/community/ranking"
      * )
      *
      * @param Request $request
@@ -83,7 +83,6 @@ class UserHallOfFameController extends BaseController
 
         /** @var User $credits */
         $credits = $this->userRepository->getTopCredits();
-
 
         return $this->twig->render($response, 'Frontend/Views/pages/community/highscore.twig', [
             'online' => $online,

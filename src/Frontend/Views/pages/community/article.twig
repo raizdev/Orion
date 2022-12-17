@@ -1,87 +1,140 @@
 {% extends "Frontend/Views/layouts/app.twig" %}
 {% block body %}
-<div class="articleComponent">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-image discussion-image card-image-top" style="background-color: rgb(134, 53, 24); background-image: url({{article.image}}); color: rgb(255, 255, 255); background-position: center">
-                            <div>
-                                <h5>{{article.title}}</h5>
-                                {{article.description}}
-                            </div>
-                        </div>
-                        <div class="card-header p-3">
-                            <div class="card-header-title-container">
-                                <div class="textbox">
-                                    <p class="timestamp">
-                                        <img src="/assets/images/time.gif"> {{article.created_at|date("d-M H:i")}}
-                                    </p>
-                                    <p class="author">
-                                        by <a href="#"><b style="font-weight: 500">{{article.user.username}}</b></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            {{article.content|raw}}
-                        </div>
-                    </div>
-                </div>
+{% set article = article ? article : list|last %}
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+   <div class="row py-4">
+      <div class="col-lg-3">
+         <div class="news-featured-card card hasBody mb-15p">
+            <div class="b-overlay-wrap position-relative">
+               <div class="news-featured text-left mb-0 p-3" style="background-image: url({{article.thumbnail}});">
+                  <h5>{{article.title}}</h5>
+                  <div>{{article.description}}</div>
+               </div>
+               <div class="d-flex flex-column p-2">
+                  <article class="text-muted small">
+                     {{article.content|raw}}
+                  </article>
+                  <div class="text-lush-info-text">
+                     <hr class="my-1">
+                     <div class="d-flex flex-row text-small justify-content-between small">
+                        <span class="d-flex flex-row">
+                           <img src="/assets/images/icons/user.png" class="pr-1">
+                           <div class="align-self-center">
+                              <a href="/home/{{article.user.username}}" class="">
+                              {{article.user.username}}
+                              </a> - {{article.created_at|date("d-M y")}} - in 
+                              <a href="/articles/list/{{article.category.id}}/{{article.category.slug}}">{{article.category.title}}</a>
+                           </div>
+                        </span>
+                        <span class="d-flex flex-row">
+                        <img src="/assets/images/icons/motto.gif" class="pr-1">
+                        <span class="align-self-center">{{ article.comments }}</span>
+                        </span>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">
-                                {{ lang('article.comments') }}
-                            </div>
+         </div>
+         <div class="card mb-15p">
+            <div class="card-header">{{ lang('website.article.comments' )}}</div>
+            <div class="px-2 pt-2">
+               <form method="post" action="/comment/create">
+                  <div class="d-flex flex-row mb-15p">
+                     <div class="form-group w-100 mb-0 mr-15p">
+                        <input type="text" name="content" placeholder="{{ lang('website.article.comments_fill') }}" maxlength="250" class="form-control w-100 h-100">
+                        <input type="hidden" value="{{article.id}}" name="article_id">
+                     </div>
+                     <div class="form-group mb-0">
+                        <button class="llbtn llbtn-success h-100" data-csrf="{{csrf_token}}" data-id="{{data.article.id}}"> {{ lang('website.article.comments_post') }} </button>
+                     </div>
+                  </div>
+               </form>
+               {% if comments is empty %}
+               <div class="alert alert-danger mb-15p">
+                  {{ lang('website.article.comments_empty') }}
+               </div>
+               {% endif %}
+               {% for comment in comments %}
+               <span>
+                  <div class="d-flex flex-row mb-15p w-100 list-item-animated">
+                     <div class="card avatar-card mr-15p" style="background-image: url(/assets/images/avatar_backgrounds/{{post.author.avatar_bg}}.gif);">
+                        <div class="habboImage" id="avatar-Habbina">
+                           <img src="{{  config('website_settings.site.fpath') }}?figure={{comment.user.look}}">
                         </div>
-                    </div>
-                    {% for comment in comments %}
-                    <div class="card-content no-spacing oddeven">
-                        <div class="author">
-                            <div class="avatar">
-                                <img alt="User avatar" class="avatar avatar-m" src="{{ config('site_settings.imaging_url') }}?figure={{ comment.user.look }}&amp;head_direction=3&amp;direction=2&amp;crr=3&amp;gesture=sml&amp;size=m&amp;headonly=0">
-                            </div>
-                            <div class="info">
-                                <span class="username"><a href="/user/{{ comment.user.username }}">{{ comment.user.username }}</a></span>
-                                <span>{{ comment.content }}</span>
-                            </div>
+                     </div>
+                     <div class="card bg-white w-100">
+                        <div class="p-1 h-100 d-flex flex-column">
+                           <div class="d-flex flex-row justify-content-between">
+                              <span class="d-block w-100 mr-15p">
+                              {{comment.content|raw}}
+                              </span>
+                           </div>
+                           <div class="mt-auto">
+                              <hr class="my-1">
+                              <div class="d-flex flex-row justify-content-between">
+                                 <span class="text-muted small align-self-center d-flex">
+                                 <img src="/assets/images/icons/user.png" class="pr-1 align-self-center">
+                                 <a href="/home/{{comment.user.username}}" class="text-primary align-self-center">
+                                 {{comment.user.username}}
+                                 </a>
+                                 </span>
+                                 <span class="text-muted small d-flex flex-row">
+                                 <img src="/assets/images/icons/time.gif" class="pr-1 align-self-center">
+                                 <span class="align-self-center">{{post.timestamp|date("m/d/Y")}}</span>
+                                 </span>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                    {% endfor %}
-                    {% if comments is empty %}
-                        <div class="card-content">
-                            There are no comments yet, are you the first?
-                        </div>
-                    {% endif %}
-                </div>
+                     </div>
+                  </div>
+               </span>
+               {% endfor %}
             </div>
-            <div class="col mb-4">
-                <form method="post" action="{{ url_for('comment_create') }}">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title-container" style="position: relative;">
-                            <div class="card-header-title">
-                                Who's new?
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-content no-spacing">
-                        <textarea name="content" placeholder="Comment here..."></textarea>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-fw btn-primary">{{ lang('article.comment') }}</button>
-                        <input type="hidden" name="article_id" value="{{ article.id }}">
-                    </div>
-                </div>
-                </form>
+         </div>
+      </div>
+      <div class="col-lg-1">
+         <div class="card mb-15p">
+            <div class="card-header orange">{{ lang('website.article.news' )}}</div>
+            <div class="d-none d-flex flex-column p-2">
+               {% set dateArray = [] %}
+               {% for item in list %}
+
+                  {% set datediff = date().diff(date(item.created_at)).days %}
+
+                  {% if datediff not in dateArray %}
+                      <b class="text-muted small">
+                          {% if datediff > 365 %}
+                              {{ (datediff/365)|round(0, 'floor') }} {{ lang('website.article.years') }}
+                          {% elseif datediff >= 30 %}
+                              {{ (datediff/30)|round(0, 'floor') }} {{ lang('website.article.months') }}
+                          {% elseif datediff >= 7 %}
+                              {{ (datediff/7)|round(0, 'floor') }} {{ lang('website.article.weeks') }}
+                          {% elseif datediff > 1 %}
+                              {{ (datediff) }} {{ lang('website.article.days') }}
+                          {% elseif datediff %}
+                              {{ lang('website.article.yesterday') }}
+                          {% else %}
+                              {{ lang('website.article.today') }}
+                          {% endif %}
+                      </b>
+                      <hr class="my-1 mx-0">
+                  {% endif %}
+
+                  {% set url = category == true ? '/news/cat/' ~ item.category ~ '/articles/' ~ item.id ~ '/' ~ item.slug : '/articles/' ~ item.id ~ '/' ~ item.slug  %}
+                  {% set classClicked = item.id == article.id ? 'text-orange small d-block pb-1 text-orange small d-block pb-1 router-link-exact-active router-link-active text-muted small' : 'text-orange small d-block pb-1' %}
+                  {% set styleClicked = item.id == article.id ? 'color: #6c757d !important' %}
+                  
+                  <div class="px-3 pb-2" style="{% if datediff in dateArray %}margin-top: -10px{% endif %}">
+                    <a href="{{ url }}" class="{{ classClicked }}" style="{{ styleClicked }}">
+                        {{item.title}} <span>»</span>
+                    </a>
+                  </div>
+
+                  {% set dateArray = dateArray|merge([datediff]) %}
+               {% endfor %}
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </div>
 {% endblock %}

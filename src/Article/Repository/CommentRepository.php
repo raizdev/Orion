@@ -36,7 +36,7 @@ class CommentRepository extends BaseRepository
      * @return PaginatedCollection
      * @throws DataObjectManagerException
      */
-    public function getPaginatedCommentList(int $articleId, int $page, int $resultPerPage): PaginatedCollection
+    public function getPaginatedCommentList(int $articleId, int $page = 1, int $resultPerPage = 5): PaginatedCollection
     {
         $searchCriteria = $this->getDataObjectManager()
             ->where('article_id', $articleId)

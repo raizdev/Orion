@@ -1,171 +1,200 @@
-{% block base %}{% if not ajaxRequest %}
+{% block base %}
+{% if not ajaxRequest %}
 <!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="robots" content="follow, index">
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-    <title>{{ page|capitalize }} - {{ config('site_settings.hotel_name') }}</title>
+<html class="h-100">
+  <head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page|capitalize }} - {{ config('website_settings.name') }}</title>
     <meta name="description"
-          content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
+     content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
     <meta name="keywords"
-          content="cosmic, {{config('site_settings.hotel_name')}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
-    <meta property="og:title" content="{{config('site_settings.hotel_name')}}">
+     content="cosmic, {{ config('website_settings.name') }}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
+    <meta property="og:title" content="{{ config('website_settings.name') }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="/assets/images/summary-picture.png">
+    <meta property="og:url" content="{{site.domain}}">
+    <meta property="og:image" content="/assets/theme/default/images/summary-picture.png">
     <meta property="og:description" content="Virtual world where you can make and meet friends.">
-    <meta property="og:site_name" content="{{config('site_settings.hotel_name')}}">
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/index.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/css/circle.css" type="text/css" />
+    <meta property="og:site_name" content="{{ config('website_settings.name') }}">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="/assets/css/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/all.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/custom.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/animate.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/notyf.min.css" type="text/css" />
-</head>
-<body class="d-flex flex-column min-vh-100">
-<noscript>
-    <style>
-        .loading-container {
-            display: none;
-        }
-    </style>
-</noscript>
-{% include 'Frontend/Views/layouts/modal.twig' %}
-<div class="notifications-container"></div>
-<nav class="navbar navbar-header fixed-top navbar-expand-lg navbar-light bg-light">
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navigation container">
-            <div class="d-flex flex-wrap align-items-center" style="height: 60px;">
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="{{ url_for('home') }}" class="nav-link selected px-2 link-secondary">{{ lang('base.navbar.home') }}</a></li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="nav-link px-2 link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ lang('base.navbar.community') }}
-                        </a>
-                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="#">{{ lang('base.navbar.community.articles') }}</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('community-staffs') }}">{{ lang('base.navbar.community.staffs') }}</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('community-photos') }}">{{ lang('base.navbar.community.gallery') }}</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('community-highscores') }}">{{ lang('base.navbar.community.highscores') }}</a></li>
-                        </ul>
-                    </div>
-                </ul>
-                {% if user %}
-                    <div class="navbar-currencies d-flex">
-                        <div class="user-bar" data-type="credits">
-                            <div class="icon credits"></div>
-                            <div class="item-column">
-                                <div class="item-text amount bold">{{ user.credits }}</div>
-                                <div class="item-text">credits</div>
-                            </div>
-                        </div>
-                        {% for currency in user.currencies %}
-                            {% set currencyType = config('site_settings.currencies.' ~ currency.type) %}
-                            <div class="user-bar" data-type="{{ currency.type }}">
-                                <div class="icon {{ currencyType }}"></div>
-                                <div class="item-column">
-                                    <div class="item-text amount bold">{{ currency.amount }}</div>
-                                    <div class="item-text">{{ currencyType }}</div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="dropdown text-end">
-                        <div class="d-flex flex-wrap align-items-center dropdown-container">
-                            <ul class="nav-dropdown">
-                                <li class="nav-item">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="user-text">{{ user.username }}</span>
-                                        <img src="{{ config('site_settings.imaging_url') }}?figure={{ user.look }}&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=s" alt="Raizer" class="pixelated">
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.profile') }}</a></li>
-                                        <li><a class="dropdown-item" href="#">{{ lang('base.navbar.user.settings') }}</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="{{ url_for('auth_logout') }}" target="_self">{{ lang('base.navbar.user.logout') }}</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="login-button">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <span class="user-text">Login</span>
-                        </button>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</nav>
-<header class="header-container">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="header-card">
-                <div class="header-inner-card">
-                    <div class="information">
-                        <img class="inline-block" src="https://habbofont.net/font/windows_jungle/habbo.gif" alt="Logo">
-                        <div class="online-user">
-                            <span class="count">0</span>&nbsp;{{ config('site_settings.hotel_name') }}'s online
-                        </div>
-                    </div>
-                    <div class="habbo-button">
-                        <div class="enter-hotel">
-                            <div class="inner">
-                                {% if user %}
-                                    <a href="{{ url_for('hotel') }}">
-                                        {{lang('base.header.to')}} {{ config('site_settings.hotel_name') }}
-                                    </a>
-                                {% else %}
-                                    <a href="{{ url_for('auth_sign-up') }}">
-                                        {{lang('base.header.register')}}
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
+    <script src="/assets/javascript/jquery-3.6.0.min.js"></script>
+    <script src="/assets/javascript/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body class="h-100" id="LushLight">
+    <div id="app" class="h-100">
+      <div class="notifications-container"></div>
+      <div class="app h-100 d-flex flex-column">
+        <nav class="navbar p-0 navbar-dark bg-lush-info navbar-expand-lg">
+          <div class="container">
+            <div class="row mx-0 w-100">
+              <div class="col d-flex flex-column flex-lg-row">
+                <div class="navbar-brand my-2 mt-3 py-0 pb-1">
+                  <button class="btn btn-link p-0 m-0 border-0">
+                    <img src="https://habbofont.net/font/hc_compact/{{ config('website_settings.name') }}.gif">
+                  </button>
                 </div>
+                {% if user %}
+                <button type="button" class="navbar-toggler align-self-end position-absolute mt-2 collapsed" data-bs-toggle="collapse" data-bs-target="#nav-collapse" aria-controls="nav-collapse" aria-expanded="false" aria-label="Toggle navigation" style="overflow-anchor: none;">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="nav-collapse" class="h-auto h-md-100 navbar-collapse collapse navigation-container collapse">
+                  <ul class="navbar-nav h-auto h-md-100 align-items-center">
+                    <li class="nav-item b-nav-dropdown dropdown {% if "home" in page %}selected {% endif %}" data-category="home">
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>{{ lang('website.nav_home') }}</span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <li>
+                          <a class="dropdown-item" href="{{ url_for('home') }}">{{ lang('website.nav_home') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="{{ url_for('home') }}/{{user.username}}">{{ lang('website.nav_my_page') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/settings/password">{{ lang('website.nav_account_settings') }}</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav h-auto h-md-100 align-items-center">
+                    <li class="nav-item b-nav-dropdown dropdown {% if "community" in page %}selected {% endif %}" data-category="community">
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>{{ lang('website.nav_community') }}</span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <li>
+                          <a class="dropdown-item" href="/community">{{ lang('website.nav_community') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/community/ranking">{{ lang('website.nav_ranking') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/community/competitions">{{ lang('website.nav_competitions') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/community/staff">{{ lang('website.nav_staff') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/community/jobs">{{ lang('website.nav_jobs') }}</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/community/rules">{{ lang('website.nav_rules') }}</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav h-auto h-md-100 align-items-center">
+                    <li class="nav-item b-nav-dropdown dropdown {% if "home" in page %}selected {% endif %}" data-category="article">
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>{{ lang('website.nav_news') }}</span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        {% for news in newsCategories %}
+                        <li>
+                          <a class="dropdown-item" href="/news/cat/{{news.id}}-{{news.slug}}">{{news.category}}</a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/shop" class="nav-link">{{ lang('website.nav_shop') }}</a>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav ml-auto">
+                    {% if 'housekeeping' in permissions %}
+                    <button onclick="window.open('/housekeeping', '_blank')" class="llbtn llbtn-warning mb-2 mt-2 mt-md-0 mb-md-0 w-auto mr-1">
+                      <a style="text-decoration: none; color: #fff">{{ lang('website.nav_housekeeping') }}</a>
+                      <img src="/assets/images/icons/housekeeping.gif" class="ml-1" style="margin-top:-3px">
+                    </button> 
+                    {% endif %}
+                    <button onclick="location.href='/auth/logout';" class="llbtn llbtn-danger mb-2 mt-2 mt-md-0 mb-md-0 w-auto ml-1">
+                      <a style="text-decoration: none; color: #fff">{{ lang('website.nav_logout') }}</a>
+                      <img src="/assets/images/icons/logout.png" class="ml-1">
+                    </button>
+                  </ul>
+                  {% endif %}
+                </div>
+              </div>
             </div>
+        </nav> 
+        {% if user %}
+         <div class="ll-heading">
+          <div class="snow">
+          <div class="container h-100">
+            <div class="row justify-content-between py-3 mx-0 h-100">
+              <div class="d-flex flex-row col">
+                <div class="avatar-plate flex-shrink-0 mr-2 d-flex flex-column justify-content-end">
+                  <img src="{{ config('website_settings.site.fpath') }}?figure={{user.look}}" data-look="{{user.look}}" class="align-self-center mb-4 pb-1 player-wave-home">
+                </div>
+                <div class="align-self-baseline d-none d-md-block">
+                  <div class="text-white pb-1"> {{ lang('website.website.header_welcome') }}, <b> {{ user.username }} </b>
+                  </div>
+                  <div class="bg-off-white py-1 px-0 flex-shrink-0 motto-row text-left text-lush-info-text">
+                    <span class="pl-1 pr-1 mr-1 py-1 text-truncate d-flex flex-row w-100 align-items-center">
+                    <span class="icon"><img src="/assets/images/icons/motto.gif"></span>
+                      {{ user.motto }}
+                    </span>
+                    </div>
+                  <div class="bg-off-white py-1 px-0 flex-shrink-0 motto-row text-left text-lush-info-text mt-2">
+                    <span class="pl-1 pr-1 mr-1 py-1 d-flex flex-row w-100 align-items-center">
+                    <span class="icon"><img src="/assets/images/icons/clock.gif"></span>
+                    {{ user.last_login }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="justify-content-end col col-md-1 h-100 d-flex">
+                <div class="align-self-center w-100">
+                  <div class="card mb-2 py-2 text-center text-lush-info-text flex-row justify-content-center small">
+                    <img src="/assets/images/icons/online_icon.png" class="mr-2 flex-grow-0 align-self-center">
+                    <span class="align-self-center">
+                      <span class="font-weight-bold online-users">{{online_count}}</span> {{ config('website_settings.name') }}'s online </span>
+                  </div>
+                  <a href="/hotel"><button class="llbtn llbtn-success llbtn-lg w-100 mb-2 mb-md-0 clientButton"> {{ lang('website.header_enter_hotel') }} {{ config('website_settings.name') }}</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div> 
+        {% endif %}
+        <div class="container h-100 page-container {% if user %}container-sm-fluid d-flex flex-column{% endif %}" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}"> 
+            {% block body %} {% endblock %}  
+        </div>
+        <div class="{% if user is not empty %}container{% endif %} {% if user %}container-sm-fluid d-flex flex-column{% endif %}"> 
+          <div class="bg-lush-dark-blue text-center py-4 text-white mt-auto">
+              <a href="{{ url_for('home') }}">
+                <img src="https://habbofont.net/font/hc_compact/{{ config('website_settings.name') }}.gif">
+              </a>
+              <small class="w-100 d-block pb-1 text-white">
+                <p>{{ lang('website.footer') }}</p>
+              </small>
+          </div>
         </div>
     </div>
-</header>
-<div class="content-bar"></div>
-<div class="container content-container" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
-    {% block body %} {% endblock %}
-</div>
-<footer class="footer mt-auto py-3">
-    <div class="container text-center">
-        <span class="text-muted">
-            {{ lang('base.footer.text') }}
-        </span>
+    <div class="llbtn llbtn-primary scroll-top-btn hidden">
+      <i class="fas fa-arrow-up"></i>
     </div>
-</footer>
-{% if user %}
+    {% if user %}
     <div id="hotel-container">
         <div class="client-buttons">
-            <button class="client-close rounded-button blue plain">
-                <i class="client-icon client-close-icon"></i>
+            <button class="client-close llbtn llbtn-danger">
+                <i style="margin-top:2px;margin-left:3px;" class="client-icon fa fa-arrow-left" aria-hidden="true"></i>
                 <span class="client-close-expand"><span>Web</span></span>
             </button>
-            <button class="client-fullscreen rounded-button blue plain">
-                <i class="client-icon client-fullscreen-icon"></i>
-                <i class="client-icon client-fullscreen-icon-back hidden"></i>
+            <button class="client-fullscreen llbtn llbtn-primary llbtn-lg">
+                <i class="client-icon fa fa-expand"></i>
             </button>
-            <button class="client-count rounded-button blue plain">
-                {% if 'housekeeping' in permissions %}<a href="/housekeeping" target="_blank"
-                                                         style="color:#fff;text-decoration: none;"><i class="fa fa-user"></i> <b
-                            id="count">{{online_count}}</b></a>{% else %}<i class="fa fa-user"></i> <b
-                        id="count">{{online_count}}</b>{% endif %}
-            </button>
-            <button class="client-radio rounded-button blue plain">
+            <button class="client-radio llbtn llbtn-warning llbtn-lg">
                 <audio controls id="stream" style="display:none">
                     <source type="audio/mpeg">
                 </audio>
@@ -176,13 +205,25 @@
             </button>
         </div>
     </div>
-{% endif %}
-</body>
-<script type="text/javascript" src="/assets/js/all.min.js?v=2"></script>
+    {% endif %}
+    <script src="/assets/javascript/jquery.history.js"></script>
+    <script src="/assets/javascript/jquery.fullscreen.min.js"></script>
+    <script src="/assets/javascript/functions.js"></script>
+    <script src="/assets/javascript/loading.js?v={{cache_timestamp}}"></script>
+    <script src="/assets/javascript/notyf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ config('website_settings.paypal.clientId') }}&currency={{ config('website_settings.paypal.currency') }}&disable-funding=credit,card"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+  </body>
 </html>
 {% else %}
     {% set page = page %}
-    {% set array = [ {'data': block('body'), 'page':  page}] %}
+    {% set array = [ {'data': block('body'), 'page':  page, 'title':  title}] %}
     {{array|json_encode()}}
 {% endif %}
 {% endblock %}

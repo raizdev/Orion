@@ -12,6 +12,8 @@ use Ares\Article\Repository\ArticleRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
 use Ares\User\Entity\User;
+use Ares\Article\Entity\Category;
+use Ares\Article\Repository\CategoryRepository;
 use Ares\User\Repository\UserRepository;
 
 /**
@@ -26,7 +28,8 @@ class Article extends DataObject implements ArticleInterface
 
     /** @var array **/
     public const RELATIONS = [
-      'user' => 'getUser'
+      'user'                => 'getUser',
+      'articleCategory'     => 'getCategory'
     ];
 
     /**
@@ -281,6 +284,63 @@ class Article extends DataObject implements ArticleInterface
         return $this->setData(ArticleInterface::COLUMN_UPDATED_AT, $updatedAt);
     }
 
+     /**
+     * @return int
+     */
+    public function getCatId(): int
+    {
+        return $this->getData(ArticleInterface::COLUMN_CAT_ID);
+    }
+
+    /**
+     * @param int $catId
+     *
+     * @return Article
+     */
+    public function setCatId(int $catId): Article
+    {
+        return $this->setData(ArticleInterface::COLUMN_CAT_ID, $catId);
+    }
+
+    /**
+     * @return Category|null
+     *
+     * @throws DataObjectManagerException
+     */
+    public function getCategory(): ?Category
+    {
+        /** @var User $user */
+        $category = $this->getData('category');
+        if ($category) {
+            return $category;
+        }
+
+        if (!isset($this)) {
+            return null;
+        }
+
+        /** @var ArticleRepository $articleRepository */
+        $articleRepository = repository(ArticleRepository::class);
+
+        /** @var CategoryRepository $userRepository */
+        $categoryRepository = repository(CategoryRepository::class);
+
+        /** @var Category $user */
+        $category = $articleRepository->getOneToOne(
+            $categoryRepository,
+            $this->getCatId(),
+            'id'
+        );
+
+        if (!$category) {
+            return null;
+        }
+
+        $this->setCategory($category);
+
+        return $category;
+    }
+
     /**
      * @return User|null
      *
@@ -290,7 +350,6 @@ class Article extends DataObject implements ArticleInterface
     {
         /** @var User $user */
         $user = $this->getData('user');
-
         if ($user) {
             return $user;
         }
@@ -329,5 +388,15 @@ class Article extends DataObject implements ArticleInterface
     public function setUser(User $user): Article
     {
         return $this->setData('user', $user);
+    }
+
+    /**
+     * @param Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(Category $category): Article
+    {
+        return $this->setData('category', $category);
     }
 }

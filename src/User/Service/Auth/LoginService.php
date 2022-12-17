@@ -98,9 +98,8 @@ class LoginService
 
         /** @var TokenService $token */
         $token = $this->tokenService->execute($user->getId());
-
+        
         $this->session->set('token', $token);
-        $this->session->set('user', $user);
 
         return response()
             ->setData([

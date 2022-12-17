@@ -163,8 +163,6 @@ class AuthController extends BaseController
         $this->validationService->validate($parsedData, [
             UserInterface::COLUMN_USERNAME => 'required|min:2|max:12|regex:/^[a-zA-Z\d]+$/',
             UserInterface::COLUMN_MAIL => 'required|email|min:9',
-            UserInterface::COLUMN_LOOK => 'required',
-            UserInterface::COLUMN_GENDER => 'required|default:M|regex:/[M.F]/',
             UserInterface::COLUMN_PASSWORD => 'required|min:6',
             'password_confirmation' => 'required|same:password'
         ]);
