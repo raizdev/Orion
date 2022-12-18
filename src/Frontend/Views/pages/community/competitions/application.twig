@@ -1,0 +1,15 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+  <div class="h-100">
+    <div class="row py-4 h-100">
+      <div class="h-100 w-100">
+        <a href="/community/competitions">
+          <button class="llbtn llbtn-warning mx-auto d-block mb-1"> {{ lang('website.competitions.go_back' )}} </button>
+        </a>
+        <iframe src="{{competition.iframe}}" width="100%" height="100%" style="margin: 0px; border: 0px; padding-bottom: 34px;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

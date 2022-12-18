@@ -1,0 +1,32 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+  <div class="row py-4">
+    {% for competition in competitions %}
+    <div class="col-md-1 mb-15p">
+      <a href="/community/competitions/{{competition.id}}/apply">
+      <div class="card newsListCard competitionListCard">
+        <div class="newsListCardImage" style="background-image: url({{competition.header}});"></div>
+        <div class="text-lush-info-text pb-1 h-100 d-flex flex-column">
+          <a href="/news/24-homepage-hunt--3" class="text-primary title bg-lush-bg-grey-1 px-2 mb-1 py-1 text-truncate"> {{competition.title}} </a>
+          <small class="d-block description px-2 py-1"> {{competition.shorttitle}} </small>
+          <div class="mt-auto px-2">
+            <hr class="mb-2 mt-0">
+            <a href="/community/competitions/{{competition.id}}/apply">
+              <button class="llbtn llbtn-sm llbtn-success w-100 mb-0"> {{ lang('website.competitions.submit' )}} </button>
+            </a>
+            <hr class="my-2">
+            <div class="d-flex flex-row text-small justify-content-center small text-center">
+              <span class="text-danger d-flex flex-row">
+                <img src="/assets/images/icons/time.gif" class="mr-1">
+                <span class="align-self-center">{{ competition.timestamp|date_modify('+1 week')|time_diff(competition.timestamp) }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
