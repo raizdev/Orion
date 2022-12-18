@@ -112,4 +112,40 @@ class Competition extends DataObject implements CompetitionInterface
     {
         return $this->setData(CompetitionInterface::COLUMN_HEADER, $header);
     }
+
+        /**
+     * @return int
+     */
+    public function getToTimestamp(): int
+    {
+        return $this->getData(CompetitionInterface::COLUMN_TO_TIMESTAMP);
+    }
+
+    /**
+     * @param int $toTimestamp
+     *
+     * @return UserOfTheHotel
+     */
+    public function setToTimestamp(int $toTimestamp): UserOfTheHotel
+    {
+        return $this->setData(CompetitionInterface::COLUMN_TO_TIMESTAMP, $toTimestamp);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->getData(CompetitionInterface::COLUMN_CREATED_AT);
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     *
+     * @return UserOfTheHotel
+     */
+    public function setCreatedAt(\DateTime $createdAt): UserOfTheHotel
+    {
+        return $this->setData(CompetitionInterface::COLUMN_CREATED_AT, $createdAt);
+    }
 }

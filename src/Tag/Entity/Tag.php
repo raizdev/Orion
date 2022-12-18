@@ -84,6 +84,24 @@ class Tag extends DataObject implements TagInterface
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->getData(CompetitionInterface::COLUMN_CREATED_AT);
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     *
+     * @return UserOfTheHotel
+     */
+    public function setCreatedAt(\DateTime $createdAt): UserOfTheHotel
+    {
+        return $this->setData(CompetitionInterface::COLUMN_CREATED_AT, $createdAt);
+    }
+
+    /**
      * @return User|null
      *
      * @throws DataObjectManagerException
