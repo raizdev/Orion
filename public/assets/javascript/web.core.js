@@ -84,7 +84,7 @@ function WebInterface() {
             if ($(this).attr("href") !== "#" && $(this).attr("href") !== "javascript:;" && $(this).attr("href") !== "javascript:void(0)" && $(this).attr("href") !== undefined) {
                 var href = $(this).attr("href");
                 if (!href)
-                    href = "home";
+                    href = "/";
                 if (href.match(/^\#([A-z0-9-_]+)$/i))
                     window.location.hash = href;
                 else if (window.location.pathname + window.location.search !== "/" + href || window.location.hash)
@@ -150,7 +150,7 @@ $(function () {
 function WebPagesManagerInterface() {
     this.current_page_url = null;
     this.current_page_interface = null;
-    this.last_page_url = "home";
+    this.last_page_url = "/";
     this.page_container = null;
 
     /*
@@ -165,7 +165,7 @@ function WebPagesManagerInterface() {
         this.current_page_interface.assign_interface();
   
         if (this.current_page_url === "") {
-            this.current_page_url = "home";
+            this.current_page_url = "/";
         }
 
         if (this.current_page_url.match(/^hotel/) && Configuration.settings.user) {
@@ -178,7 +178,7 @@ function WebPagesManagerInterface() {
 
             if (self.current_page_url !== url) {
                 if (url === "/") {
-                    self.load("home", null, false, null, false);
+                    self.load("/", null, false, null, false);
                 } else {
                     self.load("/" + url, null, false, null, false);
                 }
@@ -227,7 +227,7 @@ function WebPagesManagerInterface() {
         var body = $("body");
 
         if (url === "")
-            url = "home";
+            url = "/";
 
         if (url.charAt(0) !== "/") {
             url = "/" + url;

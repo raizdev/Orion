@@ -60,7 +60,7 @@
                           <a class="dropdown-item" href="{{ url_for('home') }}/{{user.username}}">{{ lang('website.nav_my_page') }}</a>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="/settings/password">{{ lang('website.nav_account_settings') }}</a>
+                          <a class="dropdown-item" href="/settings">{{ lang('website.nav_account_settings') }}</a>
                         </li>
                       </ul>
                     </li>
@@ -186,24 +186,36 @@
     </div>
     {% if user %}
     <div id="hotel-container">
-        <div class="client-buttons">
-            <button class="client-close llbtn llbtn-danger">
-                <i style="margin-top:2px;margin-left:3px;" class="client-icon fa fa-arrow-left" aria-hidden="true"></i>
-                <span class="client-close-expand"><span>Web</span></span>
-            </button>
-            <button class="client-fullscreen llbtn llbtn-primary llbtn-lg">
-                <i class="client-icon fa fa-expand"></i>
-            </button>
-            <button class="client-radio llbtn llbtn-warning llbtn-lg">
-                <audio controls id="stream" style="display:none">
-                    <source type="audio/mpeg">
-                </audio>
-                <i class="fa fa-play"></i>
-                <i class="fa fa-pause" style="display: none"></i>
-                <i class="fa fa-volume-down"></i>
-                <i class="fa fa-volume-up"></i>
-            </button>
+<div class="client-buttons">
+        <button class="client-close llbtn llbtn-danger">
+          <i style="margin-top:2px;margin-left:3px;" class="client-icon fa fa-arrow-left" aria-hidden="true"></i>
+          <span class="client-close-expand">
+            <span>Web</span>
+          </span>
+        </button>
+        <button class="client-fullscreen llbtn llbtn-primary llbtn-lg">
+          <i class="client-icon fa fa-expand"></i>
+        </button>
+        <button class="client-radio llbtn llbtn-warning llbtn-lg">
+          <audio controls id="stream" style="display:none">
+            <source type="audio/mpeg">
+          </audio>
+          <i class="fa fa-play"></i>
+          <i class="fa fa-pause" style="display: none"></i>
+          <i class="fa fa-volume-down"></i>
+          <i class="fa fa-volume-up"></i>
+        </button>
+      </div>
+      <div class="client-disconnected w-100 h-100 position-fixed align-items-center">
+        <div class="container h-100">
+          <div class="row justify-content-center h-100">
+            <div class="col-2 align-self-center text-center">
+              <h4 class="text-white">Disconnected!</h4>
+              <button onClick="window.location.reload()" class="llbtn llbtn-warning"> Reload </button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     {% endif %}
     <script src="/assets/javascript/jquery.history.js"></script>

@@ -13,6 +13,7 @@ function WebHotelManagerInterface() {
         this.hotel_container.find(".client-buttons .client-close").click(this.close_hotel);
         this.hotel_container.find(".client-buttons .client-fullscreen").click(this.toggle_fullscreen.bind(this));
         this.hotel_container.find(".client-buttons .client-radio").click(this.radio(this));
+        this.hotel_container.find(".client-disconnected").hide();
     };
     
     const scrollContainer = () => {
@@ -57,28 +58,23 @@ function WebHotelManagerInterface() {
         this.hotel_url = argument;
 
         if (!body.hasClass("hotel-visible")) {
-            Web.ajax_manager.get("/api/vote", function(result) {
 
-                if (result.status != "voted" && Configuration.findretros === true) {
-                    window.location.href = result.api;
-                } else {
                     if (container.find(".client-frame").length === 0)
 
-                        Web.ajax_manager.get("/api/ssoTicket", function(result) {
+                        Web.ajax_manager.get("/auth/ticket", function(result) {
 
                             let argumentAction = '';
                             if (argument != "") {
                                 let argumentAction = argument.replace("hotel?room=", "&room=");
                             }
-
-                            container.prepend('<iframe id="nitro" class="client-frame" src="' + Configuration.settings.nitro + '/?sso=' + result.ticket + argumentAction + '"></iframe>');
+                            console.log(Configuration)
+                            container.prepend('<iframe id="nitro" class="client-frame" src="' + Configuration.settings.hotel.nitro + '/?sso=' + result.data.ticket + argumentAction + '"></iframe>');
 
                             let frame = document.getElementById('nitro');
 
                             window.FlashExternalInterface = {};
                             window.FlashExternalInterface.disconnect = () => {
-                                Web.notifications_manager.create("error", "Client disconnected!");
-                                Web.pages_manager.load('/home');
+                                container.find(".client-disconnected").show();
                             };
 
                             if (frame && frame.contentWindow) {
@@ -115,9 +111,7 @@ function WebHotelManagerInterface() {
                     $(".fa-play").hide();
                     $(".fa-pause").show();
                 }
-            });
         }
-    };
 
 
 

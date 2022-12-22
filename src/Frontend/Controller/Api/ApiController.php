@@ -53,7 +53,7 @@ class ApiController extends BaseController
      * @param Response $response
      * @return Response
      */
-    public function __invoke(Request $request, Response $response): Response
+    public function config(Request $request, Response $response): Response
     {
         /** @var array $config */
         $config = $this->config->get('website_settings');
