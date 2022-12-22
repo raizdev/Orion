@@ -1,0 +1,49 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+  <div class="row py-4">
+    <div class="col-md-1">
+      <div class="card mb-15p">
+        <div class="card-header black">{{ lang('website.settings.panel_settings' )}}</div>
+        <div class="p-2">
+          <div class="list-group">
+            <a href="/settings/password">
+              <div class="list-group-item active"> {{ lang('website.settings.panel_security' )}} </div>
+            </a>
+          </div>
+          <a href="/settings/personalisation">
+            <div class="list-group-item"> {{ lang('website.settings.panel_personalisation' )}} </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">{{ lang('website.settings.security' )}}</div>
+        <div class="p-2">
+          <form action="{{ url_for('settings-password') }}" method="post">
+            <div class="form-group">
+              <h6>{{ lang('website.settings.old_pw' )}}:</h6>
+              <input type="password" class="form-control" name="password">
+              <label class="small text-muted"> {{ lang('website.settings.old_pw_desc' )}} </label>
+            </div>
+            <div class="form-group">
+              <h6>{{ lang('website.settings.new_pw' )}}:</h6>
+              <input type="password" class="form-control" name="new_password">
+              <label class="small text-muted"> {{ lang('website.settings.new_pw_desc' )}} </label>
+            </div>
+            <div class="form-group">
+              <h6>{{ lang('website.settings.new_pw_confirm' )}}:</h6>
+              <input type="password" class="form-control" name="repeated_password">
+              <label class="small text-muted"> {{ lang('website.settings.new_pw_confirm_desc' )}} </label>
+            </div>
+            <div class="form-group">
+              <button class="llbtn llbtn-success">{{ lang('website.settings.save' )}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ {% endblock %}
