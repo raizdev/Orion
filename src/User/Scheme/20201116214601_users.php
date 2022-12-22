@@ -19,6 +19,8 @@ final class Users extends AbstractMigration
         $table->changeColumn('password', 'string', ['limit' => 255])
             ->save();
 
+        $table->addColumn('avatar_bg', 'integer', ['default' => '1']);
+
         if ($real_name) {
             $table->changeColumn('real_name', 'string', ['limit' => 25, 'null' => true])
                 ->save();
