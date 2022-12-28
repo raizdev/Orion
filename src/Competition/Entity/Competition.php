@@ -1,17 +1,11 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Competition\Entity;
+namespace Orion\Competition\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Competition\Entity\Contract\CompetitionInterface;
-use Ares\Competition\Repository\CompetitionRepository;
-use Ares\User\Entity\User;
+use Orion\Competition\Entity\Contract\CompetitionInterface;
+use Orion\Competition\Repository\CompetitionRepository;
+use Orion\User\Entity\User;
 
 /**
  * Class Tag

@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Currency;
+namespace Orion\User\Service\Currency;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\User\Entity\UserCurrency;
-use Ares\User\Repository\UserCurrencyRepository;
+use Orion\User\Entity\UserCurrency;
+use Orion\User\Repository\UserCurrencyRepository;
 
 /**
  * Class CreateCurrencyService

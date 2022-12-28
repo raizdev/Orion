@@ -1,25 +1,19 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Rcon\Service;
+namespace Orion\Rcon\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Rcon\Entity\Rcon;
-use Ares\Rcon\Exception\RconException;
-use Ares\Rcon\Interfaces\Response\RconResponseCodeInterface;
-use Ares\Rcon\Repository\RconRepository;
+use Orion\Rcon\Entity\Rcon;
+use Orion\Rcon\Exception\RconException;
+use Orion\Rcon\Interfaces\Response\RconResponseCodeInterface;
+use Orion\Rcon\Repository\RconRepository;
 
 /**
  * Class DeleteRconCommandService
  *
- * @package Ares\Rcon\Service
+ * @package Orion\Rcon\Service
  */
 class DeleteRconCommandService
 {

@@ -1,15 +1,9 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Repository;
+namespace Orion\Role\Repository;
 
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Role\Entity\RolePermission;
+use Orion\Role\Entity\RolePermission;
 
 /**
  * Class RolePermissionRepository

@@ -1,21 +1,15 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity;
+namespace Orion\User\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Role\Repository\RoleHierarchyRepository;
-use Ares\Role\Repository\RoleRepository;
-use Ares\Role\Repository\RoleRankRepository;
-use Ares\User\Entity\Contract\UserInterface;
-use Ares\User\Repository\UserBadgeRepository;
-use Ares\User\Repository\UserCurrencyRepository;
-use Ares\User\Repository\UserRepository;
+use Orion\Role\Repository\RoleHierarchyRepository;
+use Orion\Role\Repository\RoleRepository;
+use Orion\Role\Repository\RoleRankRepository;
+use Orion\User\Entity\Contract\UserInterface;
+use Orion\User\Repository\UserBadgeRepository;
+use Orion\User\Repository\UserCurrencyRepository;
+use Orion\User\Repository\UserRepository;
 use Ares\Framework\Model\Query\Collection;
 
 /**
@@ -277,6 +271,42 @@ class User extends DataObject implements UserInterface
     public function setOnline(int $online): User
     {
         return $this->setData(UserInterface::COLUMN_ONLINE, $online);
+    }
+
+    /**
+     * @return int
+     */
+    public function getAvatarBg(): int
+    {
+        return $this->getData(UserInterface::COLUMN_AVATAR_BG);
+    }
+
+    /**
+     * @param int $avatarBg
+     *
+     * @return User
+     */
+    public function setAvatarBg(int $avatarBg): User
+    {
+        return $this->setData(UserInterface::COLUMN_AVATAR_BG, $avatarBg);
+    }
+
+    /**
+     * @return int
+     */
+    public function getYoutubeSong(): string
+    {
+        return $this->getData(UserInterface::COLUMN_AVATAR_BG);
+    }
+
+    /**
+     * @param int $youtubeSong
+     *
+     * @return User
+     */
+    public function setYoutubeSong(?string $youtubeSong = null): User
+    {
+        return $this->setData(UserInterface::COLUMN_YOUTUBE_SONG, $youtubeSong);
     }
 
     /**

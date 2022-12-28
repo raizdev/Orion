@@ -1,20 +1,14 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Badge\Service;
 
-namespace Ares\Badge\Service;
-
-use Ares\Badge\Helper\BadgeHelper;
+use Orion\Badge\Helper\BadgeHelper;
 use Ares\Framework\Service\CacheService;
 use Ares\Framework\Exception\NoSuchEntityException;
 
 /**
  * Class BadgeAlbumService
  *
- * @package Ares\Badge\Service
+ * @package Orion\Badge\Service
  */
 class BadgeAlbumService
 {

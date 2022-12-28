@@ -1,11 +1,5 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Frontend\Controller\User;
+namespace Orion\Frontend\Controller\User;
 
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
@@ -14,9 +8,9 @@ use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
 use Ares\Framework\Service\ValidationService;
-use Ares\User\Entity\Contract\UserInterface;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\Contract\UserInterface;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -26,7 +20,7 @@ use function user;
 /**
  * Class UserController
  *
- * @package Ares\Frontend\Controller\Auth
+ * @package Orion\Frontend\Controller\Auth
  * @CR\Router
  * @CR\Group(
  *     prefix="user",

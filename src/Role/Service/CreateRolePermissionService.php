@@ -1,29 +1,23 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Service;
+namespace Orion\Role\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Role\Entity\Permission;
-use Ares\Role\Entity\Role;
-use Ares\Role\Entity\RolePermission;
-use Ares\Role\Exception\RoleException;
-use Ares\Role\Interfaces\Response\RoleResponseCodeInterface;
-use Ares\Role\Repository\PermissionRepository;
-use Ares\Role\Repository\RolePermissionRepository;
-use Ares\Role\Repository\RoleRepository;
+use Orion\Role\Entity\Permission;
+use Orion\Role\Entity\Role;
+use Orion\Role\Entity\RolePermission;
+use Orion\Role\Exception\RoleException;
+use Orion\Role\Interfaces\Response\RoleResponseCodeInterface;
+use Orion\Role\Repository\PermissionRepository;
+use Orion\Role\Repository\RolePermissionRepository;
+use Orion\Role\Repository\RoleRepository;
 
 /**
  * Class CreateChildPermission
  *
- * @package Ares\Role\Service
+ * @package Orion\Role\Service
  */
 class CreateRolePermissionService
 {

@@ -1,5 +1,5 @@
 {
-  "name": "dome/ares-habbo-api",
+  "name": "orion/habbo-cms",
   "description": "Fast and convenient Habbo API",
   "keywords": [
     "php",
@@ -10,12 +10,7 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Dome",
-      "homepage": "https://ares.to"
-    },
-    {
-      "name": "s1njar",
-      "homepage": "https://ares.to"
+      "name": "Raizer"
     }
   ],
   "require": {
@@ -33,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Ares\\": "src/"
+      "Orion\\": "src/"
     }
   },
   "minimum-stability": "dev"

@@ -1,20 +1,14 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Repository;
+namespace Orion\Role\Repository;
 
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Role\Entity\RoleHierarchy;
+use Orion\Role\Entity\RoleHierarchy;
 use Illuminate\Database\QueryException;
 
 /**
  * Class RoleHierarchyRepository
  *
- * @package Ares\Role\Repository
+ * @package Orion\Role\Repository
  */
 class RoleHierarchyRepository extends BaseRepository
 {

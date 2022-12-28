@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Rcon\Interfaces\Response;
+namespace Orion\Rcon\Interfaces\Response;
 
 use Ares\Framework\Interfaces\CustomResponseCodeInterface;
 
 /**
  * Interface RconResponseCodeInterface
  *
- * @package Ares\Rcon\Interfaces\Response
+ * @package Orion\Rcon\Interfaces\Response
  */
 interface RconResponseCodeInterface extends CustomResponseCodeInterface
 {

@@ -1,23 +1,17 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Tag\Entity;
+namespace Orion\Tag\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Tag\Entity\Contract\TagInterface;
-use Ares\Tag\Repository\TagRepository;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\Tag\Entity\Contract\TagInterface;
+use Orion\Tag\Repository\TagRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class Tag
  *
- * @package Ares\Tag\Entity
+ * @package Orion\Tag\Entity
  */
 class Tag extends DataObject implements TagInterface
 {

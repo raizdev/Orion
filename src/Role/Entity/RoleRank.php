@@ -1,22 +1,17 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-namespace Ares\Role\Entity;
+namespace Orion\Role\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Role\Entity\Contract\RoleRankInterface;
-use Ares\Permission\Repository\PermissionRepository;
-use Ares\Permission\Entity\Permission;
+use Orion\Role\Entity\Contract\RoleRankInterface;
+use Orion\Permission\Repository\PermissionRepository;
+use Orion\Permission\Entity\Permission;
 use DateTime;
 
 /**
  * Class RoleRank
  *
- * @package Ares\Role\Entity
+ * @package Orion\Role\Entity
  */
 class RoleRank extends DataObject implements RoleRankInterface
 {

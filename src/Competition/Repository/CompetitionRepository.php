@@ -1,21 +1,15 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Competition\Repository;
+namespace Orion\Competition\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Competition\Entity\Competition;
+use Orion\Competition\Entity\Competition;
 
 /**
  * Class CompetitionRepository
  *
- * @package Ares\Competition\Repository
+ * @package Orion\Competition\Repository
  */
 class CompetitionRepository extends BaseRepository
 {

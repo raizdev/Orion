@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Permission\Entity\Contract;
+namespace Orion\Permission\Entity\Contract;
 
 /**
  * Interface PermissionInterface
  *
- * @package Ares\Permission\Entity\Contract
+ * @package Orion\Permission\Entity\Contract
  */
 interface PermissionInterface
 {

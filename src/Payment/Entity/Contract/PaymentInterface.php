@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Payment\Entity\Contract;
+namespace Orion\Payment\Entity\Contract;
 
 /**
  * Interface PaymentInterface
  *
- * @package Ares\Payment\Entity\Contract
+ * @package Orion\Payment\Entity\Contract
  */
 interface PaymentInterface
 {

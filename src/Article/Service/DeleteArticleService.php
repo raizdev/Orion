@@ -1,15 +1,9 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Article\Service;
 
-namespace Ares\Article\Service;
-
-use Ares\Article\Exception\ArticleException;
-use Ares\Article\Interfaces\Response\ArticleResponseCodeInterface;
-use Ares\Article\Repository\ArticleRepository;
+use Orion\Article\Exception\ArticleException;
+use Orion\Article\Interfaces\Response\ArticleResponseCodeInterface;
+use Orion\Article\Repository\ArticleRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;

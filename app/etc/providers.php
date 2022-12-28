@@ -1,14 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-/**
- * Registers our ServiceProviders
- */
-
 use Psr\Http\Message\ServerRequestInterface;
 return [
     // Adds our LocaleProvider to add locales

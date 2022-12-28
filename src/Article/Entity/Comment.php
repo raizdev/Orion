@@ -1,18 +1,12 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Article\Entity;
 
-namespace Ares\Article\Entity;
-
-use Ares\Article\Entity\Contract\CommentInterface;
-use Ares\Article\Repository\CommentRepository;
+use Orion\Article\Entity\Contract\CommentInterface;
+use Orion\Article\Repository\CommentRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class Article

@@ -1,23 +1,17 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Payment\Service;
+namespace Orion\Payment\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Payment\Exception\PaymentException;
-use Ares\Payment\Interfaces\Response\PaymentResponseCodeInterface;
-use Ares\Payment\Repository\PaymentRepository;
+use Orion\Payment\Exception\PaymentException;
+use Orion\Payment\Interfaces\Response\PaymentResponseCodeInterface;
+use Orion\Payment\Repository\PaymentRepository;
 
 /**
  * Class DeletePaymentService
  *
- * @package Ares\Payment\Service
+ * @package Orion\Payment\Service
  */
 class DeletePaymentService
 {

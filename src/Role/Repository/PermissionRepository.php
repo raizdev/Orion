@@ -1,21 +1,15 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
 namespace Ares\Role\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Role\Entity\Permission;
+use Orion\Role\Entity\Permission;
 
 /**
  * Class PermissionRepository
  *
- * @package Ares\Role\Repository
+ * @package Orion\Role\Repository
  */
 class PermissionRepository extends BaseRepository
 {

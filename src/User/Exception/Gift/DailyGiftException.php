@@ -1,11 +1,5 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Exception\Gift;
+namespace Orion\User\Exception\Gift;
 
 use Ares\Framework\Exception\BaseException;
 

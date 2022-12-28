@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Ban\Entity\Contract;
+namespace Orion\Ban\Entity\Contract;
 
 /**
  * Interface BanInterface
  *
- * @package Ares\Ban\Entity\Contract
+ * @package Orion\Ban\Entity\Contract
  */
 interface BanInterface
 {

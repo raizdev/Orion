@@ -1,20 +1,14 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Service;
+namespace Orion\Role\Service;
 
 use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Role\Repository\RoleHierarchyRepository;
-use Ares\Role\Repository\RoleRankRepository;
+use Orion\Role\Repository\RoleHierarchyRepository;
+use Orion\Role\Repository\RoleRankRepository;
 
 /**
  * Class FetchUserPermissionService
  *
- * @package Ares\Role\Service
+ * @package Orion\Role\Service
  */
 class FetchUserPermissionService
 {

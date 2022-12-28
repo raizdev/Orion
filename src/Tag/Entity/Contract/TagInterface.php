@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Tag\Entity\Contract;
+namespace Orion\Tag\Entity\Contract;
 
 /**
  * Interface TagInterface
  *
- * @package Ares\Tag\Entity\Contract
+ * @package Orion\Tag\Entity\Contract
  */
 interface TagInterface
 {

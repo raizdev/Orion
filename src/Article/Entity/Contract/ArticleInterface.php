@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Article\Entity\Contract;
+namespace Orion\Article\Entity\Contract;
 
 /**
  * Interface ArticleInterface
  *
- * @package Ares\Article\Entity\Contract
+ * @package Orion\Article\Entity\Contract
  */
 interface ArticleInterface
 {

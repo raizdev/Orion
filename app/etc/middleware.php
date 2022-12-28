@@ -1,10 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
 use Ares\Framework\Middleware\LocaleMiddleware;
 use Cosmic\Core\Middleware\ClaimMiddleware;
 use Odan\Session\Middleware\SessionMiddleware;

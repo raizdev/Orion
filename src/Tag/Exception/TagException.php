@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Tag\Exception;
+namespace Orion\Tag\Exception;
 
 use Ares\Framework\Exception\BaseException;
 
 /**
  * Class PhotoException
  *
- * @package Ares\Photo\Exception
+ * @package Orion\Photo\Exception
  */
 class TagException extends BaseException
 {

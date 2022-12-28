@@ -1,18 +1,12 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Rcon\Entity;
+namespace Orion\Rcon\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Rcon\Entity\Contract\RconInterface;
-use Ares\Rcon\Repository\RconRepository;
-use Ares\Role\Entity\Permission;
-use Ares\Role\Repository\PermissionRepository;
+use Orion\Rcon\Entity\Contract\RconInterface;
+use Orion\Rcon\Repository\RconRepository;
+use Orion\Role\Entity\Permission;
+use Orion\Role\Repository\PermissionRepository;
 
 /**
  * Class Rcon

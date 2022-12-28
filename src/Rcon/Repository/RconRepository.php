@@ -1,19 +1,13 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Rcon\Repository;
+namespace Orion\Rcon\Repository;
 
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Rcon\Entity\Rcon;
+use Orion\Rcon\Entity\Rcon;
 
 /**
  * Class RconRepository
  *
- * @package Ares\Rcon\Repository
+ * @package Orion\Rcon\Repository
  */
 class RconRepository extends BaseRepository
 {

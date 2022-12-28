@@ -1,10 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
 // Instantiate LeagueContainer
 $container = new \League\Container\Container();
 

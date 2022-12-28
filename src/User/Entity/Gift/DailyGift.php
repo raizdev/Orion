@@ -1,14 +1,8 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity\Gift;
+namespace Orion\User\Entity\Gift;
 
 use Ares\Framework\Model\DataObject;
-use Ares\User\Entity\Contract\Gift\DailyGiftInterface;
+use Orion\User\Entity\Contract\Gift\DailyGiftInterface;
 
 /**
  * Class DailyGift

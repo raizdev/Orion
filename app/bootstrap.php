@@ -1,10 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Adds dotenv environment.

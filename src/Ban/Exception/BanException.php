@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Ban\Exception;
+namespace Orion\Ban\Exception;
 
 use Ares\Framework\Exception\BaseException;
 
 /**
  * Class BanException
  *
- * @package Ares\Ban\Exception
+ * @package Orion\Ban\Exception
  */
 class BanException extends BaseException
 {

@@ -1,17 +1,11 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
 namespace Ares\Role\Middleware;
 
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Role\Exception\RoleException;
-use Ares\Role\Interfaces\Response\RoleResponseCodeInterface;
-use Ares\Role\Service\CheckAccessService;
+use Orion\Role\Exception\RoleException;
+use Orion\Role\Interfaces\Response\RoleResponseCodeInterface;
+use Orion\Role\Service\CheckAccessService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -21,7 +15,7 @@ use Slim\Routing\RouteContext;
 /**
  * Class RolePermissionMiddleware
  *
- * @package Ares\Role\Middleware
+ * @package Orion\Role\Middleware
  */
 class RolePermissionMiddleware implements MiddlewareInterface
 {

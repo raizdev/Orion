@@ -1,23 +1,17 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Frontend\Controller\Community;
 
-namespace Ares\Frontend\Controller\Community;
-
-use Ares\Room\Repository\RoomRepository;
+use Orion\Room\Repository\RoomRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
-use Ares\Article\Repository\ArticleRepository;
-use Ares\Tag\Repository\TagRepository;
-use Ares\Tag\Entity\Contract\TagInterface;
-use Ares\Badge\Service\BadgeAlbumService;
+use Orion\Article\Repository\ArticleRepository;
+use Orion\Tag\Repository\TagRepository;
+use Orion\Tag\Entity\Contract\TagInterface;
+use Orion\Badge\Service\BadgeAlbumService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Tag\Service\CreateTagService;
-use Ares\Tag\Service\DeleteTagService;
+use Orion\Tag\Service\CreateTagService;
+use Orion\Tag\Service\DeleteTagService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Ares\Framework\Service\ValidationService;

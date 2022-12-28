@@ -1,15 +1,9 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Permission\Repository;
+namespace Orion\Permission\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Permission\Entity\Permission;
+use Orion\Permission\Entity\Permission;
 use Ares\Framework\Model\Query\Collection;
 
 /**

@@ -1,22 +1,16 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity;
+namespace Orion\User\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\User\Entity\Contract\UserCurrencyInterface;
-use Ares\User\Repository\UserCurrencyRepository;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\Contract\UserCurrencyInterface;
+use Orion\User\Repository\UserCurrencyRepository;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class UserCurrency
  *
- * @package Ares\User\Entity
+ * @package Orion\User\Entity
  */
 class UserCurrency extends DataObject implements UserCurrencyInterface
 {

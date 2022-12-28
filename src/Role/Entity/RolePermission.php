@@ -1,19 +1,13 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Entity;
+namespace Orion\Role\Entity;
 
 use Ares\Framework\Model\DataObject;
-use Ares\Role\Entity\Contract\RolePermissionInterface;
+use Orion\Role\Entity\Contract\RolePermissionInterface;
 
 /**
  * Class RolePermission
  *
- * @package Ares\Role\Entity
+ * @package Orion\Role\Entity
  */
 class RolePermission extends DataObject implements RolePermissionInterface
 {

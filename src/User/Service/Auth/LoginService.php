@@ -1,25 +1,19 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\User\Service\Auth;
 
-namespace Ares\User\Service\Auth;
-
-use Ares\Ban\Entity\Ban;
-use Ares\Ban\Exception\BanException;
-use Ares\Ban\Repository\BanRepository;
+use Orion\Ban\Entity\Ban;
+use Orion\Ban\Exception\BanException;
+use Orion\Ban\Repository\BanRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\TokenService;
-use Ares\User\Entity\Contract\UserInterface;
-use Ares\User\Entity\User;
-use Ares\User\Exception\LoginException;
-use Ares\User\Interfaces\Response\UserResponseCodeInterface;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\Contract\UserInterface;
+use Orion\User\Entity\User;
+use Orion\User\Exception\LoginException;
+use Orion\User\Interfaces\Response\UserResponseCodeInterface;
+use Orion\User\Repository\UserRepository;
 use Odan\Session\SessionInterface;
 use ReallySimpleJWT\Exception\ValidateException;
 use Slim\Routing\RouteParser;
@@ -27,7 +21,7 @@ use Slim\Routing\RouteParser;
 /**
  * Class LoginService
  *
- * @package Ares\User\Service\Auth
+ * @package Orion\User\Service\Auth
  */
 class LoginService
 {

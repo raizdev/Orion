@@ -1,11 +1,5 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Frontend\Controller\Setting;
+namespace Orion\Frontend\Controller\Setting;
 
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
@@ -14,10 +8,11 @@ use Ares\Framework\Exception\NoSuchEntityException;
 use Odan\Session\SessionInterface;
 use Ares\Framework\Exception\ValidationException;
 use Ares\Framework\Service\ValidationService;
-use Ares\User\Entity\Contract\UserInterface;
-use Ares\User\Entity\Contract\UserSettingInterface;
-use Ares\User\Service\Settings\ChangePasswordService;
-use Ares\User\Entity\User;
+use Orion\User\Entity\Contract\UserInterface;
+use Orion\User\Entity\Contract\UserSettingInterface;
+use Orion\User\Service\Settings\ChangePasswordService;
+use Orion\User\Service\Settings\ChangeGeneralSettingsService;
+use Orion\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -40,14 +35,13 @@ class IndexController extends BaseController
     public function __construct(
         private Twig $twig,
         private ChangePasswordService $changePasswordService,
+        private ChangeGeneralSettingsService $changeGeneralSettingsService,
         private ValidationService $validationService
     ) {}
 
     /**
-     * Responds to say hello to Twig
-     *
      * @CR\Route(
-     *     name="settings",
+     *     name="settings-security",
      *     methods={"GET"},
      *     pattern="/settings"
      * )
@@ -62,14 +56,74 @@ class IndexController extends BaseController
      */
     public function index(Request $request, Response $response): Response
     {
-        return $this->twig->render($response, '/Frontend/Views/pages/settings/main.twig', [
+        return $this->twig->render($response, '/Frontend/Views/pages/settings/security.twig', [
             'page'  => 'settings'
         ]);
     }
 
     /**
-     * Responds to say hello to Twig
+     * @CR\Route(
+     *     name="settings-personalisation",
+     *     methods={"GET"},
+     *     pattern="/settings/personalisation"
+     * )
      *
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError|DataObjectManagerException|NoSuchEntityException
+     */
+    public function personalisation(Request $request, Response $response): Response
+    {
+        return $this->twig->render($response, '/Frontend/Views/pages/settings/personalisation.twig', [
+            'page'  => 'settings_personalisation'
+        ]);
+    }
+
+    /**
+     * @CR\Route(
+     *     name="settings-change-personalisation",
+     *     methods={"POST"},
+     *     pattern="/settings/change-personalisation"
+     * )
+     *
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError|DataObjectManagerException|NoSuchEntityException
+     */
+
+     public function changePersonalisation(Request $request, Response $response): Response
+     {
+         /** @var array $parsedData */
+         $parsedData = $request->getParsedBody();
+ 
+         $this->validationService->validate($parsedData, [
+             UserInterface::COLUMN_AVATAR_BG => 'required'
+         ]);
+ 
+         /** @var User $user */
+         $user = user($request);
+ 
+         $customResponse = $this->changeGeneralSettingsService
+             ->execute(
+                 $user,
+                 $parsedData
+             );
+ 
+         return $this->respond(
+             $response,
+             $customResponse
+         );
+     }
+
+    /**
      * @CR\Route(
      *     name="settings-password",
      *     methods={"POST"},

@@ -1,15 +1,9 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Badge\Helper;
+namespace Orion\Badge\Helper;
 
 
 use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Setting\Repository\EmulatorSettingRepository;
+use Orion\Setting\Repository\EmulatorSettingRepository;
 
 /**
  * Class BadgeHelper

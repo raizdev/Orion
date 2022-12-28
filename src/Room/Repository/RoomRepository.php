@@ -1,22 +1,16 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Room\Repository;
+namespace Orion\Room\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Room\Entity\Room;
+use Orion\Room\Entity\Room;
 
 /**
  * Class RoomRepository
  *
- * @package Ares\Room\Repository
+ * @package Orion\Room\Repository
  */
 class RoomRepository extends BaseRepository
 {

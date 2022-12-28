@@ -1,22 +1,16 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Auth;
+namespace Orion\User\Service\Auth;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Service\TokenService;
-use Ares\User\Entity\User;
-use Ares\User\Exception\RegisterException;
-use Ares\User\Interfaces\Response\UserResponseCodeInterface;
-use Ares\User\Interfaces\UserCurrencyTypeInterface;
-use Ares\User\Repository\UserRepository;
-use Ares\User\Service\Currency\CreateCurrencyService;
+use Orion\User\Entity\User;
+use Orion\User\Exception\RegisterException;
+use Orion\User\Interfaces\Response\UserResponseCodeInterface;
+use Orion\User\Interfaces\UserCurrencyTypeInterface;
+use Orion\User\Repository\UserRepository;
+use Orion\User\Service\Currency\CreateCurrencyService;
 use Exception;
 use Odan\Session\SessionInterface;
 use Cosmic\Core\Config;
@@ -25,7 +19,7 @@ use ReallySimpleJWT\Exception\ValidateException;
 /**
  * Class RegisterService
  *
- * @package Ares\User\Service\Auth
+ * @package Orion\User\Service\Auth
  */
 class RegisterService
 {

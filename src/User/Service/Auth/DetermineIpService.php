@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Auth;
+namespace Orion\User\Service\Auth;
 
 /**
  * Class DetermineIpService
  *
- * @package Ares\User\Service\Auth
+ * @package Orion\User\Service\Auth
  */
 class DetermineIpService
 {

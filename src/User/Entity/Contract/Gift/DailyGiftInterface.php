@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity\Contract\Gift;
+namespace Orion\User\Entity\Contract\Gift;
 
 /**
  * Interface DailyGiftInterface
  *
- * @package Ares\User\Entity\Contract\Gift
+ * @package Orion\User\Entity\Contract\Gift
  */
 interface DailyGiftInterface
 {

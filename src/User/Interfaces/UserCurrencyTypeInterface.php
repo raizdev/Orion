@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Interfaces;
+namespace Orion\User\Interfaces;
 
 /**
  * Interface UserCurrencyTypeInterface
  *
- * @package Ares\User\Interfaces
+ * @package Orion\User\Interfaces
  */
 interface UserCurrencyTypeInterface
 {

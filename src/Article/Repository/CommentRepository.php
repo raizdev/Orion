@@ -1,13 +1,7 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Article\Repository;
 
-namespace Ares\Article\Repository;
-
-use Ares\Article\Entity\Comment;
+use Orion\Article\Entity\Comment;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;

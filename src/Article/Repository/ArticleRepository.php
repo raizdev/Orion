@@ -1,23 +1,17 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Article\Repository;
+namespace Orion\Article\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Repository\BaseRepository;
 use Ares\Framework\Model\Query\Collection;
 use Ares\Framework\Model\Query\PaginatedCollection;
-use Ares\Article\Entity\Article;
+use Orion\Article\Entity\Article;
 
 /**
  * Class ArticleRepository
  *
- * @package Ares\Article\Repository
+ * @package Orion\Article\Repository
  */
 class ArticleRepository extends BaseRepository
 {

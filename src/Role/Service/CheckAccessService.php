@@ -1,24 +1,18 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Service;
+namespace Orion\Role\Service;
 
 use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Role\Entity\Permission;
-use Ares\Role\Repository\PermissionRepository;
-use Ares\Role\Repository\RoleHierarchyRepository;
-use Ares\Role\Repository\RolePermissionRepository;
-use Ares\Role\Repository\RoleRankRepository;
-use Ares\User\Repository\UserRepository;
+use Orion\Role\Entity\Permission;
+use Orion\Role\Repository\PermissionRepository;
+use Orion\Role\Repository\RoleHierarchyRepository;
+use Orion\Role\Repository\RolePermissionRepository;
+use Orion\Role\Repository\RoleRankRepository;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class CheckAccessService
  *
- * @package Ares\Role\Service
+ * @package Orion\Role\Service
  */
 class CheckAccessService
 {

@@ -1,20 +1,14 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
+namespace Orion\Article\Entity;
 
-namespace Ares\Article\Entity;
-
-use Ares\Article\Entity\Contract\ArticleInterface;
-use Ares\Article\Repository\ArticleRepository;
+use Orion\Article\Entity\Contract\ArticleInterface;
+use Orion\Article\Repository\ArticleRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\User\Entity\User;
-use Ares\Article\Entity\Category;
-use Ares\Article\Repository\CategoryRepository;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\User;
+use Orion\Article\Entity\Category;
+use Orion\Article\Repository\CategoryRepository;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class Article

@@ -1,17 +1,11 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Repository;
+namespace Orion\Role\Repository;
 
 
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Role\Entity\RoleRank;
-use Ares\Role\Entity\Contract\RoleRankInterface;
+use Orion\Role\Entity\RoleRank;
+use Orion\Role\Entity\Contract\RoleRankInterface;
 use Illuminate\Database\QueryException;
 
 /**

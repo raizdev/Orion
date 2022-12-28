@@ -1,26 +1,20 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Rcon\Service;
+namespace Orion\Rcon\Service;
 
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Rcon\Exception\RconException;
-use Ares\Rcon\Interfaces\Response\RconResponseCodeInterface;
-use Ares\Rcon\Model\Rcon;
-use Ares\Rcon\Repository\RconRepository;
-use Ares\Role\Exception\RoleException;
-use Ares\Role\Service\CheckAccessService;
+use Orion\Rcon\Exception\RconException;
+use Orion\Rcon\Interfaces\Response\RconResponseCodeInterface;
+use Orion\Rcon\Model\Rcon;
+use Orion\Rcon\Repository\RconRepository;
+use Orion\Role\Exception\RoleException;
+use Orion\Role\Service\CheckAccessService;
 
 /**
  * Class ExecuteRconCommandService
  *
- * @package Ares\Rcon\Service
+ * @package Orion\Rcon\Service
  */
 class ExecuteRconCommandService
 {

@@ -1,25 +1,19 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Service;
+namespace Orion\Role\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Role\Entity\Role;
-use Ares\Role\Exception\RoleException;
-use Ares\Role\Interfaces\Response\RoleResponseCodeInterface;
-use Ares\Role\Repository\RoleRepository;
+use Orion\Role\Entity\Role;
+use Orion\Role\Exception\RoleException;
+use Orion\Role\Interfaces\Response\RoleResponseCodeInterface;
+use Orion\Role\Repository\RoleRepository;
 
 /**
  * Class CreateRoleService
  *
- * @package Ares\Role\Service
+ * @package Orion\Role\Service
  */
 class CreateRoleService
 {

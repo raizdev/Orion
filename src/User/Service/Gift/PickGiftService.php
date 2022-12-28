@@ -1,30 +1,24 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Gift;
+namespace Orion\User\Service\Gift;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Rcon\Exception\RconException;
-use Ares\Rcon\Service\ExecuteRconCommandService;
-use Ares\Role\Exception\RoleException;
-use Ares\User\Entity\Gift\DailyGift;
-use Ares\User\Entity\User;
-use Ares\User\Exception\Gift\DailyGiftException;
-use Ares\User\Interfaces\Response\UserResponseCodeInterface;
-use Ares\User\Repository\Gift\DailyGiftRepository;
+use Orion\Rcon\Exception\RconException;
+use Orion\Rcon\Service\ExecuteRconCommandService;
+use Orion\Role\Exception\RoleException;
+use Orion\User\Entity\Gift\DailyGift;
+use Orion\User\Entity\User;
+use Orion\User\Exception\Gift\DailyGiftException;
+use Orion\User\Interfaces\Response\UserResponseCodeInterface;
+use Orion\User\Repository\Gift\DailyGiftRepository;
 use Cosmic\Core\Config;
 
 /**
  * Class PickGiftService
  *
- * @package Ares\User\Service\Gift
+ * @package Orion\User\Service\Gift
  */
 class PickGiftService
 {

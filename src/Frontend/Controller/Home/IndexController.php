@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
-namespace Ares\Frontend\Controller\Home;
+namespace Orion\Frontend\Controller\Home;
 
-use Ares\Guild\Repository\GuildRepository;
-use Ares\Room\Repository\RoomRepository;
-use Ares\Vote\Repository\VoteRepository;
+use Orion\Room\Repository\RoomRepository;
+use Orion\Vote\Repository\VoteRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
-use Ares\Article\Repository\ArticleRepository;
-use Ares\Badge\Service\BadgeAlbumService;
+use Orion\Article\Repository\ArticleRepository;
+use Orion\Badge\Service\BadgeAlbumService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
@@ -35,15 +29,13 @@ class IndexController extends BaseController
      * @param Twig $twig
      * @param ArticleRepository $articleRepository
      * @param BadgeAlbumService $badgeService
-     * @param RoomRepository $roomRepository,
-     * @param GuildRepository $guildRepository
+     * @param RoomRepository $roomRepository
      */
     public function __construct(
         private Twig $twig,
         private ArticleRepository $articleRepository,
         private BadgeAlbumService $badgeService,
-        private RoomRepository $roomRepository,
-        private GuildRepository $guildRepository
+        private RoomRepository $roomRepository
     ) {}
 
     /**

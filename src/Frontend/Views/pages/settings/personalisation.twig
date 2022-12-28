@@ -1,0 +1,46 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+<div class="row py-4">
+   <div class="col-md-1">
+      <div class="card mb-15p">
+         <div class="card-header black">{{ lang('website.settings.panel_settings' )}}</div>
+         <div class="p-2">
+            <div class="list-group">
+               <a href="/settings">
+                  <div class="list-group-item"> {{ lang('website.settings.panel_security' )}} </div>
+               </a>
+            </div>
+            <a href="/settings/personalisation">
+               <div class="list-group-item active"> {{ lang('website.settings.panel_personalisation' )}} </div>
+            </a>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-3">
+      <div class="card">
+         <div class="card-header orange">{{ lang('website.settings.personalisation' )}}</div>
+         <div class="p-2">
+            <h6>{{ lang('website.settings.avatar_bg' )}}:</h6>
+            <div class="background-grid">
+               {% for backgrounds in range(0,19) %}
+               <div class="background-grid-item card backgroundSwitcher {% if player.avatar_bg == loop.index %}selected{% endif %}" value="{{loop.index}}" style="background-image: url(/assets/images/avatar_backgrounds/{{loop.index}}.gif);"></div>
+               {% endfor %}
+            </div>
+            <label class="small text-muted"> {{ lang('website.settings.avatar_bg_desc' )}} </label>
+            <hr>
+            <h6>{{ lang('website.settings.youtube' )}}:</h6>
+            <form action="settings/personalisation/youtube" method="post">
+               <div class="d-block d-md-flex flex-row">
+                  <span class="flex-shrink-0 align-self-center">https://www.youtube.com/watch?v=</span>
+                  <input type="text" class="form-control form-control-sm mx-0 mx-md-1 align-self-center" name="youtube" value="{{youtube.data}}">
+                  <button class="llbtn llbtn-sm llbtn-success align-self-center"> {{ lang('website.settings.save' )}} </button>
+               </div>
+            </form>
+            <label class="small text-muted"> {{ lang('website.settings.youtube_desc' )}} </label>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+{% endblock %}

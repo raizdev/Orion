@@ -1,22 +1,15 @@
 <?php
-
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Tag\Service;
+namespace Orion\Tag\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
 use Ares\Framework\Model\DataObject;
-use Ares\Tag\Entity\Tag;
-use Ares\Tag\Exception\TagException;
-use Ares\Tag\Interfaces\Response\TagResponseCodeInterface;
-use Ares\Tag\Repository\TagRepository;
+use Orion\Tag\Entity\Tag;
+use Orion\Tag\Exception\TagException;
+use Orion\Tag\Interfaces\Response\TagResponseCodeInterface;
+use Orion\Tag\Repository\TagRepository;
 use Slim\Routing\RouteParser;
 
 /**

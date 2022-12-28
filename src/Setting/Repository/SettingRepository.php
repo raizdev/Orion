@@ -1,21 +1,15 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Setting\Repository;
+namespace Orion\Setting\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Setting\Entity\Setting;
+use Orion\Setting\Entity\Setting;
 
 /**
  * Class SettingsRepository
  *
- * @package Ares\Setting\Repository
+ * @package Orion\Setting\Repository
  */
 class SettingRepository extends BaseRepository
 {

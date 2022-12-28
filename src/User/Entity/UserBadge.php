@@ -1,19 +1,13 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity;
+namespace Orion\User\Entity;
 
 use Ares\Framework\Model\DataObject;
-use Ares\User\Entity\Contract\UserBadgeInterface;
+use Orion\User\Entity\Contract\UserBadgeInterface;
 
 /**
  * Class UserBadge
  *
- * @package Ares\User\Entity
+ * @package Orion\User\Entity
  */
 class UserBadge extends DataObject implements UserBadgeInterface
 {

@@ -1,21 +1,15 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Frontend\Controller\User;
 
-namespace Ares\Frontend\Controller\User;
-
-use Ares\User\Entity\User;
-use Ares\User\Entity\UserCurrency;
-use Ares\User\Entity\UserSetting;
+use Orion\User\Entity\User;
+use Orion\User\Entity\UserCurrency;
+use Orion\User\Entity\UserSetting;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\User\Repository\UserCurrencyRepository;
-use Ares\User\Repository\UserRepository;
-use Ares\User\Repository\UserSettingRepository;
+use Orion\User\Repository\UserCurrencyRepository;
+use Orion\User\Repository\UserRepository;
+use Orion\User\Repository\UserSettingRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;

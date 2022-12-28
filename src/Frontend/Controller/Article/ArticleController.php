@@ -1,29 +1,23 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Frontend\Controller\Article;
 
-namespace Ares\Frontend\Controller\Article;
-
-use Ares\Article\Entity\Comment;
-use Ares\Article\Repository\CommentRepository;
+use Orion\Article\Entity\Comment;
+use Orion\Article\Repository\CommentRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
-use Ares\Article\Entity\Article;
-use Ares\Article\Entity\Contract\ArticleInterface;
-use Ares\Article\Exception\ArticleException;
-use Ares\Article\Repository\ArticleRepository;
-use Ares\Article\Service\CreateArticleService;
-use Ares\Article\Service\DeleteArticleService;
-use Ares\Article\Service\EditArticleService;
+use Orion\Article\Entity\Article;
+use Orion\Article\Entity\Contract\ArticleInterface;
+use Orion\Article\Exception\ArticleException;
+use Orion\Article\Repository\ArticleRepository;
+use Orion\Article\Service\CreateArticleService;
+use Orion\Article\Service\DeleteArticleService;
+use Orion\Article\Service\EditArticleService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
 use Ares\Framework\Service\ValidationService;
-use Ares\User\Entity\User;
+use Orion\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -36,7 +30,7 @@ use function user;
 /**
  * Class ArticleController
  *
- * @package Ares\Article\Controller
+ * @package Orion\Article\Controller
  * @CR\Router
  */
 class ArticleController extends BaseController

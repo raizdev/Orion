@@ -1,23 +1,17 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Payment\Entity;
+namespace Orion\Payment\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Payment\Entity\Contract\PaymentInterface;
-use Ares\Payment\Repository\PaymentRepository;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\Payment\Entity\Contract\PaymentInterface;
+use Orion\Payment\Repository\PaymentRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class Payment
  *
- * @package Ares\Payment\Entity
+ * @package Orion\Payment\Entity
  */
 class Payment extends DataObject implements PaymentInterface
 {

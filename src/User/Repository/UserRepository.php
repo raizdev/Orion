@@ -1,21 +1,15 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Repository;
+namespace Orion\User\Repository;
 
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Model\Query\Collection;
-use Ares\User\Entity\User;
+use Orion\User\Entity\User;
 use Ares\Framework\Repository\BaseRepository;
 
 /**
  * Class UserRepository
  *
- * @package Ares\User\Repository
+ * @package Orion\User\Repository
  */
 class UserRepository extends BaseRepository
 {

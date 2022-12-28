@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Rcon\Entity\Contract;
+namespace Orion\Rcon\Entity\Contract;
 
 /**
  * Interface RconInterface
  *
- * @package Ares\Rcon\Entity\Contract
+ * @package Orion\Rcon\Entity\Contract
  */
 interface RconInterface
 {

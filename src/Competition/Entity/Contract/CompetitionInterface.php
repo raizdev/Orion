@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Competition\Entity\Contract;
+namespace Orion\Competition\Entity\Contract;
 
 /**
  * Interface CompetitionInterface
  *
- * @package Ares\Competition\Entity\Contract
+ * @package Orion\Competition\Entity\Contract
  */
 interface CompetitionInterface
 {

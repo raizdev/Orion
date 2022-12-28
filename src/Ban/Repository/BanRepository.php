@@ -1,19 +1,13 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
+namespace Orion\Ban\Repository;
 
-namespace Ares\Ban\Repository;
-
-use Ares\Ban\Entity\Ban;
+use Orion\Ban\Entity\Ban;
 use Ares\Framework\Repository\BaseRepository;
 
 /**
  * Class BanRepository
  *
- * @package Ares\Ban\Repository
+ * @package Orion\Ban\Repository
  */
 class BanRepository extends BaseRepository
 {

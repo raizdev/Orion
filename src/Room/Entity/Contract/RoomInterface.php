@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Room\Entity\Contract;
+namespace Orion\Room\Entity\Contract;
 
 /**
  * Interface RoomInterface
  *
- * @package Ares\Room\Entity\Contract
+ * @package Orion\Room\Entity\Contract
  */
 interface RoomInterface
 {

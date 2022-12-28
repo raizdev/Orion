@@ -1,22 +1,16 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
 namespace Ares\Setting\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Setting\Entity\Setting;
-use Ares\Setting\Repository\SettingRepository;
+use Orion\Setting\Entity\Setting;
+use Orion\Setting\Repository\SettingRepository;
 
 /**
  * Class UpdateSettingsService
  *
- * @package Ares\Setting\Service
+ * @package Orion\Setting\Service
  */
 class UpdateSettingService
 {

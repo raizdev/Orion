@@ -1,17 +1,11 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Payment\Repository;
+namespace Orion\Payment\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Payment\Entity\Payment;
+use Orion\Payment\Entity\Payment;
 
 /**
  * Class PaymentRepository

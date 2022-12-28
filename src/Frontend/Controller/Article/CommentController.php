@@ -1,19 +1,13 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Frontend\Controller\Article;
+namespace Orion\Frontend\Controller\Article;
 
 use Cosmic\Core\Mapping\Annotation as CR;
-use Ares\Article\Entity\Contract\CommentInterface;
-use Ares\Article\Exception\CommentException;
-use Ares\Article\Repository\CommentRepository;
-use Ares\Article\Service\CreateCommentService;
-use Ares\Article\Service\DeleteCommentService;
-use Ares\Article\Service\EditCommentService;
+use Orion\Article\Entity\Contract\CommentInterface;
+use Orion\Article\Exception\CommentException;
+use Orion\Article\Repository\CommentRepository;
+use Orion\Article\Service\CreateCommentService;
+use Orion\Article\Service\DeleteCommentService;
+use Orion\Article\Service\EditCommentService;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
@@ -21,7 +15,7 @@ use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Service\ValidationService;
-use Ares\User\Entity\User;
+use Orion\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -31,12 +25,12 @@ use function user;
 /**
  * Class CommentController
  *
- * @package Ares\Article\Controller
+ * @package Orion\Article\Controller
  *
  * @CR\Router
  *  @CR\Group(
  *     prefix="comment",
- *     pattern="comment"
+ *     pattern="comment",
  * )
  */
 class CommentController extends BaseController
@@ -81,7 +75,7 @@ class CommentController extends BaseController
         $parsedData = $request->getParsedBody();
 
         $this->validationService->validate($parsedData, [
-            CommentInterface::COLUMN_CONTENT => 'required',
+            CommentInterface::COLUMN_CONTENT => 'required|min:4',
             CommentInterface::COLUMN_ARTICLE_ID => 'required|numeric'
         ]);
 

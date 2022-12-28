@@ -1,20 +1,14 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Auth;
+namespace Orion\User\Service\Auth;
 
 use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class TicketService
  *
- * @package Ares\User\Service\Auth
+ * @package Orion\User\Service\Auth
  */
 class TicketService
 {

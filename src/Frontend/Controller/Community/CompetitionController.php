@@ -1,15 +1,9 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Frontend\Controller\Community;
+namespace Orion\Frontend\Controller\Community;
 
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Competition\Repository\CompetitionRepository;
+use Orion\Competition\Repository\CompetitionRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,7 +13,7 @@ use function response;
 /**
  * Class CompetitionController
  *
- * @package Ares\Community\Controller
+ * @package Orion\Community\Controller
  * @CR\Router
  */
 class CompetitionController extends BaseController

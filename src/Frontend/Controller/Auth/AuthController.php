@@ -1,25 +1,19 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Frontend\Controller\Auth;
 
-namespace Ares\Frontend\Controller\Auth;
-
-use Ares\Ban\Exception\BanException;
+use Orion\Ban\Exception\BanException;
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\AuthenticationException;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Exception\ValidationException;
 use Ares\Framework\Service\ValidationService;
-use Ares\User\Entity\Contract\UserInterface;
-use Ares\User\Entity\User;
-use Ares\User\Service\Auth\DetermineIpService;
-use Ares\User\Service\Auth\LoginService;
-use Ares\User\Service\Auth\RegisterService;
-use Ares\User\Service\Auth\TicketService;
+use Orion\User\Entity\Contract\UserInterface;
+use Orion\User\Entity\User;
+use Orion\User\Service\Auth\DetermineIpService;
+use Orion\User\Service\Auth\LoginService;
+use Orion\User\Service\Auth\RegisterService;
+use Orion\User\Service\Auth\TicketService;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;

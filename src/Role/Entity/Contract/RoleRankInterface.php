@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Entity\Contract;
+namespace Orion\Role\Entity\Contract;
 
 /**
  * Interface RoleRankInterface
  *
- * @package Ares\Role\Entity\Contract
+ * @package Orion\Role\Entity\Contract
  */
 interface RoleRankInterface
 {

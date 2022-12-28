@@ -1,24 +1,18 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Permission\Entity;
+namespace Orion\Permission\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Permission\Entity\Contract\PermissionInterface;
-use Ares\Permission\Repository\PermissionRepository;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\Permission\Entity\Contract\PermissionInterface;
+use Orion\Permission\Repository\PermissionRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 use Ares\Framework\Model\Query\Collection;
 
 /**
  * Class Permission
  *
- * @package Ares\Permission\Entity
+ * @package Orion\Permission\Entity
  */
 class Permission extends DataObject implements PermissionInterface
 {

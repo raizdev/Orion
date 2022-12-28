@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Setting\Exception;
+namespace Orion\Setting\Exception;
 
 use Ares\Framework\Exception\BaseException;
 
 /**
  * Class SettingException
  *
- * @package Ares\Setting\Exception
+ * @package Orion\Setting\Exception
  */
 class SettingException extends BaseException
 {

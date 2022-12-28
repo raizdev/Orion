@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Article\Entity\Contract;
+namespace Orion\Article\Entity\Contract;
 
 /**
  * Interface CategoryInterface
  *
- * @package Ares\Article\Entity\CategoryInterface
+ * @package Orion\Article\Entity\CategoryInterface
  */
 interface CategoryInterface
 {

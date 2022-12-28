@@ -1,24 +1,18 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Service;
+namespace Orion\Role\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Role\Entity\Role;
-use Ares\Role\Entity\RoleRank;
-use Ares\Role\Exception\RoleException;
-use Ares\Role\Interfaces\Response\RoleResponseCodeInterface;
-use Ares\Role\Repository\RoleRepository;
-use Ares\Role\Repository\RoleRankRepository;
-use Ares\Permission\Entity\Permission;
-use Ares\Permission\Repository\PermissionRepository;
+use Orion\Role\Entity\Role;
+use Orion\Role\Entity\RoleRank;
+use Orion\Role\Exception\RoleException;
+use Orion\Role\Interfaces\Response\RoleResponseCodeInterface;
+use Orion\Role\Repository\RoleRepository;
+use Orion\Role\Repository\RoleRankRepository;
+use Orion\Permission\Entity\Permission;
+use Orion\Permission\Repository\PermissionRepository;
 use DateTime;
 
 /**

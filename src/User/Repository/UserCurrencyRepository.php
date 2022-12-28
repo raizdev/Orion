@@ -1,22 +1,16 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Repository;
+namespace Orion\User\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\Query\Collection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\User\Entity\UserCurrency;
-use Ares\User\Interfaces\UserCurrencyTypeInterface;
+use Orion\User\Entity\UserCurrency;
+use Orion\User\Interfaces\UserCurrencyTypeInterface;
 
 /**
  * Class UserCurrencyRepository
  *
- * @package Ares\User\Repository
+ * @package Orion\User\Repository
  */
 class UserCurrencyRepository extends BaseRepository
 {

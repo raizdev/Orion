@@ -1,20 +1,14 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Rcon\Helper;
 
-namespace Ares\Rcon\Helper;
-
-use Ares\Rcon\Exception\RconException;
-use Ares\Rcon\Interfaces\Response\RconResponseCodeInterface;
+use Orion\Rcon\Exception\RconException;
+use Orion\Rcon\Interfaces\Response\RconResponseCodeInterface;
 use Cosmic\Core\Config;
 
 /**
  * Class RconHelper
  *
- * @package Ares\Rcon\Helper
+ * @package Orion\Rcon\Helper
  */
 class RconHelper
 {

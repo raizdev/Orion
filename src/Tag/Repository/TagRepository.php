@@ -1,21 +1,15 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Tag\Repository;
+namespace Orion\Tag\Repository;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Repository\BaseRepository;
-use Ares\Tag\Entity\Tag;
+use Orion\Tag\Entity\Tag;
 
 /**
  * Class TagRepository
  *
- * @package Ares\Tag\Repository
+ * @package Orion\Tag\Repository
  */
 class TagRepository extends BaseRepository
 {

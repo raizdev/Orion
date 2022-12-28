@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity\Contract;
+namespace Orion\User\Entity\Contract;
 
 /**
  * Interface UserInterface
  *
- * @package Ares\User\Entity\Contract
+ * @package Orion\User\Entity\Contract
  */
 interface UserInterface
 {
@@ -29,6 +23,8 @@ interface UserInterface
     public const COLUMN_AUTH_TICKET = 'auth_ticket';
     public const COLUMN_IP_REGISTER = 'ip_register';
     public const COLUMN_IP_CURRENT = 'ip_current';
+    public const COLUMN_AVATAR_BG = 'avatar_bg';
+    public const COLUMN_YOUTUBE_SONG = 'youtube_song';
     public const COLUMN_CREATED_AT = 'created_at';
     public const COLUMN_UPDATED_AT = 'updated_at';
 }

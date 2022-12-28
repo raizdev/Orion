@@ -1,14 +1,8 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
+namespace Orion\Rcon\Model;
 
-namespace Ares\Rcon\Model;
-
-use Ares\Rcon\Exception\RconException;
-use Ares\Rcon\Helper\RconHelper;
+use Orion\Rcon\Exception\RconException;
+use Orion\Rcon\Helper\RconHelper;
 
 /**
  * Class Rcon

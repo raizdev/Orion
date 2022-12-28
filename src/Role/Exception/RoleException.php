@@ -1,11 +1,5 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Role\Exception;
+namespace Orion\Role\Exception;
 
 use Ares\Framework\Exception\BaseException;
 

@@ -1,19 +1,13 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Setting\Entity;
+namespace Orion\Setting\Entity;
 
 use Ares\Framework\Model\DataObject;
-use Ares\Setting\Entity\Contract\EmulatorSettingInterface;
+use Orion\Setting\Entity\Contract\EmulatorSettingInterface;
 
 /**
  * Class EmulatorSetting
  *
- * @package Ares\Setting\Entity
+ * @package Orion\Setting\Entity
  */
 class EmulatorSetting extends DataObject implements EmulatorSettingInterface
 {

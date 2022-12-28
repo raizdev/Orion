@@ -1,14 +1,8 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
 namespace Ares\Article\Service;
 
-use Ares\Article\Entity\Comment;
-use Ares\Article\Repository\CommentRepository;
+use Orion\Article\Entity\Comment;
+use Orion\Article\Repository\CommentRepository;
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
@@ -16,7 +10,7 @@ use Ares\Framework\Interfaces\CustomResponseInterface;
 /**
  * Class EditCommentService
  *
- * @package Ares\Article\Service
+ * @package Orion\Article\Service
  */
 class EditCommentService
 {

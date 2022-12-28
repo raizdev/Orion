@@ -204,8 +204,8 @@ function WebPageSettingsInterface(main_page) {
         var page_container = this.main_page.get_page_container();
 
         $(".backgroundSwitcher").click(function() {
-            Web.ajax_manager.post("/settings/personalisation/avatarBackground", {
-                avatarBackground: $(this).attr("value")
+            Web.ajax_manager.post("/change-personalisation", {
+                avatar_bg: $(this).attr("value")
             });
         });
     };

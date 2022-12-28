@@ -1,15 +1,9 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Frontend\Controller\Community;
+namespace Orion\Frontend\Controller\Community;
 
 use Ares\Framework\Controller\BaseController;
 use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Permission\Repository\PermissionRepository;
+use Orion\Permission\Repository\PermissionRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Psr\Http\Message\ServerRequestInterface as Request;

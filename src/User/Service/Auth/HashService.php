@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Auth;
+namespace Orion\User\Service\Auth;
 
 use Cosmic\Core\Config;
 
 /**
  * Class HashService
  *
- * @package Ares\User\Service\Auth
+ * @package Orion\User\Service\Auth
  */
 class HashService
 {

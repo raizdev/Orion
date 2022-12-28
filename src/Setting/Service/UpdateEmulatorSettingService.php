@@ -1,22 +1,16 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Setting\Service;
+namespace Orion\Setting\Service;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Exception\NoSuchEntityException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Setting\Entity\Setting;
-use Ares\Setting\Repository\EmulatorSettingRepository;
+use Orion\Setting\Entity\Setting;
+use Orion\Setting\Repository\EmulatorSettingRepository;
 
 /**
  * Class UpdateEmulatorSettingService
  *
- * @package Ares\Setting\Service
+ * @package Orion\Setting\Service
  */
 class UpdateEmulatorSettingService
 {

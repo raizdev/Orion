@@ -1,19 +1,13 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Repository\Gift;
+namespace Orion\User\Repository\Gift;
 
 use Ares\Framework\Repository\BaseRepository;
-use Ares\User\Entity\Gift\DailyGift;
+use Orion\User\Entity\Gift\DailyGift;
 
 /**
  * Class DailyGiftRepository
  *
- * @package Ares\User\Repository\Gift
+ * @package Orion\User\Repository\Gift
  */
 class DailyGiftRepository extends BaseRepository
 {

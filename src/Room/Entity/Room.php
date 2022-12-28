@@ -1,25 +1,19 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
 namespace Ares\Room\Entity;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Model\DataObject;
-use Ares\Guild\Entity\Guild;
-use Ares\Guild\Repository\GuildRepository;
-use Ares\Room\Entity\Contract\RoomInterface;
-use Ares\Room\Repository\RoomRepository;
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\Guild\Entity\Guild;
+use Orion\Guild\Repository\GuildRepository;
+use Orion\Room\Entity\Contract\RoomInterface;
+use Orion\Room\Repository\RoomRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 
 /**
  * Class Room
  *
- * @package Ares\Room\Entity
+ * @package Orion\Room\Entity
  */
 class Room extends DataObject implements RoomInterface
 {

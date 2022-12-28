@@ -1,19 +1,13 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
 namespace Ares\Role\Entity;
 
 use Ares\Framework\Model\DataObject;
-use Ares\Role\Entity\Contract\RoleHierarchyInterface;
+use Orion\Role\Entity\Contract\RoleHierarchyInterface;
 
 /**
  * Class RoleHierarchy
  *
- * @package Ares\Role\Entity
+ * @package Orion\Role\Entity
  */
 class RoleHierarchy extends DataObject implements RoleHierarchyInterface
 {

@@ -1,22 +1,16 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Currency;
+namespace Orion\User\Service\Currency;
 
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\User\Exception\UserCurrencyException;
-use Ares\User\Interfaces\Response\UserResponseCodeInterface;
-use Ares\User\Repository\UserCurrencyRepository;
+use Orion\User\Exception\UserCurrencyException;
+use Orion\User\Interfaces\Response\UserResponseCodeInterface;
+use Orion\User\Repository\UserCurrencyRepository;
 use Exception;
 
 /**
  * Class UpdateCurrencyService
  *
- * @package Ares\User\Service\Currency
+ * @package Orion\User\Service\Currency
  */
 class UpdateCurrencyService
 {

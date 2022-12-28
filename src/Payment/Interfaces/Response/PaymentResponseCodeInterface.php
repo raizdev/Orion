@@ -1,18 +1,12 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\Payment\Interfaces\Response;
+namespace Orion\Payment\Interfaces\Response;
 
 use Ares\Framework\Interfaces\CustomResponseCodeInterface;
 
 /**
  * Interface PaymentResponseCodeInterface
  *
- * @package Ares\Payment\Interfaces\Response
+ * @package Orion\Payment\Interfaces\Response
  */
 interface PaymentResponseCodeInterface extends CustomResponseCodeInterface
 {

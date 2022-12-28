@@ -1,6 +1,5 @@
 <?php
-
-namespace Ares\Config\Commands;
+namespace Orion\Config\Commands;
 
 class Minifier
 {

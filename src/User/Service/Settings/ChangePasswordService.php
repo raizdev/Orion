@@ -1,25 +1,19 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Service\Settings;
+namespace Orion\User\Service\Settings;
 
 use Ares\Framework\Exception\DataObjectManagerException;
 use Ares\Framework\Interfaces\CustomResponseInterface;
 use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\User\Entity\User;
-use Ares\User\Exception\UserSettingsException;
-use Ares\User\Interfaces\Response\UserResponseCodeInterface;
-use Ares\User\Repository\UserRepository;
-use Ares\User\Service\Auth\HashService;
+use Orion\User\Entity\User;
+use Orion\User\Exception\UserSettingsException;
+use Orion\User\Interfaces\Response\UserResponseCodeInterface;
+use Orion\User\Repository\UserRepository;
+use Orion\User\Service\Auth\HashService;
 
 /**
  * Class ChangePasswordService
  *
- * @package Ares\User\Service\Settings
+ * @package Orion\User\Service\Settings
  */
 class ChangePasswordService
 {

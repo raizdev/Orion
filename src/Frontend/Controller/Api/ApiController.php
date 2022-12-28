@@ -1,14 +1,8 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
+namespace Orion\Frontend\Controller\Api;
 
-namespace Ares\Frontend\Controller\Api;
-
-use Ares\User\Entity\User;
-use Ares\User\Repository\UserRepository;
+use Orion\User\Entity\User;
+use Orion\User\Repository\UserRepository;
 use Cosmic\Core\Mapping\Annotation as CR;
 use Ares\Framework\Controller\BaseController;
 use Cosmic\Core\Config;

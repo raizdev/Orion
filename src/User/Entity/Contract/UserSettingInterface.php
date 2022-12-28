@@ -1,16 +1,10 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *  
- * @see LICENSE (MIT)
- */
-
-namespace Ares\User\Entity\Contract;
+namespace Orion\User\Entity\Contract;
 
 /**
  * Interface UserSettingInterface
  *
- * @package Ares\User\Entity\Contract
+ * @package Orion\User\Entity\Contract
  */
 interface UserSettingInterface
 {
