@@ -168,11 +168,7 @@ class CustomServiceProvider extends AbstractServiceProvider
 ## Credits
 If you got questions or feedback feel free to contact us.
 
-- Discord: Dome#9999
-- Mail: dominik-forschner@web.de
-----------------------------------
-- Discord: s1njar#0066
-- Mail: s1njar.mail@gmail.com
+- Discord: Raizer#0001
 
 ## Links
 
