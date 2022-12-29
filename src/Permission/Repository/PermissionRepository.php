@@ -1,10 +1,10 @@
 <?php
 namespace Orion\Permission\Repository;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Repository\BaseRepository;
 use Orion\Permission\Entity\Permission;
-use Ares\Framework\Model\Query\Collection;
+use Orion\Core\Model\Query\Collection;
 
 /**
  * Class PermissionRepository

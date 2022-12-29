@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Ban\Exception;
 
-use Ares\Framework\Exception\BaseException;
+use Orion\Core\Exception\BaseException;
 
 /**
  * Class BanException

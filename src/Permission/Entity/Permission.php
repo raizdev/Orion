@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 namespace Orion\Permission\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Permission\Entity\Contract\PermissionInterface;
 use Orion\Permission\Repository\PermissionRepository;
 use Orion\User\Entity\User;
 use Orion\User\Repository\UserRepository;
-use Ares\Framework\Model\Query\Collection;
+use Orion\Core\Model\Query\Collection;
 
 /**
  * Class Permission

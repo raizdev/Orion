@@ -5,13 +5,13 @@
  * @see LICENSE (MIT)
  */
 
-namespace Ares\User\Repository;
+namespace Orion\User\Repository;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\Query\PaginatedCollection;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\Query\PaginatedCollection;
+use Orion\Core\Repository\BaseRepository;
 use Ares\User\Entity\UserBadge;
-use Ares\Framework\Model\Query\Collection;
+use Orion\Core\Model\Query\Collection;
 
 /**
  * Class UserBadgeRepository

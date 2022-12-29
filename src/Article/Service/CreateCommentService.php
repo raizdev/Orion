@@ -7,11 +7,11 @@ use Orion\Article\Exception\CommentException;
 use Orion\Article\Interfaces\Response\ArticleResponseCodeInterface;
 use Orion\Article\Repository\ArticleRepository;
 use Orion\Article\Repository\CommentRepository;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Cosmic\Core\Config;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Config;
 use Slim\Routing\RouteParser;
 
 /**

@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Competition\Exception;
 
-use Ares\Framework\Exception\BaseException;
+use Orion\Core\Exception\BaseException;
 
 /**
  * Class CompetitionException

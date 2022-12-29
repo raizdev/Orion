@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace Orion\User\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Role\Repository\RoleHierarchyRepository;
 use Orion\Role\Repository\RoleRepository;
 use Orion\Role\Repository\RoleRankRepository;
@@ -10,7 +10,7 @@ use Orion\User\Entity\Contract\UserInterface;
 use Orion\User\Repository\UserBadgeRepository;
 use Orion\User\Repository\UserCurrencyRepository;
 use Orion\User\Repository\UserRepository;
-use Ares\Framework\Model\Query\Collection;
+use Orion\Core\Model\Query\Collection;
 
 /**
  * Class User
@@ -296,7 +296,7 @@ class User extends DataObject implements UserInterface
      */
     public function getYoutubeSong(): string
     {
-        return $this->getData(UserInterface::COLUMN_AVATAR_BG);
+        return $this->getData(UserInterface::COLUMN_YOUTUBE_SONG);
     }
 
     /**

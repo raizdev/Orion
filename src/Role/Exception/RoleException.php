@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Role\Exception;
 
-use Ares\Framework\Exception\BaseException;
+use Orion\Core\Exception\BaseException;
 
 /**
  * Class RoleException

@@ -1,11 +1,11 @@
 <?php
-namespace Ares\Article\Service;
+namespace Orion\Article\Service;
 
 use Orion\Article\Entity\Comment;
 use Orion\Article\Repository\CommentRepository;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
 
 /**
  * Class EditCommentService

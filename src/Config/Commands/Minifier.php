@@ -52,13 +52,13 @@ class Minifier
     // JS adapter
     //--------------------------------------------------------------------
 
-    public $adapterJs =  \Cosmic\Core\Command\Minifier\Adapters\Js\MinifyAdapter::class;
+    public $adapterJs =  \Orion\Core\Command\Minifier\Adapters\Js\MinifyAdapter::class;
 
     //--------------------------------------------------------------------
     // CSS adapter
     //--------------------------------------------------------------------
 
-    public $adapterCss = \Cosmic\Core\Command\Minifier\Adapters\Css\MinifyAdapter::class;
+    public $adapterCss = \Orion\Core\Command\Minifier\Adapters\Css\MinifyAdapter::class;
 
     //--------------------------------------------------------------------
     // JS assets directory

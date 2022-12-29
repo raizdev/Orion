@@ -1,10 +1,10 @@
 <?php
 namespace Orion\User\Service\Gift;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\Rcon\Exception\RconException;
 use Orion\Rcon\Service\ExecuteRconCommandService;
 use Orion\Role\Exception\RoleException;
@@ -13,7 +13,7 @@ use Orion\User\Entity\User;
 use Orion\User\Exception\Gift\DailyGiftException;
 use Orion\User\Interfaces\Response\UserResponseCodeInterface;
 use Orion\User\Repository\Gift\DailyGiftRepository;
-use Cosmic\Core\Config;
+use Orion\Core\Config;
 
 /**
  * Class PickGiftService

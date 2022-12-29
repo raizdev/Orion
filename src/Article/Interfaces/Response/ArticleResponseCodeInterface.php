@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Article\Interfaces\Response;
 
-use Ares\Framework\Interfaces\CustomResponseCodeInterface;
+use Orion\Core\Interfaces\CustomResponseCodeInterface;
 
 /**
  * Interface ArticleResponseCodeInterface

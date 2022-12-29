@@ -2,7 +2,7 @@
 namespace Orion\Badge\Helper;
 
 
-use Ares\Framework\Exception\NoSuchEntityException;
+use Orion\Core\Exception\NoSuchEntityException;
 use Orion\Setting\Repository\EmulatorSettingRepository;
 
 /**

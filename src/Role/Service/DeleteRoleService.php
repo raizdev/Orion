@@ -1,9 +1,9 @@
 <?php
 namespace Orion\Role\Service;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\Role\Exception\RoleException;
 use Orion\Role\Interfaces\Response\RoleResponseCodeInterface;
 use Orion\Role\Repository\RoleRepository;

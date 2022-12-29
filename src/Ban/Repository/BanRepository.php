@@ -2,7 +2,7 @@
 namespace Orion\Ban\Repository;
 
 use Orion\Ban\Entity\Ban;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Repository\BaseRepository;
 
 /**
  * Class BanRepository

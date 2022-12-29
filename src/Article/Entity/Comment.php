@@ -3,8 +3,8 @@ namespace Orion\Article\Entity;
 
 use Orion\Article\Entity\Contract\CommentInterface;
 use Orion\Article\Repository\CommentRepository;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\User\Entity\User;
 use Orion\User\Repository\UserRepository;
 

@@ -1,7 +1,7 @@
 <?php
 namespace Orion\User\Service\Auth;
 
-use Ares\Framework\Exception\DataObjectManagerException;
+use Orion\Core\Exception\DataObjectManagerException;
 use Orion\User\Entity\User;
 use Orion\User\Repository\UserRepository;
 

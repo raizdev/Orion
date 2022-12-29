@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace Orion\Payment\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Payment\Entity\Contract\PaymentInterface;
 use Orion\Payment\Repository\PaymentRepository;
 use Orion\User\Entity\User;

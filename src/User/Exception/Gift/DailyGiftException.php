@@ -1,7 +1,7 @@
 <?php
 namespace Orion\User\Exception\Gift;
 
-use Ares\Framework\Exception\BaseException;
+use Orion\Core\Exception\BaseException;
 
 /**
  * Class DailyGiftException

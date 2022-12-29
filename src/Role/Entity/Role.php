@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace Orion\Role\Entity;
 
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Model\DataObject;
 use Orion\Role\Entity\Contract\RoleInterface;
 
 /**

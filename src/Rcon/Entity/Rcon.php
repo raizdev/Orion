@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace Orion\Rcon\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Rcon\Entity\Contract\RconInterface;
 use Orion\Rcon\Repository\RconRepository;
 use Orion\Role\Entity\Permission;

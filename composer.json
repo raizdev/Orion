@@ -15,9 +15,9 @@
   ],
   "require": {
     "ext-sockets": "*",
-    "domexx/ares-core": "4.3.6",
-    "raizdev/cosmic-core": "dev-master",
-    "robmorgan/phinx": "dev-master"
+    "phlak/config": "dev-master",
+    "raizdev/cosmic-core": "dev-dev",
+    "robmorgan/phinx": "*"
   },
   "config": {
     "sort-packages": true,

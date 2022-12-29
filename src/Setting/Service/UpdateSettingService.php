@@ -1,9 +1,9 @@
 <?php
-namespace Ares\Setting\Service;
+namespace Orion\Setting\Service;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
 use Orion\Setting\Entity\Setting;
 use Orion\Setting\Repository\SettingRepository;
 

@@ -2,7 +2,7 @@
 
 namespace Orion\User\Exception;
 
-use Ares\Framework\Exception\BaseException;
+use Orion\Core\Exception\BaseException;
 
 /**
  * Class UserSettingsException

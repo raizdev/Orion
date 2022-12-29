@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace Orion\User\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\User\Entity\Contract\UserSettingInterface;
 use Orion\User\Repository\UserRepository;
 use Orion\User\Repository\UserSettingRepository;

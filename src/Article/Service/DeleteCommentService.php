@@ -4,9 +4,9 @@ namespace Orion\Article\Service;
 use Orion\Article\Exception\CommentException;
 use Orion\Article\Interfaces\Response\ArticleResponseCodeInterface;
 use Orion\Article\Repository\CommentRepository;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 
 /**
  * Class DeleteArticleService

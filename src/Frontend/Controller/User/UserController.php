@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 namespace Orion\Frontend\Controller\User;
 
-use Cosmic\Core\Mapping\Annotation as CR;
-use Ares\Framework\Controller\BaseController;
-use Ares\Framework\Exception\AuthenticationException;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Exception\ValidationException;
-use Ares\Framework\Service\ValidationService;
+use Orion\Core\Mapping\Annotation as CR;
+use Orion\Core\Controller\BaseController;
+use Orion\Core\Exception\AuthenticationException;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Exception\ValidationException;
+use Orion\Core\Service\ValidationService;
 use Orion\User\Entity\Contract\UserInterface;
 use Orion\User\Entity\User;
 use Orion\User\Repository\UserRepository;

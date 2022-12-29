@@ -1,20 +1,20 @@
 <?php
 namespace Orion\Frontend\Controller\Article;
 
-use Cosmic\Core\Mapping\Annotation as CR;
+use Orion\Core\Mapping\Annotation as CR;
 use Orion\Article\Entity\Contract\CommentInterface;
 use Orion\Article\Exception\CommentException;
 use Orion\Article\Repository\CommentRepository;
 use Orion\Article\Service\CreateCommentService;
 use Orion\Article\Service\DeleteCommentService;
 use Orion\Article\Service\EditCommentService;
-use Ares\Framework\Controller\BaseController;
-use Ares\Framework\Exception\AuthenticationException;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Exception\ValidationException;
-use Ares\Framework\Model\Query\PaginatedCollection;
-use Ares\Framework\Service\ValidationService;
+use Orion\Core\Controller\BaseController;
+use Orion\Core\Exception\AuthenticationException;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Exception\ValidationException;
+use Orion\Core\Model\Query\PaginatedCollection;
+use Orion\Core\Service\ValidationService;
 use Orion\User\Entity\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

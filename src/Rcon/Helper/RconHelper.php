@@ -3,7 +3,7 @@ namespace Orion\Rcon\Helper;
 
 use Orion\Rcon\Exception\RconException;
 use Orion\Rcon\Interfaces\Response\RconResponseCodeInterface;
-use Cosmic\Core\Config;
+use Orion\Core\Config;
 
 /**
  * Class RconHelper

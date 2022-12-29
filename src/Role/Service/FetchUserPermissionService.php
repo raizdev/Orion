@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Role\Service;
 
-use Ares\Framework\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\CustomResponseInterface;
 use Orion\Role\Repository\RoleHierarchyRepository;
 use Orion\Role\Repository\RoleRankRepository;
 

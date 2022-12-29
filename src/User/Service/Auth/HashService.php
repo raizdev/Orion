@@ -1,7 +1,7 @@
 <?php
 namespace Orion\User\Service\Auth;
 
-use Cosmic\Core\Config;
+use Orion\Core\Config;
 
 /**
  * Class HashService

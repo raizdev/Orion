@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace Orion\Competition\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Competition\Entity\Contract\CompetitionInterface;
 use Orion\Competition\Repository\CompetitionRepository;
 use Orion\User\Entity\User;

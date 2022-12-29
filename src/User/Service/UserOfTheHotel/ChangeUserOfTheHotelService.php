@@ -1,9 +1,9 @@
 <?php
 namespace Orion\User\Service\UserOfTheHotel;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
 use Orion\User\Entity\User;
 use Orion\User\Entity\UserOfTheHotel;
 use Orion\User\Entity\UserSetting;

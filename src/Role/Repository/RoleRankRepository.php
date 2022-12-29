@@ -2,8 +2,8 @@
 namespace Orion\Role\Repository;
 
 
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Repository\BaseRepository;
 use Orion\Role\Entity\RoleRank;
 use Orion\Role\Entity\Contract\RoleRankInterface;
 use Illuminate\Database\QueryException;

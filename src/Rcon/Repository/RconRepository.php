@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Rcon\Repository;
 
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Repository\BaseRepository;
 use Orion\Rcon\Entity\Rcon;
 
 /**

@@ -3,9 +3,9 @@ namespace Orion\Frontend\Controller\Api;
 
 use Orion\User\Entity\User;
 use Orion\User\Repository\UserRepository;
-use Cosmic\Core\Mapping\Annotation as CR;
-use Ares\Framework\Controller\BaseController;
-use Cosmic\Core\Config;
+use Orion\Core\Mapping\Annotation as CR;
+use Orion\Core\Controller\BaseController;
+use Orion\Core\Config;
 use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

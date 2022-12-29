@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Role\Service;
 
-use Ares\Framework\Exception\NoSuchEntityException;
+use Orion\Core\Exception\NoSuchEntityException;
 use Orion\Role\Entity\Permission;
 use Orion\Role\Repository\PermissionRepository;
 use Orion\Role\Repository\RoleHierarchyRepository;

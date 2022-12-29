@@ -1,7 +1,7 @@
 <?php
 if ($_ENV['CACHE_ENABLED']) {
     $container->addServiceProvider(
-        new \Ares\Framework\Provider\CacheServiceProvider()
+        new \Orion\Core\Provider\CacheServiceProvider()
     );
 }
 

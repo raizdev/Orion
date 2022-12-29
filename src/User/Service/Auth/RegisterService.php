@@ -1,10 +1,10 @@
 <?php
 namespace Orion\User\Service\Auth;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Framework\Service\TokenService;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Service\TokenService;
 use Orion\User\Entity\User;
 use Orion\User\Exception\RegisterException;
 use Orion\User\Interfaces\Response\UserResponseCodeInterface;
@@ -13,7 +13,7 @@ use Orion\User\Repository\UserRepository;
 use Orion\User\Service\Currency\CreateCurrencyService;
 use Exception;
 use Odan\Session\SessionInterface;
-use Cosmic\Core\Config;
+use Orion\Core\Config;
 use ReallySimpleJWT\Exception\ValidateException;
 
 /**

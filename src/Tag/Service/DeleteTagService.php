@@ -1,9 +1,9 @@
 <?php
 namespace Orion\Tag\Service;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\Tag\Exception\TagException;
 use Orion\Tag\Interfaces\Response\TagResponseCodeInterface;
 use Orion\Tag\Repository\TagRepository;

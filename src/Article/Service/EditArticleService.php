@@ -6,10 +6,10 @@ use Orion\Article\Entity\Contract\ArticleInterface;
 use Orion\Article\Exception\ArticleException;
 use Orion\Article\Interfaces\Response\ArticleResponseCodeInterface;
 use Orion\Article\Repository\ArticleRepository;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Cocur\Slugify\Slugify;
 
 /**

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
-namespace Ares\Room\Entity;
+namespace Orion\Room\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Guild\Entity\Guild;
 use Orion\Guild\Repository\GuildRepository;
 use Orion\Room\Entity\Contract\RoomInterface;

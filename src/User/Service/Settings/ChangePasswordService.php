@@ -1,9 +1,9 @@
 <?php
 namespace Orion\User\Service\Settings;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\User\Entity\User;
 use Orion\User\Exception\UserSettingsException;
 use Orion\User\Interfaces\Response\UserResponseCodeInterface;

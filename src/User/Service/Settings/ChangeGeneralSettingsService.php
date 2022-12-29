@@ -1,13 +1,14 @@
 <?php
 namespace Orion\User\Service\Settings;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
 use Orion\Rcon\Service\ExecuteRconCommandService;
 use Orion\User\Entity\User;
 use Orion\User\Exception\userRepositoryException;
 use Orion\User\Repository\userRepository;
+use Slim\Routing\RouteParser;
 use Exception;
 
 /**
@@ -23,7 +24,8 @@ class ChangeGeneralSettingsService
      * @param UserRepository $userRepository
      */
     public function __construct(
-        private UserRepository $userRepository
+        private UserRepository $userRepository,
+        private RouteParser $routeParser
     ) {}
 
     /**
@@ -44,9 +46,12 @@ class ChangeGeneralSettingsService
 
         /** @var UserSetting $userSetting */
         $user = $this->userRepository->save($this->getUpdatedUser($user, $data));
-        dd($user);
-        return response()
-            ->setData($user);
+
+        return response()->setData([
+            'replacepage'  => $this->routeParser->urlFor('settings-personalisation'),
+            'status'    => 'success',
+            'message'   => __('Personalisation saved!!'),
+        ]);
     }
 
     /**
@@ -60,6 +65,6 @@ class ChangeGeneralSettingsService
     {
         return $user
             ->setAvatarBg($data['avatar_bg'])
-            ->setYoutubeSong($data['youtube_song']);
+            ->setYoutubeSong($data['youtube_song'] ?? null);
     }
 }

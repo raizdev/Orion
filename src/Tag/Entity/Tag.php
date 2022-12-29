@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace Orion\Tag\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Tag\Entity\Contract\TagInterface;
 use Orion\Tag\Repository\TagRepository;
 use Orion\User\Entity\User;

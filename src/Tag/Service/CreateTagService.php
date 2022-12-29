@@ -1,11 +1,11 @@
 <?php
 namespace Orion\Tag\Service;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Model\DataObject;
 use Orion\Tag\Entity\Tag;
 use Orion\Tag\Exception\TagException;
 use Orion\Tag\Interfaces\Response\TagResponseCodeInterface;

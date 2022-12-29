@@ -1,8 +1,8 @@
 <?php
 namespace Orion\Role\Entity;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\Role\Entity\Contract\RoleRankInterface;
 use Orion\Permission\Repository\PermissionRepository;
 use Orion\Permission\Entity\Permission;

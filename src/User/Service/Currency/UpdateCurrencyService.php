@@ -1,7 +1,7 @@
 <?php
 namespace Orion\User\Service\Currency;
 
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\User\Exception\UserCurrencyException;
 use Orion\User\Interfaces\Response\UserResponseCodeInterface;
 use Orion\User\Repository\UserCurrencyRepository;

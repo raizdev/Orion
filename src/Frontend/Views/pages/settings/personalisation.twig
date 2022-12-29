@@ -24,7 +24,7 @@
             <h6>{{ lang('website.settings.avatar_bg' )}}:</h6>
             <div class="background-grid">
                {% for backgrounds in range(0,19) %}
-               <div class="background-grid-item card backgroundSwitcher {% if player.avatar_bg == loop.index %}selected{% endif %}" value="{{loop.index}}" style="background-image: url(/assets/images/avatar_backgrounds/{{loop.index}}.gif);"></div>
+               <div class="background-grid-item card backgroundSwitcher {% if user.avatar_bg == loop.index %}selected{% endif %}" value="{{loop.index}}" style="background-image: url(/assets/images/avatar_backgrounds/{{loop.index}}.gif);"></div>
                {% endfor %}
             </div>
             <label class="small text-muted"> {{ lang('website.settings.avatar_bg_desc' )}} </label>

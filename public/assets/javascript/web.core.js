@@ -209,7 +209,7 @@ function WebPagesManagerInterface() {
     /*
      * Load page
      * */
-    this.load = function (url, data, scroll, callback, history_push, history_replace) {
+    this.load = function (url, data, scroll, callback, history_push, history_replace, fadeInContent) {
 
         if (scroll === undefined) {
             scroll = true
@@ -283,12 +283,11 @@ function WebPagesManagerInterface() {
 
                 // Replace page
                 else if (result.replacepage)
-                    self.load(result.replacepage, null, true, null, true, true);
+                    self.load(result.replacepage, null, true, null, true, true, false, false);
 
                 // Build new page
                 else {
-                  
-                    self.current_page_interface = new WebPageInterface(self, result.page, scroll, result.data);
+                    self.current_page_interface = new WebPageInterface(self, result.page, scroll, result.data, fadeInContent);
                     self.current_page_interface.build();
 
                     if (typeof callback === "function")
@@ -313,7 +312,7 @@ function WebPagesManagerInterface() {
     };
 }
 
-function WebPageInterface(manager, type, scroll, page_data) {
+function WebPageInterface(manager, type, scroll, page_data, fade_in_content = true) {
     if (scroll === undefined) {
         scroll = true;
     }
@@ -326,6 +325,7 @@ function WebPageInterface(manager, type, scroll, page_data) {
     this.scroll = scroll;
     this.page_data = page_data;
     this.page_interface = null;
+    this.fadeInContent = fade_in_content
 
     /*
      * Build page
@@ -339,8 +339,10 @@ function WebPageInterface(manager, type, scroll, page_data) {
 
         self.manager.page_container.attr("data-page", this.type).html(this.page_data);
 
-        const element = document.querySelector('.bg-lush-content-bg .row');
-        element.classList.add('animate__animated', 'animate__fadeIn');
+        if(this.fadeInContent) {
+            const element = document.querySelector('.bg-lush-content-bg .row');
+            element.classList.add('animate__animated', 'animate__fadeIn');
+        }
 
         // Update navigation
         var navigation_container = $(".navigation-container");
@@ -475,7 +477,7 @@ function WebAjaxManagerInterface() {
 
             // Replace page
             if (result.data && result.data.replacepage)
-                Web.pages_manager.load(result.data.replacepage, null, true, null, true, true);
+                Web.pages_manager.load(result.data.replacepage, null, true, null, true, true, false);
 
             // Check if is form
             if (form !== undefined) {

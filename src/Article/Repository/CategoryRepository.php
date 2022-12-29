@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 namespace Orion\Article\Repository;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Repository\BaseRepository;
-use Ares\Framework\Model\Query\Collection;
-use Ares\Framework\Model\Query\PaginatedCollection;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Repository\BaseRepository;
+use Orion\Core\Model\Query\Collection;
+use Orion\Core\Model\Query\PaginatedCollection;
 use Orion\Article\Entity\Category;
 
 /**

@@ -1,10 +1,10 @@
 <?php
 namespace Orion\Rcon\Service;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\Rcon\Entity\Rcon;
 use Orion\Rcon\Exception\RconException;
 use Orion\Rcon\Interfaces\Response\RconResponseCodeInterface;

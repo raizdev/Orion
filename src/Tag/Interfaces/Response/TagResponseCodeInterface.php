@@ -2,7 +2,7 @@
 
 namespace Orion\Tag\Interfaces\Response;
 
-use Ares\Framework\Interfaces\CustomResponseCodeInterface;
+use Orion\Core\Interfaces\CustomResponseCodeInterface;
 
 /**
  * Interface TagResponseCodeInterface

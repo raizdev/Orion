@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace Orion\User\Entity\Gift;
 
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Model\DataObject;
 use Orion\User\Entity\Contract\Gift\DailyGiftInterface;
 
 /**

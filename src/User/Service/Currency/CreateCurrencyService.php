@@ -1,8 +1,8 @@
 <?php
 namespace Orion\User\Service\Currency;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
 use Orion\User\Entity\UserCurrency;
 use Orion\User\Repository\UserCurrencyRepository;
 

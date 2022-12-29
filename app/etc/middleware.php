@@ -1,6 +1,6 @@
 <?php
-use Ares\Framework\Middleware\LocaleMiddleware;
-use Cosmic\Core\Middleware\ClaimMiddleware;
+use Orion\Core\Middleware\LocaleMiddleware;
+use Orion\Core\Middleware\ClaimMiddleware;
 use Odan\Session\Middleware\SessionMiddleware;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -28,5 +28,5 @@ return function (App $app) {
     $app->add(LocaleMiddleware::class);
 
     $errorMiddleware = $app->addErrorMiddleware(true, true, true, $logger);
-    $errorMiddleware->setDefaultErrorHandler(\Cosmic\Core\Handler\ErrorHandler::class);
+    $errorMiddleware->setDefaultErrorHandler(\Orion\Core\Handler\ErrorHandler::class);
 };

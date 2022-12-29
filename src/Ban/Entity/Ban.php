@@ -3,8 +3,8 @@ namespace Orion\Ban\Entity;
 
 use Orion\Ban\Entity\Contract\BanInterface;
 use Orion\Ban\Repository\BanRepository;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\DataObject;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\DataObject;
 use Orion\User\Entity\User;
 use Orion\User\Repository\UserRepository;
 

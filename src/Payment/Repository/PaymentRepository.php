@@ -1,10 +1,10 @@
 <?php
 namespace Orion\Payment\Repository;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Model\Query\PaginatedCollection;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Model\Query\PaginatedCollection;
+use Orion\Core\Repository\BaseRepository;
 use Orion\Payment\Entity\Payment;
 
 /**

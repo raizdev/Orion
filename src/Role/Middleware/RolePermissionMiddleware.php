@@ -1,8 +1,8 @@
 <?php
-namespace Ares\Role\Middleware;
+namespace Orion\Role\Middleware;
 
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\Role\Exception\RoleException;
 use Orion\Role\Interfaces\Response\RoleResponseCodeInterface;
 use Orion\Role\Service\CheckAccessService;

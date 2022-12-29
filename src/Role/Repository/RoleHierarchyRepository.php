@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Role\Repository;
 
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Repository\BaseRepository;
 use Orion\Role\Entity\RoleHierarchy;
 use Illuminate\Database\QueryException;
 

@@ -4,12 +4,12 @@ namespace Orion\Frontend\Controller\Home;
 
 use Orion\Room\Repository\RoomRepository;
 use Orion\Vote\Repository\VoteRepository;
-use Cosmic\Core\Mapping\Annotation as CR;
+use Orion\Core\Mapping\Annotation as CR;
 use Orion\Article\Repository\ArticleRepository;
 use Orion\Badge\Service\BadgeAlbumService;
-use Ares\Framework\Controller\BaseController;
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Exception\NoSuchEntityException;
+use Orion\Core\Controller\BaseController;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Exception\NoSuchEntityException;
 use Odan\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

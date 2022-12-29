@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 namespace Orion\User\Repository;
 
-use Ares\Framework\Exception\NoSuchEntityException;
-use Ares\Framework\Model\Query\Collection;
+use Orion\Core\Exception\NoSuchEntityException;
+use Orion\Core\Model\Query\Collection;
 use Orion\User\Entity\User;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Repository\BaseRepository;
 
 /**
  * Class UserRepository

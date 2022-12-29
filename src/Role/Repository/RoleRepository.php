@@ -1,9 +1,9 @@
 <?php
 namespace Orion\Role\Repository;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Model\Query\PaginatedCollection;
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Model\Query\PaginatedCollection;
+use Orion\Core\Repository\BaseRepository;
 use Orion\Role\Entity\Role;
 
 /**

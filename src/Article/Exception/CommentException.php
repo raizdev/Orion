@@ -1,7 +1,7 @@
 <?php
 namespace Orion\Article\Exception;
 
-use Ares\Framework\Exception\BaseException;
+use Orion\Core\Exception\BaseException;
 
 /**
  * Class CommentException

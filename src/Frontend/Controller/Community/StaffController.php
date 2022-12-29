@@ -1,11 +1,11 @@
 <?php
 namespace Orion\Frontend\Controller\Community;
 
-use Ares\Framework\Controller\BaseController;
-use Ares\Framework\Exception\DataObjectManagerException;
+use Orion\Core\Controller\BaseController;
+use Orion\Core\Exception\DataObjectManagerException;
 use Orion\Permission\Repository\PermissionRepository;
 use Psr\Http\Message\ResponseInterface as Response;
-use Cosmic\Core\Mapping\Annotation as CR;
+use Orion\Core\Mapping\Annotation as CR;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use function response;

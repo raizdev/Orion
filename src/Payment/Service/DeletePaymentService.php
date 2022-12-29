@@ -1,9 +1,9 @@
 <?php
 namespace Orion\Payment\Service;
 
-use Ares\Framework\Exception\DataObjectManagerException;
-use Ares\Framework\Interfaces\CustomResponseInterface;
-use Ares\Framework\Interfaces\HttpResponseCodeInterface;
+use Orion\Core\Exception\DataObjectManagerException;
+use Orion\Core\Interfaces\CustomResponseInterface;
+use Orion\Core\Interfaces\HttpResponseCodeInterface;
 use Orion\Payment\Exception\PaymentException;
 use Orion\Payment\Interfaces\Response\PaymentResponseCodeInterface;
 use Orion\Payment\Repository\PaymentRepository;

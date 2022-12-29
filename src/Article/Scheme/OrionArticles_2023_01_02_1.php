@@ -1,12 +1,12 @@
 <?php
-declare(strict_types=1);
+namespace Orion\Article\Scheme;
 
 use Phinx\Migration\AbstractMigration;
 
 /**
- * Class AresArticles
- */
-final class AresArticles extends AbstractMigration
+ * Class AresArticles // do we have any other scheme file no i deleted it everywhere because it gave the error then i added it again but the error still shows up
+ */ 
+final class OrionArticles_2023_01_02_1 extends AbstractMigration
 {
     public function change(): void
     {

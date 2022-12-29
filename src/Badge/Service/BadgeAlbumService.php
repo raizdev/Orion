@@ -2,8 +2,8 @@
 namespace Orion\Badge\Service;
 
 use Orion\Badge\Helper\BadgeHelper;
-use Ares\Framework\Service\CacheService;
-use Ares\Framework\Exception\NoSuchEntityException;
+use Orion\Core\Service\CacheService;
+use Orion\Core\Exception\NoSuchEntityException;
 
 /**
  * Class BadgeAlbumService

@@ -1,7 +1,7 @@
 <?php
 namespace Orion\User\Repository\Gift;
 
-use Ares\Framework\Repository\BaseRepository;
+use Orion\Core\Repository\BaseRepository;
 use Orion\User\Entity\Gift\DailyGift;
 
 /**
