@@ -1,0 +1,66 @@
+{% extends "Frontend/Views/layouts/app.twig" %}
+{% block body %}
+<div class="bg-lush-content-bg d-flex flex-column h-100">
+    <div class="row py-4">
+      <div class="col-lg-3 pr-xl-0">
+        <div class="card mb-15p">
+          <div class="card-header orange">{{ lang('website.jobs.vacancies' )}}</div>
+          <div class="px-2 pt-2">
+            {% if jobs is empty %}
+            <div class="alert alert-danger mb-15p">
+            {{ lang('website.jobs.vacancies_not_found' )}}
+            </div>
+            {% endif %}
+            {% for job in jobs %}
+            <div class="card bg-white rounded p-2 mb-15p d-flex flex-row justify-content-between">
+              <div>
+                <div> {{job.job}} </div>
+                <div class="small text-muted">{{job.short_description}}</div>
+              </div>
+              <a href="/community/jobs/{{job.id}}/apply">
+                <button class="llbtn llbtn-success align-self-center flex-shrink-0"> {{ lang('website.jobs.apply' )}} </button>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card mb-15p">
+          <div class="card-header">{{ lang('website.jobs.my_applications' )}}</div>
+          <div class="px-2 pt-2">
+            {% if data.myJobs is empty %}
+            <div class="alert alert-danger mb-15p">
+            {{ lang('website.jobs.applications_not_found' )}}
+            </div>
+            {% endif %}
+            {% for myJob in data.myJobs %}
+            <div class="card bg-white d-flex flex-row justify-content-between mb-15p p-2">
+              <div>
+                <div>{{myJob.job}}</div>
+              </div>
+              <div class="badge align-self-center badge-{% if myJob.status == "open" %}primary{% else %}danger{% endif %}">{% if myJob.status == "open" %} {{ lang('website.jobs.submitted' )}} {% else %} {{ lang('website.jobs.declined' )}} {% endif %}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div class="card mb-15p">
+          <div class="card-header darkGreen">{{ lang('website.jobs.the_job' )}}</div>
+          <div class="p-2 small text-muted">
+            <img src="/assets/images/placeholders/asset_staffbadge.gif" align="left">
+            <p> {{ lang('website.jobs.the_job_content1' )}} </p>
+            <p class="mb-0"> {{ lang('website.jobs.the_job_content2' )}} </p>
+          </div>
+        </div>
+        <div class="card mb-15p">
+          <div class="card-header darkRed">{{ lang('website.jobs.terms' )}}</div>
+          <div class="p-2 small text-muted">
+            <img src="/assets/images/placeholders/frank_15.png" align="right">
+            <p> {{ lang('website.jobs.terms_content1' )}} </p>
+            <p class="mb-0">{{ lang('website.jobs.terms_content2' )}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

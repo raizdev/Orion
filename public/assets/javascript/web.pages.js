@@ -12,7 +12,6 @@ function WebHotelManagerInterface() {
 
         this.hotel_container.find(".client-buttons .client-close").click(this.close_hotel);
         this.hotel_container.find(".client-buttons .client-fullscreen").click(this.toggle_fullscreen.bind(this));
-        this.hotel_container.find(".client-buttons .client-radio").click(this.radio(this));
         this.hotel_container.find(".client-disconnected").hide();
     };
     
@@ -101,68 +100,8 @@ function WebHotelManagerInterface() {
                         });
 
                     body.addClass("hotel-visible");
-
-
-                    var radio = document.getElementById("stream");
-                    radio.src = Configuration.settings.radio.stream;
-                    radio.volume = 0.1;
-                    radio.play();
-
-                    $(".fa-play").hide();
-                    $(".fa-pause").show();
                 }
         }
-
-
-
-
-    /*
-     * LeetFM Player
-     * */
-    this.radio = function() {
-
-        var radio = document.getElementById("stream");
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-play").click(function() {
-            radio.src = Configuration.settings.radio.stream;
-            radio.volume = 0.1;
-            setTimeout(function() {
-                radio.play();
-            }, Configuration.settings.radio.timeout);
-            $(".fa-play").hide();
-            $(".fa-pause").show();
-        });
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-pause").click(function() {
-
-            radio.pause();
-            radio.src = "";
-            radio.load();
-
-            $(".fa-play").show();
-            $(".fa-pause").hide();
-        });
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-volume-up").click(function() {
-            var volume = radio.volume;
-
-            if (volume > 1.0) {
-                radio.volume += 0.0;
-            } else {
-                radio.volume += 0.1;
-            }
-        });
-
-        this.hotel_container.find(".client-buttons .client-radio .fa-volume-down").click(function() {
-            var volume = radio.volume;
-
-            if (volume < 0.0) {
-                radio.volume -= 0.0;
-            } else {
-                radio.volume -= 0.1;
-            }
-        });
-    };
 
     /*
      * Fullscreen toggle

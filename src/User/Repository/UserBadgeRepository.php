@@ -10,7 +10,7 @@ namespace Orion\User\Repository;
 use Orion\Core\Exception\DataObjectManagerException;
 use Orion\Core\Model\Query\PaginatedCollection;
 use Orion\Core\Repository\BaseRepository;
-use Ares\User\Entity\UserBadge;
+use Orion\User\Entity\UserBadge;
 use Orion\Core\Model\Query\Collection;
 
 /**

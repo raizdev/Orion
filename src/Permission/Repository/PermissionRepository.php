@@ -9,7 +9,7 @@ use Orion\Core\Model\Query\Collection;
 /**
  * Class PermissionRepository
  *
- * @package Ares\Permission\Repository
+ * @package Orion\Permission\Repository
  */
 class PermissionRepository extends BaseRepository
 {

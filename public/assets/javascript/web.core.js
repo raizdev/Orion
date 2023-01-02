@@ -307,7 +307,7 @@ function WebPagesManagerInterface() {
             });
         } else if (Configuration.settings.user) {
             Web.hotel_manager.open_hotel(url.replace("hotel?", "").replace("hotel", ""));
-            self.push(url, Locale.web_hotel_title, false);
+            self.push(url, 'Hotel', false);
         }
     };
 }
