@@ -2,7 +2,7 @@
 namespace Orion\Job\Entity\Contract;
 
 /**
- * Interface PermissionInterface
+ * Interface JobInterface
  *
  * @package Orion\Job\Entity\Contract
  */

@@ -163,7 +163,8 @@ class AuthController extends BaseController
 
         /** @var string $determinedIp */
         $determinedIp = $this->determineIpService->execute();
-
+        dd($determinedIp);
+        
         $parsedData[UserInterface::COLUMN_IP_CURRENT] = $determinedIp;
         $parsedData[UserInterface::COLUMN_IP_REGISTER] = $determinedIp;
 

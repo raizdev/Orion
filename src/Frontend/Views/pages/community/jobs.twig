@@ -27,17 +27,17 @@
         <div class="card mb-15p">
           <div class="card-header">{{ lang('website.jobs.my_applications' )}}</div>
           <div class="px-2 pt-2">
-            {% if data.myJobs is empty %}
+            {% if applications is empty %}
             <div class="alert alert-danger mb-15p">
             {{ lang('website.jobs.applications_not_found' )}}
             </div>
             {% endif %}
-            {% for myJob in data.myJobs %}
+            {% for application in applications %}
             <div class="card bg-white d-flex flex-row justify-content-between mb-15p p-2">
               <div>
-                <div>{{myJob.job}}</div>
+                <div>{{application.job.job}}</div>
               </div>
-              <div class="badge align-self-center badge-{% if myJob.status == "open" %}primary{% else %}danger{% endif %}">{% if myJob.status == "open" %} {{ lang('website.jobs.submitted' )}} {% else %} {{ lang('website.jobs.declined' )}} {% endif %}</div>
+              <div class="badge align-self-center badge-{% if application.status == "open" %}primary{% else %}danger{% endif %}">{% if application.status == "open" %} {{ lang('website.jobs.submitted' )}} {% else %} {{ lang('website.jobs.declined' )}} {% endif %}</div>
             </div>
             {% endfor %}
           </div>

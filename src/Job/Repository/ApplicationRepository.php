@@ -20,7 +20,7 @@ class ApplicationRepository extends BaseRepository
     protected string $cacheCollectionPrefix = 'ARES_JOBS_APPLICATIONS_COLLECTION_';
 
     /** @var string */
-    protected string $entity = Job::class;
+    protected string $entity = Application::class;
 
     /**
      * @param int $page
@@ -30,4 +30,31 @@ class ApplicationRepository extends BaseRepository
      * @throws DataObjectManagerException
      */
 
+    public function getApplicationByUser(int $user_id, int $page = 1, int $resultPerPage = 5): PaginatedCollection
+    {
+        $searchCriteria = $this->getDataObjectManager()
+            ->where('user_id', $user_id)
+            ->orderBy('id', 'DESC')
+            ->addRelation('job');
+
+        return $this->getPaginatedList($searchCriteria, $page, $resultPerPage);
+    }
+
+    /**
+     * @param int $page
+     * @param int $resultPerPage
+     *
+     * @return PaginatedCollection
+     * @throws DataObjectManagerException
+     */
+
+    public function getAllApplications(int $page = 1, int $resultPerPage = 5): PaginatedCollection
+    {
+        $searchCriteria = $this->getDataObjectManager()
+            ->orderBy('id', 'DESC')
+            ->addRelation('user')
+            ->addRelation('job');
+
+        return $this->getPaginatedList($searchCriteria, $page, $resultPerPage);
+    }
 }
